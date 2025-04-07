@@ -63,6 +63,16 @@ namespace ATBM_PH1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _20945549 {
+            get {
+                object obj = ResourceManager.GetObject("20945549", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap authorize {
             get {
                 object obj = ResourceManager.GetObject("authorize", resourceCulture);
