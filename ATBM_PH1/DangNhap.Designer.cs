@@ -138,6 +138,7 @@
             this.btnLogin.Size = new System.Drawing.Size(180, 51);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Đăng nhập";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
