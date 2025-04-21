@@ -49,7 +49,7 @@ namespace ATBM_PH1
                 string createUserQuery = $"CREATE USER {username} IDENTIFIED BY {password}";
                 MainClass.ExecuteQuery(createUserQuery);
 
-                string grantPrivilegesQuery = $"GRANT CONNECT, RESOURCE TO {username}";
+                string grantPrivilegesQuery = $"GRANT CREATE SESSION, RESOURCE TO {username}";
                 MainClass.ExecuteQuery(grantPrivilegesQuery);
 
                 MessageBox.Show("Tạo user thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

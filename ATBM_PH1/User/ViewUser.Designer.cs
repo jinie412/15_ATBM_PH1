@@ -58,7 +58,7 @@
             this.InsertUser.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.InsertUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.InsertUser.ForeColor = System.Drawing.Color.White;
-            this.InsertUser.Location = new System.Drawing.Point(32, 97);
+            this.InsertUser.Location = new System.Drawing.Point(32, 117);
             this.InsertUser.Name = "InsertUser";
             this.InsertUser.Size = new System.Drawing.Size(180, 45);
             this.InsertUser.TabIndex = 1;
@@ -92,12 +92,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle3;
             this.LoadViewUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.LoadViewUser.Location = new System.Drawing.Point(32, 167);
+            this.LoadViewUser.Location = new System.Drawing.Point(32, 156);
             this.LoadViewUser.Name = "LoadViewUser";
             this.LoadViewUser.RowHeadersVisible = false;
             this.LoadViewUser.RowHeadersWidth = 51;
             this.LoadViewUser.RowTemplate.Height = 24;
-            this.LoadViewUser.Size = new System.Drawing.Size(893, 397);
+            this.LoadViewUser.Size = new System.Drawing.Size(893, 408);
             this.LoadViewUser.TabIndex = 3;
             this.LoadViewUser.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.LoadViewUser.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -199,7 +199,7 @@
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 8;
             this.btnExit.UseWaitCursor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            //this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -275,7 +275,7 @@
             this.Name = "ViewUser";
             this.Text = "frmUser";
             this.UseWaitCursor = true;
-            this.Load += new System.EventHandler(this.BaseView_Load);
+            this.Load += new System.EventHandler(this.ViewUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoadViewUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

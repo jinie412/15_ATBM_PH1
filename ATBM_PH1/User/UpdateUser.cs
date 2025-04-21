@@ -12,7 +12,7 @@ namespace ATBM_PH1
         private string _username;
         private string _password;
 
-        public UpdateUser(string username, string password)
+        public UpdateUser(string username)
         {
             InitializeComponent();
             this.Size = new Size(300, 330);
@@ -20,11 +20,9 @@ namespace ATBM_PH1
 
             // Gán giá trị USERNAME và PASSWORD vào biến
             _username = username;
-            _password = password;
 
             // Hiển thị thông tin trên giao diện
             Username.Text = _username;
-            Password.Text = _password;
 
             Username.ReadOnly = true;
         }
