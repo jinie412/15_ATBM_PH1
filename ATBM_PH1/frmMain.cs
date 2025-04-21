@@ -21,5 +21,15 @@ namespace ATBM_PH1
         {
             Application.Exit();
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManagermentUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

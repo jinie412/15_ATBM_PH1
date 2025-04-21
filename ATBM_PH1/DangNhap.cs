@@ -52,10 +52,13 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                
-                frmMain main = new frmMain();
-                main.Show();
+                ViewUser viewUser = new ViewUser();
+                viewUser.Show();
                 this.Hide();
+
+                //frmMain main = new frmMain();
+                //main.Show();
+                //this.Hide();
             }
             catch (OracleException ex)
             {

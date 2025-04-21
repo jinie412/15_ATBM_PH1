@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using Newtonsoft.Json;
+using System.Data;
 
 namespace Sushi_Restaurant
 {
@@ -50,8 +51,33 @@ namespace Sushi_Restaurant
                 MessageBox.Show("Không thể kết nối CSDL Oracle: " + ex.Message);
             }
         }
+        public static DataTable ExecuteQuery(string query)
+        {
+            DataTable dataTable = new DataTable();
 
-        
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                using (OracleCommand command = new OracleCommand(query, conn))
+                {
+                    using (OracleDataAdapter adapter = new OracleDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thực thi câu lệnh SQL: " + ex.Message);
+            }
+
+            return dataTable;
+        }
+
         // ---------- [6] Cấu trúc file config ----------
         private class DbConfig
         {
