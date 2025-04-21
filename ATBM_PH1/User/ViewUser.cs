@@ -98,22 +98,18 @@ namespace ATBM_PH1
                 // Kiểm tra nếu người dùng click vào cột "CUpdate"
                 if (LoadViewUser.Columns[e.ColumnIndex].Name == "CUpdate")
                 {
-                    if (PromptForAdminPassword())
-                    {
-                        KillUserSessions(username);
-                        UpdateUser updateUser = new UpdateUser(username);
-                        updateUser.FormClosed += (s, args) => LoadUserList();
-                        updateUser.Show();
-                    }
+                    // Không yêu cầu mật khẩu admin
+                    KillUserSessions(username);
+                    UpdateUser updateUser = new UpdateUser(username);
+                    updateUser.FormClosed += (s, args) => LoadUserList();
+                    updateUser.Show();
                 }
                 // Kiểm tra nếu người dùng click vào cột "CDelete"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CDelete")
                 {
-                    if (PromptForAdminPassword())
-                    {
-                        DeleteUser(username);
-                        LoadUserList();
-                    }
+                    // Không yêu cầu mật khẩu admin
+                    DeleteUser(username);
+                    LoadUserList();
                 }
             }
         }
@@ -134,77 +130,77 @@ namespace ATBM_PH1
             }
         }
 
-        private bool PromptForAdminPassword()
-        {
-            string inputPassword = PromptForPassword();
-            if (string.IsNullOrEmpty(inputPassword))
-            {
-                MessageBox.Show("Bạn đã hủy thao tác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
+        //private bool PromptForAdminPassword()
+        //{
+        //    string inputPassword = PromptForPassword();
+        //    if (string.IsNullOrEmpty(inputPassword))
+        //    {
+        //        MessageBox.Show("Bạn đã hủy thao tác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return false;
+        //    }
 
-            if (ValidateAdminPassword(inputPassword))
-            {
-                _adminPassword = inputPassword; // Lưu mật khẩu admin để sử dụng
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Mật khẩu admin không đúng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
+        //    if (ValidateAdminPassword(inputPassword))
+        //    {
+        //        _adminPassword = inputPassword; // Lưu mật khẩu admin để sử dụng
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Mật khẩu admin không đúng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
 
-        private string PromptForPassword()
-        {
-            using (Form passwordForm = new Form())
-            {
-                passwordForm.Text = "Mật khẩu admin";
-                passwordForm.Size = new Size(300, 150);
-                passwordForm.StartPosition = FormStartPosition.CenterParent;
+        //private string PromptForPassword()
+        //{
+        //    using (Form passwordForm = new Form())
+        //    {
+        //        passwordForm.Text = "Mật khẩu admin";
+        //        passwordForm.Size = new Size(300, 150);
+        //        passwordForm.StartPosition = FormStartPosition.CenterParent;
 
-                Label lblPassword = new Label() { Left = 20, Top = 20, Text = "Mật khẩu:", AutoSize = true };
-                TextBox txtPassword = new TextBox() { Left = 100, Top = 20, Width = 150, PasswordChar = '*' };
-                Button btnOK = new Button() { Text = "OK", Left = 100, Top = 60, Width = 70, DialogResult = DialogResult.OK };
-                Button btnCancel = new Button() { Text = "Hủy", Left = 180, Top = 60, Width = 70, DialogResult = DialogResult.Cancel };
+        //        Label lblPassword = new Label() { Left = 20, Top = 20, Text = "Mật khẩu:", AutoSize = true };
+        //        TextBox txtPassword = new TextBox() { Left = 100, Top = 20, Width = 150, PasswordChar = '*' };
+        //        Button btnOK = new Button() { Text = "OK", Left = 100, Top = 60, Width = 70, DialogResult = DialogResult.OK };
+        //        Button btnCancel = new Button() { Text = "Hủy", Left = 180, Top = 60, Width = 70, DialogResult = DialogResult.Cancel };
 
-                passwordForm.Controls.Add(lblPassword);
-                passwordForm.Controls.Add(txtPassword);
-                passwordForm.Controls.Add(btnOK);
-                passwordForm.Controls.Add(btnCancel);
+        //        passwordForm.Controls.Add(lblPassword);
+        //        passwordForm.Controls.Add(txtPassword);
+        //        passwordForm.Controls.Add(btnOK);
+        //        passwordForm.Controls.Add(btnCancel);
 
-                passwordForm.AcceptButton = btnOK;
-                passwordForm.CancelButton = btnCancel;
+        //        passwordForm.AcceptButton = btnOK;
+        //        passwordForm.CancelButton = btnCancel;
 
-                if (passwordForm.ShowDialog() == DialogResult.OK)
-                {
-                    return txtPassword.Text;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+        //        if (passwordForm.ShowDialog() == DialogResult.OK)
+        //        {
+        //            return txtPassword.Text;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
 
-        private bool ValidateAdminPassword(string password)
-        {
-            try
-            {
-                string adminConnectionString = $"User Id=PDB_ADMIN;Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
-                using (OracleConnection adminConn = new OracleConnection(adminConnectionString))
-                {
-                    adminConn.Open();
-                    adminConn.Close();
-                }
+        //private bool ValidateAdminPassword(string password)
+        //{
+        //    try
+        //    {
+        //        string adminConnectionString = $"User Id=PDB_ADMIN;Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
+        //        using (OracleConnection adminConn = new OracleConnection(adminConnectionString))
+        //        {
+        //            adminConn.Open();
+        //            adminConn.Close();
+        //        }
 
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
 
         private void KillUserSessions(string username)
         {
@@ -256,7 +252,6 @@ namespace ATBM_PH1
                 }
             }, token);
         }
-
         private void PerformSearch(string searchText)
         {
             try
