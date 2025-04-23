@@ -34,8 +34,7 @@ namespace Sushi_Restaurant
             CurrentUser.Password = config.password;
 
             // Nếu login bằng SYSDBA, bạn thêm " as sysdba" ở đây:
-            string asSysdba = config.username.ToLower() == "sys" ? " as sysdba" : "";
-            ConnectionString = $"User Id={config.username};Password={config.password};Data Source=localhost:1521/XEPDB1;{asSysdba}";
+            ConnectionString = $"User Id={config.username};Password={config.password};Data Source=localhost:1521/QLDULIEUNOIBO;";
             conn = new OracleConnection(ConnectionString);
         }
         // ---------- [4] Kết nối đến Oracle ----------
