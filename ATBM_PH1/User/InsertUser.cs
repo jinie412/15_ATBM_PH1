@@ -46,22 +46,44 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
+                // Tạo user
                 string createUserQuery = $"CREATE USER {username} IDENTIFIED BY {password}";
                 MainClass.ExecuteQuery(createUserQuery);
 
+                // Gán quyền cho user
                 string grantPrivilegesQuery = $"GRANT CREATE SESSION, RESOURCE TO {username}";
                 MainClass.ExecuteQuery(grantPrivilegesQuery);
 
-                MessageBox.Show("Tạo user thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Thông báo thành công
+                MessageBox.Show($"Tạo user '{username}' thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Ẩn form InsertUser sau khi thêm thành công
-                this.Close(); // Đóng form thay vì chỉ ẩn
+                // Đóng form sau khi thêm thành công
+                this.Close();
+            }
+            catch (OracleException ex)
+            {
+                // Xử lý lỗi cụ thể từ Oracle
+                if (ex.Number == 1920) // ORA-01920: user already exists
+                {
+                    MessageBox.Show($"User '{username}' đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (ex.Number == 1031) // ORA-01031: insufficient privileges
+                {
+                    MessageBox.Show("Tài khoản hiện tại không có quyền tạo user. Vui lòng kiểm tra quyền!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Lỗi khác
+                    MessageBox.Show($"Lỗi khi tạo user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tạo user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Xử lý lỗi chung
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void Username_TextChanged(object sender, EventArgs e)
         {

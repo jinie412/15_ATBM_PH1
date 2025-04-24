@@ -28,5 +28,13 @@ namespace ATBM_PH1
 			main.Show();
 			this.Hide();
 		}
-	}
+
+        private void User_Click(object sender, EventArgs e)
+        {
+            ViewUser newForm = new ViewUser();
+            this.Hide();
+            newForm.Show();
+
+        }
+    }
 }

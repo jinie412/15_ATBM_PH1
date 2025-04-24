@@ -116,19 +116,39 @@ namespace ATBM_PH1
 
         private void DeleteUser(string username)
         {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show(
+                $"Bạn có chắc chắn muốn xóa user '{username}' không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            // Nếu người dùng chọn "No", thoát khỏi phương thức
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Ngắt kết nối các session của user trước khi xóa
             KillUserSessions(username);
+
             try
             {
+                // Thực hiện câu lệnh xóa user
                 string query = $"DROP USER {username} CASCADE";
                 MainClass.ExecuteQuery(query);
 
-                MessageBox.Show($"User {username} đã được xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Thông báo thành công
+                MessageBox.Show($"User '{username}' đã được xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
+                // Thông báo lỗi nếu xóa không thành công
                 MessageBox.Show($"Lỗi khi xóa user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         //private bool PromptForAdminPassword()
         //{
