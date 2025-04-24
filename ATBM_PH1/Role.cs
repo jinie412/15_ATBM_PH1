@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ATBM_PH1
@@ -13,6 +15,10 @@ namespace ATBM_PH1
         private Point dragStartPosition;
         private string selectedGrantRole = "";
         private string selectedRevokeRole = "";
+        private CancellationTokenSource _searchCancellationTokenSource;
+        private DataTable _cachedDataTable;
+
+
 
         public Role()
         {
@@ -107,20 +113,21 @@ namespace ATBM_PH1
 
             // Sau khi form đóng, làm mới danh sách role
             ShowManageRolesContent();
+            //dataGridViewRoles.Refresh();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewRoles.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn một Role để sửa.");
-                return;
-            }
+        //private void btnEdit_Click(object sender, EventArgs e)
+        //{
+        //    if (dataGridViewRoles.SelectedRows.Count == 0)
+        //    {
+        //        MessageBox.Show("Vui lòng chọn một Role để sửa.");
+        //        return;
+        //    }
 
-            string roleName = dataGridViewRoles.SelectedRows[0].Cells[0].Value.ToString();
-            MessageBox.Show($"Sửa role: {roleName}");
-            // Thêm logic để sửa role nếu cần
-        }
+        //    string roleName = dataGridViewRoles.SelectedRows[0].Cells[0].Value.ToString();
+        //    MessageBox.Show($"Sửa role: {roleName}");
+        //    // Thêm logic để sửa role nếu cần
+        //}
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -130,10 +137,10 @@ namespace ATBM_PH1
                 return;
             }
 
-            string roleName = dataGridViewRoles.SelectedRows[0].Cells["RoleName"].Value.ToString();
+            string roleName = dataGridViewRoles.SelectedRows[0].Cells["Role"].Value.ToString();
 
             // Xác nhận người dùng
-            var result = MessageBox.Show($"Bạn có chắc muốn xoá role '{roleName}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show($"Do you want to delete '{roleName}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result != DialogResult.Yes)
                 return;
 
@@ -160,8 +167,10 @@ namespace ATBM_PH1
                         else
                         {
                             MessageBox.Show($"Đã xoá role '{roleName}' thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
                             ShowManageRolesContent(); // Tải lại danh sách role
                         }
+
                     }
                 }
                 catch (Exception ex)
@@ -242,9 +251,11 @@ namespace ATBM_PH1
             string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
             using (var conn = new OracleConnection(connectionString))
             {
+
                 try
                 {
                     conn.Open();
+
                     using (var cmd = new OracleCommand("GET_ROLES_INFO", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -255,29 +266,60 @@ namespace ATBM_PH1
                         };
                         cmd.Parameters.Add(pCursor);
 
+                        using (var adapter = new OracleDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dataGridViewRoles.DataSource = null; // Xóa dữ liệu cũ
+                            dataGridViewRoles.Refresh();
+                            dataGridViewRoles.DataSource = dt;   // Gán dữ liệu mới
+                            dataGridViewRoles.Refresh();         // Làm mới giao diện
+                        }
+
+                        //using (var reader = cmd.ExecuteReader())
+                        //{
+
+                        //    int columnCount = reader.FieldCount;
+                        //    if (columnCount != 3)
+                        //    {
+                        //        MessageBox.Show($"Lỗi: Stored procedure trả về {columnCount} cột, nhưng cần 3 cột.");
+                        //        return;
+                        //    }
+
+                        //    dataGridViewRoles.Rows.Clear();
+                        //    while (reader.Read())
+                        //    {
+                        //        int roleIndex = reader.GetOrdinal("ROLE");
+                        //        int privilegesIndex = reader.GetOrdinal("PRIVILEGES");
+                        //        int hasPasswordIndex = reader.GetOrdinal("HAS_PASSWORD");
+
+                        //        string role = reader.IsDBNull(roleIndex) ? "" : reader.GetString(roleIndex);
+                        //        string privileges = reader.IsDBNull(privilegesIndex) ? "Không có quyền" : reader.GetString(privilegesIndex);
+                        //        string hasPassword = reader.IsDBNull(hasPasswordIndex) ? "Không xác định" : reader.GetString(hasPasswordIndex);
+
+                        //        dataGridViewRoles.Rows.Add(role, privileges, hasPassword);
+                        //    }
+                        //}
                         using (var reader = cmd.ExecuteReader())
                         {
-                            int columnCount = reader.FieldCount;
-                            if (columnCount != 3)
+                            _cachedDataTable = new DataTable();
+                            _cachedDataTable.Load(reader);
+                            dataGridViewRoles.Columns.Clear();
+                            dataGridViewRoles.DataSource = _cachedDataTable;
+
+                            // Đặt lại tiêu đề cột
+                            dataGridViewRoles.Columns["ROLE"].HeaderText = "Tên Role";
+                            dataGridViewRoles.Columns["PRIVILEGES"].HeaderText = "Quyền Được Cấp";
+                            dataGridViewRoles.Columns["HAS_PASSWORD"].HeaderText = "Mật Khẩu";
+
+                            // Kiểm tra số cột nếu muốn
+                            if (_cachedDataTable.Columns.Count != 3)
                             {
-                                MessageBox.Show($"Lỗi: Stored procedure trả về {columnCount} cột, nhưng cần 3 cột.");
+                                MessageBox.Show($"Lỗi: Stored procedure trả về {_cachedDataTable.Columns.Count} cột, nhưng cần 3 cột.");
                                 return;
                             }
-
-                            dataGridViewRoles.Rows.Clear();
-                            while (reader.Read())
-                            {
-                                int roleIndex = reader.GetOrdinal("ROLE");
-                                int privilegesIndex = reader.GetOrdinal("PRIVILEGES");
-                                int hasPasswordIndex = reader.GetOrdinal("HAS_PASSWORD");
-
-                                string role = reader.IsDBNull(roleIndex) ? "" : reader.GetString(roleIndex);
-                                string privileges = reader.IsDBNull(privilegesIndex) ? "Không có quyền" : reader.GetString(privilegesIndex);
-                                string hasPassword = reader.IsDBNull(hasPasswordIndex) ? "Không xác định" : reader.GetString(hasPasswordIndex);
-
-                                dataGridViewRoles.Rows.Add(role, privileges, hasPassword);
-                            }
                         }
+
                     }
                 }
                 catch (Exception ex)
@@ -286,6 +328,8 @@ namespace ATBM_PH1
                 }
             }
         }
+
+
 
         private void ShowGrantPermissionsContent()
         {
@@ -544,6 +588,49 @@ namespace ATBM_PH1
                     Font = new Font("Segoe UI", 10)
                 };
                 panelUpdateColumns.Controls.Add(chkUpdate);
+            }
+        }
+
+        private void textRole_TextChanged(object sender, EventArgs e)
+        {
+            _searchCancellationTokenSource?.Cancel();
+            _searchCancellationTokenSource = new CancellationTokenSource();
+            var token = _searchCancellationTokenSource.Token;
+
+            Task.Run(async () =>
+            {
+                try
+                {
+                    await Task.Delay(300, token);
+
+                    Invoke(new Action(() =>
+                    {
+                        PerformSearch(textRole.Text.Trim());
+                    }));
+                }
+                catch (TaskCanceledException)
+                {
+                }
+            }, token);
+        }
+
+        private void PerformSearch(string searchText)
+        {
+            try
+            {
+                if (_cachedDataTable != null)
+                {
+                    DataView dataView = _cachedDataTable.DefaultView;
+                    dataView.RowFilter = string.IsNullOrEmpty(searchText)
+                        ? string.Empty
+                        : $"ROLE LIKE '%{searchText}%'";
+
+                    dataGridViewRoles.DataSource = dataView;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

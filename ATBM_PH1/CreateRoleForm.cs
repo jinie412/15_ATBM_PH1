@@ -55,7 +55,7 @@ namespace ATBM_PH1
                             return;
                         }
 
-                        MessageBox.Show($"Role '{roleName}' đã được tạo!");
+                        MessageBox.Show($"Đã tạo role '{roleName}' thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close(); // Đóng form sau khi tạo thành công
                     }
                 }

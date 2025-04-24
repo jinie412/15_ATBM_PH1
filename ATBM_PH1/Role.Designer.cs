@@ -32,7 +32,6 @@ namespace ATBM_PH1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.btnUserManagement = new Guna.UI2.WinForms.Guna2Button();
@@ -51,12 +50,16 @@ namespace ATBM_PH1
             this.contentPanel = new System.Windows.Forms.Panel();
             this.panelManageRoles = new System.Windows.Forms.Panel();
             this.dataGridViewRoles = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.textRole = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnAddRole = new System.Windows.Forms.Button();
             this.panelGrantPermissions = new System.Windows.Forms.Panel();
             this.dataGridViewGrantRoles = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelObjectType = new System.Windows.Forms.Label();
             this.comboBoxObjectType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.comboBoxObjectName = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -70,6 +73,7 @@ namespace ATBM_PH1
             this.panelUpdateColumns = new System.Windows.Forms.FlowLayoutPanel();
             this.panelRevokePermissions = new System.Windows.Forms.Panel();
             this.dataGridViewRevokeRoles = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkBoxRevokeSelect = new Guna.UI2.WinForms.Guna2CheckBox();
             this.checkBoxRevokeInsert = new Guna.UI2.WinForms.Guna2CheckBox();
             this.checkBoxRevokeUpdate = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -77,7 +81,11 @@ namespace ATBM_PH1
             this.btnRevoke = new Guna.UI2.WinForms.Guna2Button();
             this.panelViewPermissions = new System.Windows.Forms.Panel();
             this.dataGridViewPermissions = new Guna.UI2.WinForms.Guna2DataGridView();
-
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.contentPanel.SuspendLayout();
@@ -90,25 +98,10 @@ namespace ATBM_PH1
             this.panelViewPermissions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPermissions)).BeginInit();
             this.SuspendLayout();
-
-            //
-            // AddRole
-            //
-            this.btnAddRole = new System.Windows.Forms.Button();
-            this.btnAddRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRole.Location = new System.Drawing.Point(10, 10);
-            this.btnAddRole.Name = "btnAddRole";
-            this.btnAddRole.Size = new System.Drawing.Size(100, 40);
-            this.btnAddRole.TabIndex = 5;
-            this.btnAddRole.Text = "Thêm";
-            this.btnAddRole.BackColor = System.Drawing.Color.Green;
-            this.btnAddRole.ForeColor = System.Drawing.Color.White;
-            this.btnAddRole.Click += new System.EventHandler(this.btnAddRole_Click);
-
             // 
             // panelSidebar
             // 
-            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(33, 42, 57);
+            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.panelSidebar.Controls.Add(this.labelTitle);
             this.panelSidebar.Controls.Add(this.btnUserManagement);
             this.panelSidebar.Controls.Add(this.btnRoleManagement);
@@ -118,7 +111,6 @@ namespace ATBM_PH1
             this.panelSidebar.Name = "panelSidebar";
             this.panelSidebar.Size = new System.Drawing.Size(200, 715);
             this.panelSidebar.TabIndex = 0;
-
             // 
             // labelTitle
             // 
@@ -129,7 +121,6 @@ namespace ATBM_PH1
             this.labelTitle.Size = new System.Drawing.Size(160, 40);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "TEAM 15";
-
             // 
             // btnUserManagement
             // 
@@ -144,11 +135,10 @@ namespace ATBM_PH1
             this.btnUserManagement.Text = "Quản lý User";
             this.btnUserManagement.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
-
             // 
             // btnRoleManagement
             // 
-            this.btnRoleManagement.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.btnRoleManagement.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.btnRoleManagement.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnRoleManagement.ForeColor = System.Drawing.Color.White;
             this.btnRoleManagement.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -158,7 +148,6 @@ namespace ATBM_PH1
             this.btnRoleManagement.TabIndex = 2;
             this.btnRoleManagement.Text = "Quản lý ROLE";
             this.btnRoleManagement.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-
             // 
             // btnPermissions
             // 
@@ -172,7 +161,6 @@ namespace ATBM_PH1
             this.btnPermissions.TabIndex = 3;
             this.btnPermissions.Text = "Phân quyền";
             this.btnPermissions.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-
             // 
             // btnLogout
             // 
@@ -186,11 +174,10 @@ namespace ATBM_PH1
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-
             // 
             // panelTitleBar
             // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.panelTitleBar.Controls.Add(this.labelFormTitle);
             this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnMaximizeRestore);
@@ -199,7 +186,6 @@ namespace ATBM_PH1
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1249, 44);
             this.panelTitleBar.TabIndex = 1;
-
             // 
             // labelFormTitle
             // 
@@ -207,14 +193,14 @@ namespace ATBM_PH1
             this.labelFormTitle.ForeColor = System.Drawing.Color.White;
             this.labelFormTitle.Location = new System.Drawing.Point(10, 10);
             this.labelFormTitle.Name = "labelFormTitle";
-            this.labelFormTitle.Size = new System.Drawing.Size(200, 30);
+            this.labelFormTitle.Size = new System.Drawing.Size(228, 30);
             this.labelFormTitle.TabIndex = 0;
-            this.labelFormTitle.Text = "Quản Lý ROLE";
-
+            this.labelFormTitle.Text = "ROLE MANAGEMENT";
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
             this.btnMinimize.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F);
             this.btnMinimize.ForeColor = System.Drawing.Color.White;
@@ -225,11 +211,11 @@ namespace ATBM_PH1
             this.btnMinimize.Text = "";
             this.btnMinimize.UseTransparentBackground = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-
             // 
             // btnMaximizeRestore
             // 
-            this.btnMaximizeRestore.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.btnMaximizeRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizeRestore.BackColor = System.Drawing.Color.Transparent;
             this.btnMaximizeRestore.FillColor = System.Drawing.Color.Transparent;
             this.btnMaximizeRestore.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F);
             this.btnMaximizeRestore.ForeColor = System.Drawing.Color.White;
@@ -240,11 +226,11 @@ namespace ATBM_PH1
             this.btnMaximizeRestore.Text = "";
             this.btnMaximizeRestore.UseTransparentBackground = true;
             this.btnMaximizeRestore.Click += new System.EventHandler(this.btnMaximizeRestore_Click);
-
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.FillColor = System.Drawing.Color.Transparent;
             this.btnClose.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
@@ -255,7 +241,6 @@ namespace ATBM_PH1
             this.btnClose.Text = "";
             this.btnClose.UseTransparentBackground = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-
             // 
             // btnManageRolesTab
             // 
@@ -268,7 +253,6 @@ namespace ATBM_PH1
             this.btnManageRolesTab.TabIndex = 2;
             this.btnManageRolesTab.Text = "Quản Lý Role";
             this.btnManageRolesTab.Click += new System.EventHandler(this.btnManageRolesTab_Click);
-
             // 
             // btnGrantPermissionsTab
             // 
@@ -281,20 +265,18 @@ namespace ATBM_PH1
             this.btnGrantPermissionsTab.TabIndex = 3;
             this.btnGrantPermissionsTab.Text = "Cấp Quyền";
             this.btnGrantPermissionsTab.Click += new System.EventHandler(this.btnGrantPermissionsTab_Click);
-
             // 
             // btnRevokePermissionsTab
             // 
             this.btnRevokePermissionsTab.FillColor = System.Drawing.Color.Transparent;
             this.btnRevokePermissionsTab.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRevokePermissionsTab.ForeColor = System.Drawing.Color.Black;
-            this.btnRevokePermissionsTab.Location = new System.Drawing.Point(510, 44);
+            this.btnRevokePermissionsTab.Location = new System.Drawing.Point(504, 44);
             this.btnRevokePermissionsTab.Name = "btnRevokePermissionsTab";
             this.btnRevokePermissionsTab.Size = new System.Drawing.Size(150, 40);
             this.btnRevokePermissionsTab.TabIndex = 4;
             this.btnRevokePermissionsTab.Text = "Thu Hồi Quyền";
             this.btnRevokePermissionsTab.Click += new System.EventHandler(this.btnRevokePermissionsTab_Click);
-
             // 
             // btnViewPermissionsTab
             // 
@@ -307,7 +289,6 @@ namespace ATBM_PH1
             this.btnViewPermissionsTab.TabIndex = 5;
             this.btnViewPermissionsTab.Text = "Xem Quyền";
             this.btnViewPermissionsTab.Click += new System.EventHandler(this.btnViewPermissionsTab_Click);
-
             // 
             // contentPanel
             // 
@@ -319,67 +300,91 @@ namespace ATBM_PH1
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(1239, 631);
             this.contentPanel.TabIndex = 6;
-
             // 
             // panelManageRoles
             // 
             this.panelManageRoles.Controls.Add(this.dataGridViewRoles);
             this.panelManageRoles.Controls.Add(this.btnCreate);
-            this.panelManageRoles.Controls.Add(this.btnEdit);
             this.panelManageRoles.Controls.Add(this.btnDelete);
             this.panelManageRoles.Controls.Add(this.textRole);
+            this.panelManageRoles.Controls.Add(this.btnAddRole);
             this.panelManageRoles.Location = new System.Drawing.Point(0, 0);
             this.panelManageRoles.Name = "panelManageRoles";
             this.panelManageRoles.Size = new System.Drawing.Size(1239, 631);
             this.panelManageRoles.TabIndex = 0;
-            this.panelManageRoles.Visible = true;
-            this.panelManageRoles.Controls.Add(this.btnAddRole);
-
             // 
             // dataGridViewRoles
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dataGridViewRoles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             this.dataGridViewRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewRoles.ColumnHeadersHeight = 30;
+            this.dataGridViewRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewRoles.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRoles.Columns.Add("RoleName", "Tên Role");
-            this.dataGridViewRoles.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
+            this.dataGridViewRoles.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewRoles.Location = new System.Drawing.Point(20, 20);
             this.dataGridViewRoles.Name = "dataGridViewRoles";
             this.dataGridViewRoles.RowHeadersVisible = false;
+            this.dataGridViewRoles.RowHeadersWidth = 51;
             this.dataGridViewRoles.Size = new System.Drawing.Size(800, 400);
-            this.dataGridViewRoles.Columns.Add("Privileges", "Quyền Được Cấp");
-            this.dataGridViewRoles.Columns.Add("HasPassword", "Mật Khẩu");
             this.dataGridViewRoles.TabIndex = 0;
             this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dataGridViewRoles.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            this.dataGridViewRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewRoles.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewRoles.ThemeStyle.HeaderStyle.Height = 30;
+            this.dataGridViewRoles.ThemeStyle.ReadOnly = false;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewRoles.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-
+            this.dataGridViewRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewRoles.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tên Role";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Quyền Được Cấp";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Mật Khẩu";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // btnCreate
             // 
-            this.btnCreate.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.btnCreate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCreate.ForeColor = System.Drawing.Color.White;
             this.btnCreate.Location = new System.Drawing.Point(840, 350);
@@ -388,24 +393,10 @@ namespace ATBM_PH1
             this.btnCreate.TabIndex = 1;
             this.btnCreate.Text = "Tạo mới";
             this.btnCreate.Click += new System.EventHandler(this.btnAddRole_Click);
-
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(970, 350);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(120, 40);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-
             // 
             // btnDelete
             // 
-            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(1100, 350);
@@ -414,17 +405,33 @@ namespace ATBM_PH1
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-
             // 
             // textRole
             // 
+            this.textRole.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textRole.DefaultText = "";
             this.textRole.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.textRole.Location = new System.Drawing.Point(840, 20);
+            this.textRole.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textRole.Name = "textRole";
             this.textRole.PlaceholderText = "Nhập tên Role";
+            this.textRole.SelectedText = "";
             this.textRole.Size = new System.Drawing.Size(380, 40);
             this.textRole.TabIndex = 4;
-
+            this.textRole.TextChanged += new System.EventHandler(this.textRole_TextChanged);
+            // 
+            // btnAddRole
+            // 
+            this.btnAddRole.BackColor = System.Drawing.Color.Green;
+            this.btnAddRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRole.ForeColor = System.Drawing.Color.White;
+            this.btnAddRole.Location = new System.Drawing.Point(37, 100);
+            this.btnAddRole.Name = "btnAddRole";
+            this.btnAddRole.Size = new System.Drawing.Size(100, 40);
+            this.btnAddRole.TabIndex = 5;
+            this.btnAddRole.Text = "Thêm";
+            this.btnAddRole.UseVisualStyleBackColor = false;
+            this.btnAddRole.Click += new System.EventHandler(this.btnAddRole_Click);
             // 
             // panelGrantPermissions
             // 
@@ -445,47 +452,62 @@ namespace ATBM_PH1
             this.panelGrantPermissions.Size = new System.Drawing.Size(1239, 631);
             this.panelGrantPermissions.TabIndex = 1;
             this.panelGrantPermissions.Visible = false;
-
             // 
             // dataGridViewGrantRoles
             // 
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.dataGridViewGrantRoles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             this.dataGridViewGrantRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewGrantRoles.ColumnHeadersHeight = 30;
+            this.dataGridViewGrantRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewGrantRoles.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewGrantRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewGrantRoles.Columns.Add("RoleName", "Tên Role");
-            this.dataGridViewGrantRoles.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
+            this.dataGridViewGrantRoles.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewGrantRoles.Location = new System.Drawing.Point(20, 20);
             this.dataGridViewGrantRoles.Name = "dataGridViewGrantRoles";
             this.dataGridViewGrantRoles.RowHeadersVisible = false;
+            this.dataGridViewGrantRoles.RowHeadersWidth = 51;
             this.dataGridViewGrantRoles.Size = new System.Drawing.Size(600, 450);
             this.dataGridViewGrantRoles.TabIndex = 0;
             this.dataGridViewGrantRoles.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewGrantRoles.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewGrantRoles.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewGrantRoles.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewGrantRoles.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dataGridViewGrantRoles.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewGrantRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            this.dataGridViewGrantRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewGrantRoles.ThemeStyle.HeaderStyle.Height = 30;
+            this.dataGridViewGrantRoles.ThemeStyle.ReadOnly = false;
             this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewGrantRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewGrantRoles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGrantRoles_CellClick);
-
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tên Role";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // labelObjectType
             // 
@@ -495,85 +517,111 @@ namespace ATBM_PH1
             this.labelObjectType.Size = new System.Drawing.Size(100, 30);
             this.labelObjectType.TabIndex = 1;
             this.labelObjectType.Text = "Đối tượng:";
-
             // 
             // comboBoxObjectType
             // 
+            this.comboBoxObjectType.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxObjectType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxObjectType.FocusedColor = System.Drawing.Color.Empty;
             this.comboBoxObjectType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.comboBoxObjectType.Items.AddRange(new object[] { "TABLE", "VIEW", "PROCEDURE", "FUNCTION" });
+            this.comboBoxObjectType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboBoxObjectType.ItemHeight = 30;
+            this.comboBoxObjectType.Items.AddRange(new object[] {
+            "TABLE",
+            "VIEW",
+            "PROCEDURE",
+            "FUNCTION"});
             this.comboBoxObjectType.Location = new System.Drawing.Point(740, 20);
             this.comboBoxObjectType.Name = "comboBoxObjectType";
-            this.comboBoxObjectType.Size = new System.Drawing.Size(200, 30);
+            this.comboBoxObjectType.Size = new System.Drawing.Size(200, 36);
             this.comboBoxObjectType.TabIndex = 2;
             this.comboBoxObjectType.SelectedIndexChanged += new System.EventHandler(this.comboBoxObjectType_SelectedIndexChanged);
-
             // 
             // comboBoxObjectName
             // 
+            this.comboBoxObjectName.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxObjectName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxObjectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxObjectName.FocusedColor = System.Drawing.Color.Empty;
             this.comboBoxObjectName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboBoxObjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboBoxObjectName.ItemHeight = 30;
             this.comboBoxObjectName.Location = new System.Drawing.Point(740, 60);
             this.comboBoxObjectName.Name = "comboBoxObjectName";
-            this.comboBoxObjectName.Size = new System.Drawing.Size(200, 30);
+            this.comboBoxObjectName.Size = new System.Drawing.Size(200, 36);
             this.comboBoxObjectName.TabIndex = 3;
-
             // 
             // checkBoxSelect
             // 
+            this.checkBoxSelect.CheckedState.BorderRadius = 0;
+            this.checkBoxSelect.CheckedState.BorderThickness = 0;
             this.checkBoxSelect.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxSelect.Location = new System.Drawing.Point(640, 100);
             this.checkBoxSelect.Name = "checkBoxSelect";
             this.checkBoxSelect.Size = new System.Drawing.Size(100, 30);
             this.checkBoxSelect.TabIndex = 4;
             this.checkBoxSelect.Text = "SELECT";
+            this.checkBoxSelect.UncheckedState.BorderRadius = 0;
+            this.checkBoxSelect.UncheckedState.BorderThickness = 0;
             this.checkBoxSelect.CheckedChanged += new System.EventHandler(this.checkBoxSelect_CheckedChanged);
-
             // 
             // checkBoxInsert
             // 
+            this.checkBoxInsert.CheckedState.BorderRadius = 0;
+            this.checkBoxInsert.CheckedState.BorderThickness = 0;
             this.checkBoxInsert.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxInsert.Location = new System.Drawing.Point(640, 140);
             this.checkBoxInsert.Name = "checkBoxInsert";
             this.checkBoxInsert.Size = new System.Drawing.Size(100, 30);
             this.checkBoxInsert.TabIndex = 5;
             this.checkBoxInsert.Text = "INSERT";
-
+            this.checkBoxInsert.UncheckedState.BorderRadius = 0;
+            this.checkBoxInsert.UncheckedState.BorderThickness = 0;
             // 
             // checkBoxUpdate
             // 
+            this.checkBoxUpdate.CheckedState.BorderRadius = 0;
+            this.checkBoxUpdate.CheckedState.BorderThickness = 0;
             this.checkBoxUpdate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxUpdate.Location = new System.Drawing.Point(640, 180);
             this.checkBoxUpdate.Name = "checkBoxUpdate";
             this.checkBoxUpdate.Size = new System.Drawing.Size(100, 30);
             this.checkBoxUpdate.TabIndex = 6;
             this.checkBoxUpdate.Text = "UPDATE";
+            this.checkBoxUpdate.UncheckedState.BorderRadius = 0;
+            this.checkBoxUpdate.UncheckedState.BorderThickness = 0;
             this.checkBoxUpdate.CheckedChanged += new System.EventHandler(this.checkBoxUpdate_CheckedChanged);
-
             // 
             // checkBoxDelete
             // 
+            this.checkBoxDelete.CheckedState.BorderRadius = 0;
+            this.checkBoxDelete.CheckedState.BorderThickness = 0;
             this.checkBoxDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxDelete.Location = new System.Drawing.Point(640, 220);
             this.checkBoxDelete.Name = "checkBoxDelete";
             this.checkBoxDelete.Size = new System.Drawing.Size(100, 30);
             this.checkBoxDelete.TabIndex = 7;
             this.checkBoxDelete.Text = "DELETE";
-
+            this.checkBoxDelete.UncheckedState.BorderRadius = 0;
+            this.checkBoxDelete.UncheckedState.BorderThickness = 0;
             // 
             // checkBoxWithGrantOption
             // 
+            this.checkBoxWithGrantOption.CheckedState.BorderRadius = 0;
+            this.checkBoxWithGrantOption.CheckedState.BorderThickness = 0;
             this.checkBoxWithGrantOption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxWithGrantOption.Location = new System.Drawing.Point(640, 260);
             this.checkBoxWithGrantOption.Name = "checkBoxWithGrantOption";
             this.checkBoxWithGrantOption.Size = new System.Drawing.Size(200, 30);
             this.checkBoxWithGrantOption.TabIndex = 8;
             this.checkBoxWithGrantOption.Text = "WITH GRANT OPTION";
-
+            this.checkBoxWithGrantOption.UncheckedState.BorderRadius = 0;
+            this.checkBoxWithGrantOption.UncheckedState.BorderThickness = 0;
             // 
             // btnGrantPermission
             // 
-            this.btnGrantPermission.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.btnGrantPermission.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.btnGrantPermission.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnGrantPermission.ForeColor = System.Drawing.Color.White;
             this.btnGrantPermission.Location = new System.Drawing.Point(640, 300);
@@ -582,7 +630,6 @@ namespace ATBM_PH1
             this.btnGrantPermission.TabIndex = 9;
             this.btnGrantPermission.Text = "Cấp quyền";
             this.btnGrantPermission.Click += new System.EventHandler(this.btnGrantPermission_Click);
-
             // 
             // panelSelectColumns
             // 
@@ -592,7 +639,6 @@ namespace ATBM_PH1
             this.panelSelectColumns.Size = new System.Drawing.Size(250, 150);
             this.panelSelectColumns.TabIndex = 10;
             this.panelSelectColumns.Visible = false;
-
             // 
             // panelUpdateColumns
             // 
@@ -602,7 +648,6 @@ namespace ATBM_PH1
             this.panelUpdateColumns.Size = new System.Drawing.Size(250, 150);
             this.panelUpdateColumns.TabIndex = 11;
             this.panelUpdateColumns.Visible = false;
-
             // 
             // panelRevokePermissions
             // 
@@ -617,91 +662,118 @@ namespace ATBM_PH1
             this.panelRevokePermissions.Size = new System.Drawing.Size(1239, 631);
             this.panelRevokePermissions.TabIndex = 2;
             this.panelRevokePermissions.Visible = false;
-
             // 
             // dataGridViewRevokeRoles
             // 
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             this.dataGridViewRevokeRoles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
             this.dataGridViewRevokeRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewRevokeRoles.ColumnHeadersHeight = 30;
+            this.dataGridViewRevokeRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewRevokeRoles.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewRevokeRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRevokeRoles.Columns.Add("RoleName", "Tên Role");
-            this.dataGridViewRevokeRoles.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
+            this.dataGridViewRevokeRoles.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewRevokeRoles.Location = new System.Drawing.Point(20, 20);
             this.dataGridViewRevokeRoles.Name = "dataGridViewRevokeRoles";
             this.dataGridViewRevokeRoles.RowHeadersVisible = false;
+            this.dataGridViewRevokeRoles.RowHeadersWidth = 51;
             this.dataGridViewRevokeRoles.Size = new System.Drawing.Size(600, 450);
             this.dataGridViewRevokeRoles.TabIndex = 0;
             this.dataGridViewRevokeRoles.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewRevokeRoles.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewRevokeRoles.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewRevokeRoles.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewRevokeRoles.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dataGridViewRevokeRoles.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRevokeRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            this.dataGridViewRevokeRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewRevokeRoles.ThemeStyle.HeaderStyle.Height = 30;
+            this.dataGridViewRevokeRoles.ThemeStyle.ReadOnly = false;
             this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewRevokeRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewRevokeRoles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRevokeRoles_CellClick);
-
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tên Role";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
             // checkBoxRevokeSelect
             // 
+            this.checkBoxRevokeSelect.CheckedState.BorderRadius = 0;
+            this.checkBoxRevokeSelect.CheckedState.BorderThickness = 0;
             this.checkBoxRevokeSelect.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxRevokeSelect.Location = new System.Drawing.Point(640, 100);
             this.checkBoxRevokeSelect.Name = "checkBoxRevokeSelect";
             this.checkBoxRevokeSelect.Size = new System.Drawing.Size(100, 30);
             this.checkBoxRevokeSelect.TabIndex = 1;
             this.checkBoxRevokeSelect.Text = "SELECT";
-
+            this.checkBoxRevokeSelect.UncheckedState.BorderRadius = 0;
+            this.checkBoxRevokeSelect.UncheckedState.BorderThickness = 0;
             // 
             // checkBoxRevokeInsert
             // 
+            this.checkBoxRevokeInsert.CheckedState.BorderRadius = 0;
+            this.checkBoxRevokeInsert.CheckedState.BorderThickness = 0;
             this.checkBoxRevokeInsert.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxRevokeInsert.Location = new System.Drawing.Point(640, 140);
             this.checkBoxRevokeInsert.Name = "checkBoxRevokeInsert";
             this.checkBoxRevokeInsert.Size = new System.Drawing.Size(100, 30);
             this.checkBoxRevokeInsert.TabIndex = 2;
             this.checkBoxRevokeInsert.Text = "INSERT";
-
+            this.checkBoxRevokeInsert.UncheckedState.BorderRadius = 0;
+            this.checkBoxRevokeInsert.UncheckedState.BorderThickness = 0;
             // 
             // checkBoxRevokeUpdate
             // 
+            this.checkBoxRevokeUpdate.CheckedState.BorderRadius = 0;
+            this.checkBoxRevokeUpdate.CheckedState.BorderThickness = 0;
             this.checkBoxRevokeUpdate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxRevokeUpdate.Location = new System.Drawing.Point(640, 180);
             this.checkBoxRevokeUpdate.Name = "checkBoxRevokeUpdate";
             this.checkBoxRevokeUpdate.Size = new System.Drawing.Size(100, 30);
             this.checkBoxRevokeUpdate.TabIndex = 3;
             this.checkBoxRevokeUpdate.Text = "UPDATE";
-
+            this.checkBoxRevokeUpdate.UncheckedState.BorderRadius = 0;
+            this.checkBoxRevokeUpdate.UncheckedState.BorderThickness = 0;
             // 
             // checkBoxRevokeDelete
             // 
+            this.checkBoxRevokeDelete.CheckedState.BorderRadius = 0;
+            this.checkBoxRevokeDelete.CheckedState.BorderThickness = 0;
             this.checkBoxRevokeDelete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.checkBoxRevokeDelete.Location = new System.Drawing.Point(640, 220);
             this.checkBoxRevokeDelete.Name = "checkBoxRevokeDelete";
             this.checkBoxRevokeDelete.Size = new System.Drawing.Size(100, 30);
             this.checkBoxRevokeDelete.TabIndex = 4;
             this.checkBoxRevokeDelete.Text = "DELETE";
-
+            this.checkBoxRevokeDelete.UncheckedState.BorderRadius = 0;
+            this.checkBoxRevokeDelete.UncheckedState.BorderThickness = 0;
             // 
             // btnRevoke
             // 
-            this.btnRevoke.FillColor = System.Drawing.Color.FromArgb(76, 132, 255);
+            this.btnRevoke.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.btnRevoke.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRevoke.ForeColor = System.Drawing.Color.White;
             this.btnRevoke.Location = new System.Drawing.Point(640, 260);
@@ -710,7 +782,6 @@ namespace ATBM_PH1
             this.btnRevoke.TabIndex = 5;
             this.btnRevoke.Text = "Thu Hồi";
             this.btnRevoke.Click += new System.EventHandler(this.btnRevoke_Click);
-
             // 
             // panelViewPermissions
             // 
@@ -720,52 +791,91 @@ namespace ATBM_PH1
             this.panelViewPermissions.Size = new System.Drawing.Size(1239, 631);
             this.panelViewPermissions.TabIndex = 3;
             this.panelViewPermissions.Visible = false;
-
             // 
             // dataGridViewPermissions
             // 
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
             this.dataGridViewPermissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
             this.dataGridViewPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewPermissions.ColumnHeadersHeight = 30;
+            this.dataGridViewPermissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewPermissions.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewPermissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPermissions.Columns.Add("TableName", "Tên bảng");
-            this.dataGridViewPermissions.Columns.Add("Select", "SELECT");
-            this.dataGridViewPermissions.Columns.Add("Insert", "INSERT");
-            this.dataGridViewPermissions.Columns.Add("Update", "UPDATE");
-            this.dataGridViewPermissions.Columns.Add("Delete", "DELETE");
-            this.dataGridViewPermissions.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
+            this.dataGridViewPermissions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewPermissions.Location = new System.Drawing.Point(20, 20);
             this.dataGridViewPermissions.Name = "dataGridViewPermissions";
             this.dataGridViewPermissions.RowHeadersVisible = false;
+            this.dataGridViewPermissions.RowHeadersWidth = 51;
             this.dataGridViewPermissions.Size = new System.Drawing.Size(800, 450);
             this.dataGridViewPermissions.TabIndex = 0;
             this.dataGridViewPermissions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewPermissions.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewPermissions.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewPermissions.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewPermissions.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dataGridViewPermissions.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewPermissions.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewPermissions.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            this.dataGridViewPermissions.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewPermissions.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dataGridViewPermissions.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewPermissions.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dataGridViewPermissions.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewPermissions.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPermissions.ThemeStyle.HeaderStyle.Height = 30;
+            this.dataGridViewPermissions.ThemeStyle.ReadOnly = false;
             this.dataGridViewPermissions.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewPermissions.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewPermissions.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewPermissions.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-            this.dataGridViewPermissions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.dataGridViewPermissions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
-
+            this.dataGridViewPermissions.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewPermissions.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewPermissions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewPermissions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // Role 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tên bảng";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "SELECT";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "INSERT";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "UPDATE";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "DELETE";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // Role
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -794,6 +904,7 @@ namespace ATBM_PH1
             this.panelViewPermissions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPermissions)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         // Declare Sidebar Components
@@ -828,7 +939,6 @@ namespace ATBM_PH1
         // Manage Roles Components
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewRoles;
         private Guna.UI2.WinForms.Guna2Button btnCreate;
-        private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2TextBox textRole;
 
@@ -856,5 +966,15 @@ namespace ATBM_PH1
 
         // View Permissions Components
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewPermissions;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
