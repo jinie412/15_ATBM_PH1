@@ -518,7 +518,7 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				string selectedUser = "NV0001";
+				string selectedUser = "QUANLY";
 				string selectedTable = cbBang.SelectedItem?.ToString();
 				string selectedRole = cbCaprole.SelectedItem?.ToString();
 
@@ -567,7 +567,9 @@ namespace ATBM_PH1
 
 					cmd.ExecuteNonQuery();
 					MessageBox.Show("Cấp quyền thành công!");
-					this.Refresh();
+					PhanQuyen phanQuyen = new PhanQuyen();
+					phanQuyen.Show();
+					this.Hide();
 				}
 			}
 			catch (Exception ex)
@@ -578,7 +580,9 @@ namespace ATBM_PH1
 
 		private void btnHuy_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			PhanQuyen phanQuyen = new PhanQuyen();
+			phanQuyen.Show();
+			this.Hide();
 		}
 	}
 }

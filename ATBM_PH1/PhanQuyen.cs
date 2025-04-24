@@ -211,5 +211,13 @@ namespace ATBM_PH1
                 colPrivs.Rows[e.RowIndex].Cells["checkCol"].Value = !current;
             }
         }
-    }
+
+		private void btnGrant_Click(object sender, EventArgs e)
+		{
+			CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
+			capQuyen.StartPosition = FormStartPosition.CenterScreen;
+			capQuyen.Show();
+			this.Hide(); // Ẩn thay vì Close để chương trình không bị thoát luôn
+		}
+	}
 }

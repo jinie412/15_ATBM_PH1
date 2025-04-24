@@ -257,7 +257,7 @@
 			this.btnDropDown.FillColor = System.Drawing.Color.White;
 			this.btnDropDown.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDropDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-			this.btnDropDown.Location = new System.Drawing.Point(489, 184);
+			this.btnDropDown.Location = new System.Drawing.Point(483, 184);
 			this.btnDropDown.Name = "btnDropDown";
 			this.btnDropDown.Size = new System.Drawing.Size(36, 36);
 			this.btnDropDown.TabIndex = 37;
@@ -337,7 +337,7 @@
 			this.btnView.FillColor = System.Drawing.Color.White;
 			this.btnView.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-			this.btnView.Location = new System.Drawing.Point(489, 335);
+			this.btnView.Location = new System.Drawing.Point(483, 335);
 			this.btnView.Name = "btnView";
 			this.btnView.Size = new System.Drawing.Size(36, 36);
 			this.btnView.TabIndex = 42;
@@ -415,7 +415,7 @@
 			this.btnproc.FillColor = System.Drawing.Color.White;
 			this.btnproc.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnproc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-			this.btnproc.Location = new System.Drawing.Point(489, 490);
+			this.btnproc.Location = new System.Drawing.Point(483, 490);
 			this.btnproc.Name = "btnproc";
 			this.btnproc.Size = new System.Drawing.Size(36, 36);
 			this.btnproc.TabIndex = 46;
