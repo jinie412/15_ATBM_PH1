@@ -160,7 +160,7 @@ namespace ATBM_PH1
                         cmd.ExecuteNonQuery();
 
                         string error = cmd.Parameters["p_error"].Value?.ToString();
-                        if (!string.IsNullOrEmpty(error))
+                        if (string.IsNullOrEmpty(error))
                         {
                             MessageBox.Show(error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
