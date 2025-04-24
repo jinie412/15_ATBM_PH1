@@ -66,9 +66,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(81, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 54);
+            this.label1.Size = new System.Drawing.Size(216, 54);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Thêm user";
+            this.label1.Text = "Tạo user";
             // 
             // guna2CustomGradientPanel1
             // 
@@ -137,7 +137,7 @@
             this.Insert_User_Button.Name = "Insert_User_Button";
             this.Insert_User_Button.Size = new System.Drawing.Size(162, 45);
             this.Insert_User_Button.TabIndex = 6;
-            this.Insert_User_Button.Text = "Thêm";
+            this.Insert_User_Button.Text = "Tạo";
             this.Insert_User_Button.UseWaitCursor = true;
             this.Insert_User_Button.Click += new System.EventHandler(this.Insert_User_Button_Click);
             // 

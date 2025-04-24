@@ -13,7 +13,8 @@ namespace Sushi_Restaurant
         // ---------- [1] Người dùng đang đăng nhập vào app ----------
         public static User CurrentUser = new User();
 
-        public static string Selected = ""; // Role/user đang được chọn để thao tác.
+        public static string User = ""; // Role/user đang được chọn để thao tác.
+        public static string Role = "";
 
         // ---------- [2] Thông tin kết nối Oracle ----------
         public static OracleConnection conn;
@@ -72,6 +73,7 @@ namespace Sushi_Restaurant
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi thực thi câu lệnh SQL: " + ex.Message);
+                throw;
             }
 
             return dataTable;
