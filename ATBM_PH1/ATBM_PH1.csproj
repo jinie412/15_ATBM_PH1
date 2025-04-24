@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -92,11 +92,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapQuyen_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapQuyen_UI.Designer.cs">
+      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CapQuyen_CSDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapQuyen_CSDL.Designer.cs">
+      <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -107,8 +119,20 @@
     <Compile Include="MainClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThuHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThuHoi.Designer.cs">
+      <DependentUpon>ThuHoi.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CapQuyen_UI.resx">
+      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapQuyen_CSDL.resx">
+      <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -123,6 +147,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ThuHoi.resx">
+      <DependentUpon>ThuHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="config.json" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>

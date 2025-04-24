@@ -24,43 +24,45 @@ namespace ATBM_PH1
             Application.Exit();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            string username = txtUser.Text.Trim();
-            string password = txtPass.Text.Trim();
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
+			string username = txtUser.Text.Trim();
+			string password = txtPass.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đăng nhập.");
-                return;
-            }
+			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+			{
+				MessageBox.Show("Vui lòng nhập đầy đủ thông tin đăng nhập.");
+				return;
+			}
 
-            try
-            {
-                // Tạo chuỗi kết nối 
-                string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/XEPDB1;";
-                if (username.ToLower() == "sys")
-                {
-                    connStr += "DBA Privilege=SYSDBA;";
-                }
+			try
+			{
+				// Đổi từ XEPDB1 sang đúng tên PDB của bạn
+				string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
 
-                OracleConnection conn = new OracleConnection(connStr);
-                conn.Open();
+				// Nếu login với SYS thì thêm quyền SYSDBA
+				if (username.ToLower() == "sys")
+				{
+					connStr += "DBA Privilege=SYSDBA;";
+				}
 
-                // Gán vào MainClass
-                MainClass.CurrentUser.Username = username;
-                MainClass.CurrentUser.Password = password;
-                MainClass.conn = conn;
+				OracleConnection conn = new OracleConnection(connStr);
+				conn.Open();
 
-                
-                frmMain main = new frmMain();
-                main.Show();
-                this.Hide();
-            }
-            catch (OracleException ex)
-            {
-                MessageBox.Show("Đăng nhập thất bại:\n" + ex.Message);
-            }
-        }
-    }
+				// Nếu kết nối thành công, gán giá trị và chuyển form
+				MainClass.CurrentUser.Username = username;
+				MainClass.CurrentUser.Password = password;
+				MainClass.conn = conn;
+
+				frmMain main = new frmMain();
+				main.Show();
+				this.Hide();
+			}
+			catch (OracleException ex)
+			{
+				MessageBox.Show("Đăng nhập thất bại:\n" + ex.Message);
+			}
+		}
+
+	}
 }

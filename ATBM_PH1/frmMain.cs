@@ -21,5 +21,12 @@ namespace ATBM_PH1
         {
             Application.Exit();
         }
-    }
+
+		private void btnPhanQuyen_Click(object sender, EventArgs e)
+		{
+			CapQuyen_CSDL main = new CapQuyen_CSDL();
+			main.Show();
+			this.Hide();
+		}
+	}
 }
