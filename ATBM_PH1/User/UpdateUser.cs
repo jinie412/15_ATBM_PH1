@@ -15,7 +15,7 @@ namespace ATBM_PH1
         public UpdateUser(string username)
         {
             InitializeComponent();
-            this.Size = new Size(300, 330);
+            this.Size = new Size(330, 350);
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Gán giá trị USERNAME và PASSWORD vào biến
@@ -23,8 +23,14 @@ namespace ATBM_PH1
 
             // Hiển thị thông tin trên giao diện
             Username.Text = _username;
-
             Username.ReadOnly = true;
+
+            // Đăng ký sự kiện CheckedChanged cho checkbox
+            CheckLock.CheckedChanged += CheckLock_CheckedChanged;
+            CheckUnlock.CheckedChanged += CheckUnlock_CheckedChanged;
+
+            // Tải trạng thái tài khoản
+            LoadUserStatus(username);
         }
 
         private void Update_User_Button_Click(object sender, EventArgs e)
@@ -32,19 +38,33 @@ namespace ATBM_PH1
             string username = Username.Text.Trim();
             string newPassword = Password.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(newPassword))
+            // Kiểm tra xem username hoặc mật khẩu có trống không
+            if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Username và mật khẩu không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
-                // Cập nhật mật khẩu
-                UpdatePassword(username, newPassword);
+                // Cập nhật mật khẩu nếu có giá trị
+                if (!string.IsNullOrEmpty(newPassword))
+                {
+                    UpdatePassword(username, newPassword);
+                }
 
-                //// Yêu cầu nhập lại mật khẩu mới để kiểm tra đăng nhập
-                //PromptForNewPassword(username);
+                // Xử lý khóa/mở khóa tài khoản
+                if (CheckLock.Checked)
+                {
+                    LockUserAccount(username);
+                }
+                else if (CheckUnlock.Checked)
+                {
+                    UnlockUserAccount(username);
+                }
+
+                MessageBox.Show("Cập nhật thông tin user thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close(); // Đóng form sau khi cập nhật thành công
             }
             catch (Exception ex)
             {
@@ -62,15 +82,71 @@ namespace ATBM_PH1
                 }
 
                 // Câu lệnh ALTER USER để cập nhật mật khẩu
-                string alterUserQuery = $"ALTER USER {username} IDENTIFIED BY {newPassword}";
+                string alterUserQuery = $"ALTER USER {username} IDENTIFIED BY \"{newPassword}\"";
                 MainClass.ExecuteQuery(alterUserQuery);
-
-                MessageBox.Show("Cập nhật thông tin user thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Đóng form sau khi cập nhật thành công
             }
             catch (Exception ex)
             {
                 throw new Exception($"Lỗi khi cập nhật mật khẩu: {ex.Message}");
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
+            }
+        }
+
+        private void LockUserAccount(string username)
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                // Câu lệnh ALTER USER để khóa tài khoản
+                string lockQuery = $"ALTER USER {username} ACCOUNT LOCK";
+                MainClass.ExecuteQuery(lockQuery);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi khóa tài khoản: {ex.Message}");
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
+            }
+        }
+
+        private void UnlockUserAccount(string username)
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                // Câu lệnh ALTER USER để mở khóa tài khoản
+                string unlockQuery = $"ALTER USER {username} ACCOUNT UNLOCK";
+                MainClass.ExecuteQuery(unlockQuery);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi mở khóa tài khoản: {ex.Message}");
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
             }
         }
 
@@ -79,82 +155,49 @@ namespace ATBM_PH1
             this.Close();
         }
 
-        //private void PromptForNewPassword(string username)
-        //{
-        //    string newPassword = PromptForPassword();
+        private void CheckLock_CheckedChanged(object sender, EventArgs e)
+        {
+            // Nếu CheckLock được chọn, bỏ chọn CheckUnlock
+            if (CheckLock.Checked)
+            {
+                CheckUnlock.Checked = false;
+            }
+        }
 
-        //    if (string.IsNullOrEmpty(newPassword))
-        //    {
-        //        MessageBox.Show("Bạn phải nhập mật khẩu mới để tiếp tục.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
+        private void CheckUnlock_CheckedChanged(object sender, EventArgs e)
+        {
+            // Nếu CheckUnlock được chọn, bỏ chọn CheckLock
+            if (CheckUnlock.Checked)
+            {
+                CheckLock.Checked = false;
+            }
+        }
 
-        //    // Kiểm tra mật khẩu mới
-        //    if (ValidatePassword(username, newPassword))
-        //    {
-        //        MessageBox.Show("Đăng nhập thành công với mật khẩu mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        this.Close(); // Đóng form sau khi kiểm tra thành công
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Mật khẩu mới không đúng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private string PromptForPassword()
-        //{
-        //    using (Form passwordForm = new Form())
-        //    {
-        //        passwordForm.Text = "Nhập mật khẩu mới";
-        //        passwordForm.Size = new Size(300, 150);
-        //        passwordForm.StartPosition = FormStartPosition.CenterParent;
-
-        //        Label lblPassword = new Label() { Left = 20, Top = 20, Text = "Mật khẩu:", AutoSize = true };
-        //        TextBox txtPassword = new TextBox() { Left = 100, Top = 20, Width = 150, PasswordChar = '*' };
-        //        Button btnOK = new Button() { Text = "OK", Left = 100, Top = 60, Width = 70, DialogResult = DialogResult.OK };
-        //        Button btnCancel = new Button() { Text = "Hủy", Left = 180, Top = 60, Width = 70, DialogResult = DialogResult.Cancel };
-
-        //        passwordForm.Controls.Add(lblPassword);
-        //        passwordForm.Controls.Add(txtPassword);
-        //        passwordForm.Controls.Add(btnOK);
-        //        passwordForm.Controls.Add(btnCancel);
-
-        //        passwordForm.AcceptButton = btnOK;
-        //        passwordForm.CancelButton = btnCancel;
-
-        //        if (passwordForm.ShowDialog() == DialogResult.OK)
-        //        {
-        //            return txtPassword.Text;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
-
-        //private bool ValidatePassword(string username, string password)
-        //{
-        //    try
-        //    {
-        //        // Tạo chuỗi kết nối tạm thời với thông tin user
-        //        string tempConnectionString = $"User Id={username};Password={password};Data Source=localhost:1521/XEPDB1;";
-
-        //        // Tạo kết nối tạm thời
-        //        using (OracleConnection tempConn = new OracleConnection(tempConnectionString))
-        //        {
-        //            tempConn.Open(); // Thử mở kết nối
-        //            tempConn.Close(); // Đóng kết nối ngay sau khi kiểm tra
-        //        }
-
-        //        // Nếu kết nối thành công, mật khẩu đúng
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        // Nếu kết nối thất bại, mật khẩu sai
-        //        return false;
-        //    }
-        //}
+        private void LoadUserStatus(string username)
+        {
+            try
+            {
+                string query = $"SELECT ACCOUNT_STATUS FROM DBA_USERS WHERE USERNAME = '{username}'";
+                DataTable result = MainClass.ExecuteQuery(query);
+                if (result.Rows.Count > 0)
+                {
+                    string status = result.Rows[0]["ACCOUNT_STATUS"].ToString();
+                    if (status.Contains("LOCKED"))
+                    {
+                        CheckLock.Checked = true;
+                        CheckUnlock.Checked = false;
+                    }
+                    else if (status.Contains("OPEN"))
+                    {
+                        CheckUnlock.Checked = true;
+                        CheckLock.Checked = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi kiểm tra trạng thái tài khoản: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

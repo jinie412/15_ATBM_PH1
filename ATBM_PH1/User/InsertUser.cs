@@ -36,6 +36,7 @@ namespace ATBM_PH1
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Username và Password không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
                 return;
             }
 
@@ -47,42 +48,81 @@ namespace ATBM_PH1
                 }
 
                 // Tạo user
-                string createUserQuery = $"CREATE USER {username} IDENTIFIED BY {password}";
-                MainClass.ExecuteQuery(createUserQuery);
+                try
+                {
+                    string createUserQuery = $"CREATE USER {username} IDENTIFIED BY {password}";
+                    MainClass.ExecuteQuery(createUserQuery);
+                }
+                catch (OracleException ex)
+                {
+                    if (ex.Number == 1920)
+                    {
+                        MessageBox.Show($"User '{username}' đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (ex.Number == 1031)
+                    {
+                        MessageBox.Show("Tài khoản hiện tại không có quyền tạo user. Vui lòng kiểm tra quyền!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Lỗi khi tạo user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                // Gán quyền cho user
-                string grantPrivilegesQuery = $"GRANT CREATE SESSION, RESOURCE TO {username}";
-                MainClass.ExecuteQuery(grantPrivilegesQuery);
+                    this.Close(); // Đóng form nếu tạo user thất bại
+                    return;
+                }
 
-                // Thông báo thành công
+                // Gán quyền cơ bản cho user
+                try
+                {
+                    string grantPrivilegesQuery = $"GRANT CREATE SESSION TO {username}";
+                    MainClass.ExecuteQuery(grantPrivilegesQuery);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Tạo user thành công nhưng lỗi khi gán quyền: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                    return;
+                }
+
+                // Nếu tới đây thì thành công
                 MessageBox.Show($"Tạo user '{username}' thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Đóng form sau khi thêm thành công
-                this.Close();
-            }
-            catch (OracleException ex)
-            {
-                // Xử lý lỗi cụ thể từ Oracle
-                if (ex.Number == 1920) // ORA-01920: user already exists
+                DialogResult result = MessageBox.Show(
+                    "Bạn có muốn gán thêm quyền cho user này không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show($"User '{username}' đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (ex.Number == 1031) // ORA-01031: insufficient privileges
-                {
-                    MessageBox.Show("Tài khoản hiện tại không có quyền tạo user. Vui lòng kiểm tra quyền!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MainClass.User = username;
+                    MainClass.Role = "";
+                    CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
+                    capQuyen.StartPosition = FormStartPosition.CenterScreen;
+                    capQuyen.Show();
+                    this.Hide();
                 }
                 else
                 {
-                    // Lỗi khác
-                    MessageBox.Show($"Lỗi khi tạo user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close(); // Đóng nếu không gán thêm quyền
                 }
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi chung
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
             }
         }
+
 
 
         private void Username_TextChanged(object sender, EventArgs e)
