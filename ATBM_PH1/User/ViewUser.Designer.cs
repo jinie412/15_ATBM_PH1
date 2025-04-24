@@ -29,13 +29,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.InsertUser = new Guna.UI2.WinForms.Guna2Button();
             this.LoadViewUser = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.CUpdate = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -45,6 +43,10 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Search = new Guna.UI2.WinForms.Guna2TextBox();
             this.Search_label = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.CUpdate = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CGrant = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LoadViewUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,37 +64,39 @@
             this.InsertUser.Name = "InsertUser";
             this.InsertUser.Size = new System.Drawing.Size(180, 45);
             this.InsertUser.TabIndex = 1;
-            this.InsertUser.Text = "Thêm";
+            this.InsertUser.Text = "Tạo";
             this.InsertUser.UseWaitCursor = true;
             this.InsertUser.Click += new System.EventHandler(this.InsertUser_Click);
             // 
             // LoadViewUser
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.LoadViewUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LoadViewUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.LoadViewUser.ColumnHeadersHeight = 4;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.LoadViewUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.LoadViewUser.BackgroundColor = System.Drawing.Color.GhostWhite;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LoadViewUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.LoadViewUser.ColumnHeadersHeight = 30;
             this.LoadViewUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.LoadViewUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CUpdate,
+            this.CGrant,
             this.CDelete});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle6;
             this.LoadViewUser.EnableHeadersVisualStyles = true;
-            this.LoadViewUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.LoadViewUser.GridColor = System.Drawing.Color.Black;
             this.LoadViewUser.Location = new System.Drawing.Point(32, 156);
             this.LoadViewUser.Name = "LoadViewUser";
             this.LoadViewUser.RowHeadersVisible = false;
@@ -105,14 +109,14 @@
             this.LoadViewUser.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.LoadViewUser.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.LoadViewUser.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.LoadViewUser.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.LoadViewUser.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.LoadViewUser.ThemeStyle.BackColor = System.Drawing.Color.GhostWhite;
+            this.LoadViewUser.ThemeStyle.GridColor = System.Drawing.Color.Black;
             this.LoadViewUser.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.LoadViewUser.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.LoadViewUser.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadViewUser.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.LoadViewUser.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.LoadViewUser.ThemeStyle.HeaderStyle.Height = 4;
+            this.LoadViewUser.ThemeStyle.HeaderStyle.Height = 30;
             this.LoadViewUser.ThemeStyle.ReadOnly = false;
             this.LoadViewUser.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.LoadViewUser.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -122,26 +126,6 @@
             this.LoadViewUser.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.LoadViewUser.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.LoadViewUser.UseWaitCursor = true;
-            // 
-            // CUpdate
-            // 
-            this.CUpdate.HeaderText = "Chỉnh sửa";
-            this.CUpdate.Image = global::ATBM_PH1.Properties.Resources.Icon_Update;
-            this.CUpdate.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.CUpdate.MinimumWidth = 6;
-            this.CUpdate.Name = "CUpdate";
-            this.CUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CDelete
-            // 
-            this.CDelete.HeaderText = "Xóa";
-            this.CDelete.Image = global::ATBM_PH1.Properties.Resources.Icon_Bin;
-            this.CDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.CDelete.MinimumWidth = 6;
-            this.CDelete.Name = "CDelete";
-            this.CDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // guna2Separator1
             // 
@@ -200,6 +184,7 @@
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 8;
             this.btnExit.UseWaitCursor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -255,6 +240,50 @@
             this.Search_label.Text = "Tìm kiếm";
             this.Search_label.UseWaitCursor = true;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(218, 117);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(161, 45);
+            this.guna2Button1.TabIndex = 11;
+            this.guna2Button1.Text = "Thoát";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // CUpdate
+            // 
+            this.CUpdate.HeaderText = "Chỉnh sửa";
+            this.CUpdate.Image = global::ATBM_PH1.Properties.Resources.Icon_Update;
+            this.CUpdate.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CUpdate.MinimumWidth = 6;
+            this.CUpdate.Name = "CUpdate";
+            this.CUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CGrant
+            // 
+            this.CGrant.HeaderText = "Cấp quyền";
+            this.CGrant.Image = global::ATBM_PH1.Properties.Resources.authorize_black;
+            this.CGrant.MinimumWidth = 6;
+            this.CGrant.Name = "CGrant";
+            this.CGrant.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CGrant.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CDelete
+            // 
+            this.CDelete.HeaderText = "Xóa";
+            this.CDelete.Image = global::ATBM_PH1.Properties.Resources.Icon_Bin;
+            this.CDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CDelete.MinimumWidth = 6;
+            this.CDelete.Name = "CDelete";
+            this.CDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // ViewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,6 +300,7 @@
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.LoadViewUser);
             this.Controls.Add(this.InsertUser);
+            this.Controls.Add(this.guna2Button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewUser";
             this.Text = "frmUser";
@@ -292,9 +322,11 @@
         private Guna.UI2.WinForms.Guna2ControlBox btnExit;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn CUpdate;
-        private System.Windows.Forms.DataGridViewImageColumn CDelete;
         private Guna.UI2.WinForms.Guna2TextBox Search;
         private System.Windows.Forms.Label Search_label;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.DataGridViewImageColumn CUpdate;
+        private System.Windows.Forms.DataGridViewImageColumn CGrant;
+        private System.Windows.Forms.DataGridViewImageColumn CDelete;
     }
 }

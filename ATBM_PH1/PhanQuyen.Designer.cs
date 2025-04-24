@@ -42,6 +42,13 @@
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.label1 = new System.Windows.Forms.Label();
             this.tablePrivs = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.checkTab = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -55,18 +62,11 @@
             this.colGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtGrantee = new Guna.UI2.WinForms.Guna2TextBox();
             this.rolePrivs = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblSelected = new System.Windows.Forms.Label();
-            this.checkTab = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
             this.checkRole = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.roleGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSelected = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablePrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colPrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolePrivs)).BeginInit();
@@ -86,6 +86,7 @@
             this.btnGrant.Size = new System.Drawing.Size(110, 45);
             this.btnGrant.TabIndex = 1;
             this.btnGrant.Text = "Cấp quyền";
+            this.btnGrant.Click += new System.EventHandler(this.btnGrant_Click);
             // 
             // btnRevoke
             // 
@@ -184,6 +185,81 @@
             this.tablePrivs.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tablePrivs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.tablePrivs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablePrivs_CellContentClick);
+            // 
+            // checkTab
+            // 
+            this.checkTab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.checkTab.FillWeight = 30F;
+            this.checkTab.HeaderText = "";
+            this.checkTab.MinimumWidth = 30;
+            this.checkTab.Name = "checkTab";
+            this.checkTab.ReadOnly = true;
+            this.checkTab.Width = 30;
+            // 
+            // tabGrantee
+            // 
+            this.tabGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabGrantee.DataPropertyName = "GRANTEE";
+            this.tabGrantee.HeaderText = "GRANTEE";
+            this.tabGrantee.MinimumWidth = 90;
+            this.tabGrantee.Name = "tabGrantee";
+            this.tabGrantee.ReadOnly = true;
+            this.tabGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.tabGrantee.Width = 90;
+            // 
+            // tabOwner
+            // 
+            this.tabOwner.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabOwner.DataPropertyName = "OWNER";
+            this.tabOwner.FillWeight = 80F;
+            this.tabOwner.HeaderText = "OWNER";
+            this.tabOwner.MinimumWidth = 80;
+            this.tabOwner.Name = "tabOwner";
+            this.tabOwner.ReadOnly = true;
+            this.tabOwner.Width = 80;
+            // 
+            // tabTable
+            // 
+            this.tabTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabTable.DataPropertyName = "TABLE_NAME";
+            this.tabTable.FillWeight = 125F;
+            this.tabTable.HeaderText = "TABLE_NAME";
+            this.tabTable.MinimumWidth = 150;
+            this.tabTable.Name = "tabTable";
+            this.tabTable.ReadOnly = true;
+            this.tabTable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.tabTable.Width = 150;
+            // 
+            // tabPriv
+            // 
+            this.tabPriv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabPriv.DataPropertyName = "PRIVILEGE";
+            this.tabPriv.FillWeight = 80F;
+            this.tabPriv.HeaderText = "PRIVILEGE";
+            this.tabPriv.MinimumWidth = 80;
+            this.tabPriv.Name = "tabPriv";
+            this.tabPriv.ReadOnly = true;
+            this.tabPriv.Width = 80;
+            // 
+            // tabGrantable
+            // 
+            this.tabGrantable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabGrantable.DataPropertyName = "GRANTABLE";
+            this.tabGrantable.FillWeight = 90F;
+            this.tabGrantable.HeaderText = "GRANTABLE";
+            this.tabGrantable.MinimumWidth = 90;
+            this.tabGrantable.Name = "tabGrantable";
+            this.tabGrantable.ReadOnly = true;
+            this.tabGrantable.Width = 90;
+            // 
+            // tabType
+            // 
+            this.tabType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tabType.DataPropertyName = "TYPE";
+            this.tabType.HeaderText = "TYPE";
+            this.tabType.MinimumWidth = 100;
+            this.tabType.Name = "tabType";
+            this.tabType.ReadOnly = true;
             // 
             // label2
             // 
@@ -438,102 +514,6 @@
             this.rolePrivs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.rolePrivs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rolePrivs_CellContentClick);
             // 
-            // lblSelected
-            // 
-            this.lblSelected.AutoSize = true;
-            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelected.Location = new System.Drawing.Point(301, 85);
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(57, 25);
-            this.lblSelected.TabIndex = 8;
-            this.lblSelected.Text = "User";
-            this.lblSelected.Visible = false;
-            // 
-            // checkTab
-            // 
-            this.checkTab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.checkTab.FillWeight = 30F;
-            this.checkTab.HeaderText = "";
-            this.checkTab.MinimumWidth = 30;
-            this.checkTab.Name = "checkTab";
-            this.checkTab.ReadOnly = true;
-            this.checkTab.Width = 30;
-            // 
-            // tabGrantee
-            // 
-            this.tabGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabGrantee.DataPropertyName = "GRANTEE";
-            this.tabGrantee.HeaderText = "GRANTEE";
-            this.tabGrantee.MinimumWidth = 90;
-            this.tabGrantee.Name = "tabGrantee";
-            this.tabGrantee.ReadOnly = true;
-            this.tabGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabGrantee.Width = 90;
-            // 
-            // tabOwner
-            // 
-            this.tabOwner.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabOwner.DataPropertyName = "OWNER";
-            this.tabOwner.FillWeight = 80F;
-            this.tabOwner.HeaderText = "OWNER";
-            this.tabOwner.MinimumWidth = 80;
-            this.tabOwner.Name = "tabOwner";
-            this.tabOwner.ReadOnly = true;
-            this.tabOwner.Width = 80;
-            // 
-            // tabTable
-            // 
-            this.tabTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabTable.DataPropertyName = "TABLE_NAME";
-            this.tabTable.FillWeight = 125F;
-            this.tabTable.HeaderText = "TABLE_NAME";
-            this.tabTable.MinimumWidth = 150;
-            this.tabTable.Name = "tabTable";
-            this.tabTable.ReadOnly = true;
-            this.tabTable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabTable.Width = 150;
-            // 
-            // tabPriv
-            // 
-            this.tabPriv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabPriv.DataPropertyName = "PRIVILEGE";
-            this.tabPriv.FillWeight = 80F;
-            this.tabPriv.HeaderText = "PRIVILEGE";
-            this.tabPriv.MinimumWidth = 80;
-            this.tabPriv.Name = "tabPriv";
-            this.tabPriv.ReadOnly = true;
-            this.tabPriv.Width = 80;
-            // 
-            // tabGrantable
-            // 
-            this.tabGrantable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabGrantable.DataPropertyName = "GRANTABLE";
-            this.tabGrantable.FillWeight = 90F;
-            this.tabGrantable.HeaderText = "GRANTABLE";
-            this.tabGrantable.MinimumWidth = 90;
-            this.tabGrantable.Name = "tabGrantable";
-            this.tabGrantable.ReadOnly = true;
-            this.tabGrantable.Width = 90;
-            // 
-            // tabType
-            // 
-            this.tabType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tabType.DataPropertyName = "TYPE";
-            this.tabType.HeaderText = "TYPE";
-            this.tabType.MinimumWidth = 100;
-            this.tabType.Name = "tabType";
-            this.tabType.ReadOnly = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Bảng / View";
-            // 
             // checkRole
             // 
             this.checkRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -564,6 +544,28 @@
             this.dgvRole.MinimumWidth = 100;
             this.dgvRole.Name = "dgvRole";
             this.dgvRole.ReadOnly = true;
+            this.dgvRole.Width = 125;
+            // 
+            // lblSelected
+            // 
+            this.lblSelected.AutoSize = true;
+            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelected.Location = new System.Drawing.Point(301, 85);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(57, 25);
+            this.lblSelected.TabIndex = 8;
+            this.lblSelected.Text = "User";
+            this.lblSelected.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(29, 143);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Bảng / View";
             // 
             // PhanQuyen
             // 

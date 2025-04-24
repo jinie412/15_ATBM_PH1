@@ -36,6 +36,8 @@
             this.Username = new Guna.UI2.WinForms.Guna2TextBox();
             this.BtnExit = new Guna.UI2.WinForms.Guna2Button();
             this.Update_User_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.CheckLock = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.CheckUnlock = new Guna.UI2.WinForms.Guna2CheckBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(73, 231);
+            this.label3.Location = new System.Drawing.Point(92, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 25);
             this.label3.TabIndex = 9;
@@ -77,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 142);
+            this.label2.Location = new System.Drawing.Point(92, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 25);
             this.label2.TabIndex = 10;
@@ -94,7 +96,7 @@
             this.Password.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Password.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Password.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Password.Location = new System.Drawing.Point(78, 260);
+            this.Password.Location = new System.Drawing.Point(97, 221);
             this.Password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Password.Name = "Password";
             this.Password.PlaceholderText = "";
@@ -113,7 +115,7 @@
             this.Username.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Username.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Username.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Username.Location = new System.Drawing.Point(78, 171);
+            this.Username.Location = new System.Drawing.Point(97, 132);
             this.Username.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Username.Name = "Username";
             this.Username.PlaceholderText = "";
@@ -131,7 +133,7 @@
             this.BtnExit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.BtnExit.ForeColor = System.Drawing.Color.White;
-            this.BtnExit.Location = new System.Drawing.Point(198, 333);
+            this.BtnExit.Location = new System.Drawing.Point(214, 379);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(170, 45);
             this.BtnExit.TabIndex = 11;
@@ -149,7 +151,7 @@
             this.Update_User_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.Update_User_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.Update_User_Button.ForeColor = System.Drawing.Color.White;
-            this.Update_User_Button.Location = new System.Drawing.Point(9, 333);
+            this.Update_User_Button.Location = new System.Drawing.Point(25, 379);
             this.Update_User_Button.Name = "Update_User_Button";
             this.Update_User_Button.Size = new System.Drawing.Size(162, 45);
             this.Update_User_Button.TabIndex = 12;
@@ -157,12 +159,52 @@
             this.Update_User_Button.UseWaitCursor = true;
             this.Update_User_Button.Click += new System.EventHandler(this.Update_User_Button_Click);
             // 
+            // CheckLock
+            // 
+            this.CheckLock.AutoSize = true;
+            this.CheckLock.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CheckLock.CheckedState.BorderRadius = 0;
+            this.CheckLock.CheckedState.BorderThickness = 0;
+            this.CheckLock.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CheckLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckLock.Location = new System.Drawing.Point(61, 298);
+            this.CheckLock.Name = "CheckLock";
+            this.CheckLock.Size = new System.Drawing.Size(100, 36);
+            this.CheckLock.TabIndex = 13;
+            this.CheckLock.Text = "Lock";
+            this.CheckLock.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.CheckLock.UncheckedState.BorderRadius = 0;
+            this.CheckLock.UncheckedState.BorderThickness = 0;
+            this.CheckLock.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.CheckLock.CheckedChanged += new System.EventHandler(this.CheckLock_CheckedChanged);
+            // 
+            // CheckUnlock
+            // 
+            this.CheckUnlock.AutoSize = true;
+            this.CheckUnlock.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CheckUnlock.CheckedState.BorderRadius = 0;
+            this.CheckUnlock.CheckedState.BorderThickness = 0;
+            this.CheckUnlock.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CheckUnlock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckUnlock.Location = new System.Drawing.Point(214, 298);
+            this.CheckUnlock.Name = "CheckUnlock";
+            this.CheckUnlock.Size = new System.Drawing.Size(129, 36);
+            this.CheckUnlock.TabIndex = 14;
+            this.CheckUnlock.Text = "Unlock";
+            this.CheckUnlock.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.CheckUnlock.UncheckedState.BorderRadius = 0;
+            this.CheckUnlock.UncheckedState.BorderThickness = 0;
+            this.CheckUnlock.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.CheckUnlock.CheckedChanged += new System.EventHandler(this.CheckUnlock_CheckedChanged);
+            // 
             // UpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(380, 450);
+            this.Controls.Add(this.CheckUnlock);
+            this.Controls.Add(this.CheckLock);
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.Update_User_Button);
             this.Controls.Add(this.label3);
@@ -189,5 +231,7 @@
         private Guna.UI2.WinForms.Guna2TextBox Username;
         private Guna.UI2.WinForms.Guna2Button BtnExit;
         private Guna.UI2.WinForms.Guna2Button Update_User_Button;
+        private Guna.UI2.WinForms.Guna2CheckBox CheckLock;
+        private Guna.UI2.WinForms.Guna2CheckBox CheckUnlock;
     }
 }
