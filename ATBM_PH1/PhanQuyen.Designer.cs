@@ -301,7 +301,6 @@
             this.txtGrantee.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtGrantee.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtGrantee.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGrantee.IconRight = ((System.Drawing.Image)(resources.GetObject("txtGrantee.IconRight")));
             this.txtGrantee.Location = new System.Drawing.Point(212, 65);
             this.txtGrantee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGrantee.Name = "txtGrantee";

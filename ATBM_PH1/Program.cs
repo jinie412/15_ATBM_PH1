@@ -16,7 +16,7 @@ namespace ATBM_PH1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PhanQuyen());
+            Application.Run(new DangNhap());
         }
     }
 }
