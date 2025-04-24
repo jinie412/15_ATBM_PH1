@@ -91,6 +91,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle3;
+            this.LoadViewUser.EnableHeadersVisualStyles = true;
             this.LoadViewUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.LoadViewUser.Location = new System.Drawing.Point(32, 156);
             this.LoadViewUser.Name = "LoadViewUser";
@@ -199,7 +200,6 @@
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 8;
             this.btnExit.UseWaitCursor = true;
-            //this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // dataGridViewImageColumn1
             // 
