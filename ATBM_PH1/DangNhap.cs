@@ -35,24 +35,24 @@ namespace ATBM_PH1
 				return;
 			}
 
-			try
-			{
-				// Đổi từ XEPDB1 sang đúng tên PDB của bạn
-				string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
+            try
+            {
+                // Đổi từ XEPDB1 sang đúng tên PDB của bạn
+                string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
 
-				// Nếu login với SYS thì thêm quyền SYSDBA
-				if (username.ToLower() == "sys")
-				{
-					connStr += "DBA Privilege=SYSDBA;";
-				}
+                // Nếu login với SYS thì thêm quyền SYSDBA
+                if (username.ToLower() == "sys")
+                {
+                    connStr += "DBA Privilege=SYSDBA;";
+                }
 
 				OracleConnection conn = new OracleConnection(connStr);
 				conn.Open();
 
-				// Nếu kết nối thành công, gán giá trị và chuyển form
-				MainClass.CurrentUser.Username = username;
-				MainClass.CurrentUser.Password = password;
-				MainClass.conn = conn;
+                // Nếu kết nối thành công, gán giá trị và chuyển form
+                MainClass.CurrentUser.Username = username;
+                MainClass.CurrentUser.Password = password;
+                MainClass.conn = conn;
 
 				frmMain main = new frmMain();
 				main.Show();

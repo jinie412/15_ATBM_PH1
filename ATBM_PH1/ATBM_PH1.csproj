@@ -99,6 +99,12 @@
     <Compile Include="CapQuyen_UI.Designer.cs">
       <DependentUpon>CapQuyen_UI.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRoleForm.Designer.cs">
+      <DependentUpon>CreateRoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,8 +136,23 @@
       <DependentUpon>ViewUser.cs</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
+    <Compile Include="ManageRolesTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManageRolesTab.Designer.cs">
+      <DependentUpon>ManageRolesTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Role.Designer.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateRoleForm.resx">
+      <DependentUpon>CreateRoleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="User\InsertUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +186,9 @@
     <EmbeddedResource Include="User\ViewUser.resx">
       <DependentUpon>ViewUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageRolesTab.resx">
+      <DependentUpon>ManageRolesTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -175,6 +199,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Role.resx">
+      <DependentUpon>Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="config.json" />
     <EmbeddedResource Include="ThuHoi.resx">
       <DependentUpon>ThuHoi.cs</DependentUpon>
     </EmbeddedResource>
