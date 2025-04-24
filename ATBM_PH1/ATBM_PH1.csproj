@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -54,6 +54,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.2\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Formats.Asn1, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Formats.Asn1.8.0.1\lib\net462\System.Formats.Asn1.dll</HintPath>
     </Reference>
@@ -92,11 +93,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapQuyen_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapQuyen_UI.Designer.cs">
+      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRoleForm.Designer.cs">
+      <DependentUpon>CreateRoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CapQuyen_CSDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapQuyen_CSDL.Designer.cs">
+      <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -104,7 +123,25 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\ViewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\ViewUser.Designer.cs">
+      <DependentUpon>ViewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainClass.cs" />
+    <Compile Include="ManageRolesTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManageRolesTab.Designer.cs">
+      <DependentUpon>ManageRolesTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,20 +150,69 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Role.Designer.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateRoleForm.resx">
+      <DependentUpon>CreateRoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="User\InsertUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\InsertUser.Designer.cs">
+      <DependentUpon>InsertUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThuHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThuHoi.Designer.cs">
+      <DependentUpon>ThuHoi.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CapQuyen_UI.resx">
+      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapQuyen_CSDL.resx">
+      <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhanQuyen.resx">
-      <DependentUpon>PhanQuyen.cs</DependentUpon>
+    <EmbeddedResource Include="User\InsertUser.resx">
+      <DependentUpon>InsertUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ViewUser.resx">
+      <DependentUpon>ViewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageRolesTab.resx">
+      <DependentUpon>ManageRolesTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Role.resx">
+      <DependentUpon>Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="config.json" />
+    <EmbeddedResource Include="ThuHoi.resx">
+      <DependentUpon>ThuHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="config.json" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -184,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Bin.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
