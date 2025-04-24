@@ -54,6 +54,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.2\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Formats.Asn1, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Formats.Asn1.8.0.1\lib\net462\System.Formats.Asn1.dll</HintPath>
     </Reference>
@@ -116,9 +117,27 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\ViewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\ViewUser.Designer.cs">
+      <DependentUpon>ViewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\InsertUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\InsertUser.Designer.cs">
+      <DependentUpon>InsertUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThuHoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +155,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\InsertUser.resx">
+      <DependentUpon>InsertUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\ViewUser.resx">
+      <DependentUpon>ViewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -200,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\secure-data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Bin.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
