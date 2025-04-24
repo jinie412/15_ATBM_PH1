@@ -54,15 +54,15 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-				frmMain main = new frmMain();
-				main.Show();
-				this.Hide();
-			}
-			catch (OracleException ex)
-			{
-				MessageBox.Show("Đăng nhập thất bại:\n" + ex.Message);
-			}
-		}
+                frmMain main = new frmMain();
+                main.Show();
+                this.Hide();
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show("Đăng nhập thất bại:\n" + ex.Message);
+            }
+        }
 
-	}
+    }
 }
