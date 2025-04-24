@@ -160,17 +160,16 @@ namespace ATBM_PH1
                         cmd.ExecuteNonQuery();
 
                         string error = cmd.Parameters["p_error"].Value?.ToString();
-                        if (!string.IsNullOrEmpty(error))
+                        if (string.IsNullOrEmpty(error))
                         {
                             MessageBox.Show(error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
                             MessageBox.Show($"Đã xoá role '{roleName}' thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
-                            ShowManageRolesContent(); // Tải lại danh sách role
+                             
                         }
-
+                        ShowManageRolesContent(); // Tải lại danh sách role
                     }
                 }
                 catch (Exception ex)

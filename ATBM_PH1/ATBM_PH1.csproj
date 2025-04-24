@@ -111,12 +111,6 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
-    <Compile Include="ManageRole.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManageRole.Designer.cs">
-      <DependentUpon>ManageRole.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManageRolesTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManageRole.resx">
-      <DependentUpon>ManageRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageRolesTab.resx">
       <DependentUpon>ManageRolesTab.cs</DependentUpon>
