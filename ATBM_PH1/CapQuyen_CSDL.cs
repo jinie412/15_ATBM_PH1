@@ -27,6 +27,19 @@ namespace ATBM_PH1
 			LoadProcsToChecklistBox();
 			checkedListBox6.ItemCheck += checkedListBox6_ItemCheck;
 			LoadRolesToComboBox();
+
+			lbuser.Text = "";
+			if (!string.IsNullOrEmpty(MainClass.Role))
+			{
+				cbCaprole.Enabled = false;
+				checkbwgo.Enabled = false;
+				lbuser.Text = "Role: " + MainClass.Role;
+			}
+			else
+			{
+				cbCaprole.Enabled = true;
+				lbuser.Text = "User: " + MainClass.User;
+			}
 		}
 
 
@@ -47,7 +60,6 @@ namespace ATBM_PH1
 			txtView.Click += txtView_Click;
 			txtf.Click += txtf_Click;
 			txtproc.Click += txtproc_Click;
-
 		}
 
 		private void btnDropDown_Click(object sender, EventArgs e)
@@ -323,202 +335,14 @@ namespace ATBM_PH1
 			checkedListBox6.BringToFront();
 			checkedListBox6.Location = new Point(txtproc.Left, txtproc.Bottom);
 		}
-
-		//private void btnCapQuyen_Click(object sender, EventArgs e)
-		//{
-		//	try
-		//	{
-		//		string selectedUser = "NV0001";
-		//		string selectedTable = cbBang.SelectedItem?.ToString();
-		//		string selectedRole = cbCaprole.SelectedItem?.ToString();
-
-		//		int insertChecked = checkedListBox2.CheckedItems.Contains("INSERT") ? 1 : 0;
-		//		int deleteChecked = checkedListBox2.CheckedItems.Contains("DELETE") ? 1 : 0;
-		//		int selectChecked = checkedListBox2.CheckedItems.Contains("SELECT") ? 1 : 0;
-		//		int updateChecked = checkedListBox2.CheckedItems.Contains("UPDATE") ? 1 : 0;
-
-		//		string[] selectedSelectCols = checkedListBox1.CheckedItems.Cast<string>().ToArray();
-		//		string[] selectedUpdateCols = checkedListBox3.CheckedItems.Cast<string>().ToArray();
-		//		string[] selectedViews = checkedListBox4.CheckedItems.Cast<string>().ToArray();
-		//		string[] selectedFunctions = checkedListBox5.CheckedItems.Cast<string>().ToArray();
-		//		string[] selectedProcedures = checkedListBox6.CheckedItems.Cast<string>().ToArray();
-
-		//		using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
-		//		{
-		//			cmd.CommandType = CommandType.StoredProcedure;
-
-		//			cmd.Parameters.Add("p_user", OracleDbType.Varchar2).Value = selectedUser;
-		//			cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(selectedTable) ? (object)DBNull.Value : (object)selectedTable;
-		//			cmd.Parameters.Add("p_insert", OracleDbType.Int32).Value = insertChecked;
-		//			cmd.Parameters.Add("p_delete", OracleDbType.Int32).Value = deleteChecked;
-		//			cmd.Parameters.Add("p_select", OracleDbType.Int32).Value = selectChecked;
-		//			cmd.Parameters.Add("p_update", OracleDbType.Int32).Value = updateChecked;
-
-		//			cmd.Parameters.Add("p_select_cols", OracleDbType.Varchar2).CollectionType = OracleCollectionType.PLSQLAssociativeArray;
-		//			cmd.Parameters["p_select_cols"].Value = selectedSelectCols;
-		//			cmd.Parameters["p_select_cols"].Size = selectedSelectCols.Length;
-
-		//			cmd.Parameters.Add("p_update_cols", OracleDbType.Varchar2).CollectionType = OracleCollectionType.PLSQLAssociativeArray;
-		//			cmd.Parameters["p_update_cols"].Value = selectedUpdateCols;
-		//			cmd.Parameters["p_update_cols"].Size = selectedUpdateCols.Length;
-
-		//			cmd.Parameters.Add("p_views", OracleDbType.Varchar2).CollectionType = OracleCollectionType.PLSQLAssociativeArray;
-		//			cmd.Parameters["p_views"].Value = selectedViews;
-		//			cmd.Parameters["p_views"].Size = selectedViews.Length;
-
-		//			cmd.Parameters.Add("p_functions", OracleDbType.Varchar2).CollectionType = OracleCollectionType.PLSQLAssociativeArray;
-		//			cmd.Parameters["p_functions"].Value = selectedFunctions;
-		//			cmd.Parameters["p_functions"].Size = selectedFunctions.Length;
-
-		//			cmd.Parameters.Add("p_procedures", OracleDbType.Varchar2).CollectionType = OracleCollectionType.PLSQLAssociativeArray;
-		//			cmd.Parameters["p_procedures"].Value = selectedProcedures;
-		//			cmd.Parameters["p_procedures"].Size = selectedProcedures.Length;
-
-		//			cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(selectedRole) ? (object)DBNull.Value : (object)selectedRole;
-
-		//			cmd.ExecuteNonQuery();
-		//			MessageBox.Show("Cấp quyền thành công!");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Lỗi khi cấp quyền:\n" + ex.Message);
-		//	}
-		//}
-
-		//private void btnCapQuyen_Click(object sender, EventArgs e)
-		//{
-		//	try
-		//	{
-		//		string selectedUser = "NV0001";
-		//		string selectedRole = cbCaprole.SelectedItem?.ToString(); // Ví dụ: "SOME_ROLE"
-
-		//		if (string.IsNullOrEmpty(selectedRole))
-		//		{
-		//			MessageBox.Show("Vui lòng chọn một role!");
-		//			return;
-		//		}
-
-		//		using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
-		//		{
-		//			cmd.CommandType = CommandType.StoredProcedure;
-
-		//			// Tham số kiểu đơn giản
-		//			cmd.Parameters.Add("p_user", OracleDbType.Varchar2).Value = selectedUser;
-		//			cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = DBNull.Value;
-		//			cmd.Parameters.Add("p_insert", OracleDbType.Int32).Value = DBNull.Value;
-		//			cmd.Parameters.Add("p_delete", OracleDbType.Int32).Value = DBNull.Value;
-		//			cmd.Parameters.Add("p_select", OracleDbType.Int32).Value = DBNull.Value;
-		//			cmd.Parameters.Add("p_update", OracleDbType.Int32).Value = DBNull.Value;
-		//			cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = selectedRole;
-
-		//			// Tham số kiểu collection
-		//			cmd.Parameters.Add(new OracleParameter
-		//			{
-		//				ParameterName = "p_select_cols",
-		//				OracleDbType = OracleDbType.Array,
-		//				UdtTypeName = "VARCHAR2_LIST", // Dùng kiểu mới
-		//				Value = new string[0], // Mảng rỗng
-		//				Size = 0
-		//			});
-		//			cmd.Parameters.Add(new OracleParameter
-		//			{
-		//				ParameterName = "p_update_cols",
-		//				OracleDbType = OracleDbType.Array,
-		//				UdtTypeName = "VARCHAR2_LIST",
-		//				Value = new string[0],
-		//				Size = 0
-		//			});
-		//			cmd.Parameters.Add(new OracleParameter
-		//			{
-		//				ParameterName = "p_views",
-		//				OracleDbType = OracleDbType.Array,
-		//				UdtTypeName = "VARCHAR2_LIST",
-		//				Value = new string[0],
-		//				Size = 0
-		//			});
-		//			cmd.Parameters.Add(new OracleParameter
-		//			{
-		//				ParameterName = "p_functions",
-		//				OracleDbType = OracleDbType.Array,
-		//				UdtTypeName = "VARCHAR2_LIST",
-		//				Value = new string[0],
-		//				Size = 0
-		//			});
-		//			cmd.Parameters.Add(new OracleParameter
-		//			{
-		//				ParameterName = "p_procedures",
-		//				OracleDbType = OracleDbType.Array,
-		//				UdtTypeName = "VARCHAR2_LIST",
-		//				Value = new string[0],
-		//				Size = 0
-		//			});
-
-		//			cmd.ExecuteNonQuery();
-		//			MessageBox.Show("Cấp quyền thành công!");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show($"Lỗi khi cấp quyền:\nThông báo: {ex.Message}\nStack Trace: {ex.StackTrace}");
-		//	}
-		//}
-
-		//private void btnCapQuyen_Click(object sender, EventArgs e)
-		//{
-		//	try
-		//	{
-		//		string selectedUser = "NV0001";
-		//		string selectedTable = cbBang.SelectedItem?.ToString();
-		//		string selectedRole = cbCaprole.SelectedItem?.ToString();
-
-		//		int insertChecked = checkedListBox2.CheckedItems.Contains("INSERT") ? 1 : 0;
-		//		int deleteChecked = checkedListBox2.CheckedItems.Contains("DELETE") ? 1 : 0;
-		//		int selectChecked = checkedListBox2.CheckedItems.Contains("SELECT") ? 1 : 0;
-		//		int updateChecked = checkedListBox2.CheckedItems.Contains("UPDATE") ? 1 : 0;
-
-		//		// Các mảng chuỗi, join thành chuỗi phẩy (nếu null thì thành "")
-		//		string selectedSelectCols = string.Join(",", checkedListBox1.CheckedItems.Cast<string>());
-		//		string selectedUpdateCols = string.Join(",", checkedListBox3.CheckedItems.Cast<string>());
-		//		string selectedViews = string.Join(",", checkedListBox4.CheckedItems.Cast<string>());
-		//		string selectedFunctions = string.Join(",", checkedListBox5.CheckedItems.Cast<string>());
-		//		string selectedProcedures = string.Join(",", checkedListBox6.CheckedItems.Cast<string>());
-
-		//		using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
-		//		{
-		//			cmd.CommandType = CommandType.StoredProcedure;
-
-		//			cmd.Parameters.Add("p_user", OracleDbType.Varchar2).Value = selectedUser;
-		//			cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(selectedTable) ? (object)DBNull.Value : selectedTable;
-		//			cmd.Parameters.Add("p_insert", OracleDbType.Int32).Value = insertChecked;
-		//			cmd.Parameters.Add("p_delete", OracleDbType.Int32).Value = deleteChecked;
-		//			cmd.Parameters.Add("p_select", OracleDbType.Int32).Value = selectChecked;
-		//			cmd.Parameters.Add("p_update", OracleDbType.Int32).Value = updateChecked;
-
-		//			// Truyền dạng VARCHAR2, không dùng Collection nữa
-		//			cmd.Parameters.Add("p_select_cols", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(selectedSelectCols) ? (object)DBNull.Value : selectedSelectCols;
-		//			cmd.Parameters.Add("p_update_cols", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(selectedUpdateCols) ? (object)DBNull.Value : selectedUpdateCols;
-		//			cmd.Parameters.Add("p_views", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(selectedViews) ? (object)DBNull.Value : selectedViews;
-		//			cmd.Parameters.Add("p_functions", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(selectedFunctions) ? (object)DBNull.Value : selectedFunctions;
-		//			cmd.Parameters.Add("p_procedures", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(selectedProcedures) ? (object)DBNull.Value : selectedProcedures;
-
-		//			cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(selectedRole) ? (object)DBNull.Value : selectedRole;
-
-		//			cmd.ExecuteNonQuery();
-		//			MessageBox.Show("Cấp quyền thành công!");
-		//		}
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Lỗi khi cấp quyền:\n" + ex.Message);
-		//	}
-		//}
-
 		private void btnCapQuyen_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				string selectedUser = "QUANLY";
+				string selectedUser = !string.IsNullOrEmpty(MainClass.User)
+	? MainClass.User
+	: (!string.IsNullOrEmpty(MainClass.Role) ? MainClass.Role : "");
+
 				string selectedTable = cbBang.SelectedItem?.ToString();
 				string selectedRole = cbCaprole.SelectedItem?.ToString();
 

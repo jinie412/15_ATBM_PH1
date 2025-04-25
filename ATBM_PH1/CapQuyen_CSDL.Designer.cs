@@ -58,7 +58,9 @@
 			this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
 			this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
 			this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
+			this.lbuser = new System.Windows.Forms.Label();
 			this.guna2Panel2.SuspendLayout();
+			this.guna2Panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// guna2Panel2
@@ -242,6 +244,7 @@
 			// guna2Panel1
 			// 
 			this.guna2Panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.guna2Panel1.Controls.Add(this.lbuser);
 			this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(802, 56);
@@ -475,6 +478,16 @@
 			this.checkedListBox6.TabIndex = 49;
 			this.checkedListBox6.Visible = false;
 			// 
+			// lbuser
+			// 
+			this.lbuser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbuser.Location = new System.Drawing.Point(15, 9);
+			this.lbuser.Name = "lbuser";
+			this.lbuser.Size = new System.Drawing.Size(514, 35);
+			this.lbuser.TabIndex = 0;
+			this.lbuser.Text = "label7";
+			this.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// CapQuyen_CSDL
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -510,6 +523,7 @@
 			this.Name = "CapQuyen_CSDL";
 			this.Text = "Cấp Quyền";
 			this.guna2Panel2.ResumeLayout(false);
+			this.guna2Panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -546,5 +560,6 @@
 		private System.Windows.Forms.CheckedListBox checkedListBox4;
 		private System.Windows.Forms.CheckedListBox checkedListBox5;
 		private System.Windows.Forms.CheckedListBox checkedListBox6;
+		private System.Windows.Forms.Label lbuser;
 	}
 }
