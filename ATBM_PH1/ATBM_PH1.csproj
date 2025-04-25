@@ -196,7 +196,7 @@
 	  
     <EmbeddedResource Include="PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
->>>>>>> fa227c77dc73eeeb3c576aef99a652bfb4913b71
+
     </EmbeddedResource>
     <EmbeddedResource Include="User\InsertUser.resx">
       <DependentUpon>InsertUser.cs</DependentUpon>
@@ -215,15 +215,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    
     <EmbeddedResource Include="Role.resx">
       <DependentUpon>Role.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="config.json" />
+    
     <EmbeddedResource Include="ThuHoi.resx">
       <DependentUpon>ThuHoi.cs</DependentUpon>
     </EmbeddedResource>
