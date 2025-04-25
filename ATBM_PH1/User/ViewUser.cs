@@ -18,7 +18,6 @@ namespace ATBM_PH1
         public ViewUser()
         {
             InitializeComponent();
-            this.Size = new Size(720, 500);
             this.StartPosition = FormStartPosition.CenterScreen;
 
             this.Load += ViewUser_Load;

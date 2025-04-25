@@ -28,19 +28,19 @@ namespace ATBM_PH1
             checkedListBox6.ItemCheck += checkedListBox6_ItemCheck;
             LoadRolesToComboBox();
 
-            lbuser.Text = "";
-            if (!string.IsNullOrEmpty(MainClass.Role))
-            {
-                cbCaprole.Enabled = false;
-                checkbwgo.Enabled = false;
-                lbuser.Text = "Role: " + MainClass.Role;
-            }
-            else
-            {
-                cbCaprole.Enabled = true;
-                lbuser.Text = "User: " + MainClass.User;
-            }
-        }
+			lbuser.Text = "";
+			if (!string.IsNullOrEmpty(MainClass.Role))
+			{
+				cbCaprole.Enabled = false;
+				checkbwgo.Enabled = false;
+				lbuser.Text = "Role: " + MainClass.Role;
+			}
+			else
+			{
+				cbCaprole.Enabled = true;
+				lbuser.Text = "User: " + MainClass.User;
+			}
+		}
 
 
         private void Form1_Load(object sender, EventArgs e)

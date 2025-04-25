@@ -18,7 +18,6 @@ namespace ATBM_PH1
         public InsertUser()
         {
             InitializeComponent();
-            this.Size = new Size(300, 330);
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 

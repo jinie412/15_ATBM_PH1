@@ -15,7 +15,6 @@ namespace ATBM_PH1
         public UpdateUser(string username)
         {
             InitializeComponent();
-            this.Size = new Size(330, 350);
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Gán giá trị USERNAME và PASSWORD vào biến

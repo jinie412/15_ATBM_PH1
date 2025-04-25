@@ -256,7 +256,7 @@
 			// 
 			// guna2Panel1
 			// 
-			this.guna2Panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.guna2Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.guna2Panel1.Location = new System.Drawing.Point(-1, -2);
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(802, 56);
@@ -280,7 +280,7 @@
 			this.lbThuocTinh.TabIndex = 17;
 			this.lbThuocTinh.Text = "Thuộc tính";
 			// 
-			// CapQuyen
+			// CapQuyen_UI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -305,7 +305,7 @@
 			this.Controls.Add(this.cbCaprole);
 			this.Controls.Add(this.txtCapRole);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "CapQuyen";
+			this.Name = "CapQuyen_UI";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

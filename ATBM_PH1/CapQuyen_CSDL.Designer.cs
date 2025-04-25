@@ -44,6 +44,7 @@
 			this.cbCaprole = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.txtCapRole = new System.Windows.Forms.Label();
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.lbuser = new System.Windows.Forms.Label();
 			this.btnDropDown = new Guna.UI2.WinForms.Guna2Button();
 			this.txtQuyen = new Guna.UI2.WinForms.Guna2TextBox();
 			this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
@@ -58,7 +59,6 @@
 			this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
 			this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
 			this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
-			this.lbuser = new System.Windows.Forms.Label();
 			this.guna2Panel2.SuspendLayout();
 			this.guna2Panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -250,6 +250,16 @@
 			this.guna2Panel1.Size = new System.Drawing.Size(802, 56);
 			this.guna2Panel1.TabIndex = 35;
 			// 
+			// lbuser
+			// 
+			this.lbuser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbuser.Location = new System.Drawing.Point(12, 9);
+			this.lbuser.Name = "lbuser";
+			this.lbuser.Size = new System.Drawing.Size(368, 35);
+			this.lbuser.TabIndex = 0;
+			this.lbuser.Text = "label7";
+			this.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// btnDropDown
 			// 
 			this.btnDropDown.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
@@ -258,7 +268,7 @@
 			this.btnDropDown.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
 			this.btnDropDown.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btnDropDown.FillColor = System.Drawing.Color.White;
-			this.btnDropDown.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDropDown.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDropDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
 			this.btnDropDown.Location = new System.Drawing.Point(483, 184);
 			this.btnDropDown.Name = "btnDropDown";
@@ -477,16 +487,6 @@
 			this.checkedListBox6.Size = new System.Drawing.Size(306, 129);
 			this.checkedListBox6.TabIndex = 49;
 			this.checkedListBox6.Visible = false;
-			// 
-			// lbuser
-			// 
-			this.lbuser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbuser.Location = new System.Drawing.Point(12, 9);
-			this.lbuser.Name = "lbuser";
-			this.lbuser.Size = new System.Drawing.Size(368, 35);
-			this.lbuser.TabIndex = 0;
-			this.lbuser.Text = "label7";
-			this.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CapQuyen_CSDL
 			// 
