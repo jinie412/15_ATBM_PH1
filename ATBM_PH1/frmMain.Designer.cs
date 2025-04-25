@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.btnPhanQuyen = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.Role = new Guna.UI2.WinForms.Guna2Button();
             this.User = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -53,7 +53,7 @@
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.guna2Button4);
             this.guna2Panel1.Controls.Add(this.btnPhanQuyen);
-            this.guna2Panel1.Controls.Add(this.guna2Button2);
+            this.guna2Panel1.Controls.Add(this.Role);
             this.guna2Panel1.Controls.Add(this.User);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -136,35 +136,36 @@
             this.btnPhanQuyen.TextOffset = new System.Drawing.Point(20, 0);
             this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
             // 
-            // guna2Button2
+            // Role
             // 
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.guna2Button2.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button2.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
-            this.guna2Button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Button2.CustomizableEdges.BottomRight = false;
-            this.guna2Button2.CustomizableEdges.TopRight = false;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette;
-            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button2.Location = new System.Drawing.Point(32, 310);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(231, 54);
-            this.guna2Button2.TabIndex = 0;
-            this.guna2Button2.Text = "Quản lý Role";
-            this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.TextOffset = new System.Drawing.Point(20, 0);
+            this.Role.AutoRoundedCorners = true;
+            this.Role.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.Role.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.Role.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.Role.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Role.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.Role.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
+            this.Role.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Role.CustomizableEdges.BottomRight = false;
+            this.Role.CustomizableEdges.TopRight = false;
+            this.Role.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Role.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Role.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Role.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Role.FillColor = System.Drawing.Color.Transparent;
+            this.Role.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Role.ForeColor = System.Drawing.Color.White;
+            this.Role.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette;
+            this.Role.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Role.ImageOffset = new System.Drawing.Point(10, 0);
+            this.Role.Location = new System.Drawing.Point(32, 310);
+            this.Role.Name = "Role";
+            this.Role.Size = new System.Drawing.Size(231, 54);
+            this.Role.TabIndex = 0;
+            this.Role.Text = "Quản lý Role";
+            this.Role.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Role.TextOffset = new System.Drawing.Point(20, 0);
+            this.Role.Click += new System.EventHandler(this.Role_Click);
             // 
             // User
             // 
@@ -321,7 +322,7 @@
         private Guna.UI2.WinForms.Guna2Button btnPhanQuyen;
         private Guna.UI2.WinForms.Guna2Button ManagermentUser;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button Role;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;

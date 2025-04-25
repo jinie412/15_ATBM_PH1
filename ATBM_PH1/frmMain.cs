@@ -24,8 +24,9 @@ namespace ATBM_PH1
 
 		private void btnPhanQuyen_Click(object sender, EventArgs e)
 		{
-			CapQuyen_CSDL main = new CapQuyen_CSDL();
-			main.Show();
+			PhanQuyen phanQuyen = new PhanQuyen();
+			phanQuyen.StartPosition = FormStartPosition.CenterScreen;
+			phanQuyen.Show();
 			this.Hide();
 		}
 
@@ -35,6 +36,13 @@ namespace ATBM_PH1
             this.Hide();
             newForm.Show();
 
+        }
+
+        private void Role_Click(object sender, EventArgs e)
+        {
+            Role role = new Role();
+            role.Show();
+            this.Hide();
         }
     }
 }

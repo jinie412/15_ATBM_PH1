@@ -28,7 +28,7 @@ namespace ATBM_PH1
                 MessageBox.Show("Tên role không được để trống.");
                 return;
             }
-            // Chuỗi kết nối
+
             string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
             using (var conn = new OracleConnection(connectionString))
             {
@@ -39,24 +39,34 @@ namespace ATBM_PH1
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        // Thêm tham số
                         cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
                         cmd.Parameters.Add("p_password", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(password) ? null : password;
                         cmd.Parameters.Add("p_error", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
 
-                        // Thực thi procedure
                         cmd.ExecuteNonQuery();
 
-                        // Kiểm tra lỗi
-                        string error = cmd.Parameters["p_error"].Value == null ? null : cmd.Parameters["p_error"].Value.ToString();
-                        if (!string.IsNullOrEmpty(error))
+                        string error = cmd.Parameters["p_error"].Value?.ToString();
+                        if (string.IsNullOrEmpty(error))
                         {
                             MessageBox.Show(error);
                             return;
                         }
 
                         MessageBox.Show($"Đã tạo role '{roleName}' thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close(); // Đóng form sau khi tạo thành công
+
+                        DialogResult result = MessageBox.Show("Bạn có muốn cấp quyền cho role này không?", "Cấp quyền", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            this.Hide();
+                            CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
+                            capQuyen.StartPosition = FormStartPosition.CenterScreen;
+                            capQuyen.Show();
+                            
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -64,9 +74,7 @@ namespace ATBM_PH1
                     MessageBox.Show($"Lỗi khi tạo role: {ex.Message}");
                 }
             }
-            this.Close(); // đóng form sau khi tạo thành công
         }
-
 
 
         private void label1_Click(object sender, EventArgs e)

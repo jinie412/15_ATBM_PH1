@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security.AntiXss;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using Oracle.ManagedDataAccess.Client;
@@ -20,7 +21,7 @@ namespace ATBM_PH1
         {
             InitializeComponent();
         }
-        private bool CheckUserOrRoleExists(string grantee)
+        private int CheckUserOrRoleExists(string grantee)
         {
             string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
             using (OracleConnection conn = new OracleConnection(connStr))
@@ -37,7 +38,7 @@ namespace ATBM_PH1
 
                 OracleDecimal oracleDec = (OracleDecimal)cmd.Parameters["p_exists"].Value;
                 int exists = oracleDec.ToInt32();
-                return exists == 1;
+                return exists;
             }
         }
         private void ClearDataGrids()
@@ -48,10 +49,24 @@ namespace ATBM_PH1
             if (colPrivs.DataSource != null)
                 ((DataTable)colPrivs.DataSource).Clear();
 
+            if (rolePrivs.DataSource != null)
+                ((DataTable)rolePrivs.DataSource).Clear();
         }
         private void LoadPrivileges()
         {
-            string grantee = MainClass.User;
+
+            string grantee = MainClass.Role;
+
+            //string grantee = "";
+            if (!string.IsNullOrWhiteSpace(MainClass.User) && string.IsNullOrWhiteSpace(MainClass.Role))
+            {
+                grantee = MainClass.User;
+            }
+            else
+            {
+                grantee = MainClass.Role;
+            }
+
             string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
 
             using (OracleConnection conn = new OracleConnection(connStr))
@@ -79,28 +94,60 @@ namespace ATBM_PH1
                 DataTable dtCol = new DataTable();
                 daCol.Fill(dtCol);
                 colPrivs.DataSource = dtCol;
+
+                // Load role của user
+                OracleCommand cmdRole = new OracleCommand("SP_XAC_DINH_ROLE_CHO_USER", conn);
+                cmdRole.CommandType = CommandType.StoredProcedure;
+                cmdRole.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+                cmdRole.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                OracleDataAdapter daRole = new OracleDataAdapter(cmdRole);
+                DataTable dtRole = new DataTable();
+                daRole.Fill(dtRole);
+                rolePrivs.DataSource = dtRole;
             }
         }
 
         private void txtGrantee_IconRightClick(object sender, EventArgs e)
         {
             string grantee = txtGrantee.Text.Trim();
-            MainClass.User = grantee;
+
+            MainClass.Role = grantee;
+
+
+
 
             if (string.IsNullOrWhiteSpace(grantee))
             {
                 ClearDataGrids();
+                lblSelected.Visible = false;
                 MessageBox.Show("Vui lòng nhập tên user hoặc role.");
                 return;
             }
-            if (!CheckUserOrRoleExists(grantee))
+            int res = CheckUserOrRoleExists(grantee);
+            if (res==0)
             {
                 ClearDataGrids();
+                lblSelected.Visible = false;
                 MessageBox.Show("User hoặc role không tồn tại trong hệ thống.");
                 return;
             }
             try
             {
+               
+                lblSelected.Visible = true;
+                if (res == 1)
+                {
+                    MainClass.User = grantee.ToUpper();
+                    MainClass.Role = "";    
+                    lblSelected.Text = "USER: " + MainClass.User;
+                }
+                else
+                {
+                    MainClass.Role = grantee.ToUpper();
+                    MainClass.User = "";
+                    lblSelected.Text = "ROLE: " + MainClass.Role;
+                }
                 LoadPrivileges();
             }
             catch (Exception ex)
@@ -112,7 +159,11 @@ namespace ATBM_PH1
 
         private void btnRevoke_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(MainClass.Role))
+
             if (string.IsNullOrWhiteSpace(MainClass.User))
+
             {
                 MessageBox.Show("Vui lòng nhập user hoặc role.");
                 return;
@@ -181,6 +232,29 @@ namespace ATBM_PH1
                         cmd.ExecuteNonQuery();
                     }
                 }
+
+                // 3. Thu hồi role
+                foreach (DataGridViewRow row in rolePrivs.Rows)
+                {
+
+                    bool isChecked = Convert.ToBoolean(row.Cells["checkRole"].Value);
+                    if (isChecked)
+                    {
+                        hasChecked = true;
+                        string grantee = row.Cells["roleGrantee"].Value.ToString();
+                        string role = row.Cells["dgvRole"].Value.ToString();
+                       
+
+                        OracleCommand cmd;
+                       
+                        cmd = new OracleCommand("SP_THU_HOI_ROLE", conn);
+                       
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+                        cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = role;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
                 if (!hasChecked)
                 {
                     MessageBox.Show("Vui lòng chọn ít nhất một quyền để thu hồi.");
@@ -210,6 +284,24 @@ namespace ATBM_PH1
                 bool current = Convert.ToBoolean(colPrivs.Rows[e.RowIndex].Cells["checkCol"].Value);
                 colPrivs.Rows[e.RowIndex].Cells["checkCol"].Value = !current;
             }
+        }
+
+        private void rolePrivs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == rolePrivs.Columns["checkRole"].Index && e.RowIndex >= 0)
+            {
+                // Chuyển đổi trạng thái checkbox khi click
+                bool current = Convert.ToBoolean(rolePrivs.Rows[e.RowIndex].Cells["checkRole"].Value);
+                rolePrivs.Rows[e.RowIndex].Cells["checkRole"].Value = !current;
+            }
+        }
+
+        private void btnGrant_Click(object sender, EventArgs e)
+        {
+            CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
+            capQuyen.StartPosition = FormStartPosition.CenterScreen;
+            capQuyen.Show();
+            this.Hide();
         }
     }
 }
