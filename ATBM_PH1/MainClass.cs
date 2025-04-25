@@ -20,37 +20,37 @@ namespace Sushi_Restaurant
         public static OracleConnection conn;
         public static string ConnectionString = "";
 
-        // ---------- [3] Load config từ file JSON ----------
-        public static void LoadFromJson(string path = "config.json")
-        {
-            if (!File.Exists(path))
-            {
-                MessageBox.Show("Không tìm thấy file cấu hình: config.json");
-                return;
-            }
+        //// ---------- [3] Load config từ file JSON ----------
+        //public static void LoadFromJson(string path = "config.json")
+        //{
+        //    if (!File.Exists(path))
+        //    {
+        //        MessageBox.Show("Không tìm thấy file cấu hình: config.json");
+        //        return;
+        //    }
 
-            var json = File.ReadAllText(path);
-            var config = JsonConvert.DeserializeObject<DbConfig>(json);
+        //    var json = File.ReadAllText(path);
+        //    var config = JsonConvert.DeserializeObject<DbConfig>(json);
 
-            CurrentUser.Username = config.username;
-            CurrentUser.Password = config.password;
+        //    CurrentUser.Username = config.username;
+        //    CurrentUser.Password = config.password;
 
-            // Nếu login bằng SYSDBA, bạn thêm " as sysdba" ở đây:
-            ConnectionString = $"User Id={config.username};Password={config.password};Data Source=localhost:1521/QLDULIEUNOIBO;";
-            conn = new OracleConnection(ConnectionString);
-        }
-        // ---------- [4] Kết nối đến Oracle ----------
-        public static void ConnectToOracle()
-        {
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể kết nối CSDL Oracle: " + ex.Message);
-            }
-        }
+        //    // Nếu login bằng SYSDBA, bạn thêm " as sysdba" ở đây:
+        //    ConnectionString = $"User Id={config.username};Password={config.password};Data Source=localhost:1521/QLDULIEUNOIBO;";
+        //    conn = new OracleConnection(ConnectionString);
+        //}
+        //// ---------- [4] Kết nối đến Oracle ----------
+        //public static void ConnectToOracle()
+        //{
+        //    try
+        //    {
+        //        conn.Open();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Không thể kết nối CSDL Oracle: " + ex.Message);
+        //    }
+        //}
         public static DataTable ExecuteQuery(string query)
         {
             DataTable dataTable = new DataTable();

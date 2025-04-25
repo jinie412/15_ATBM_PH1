@@ -39,16 +39,19 @@ namespace ATBM_PH1
         {
             try
             {
-                string query = @"
-            SELECT USERNAME
-            FROM DBA_USERS
-            WHERE ORACLE_MAINTAINED = 'N'
-              AND USERNAME NOT IN ('SYS', 'SYSTEM')
-              AND USERNAME NOT LIKE 'PDB_ADMIN'
-            ORDER BY USERNAME
-        ";
+                using (OracleCommand cmd = new OracleCommand("GetUserList", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                _cachedDataTable = MainClass.ExecuteQuery(query);
+                    using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
+                    {
+                        _cachedDataTable = new DataTable();
+                        adapter.Fill(_cachedDataTable);
+                    }
+                }
+
+                    //_cachedDataTable = MainClass.ExecuteQuery(query);
 
                 // Thêm cột STT vào datatable
                 _cachedDataTable.Columns.Add("STT", typeof(int));
@@ -177,14 +180,28 @@ namespace ATBM_PH1
                 return;
             }
 
-            // Ngắt kết nối các session của user trước khi xóa
-            KillUserSessions(username);
-
             try
             {
-                // Thực hiện câu lệnh xóa user
-                string query = $"DROP USER {username} CASCADE";
-                MainClass.ExecuteQuery(query);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                // Ngắt kết nối các session của user
+                using (OracleCommand killCmd = new OracleCommand("KillUserSessions", MainClass.conn))
+                {
+                    killCmd.CommandType = CommandType.StoredProcedure;
+                    killCmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                    killCmd.ExecuteNonQuery();
+                }
+
+                // Xóa user
+                using (OracleCommand dropCmd = new OracleCommand("DropUser", MainClass.conn))
+                {
+                    dropCmd.CommandType = CommandType.StoredProcedure;
+                    dropCmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                    dropCmd.ExecuteNonQuery();
+                }
 
                 // Thông báo thành công
                 MessageBox.Show($"User '{username}' đã được xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,33 +211,44 @@ namespace ATBM_PH1
                 // Thông báo lỗi nếu xóa không thành công
                 MessageBox.Show($"Lỗi khi xóa user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
+            }
         }
 
         private void KillUserSessions(string username)
         {
             try
             {
-                string query = $@"
-                SELECT SID, SERIAL# 
-                FROM V$SESSION 
-                WHERE USERNAME = '{username.ToUpper()}'";
-
-                DataTable sessions = MainClass.ExecuteQuery(query);
-
-                foreach (DataRow row in sessions.Rows)
+                if (MainClass.conn.State == ConnectionState.Closed)
                 {
-                    string sid = row["SID"].ToString();
-                    string serial = row["SERIAL#"].ToString();
+                    MainClass.conn.Open();
+                }
 
-                    string killQuery = $"ALTER SYSTEM KILL SESSION '{sid},{serial}' IMMEDIATE";
-                    MainClass.ExecuteQuery(killQuery);
+                using (OracleCommand cmd = new OracleCommand("KillUserSessions", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi ngắt kết nối user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
+            }
         }
+
 
         private CancellationTokenSource _searchCancellationTokenSource;
 

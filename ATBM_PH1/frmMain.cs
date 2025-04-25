@@ -37,5 +37,12 @@ namespace ATBM_PH1
             newForm.Show();
 
         }
+
+        private void Role_Click(object sender, EventArgs e)
+        {
+            Role role = new Role();
+            role.Show();
+            this.Hide();
+        }
     }
 }

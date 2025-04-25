@@ -47,19 +47,25 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
-                // Tạo user
+                // Gọi stored procedure để tạo user
                 try
                 {
-                    string createUserQuery = $"CREATE USER {username} IDENTIFIED BY {password}";
-                    MainClass.ExecuteQuery(createUserQuery);
+                    using (OracleCommand cmd = new OracleCommand("CreateUser", MainClass.conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                        cmd.Parameters.Add("p_password", OracleDbType.Varchar2).Value = password;
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 catch (OracleException ex)
                 {
-                    if (ex.Number == 1920)
+                    if (ex.Number == 1920) // ORA-01920: user already exists
                     {
                         MessageBox.Show($"User '{username}' đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (ex.Number == 1031)
+                    else if (ex.Number == 1031) // ORA-01031: insufficient privileges
                     {
                         MessageBox.Show("Tài khoản hiện tại không có quyền tạo user. Vui lòng kiểm tra quyền!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -68,15 +74,20 @@ namespace ATBM_PH1
                         MessageBox.Show($"Lỗi khi tạo user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    this.Close(); // Đóng form nếu tạo user thất bại
+                    this.Close();
                     return;
                 }
 
-                // Gán quyền cơ bản cho user
+                // Gọi stored procedure để gán quyền cơ bản
                 try
                 {
-                    string grantPrivilegesQuery = $"GRANT CREATE SESSION TO {username}";
-                    MainClass.ExecuteQuery(grantPrivilegesQuery);
+                    using (OracleCommand cmd = new OracleCommand("GrantBasicPrivileges", MainClass.conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -106,7 +117,7 @@ namespace ATBM_PH1
                 }
                 else
                 {
-                    this.Close(); // Đóng nếu không gán thêm quyền
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -122,8 +133,6 @@ namespace ATBM_PH1
                 }
             }
         }
-
-
 
         private void Username_TextChanged(object sender, EventArgs e)
         {
