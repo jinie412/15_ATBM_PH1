@@ -54,10 +54,10 @@ namespace ATBM_PH1
         }
         private void LoadPrivileges()
         {
-<<<<<<< HEAD
+
             string grantee = MainClass.Role;
-=======
-            string grantee = "";
+
+            //string grantee = "";
             if (!string.IsNullOrWhiteSpace(MainClass.User) && string.IsNullOrWhiteSpace(MainClass.Role))
             {
                 grantee = MainClass.User;
@@ -67,7 +67,6 @@ namespace ATBM_PH1
                 grantee = MainClass.Role;
             }
 
->>>>>>> fa227c77dc73eeeb3c576aef99a652bfb4913b71
             string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
 
             using (OracleConnection conn = new OracleConnection(connStr))
@@ -112,11 +111,11 @@ namespace ATBM_PH1
         private void txtGrantee_IconRightClick(object sender, EventArgs e)
         {
             string grantee = txtGrantee.Text.Trim();
-<<<<<<< HEAD
-            MainClass.Role = grantee;
-=======
 
->>>>>>> fa227c77dc73eeeb3c576aef99a652bfb4913b71
+            MainClass.Role = grantee;
+
+
+
 
             if (string.IsNullOrWhiteSpace(grantee))
             {
@@ -160,11 +159,11 @@ namespace ATBM_PH1
 
         private void btnRevoke_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             if (string.IsNullOrWhiteSpace(MainClass.Role))
-=======
+
             if (string.IsNullOrWhiteSpace(MainClass.User))
->>>>>>> fa227c77dc73eeeb3c576aef99a652bfb4913b71
+
             {
                 MessageBox.Show("Vui lòng nhập user hoặc role.");
                 return;
