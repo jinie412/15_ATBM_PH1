@@ -93,6 +93,26 @@ namespace ATBM_PH1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Bin {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Bin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Update {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Update", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoginDes {
             get {
                 object obj = ResourceManager.GetObject("LoginDes", resourceCulture);
@@ -136,6 +156,16 @@ namespace ATBM_PH1.Properties {
         internal static System.Drawing.Bitmap multiple_users_silhouette_black {
             get {
                 object obj = ResourceManager.GetObject("multiple-users-silhouette_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

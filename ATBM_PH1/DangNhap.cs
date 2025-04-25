@@ -24,16 +24,16 @@ namespace ATBM_PH1
             Application.Exit();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            string username = txtUser.Text.Trim();
-            string password = txtPass.Text.Trim();
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
+			string username = txtUser.Text.Trim();
+			string password = txtPass.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đăng nhập.");
-                return;
-            }
+			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+			{
+				MessageBox.Show("Vui lòng nhập đầy đủ thông tin đăng nhập.");
+				return;
+			}
 
             try
             {
@@ -46,8 +46,8 @@ namespace ATBM_PH1
                     connStr += "DBA Privilege=SYSDBA;";
                 }
 
-                OracleConnection conn = new OracleConnection(connStr);
-                conn.Open();
+				OracleConnection conn = new OracleConnection(connStr);
+				conn.Open();
 
                 // Nếu kết nối thành công, gán giá trị và chuyển form
                 MainClass.CurrentUser.Username = username;
@@ -64,9 +64,5 @@ namespace ATBM_PH1
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

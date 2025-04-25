@@ -116,18 +116,64 @@ namespace ATBM_PH1
             //dataGridViewRoles.Refresh();
         }
 
-        //private void btnEdit_Click(object sender, EventArgs e)
-        //{
-        //    if (dataGridViewRoles.SelectedRows.Count == 0)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn một Role để sửa.");
-        //        return;
-        //    }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRoles.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một Role để sửa.");
+                return;
+            }
 
-        //    string roleName = dataGridViewRoles.SelectedRows[0].Cells[0].Value.ToString();
-        //    MessageBox.Show($"Sửa role: {roleName}");
-        //    // Thêm logic để sửa role nếu cần
-        //}
+            string roleName = dataGridViewRoles.SelectedRows[0].Cells[0].Value.ToString();
+
+            // Hiển thị form nhập mật khẩu
+            using (UpdatePasswordForm passwordForm = new UpdatePasswordForm(roleName))
+            {
+                if (passwordForm.ShowDialog() != DialogResult.OK)
+                {
+                    return; // Người dùng nhấn Cancel
+                }
+
+                string newPassword = passwordForm.NewPassword;
+
+                // Gọi stored procedure để cập nhật mật khẩu
+                try
+                {
+                    string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
+                    using (OracleConnection conn = new OracleConnection(connectionString))
+                    {
+                        conn.Open();
+                        using (OracleCommand cmd = new OracleCommand("UPDATE_ROLE_PASSWORD", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            // Thêm các tham số cho stored procedure
+                            cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
+                            cmd.Parameters.Add("p_new_password", OracleDbType.Varchar2).Value = newPassword;
+                            cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
+
+                            // Thực thi stored procedure
+                            cmd.ExecuteNonQuery();
+
+                            // Lấy kết quả từ tham số output
+                            string result = cmd.Parameters["p_result"].Value.ToString();
+                            MessageBox.Show(result);
+
+                            // Nếu cập nhật thành công, làm mới DataGridView
+                            if (result.Contains("thành công"))
+                            {
+                                ShowManageRolesContent();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật mật khẩu: " + ex.Message);
+                }
+            }  
+            
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -167,10 +213,9 @@ namespace ATBM_PH1
                         else
                         {
                             MessageBox.Show($"Đã xoá role '{roleName}' thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
-                            ShowManageRolesContent(); // Tải lại danh sách role
+                             
                         }
-
+                        ShowManageRolesContent(); // Tải lại danh sách role
                     }
                 }
                 catch (Exception ex)
