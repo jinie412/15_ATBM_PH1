@@ -68,33 +68,34 @@ namespace ATBM_PH1
             checkedListBox2.BringToFront();
             checkedListBox2.Location = new Point(txtQuyen.Left, txtQuyen.Bottom);
         }
+		private void LoadTableNames()
+		{
+			try
+			{
+				OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
+				cmd.CommandType = CommandType.StoredProcedure;
 
-        private void LoadTableNames()
-        {
-            try
-            {
-                string sql = @"SELECT table_name FROM user_tables ORDER BY table_name";
+				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-                OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
-                OracleDataReader reader = cmd.ExecuteReader();
+				OracleDataReader reader = cmd.ExecuteReader();
 
-                cbBang.Items.Clear();
+				cbBang.Items.Clear();
 
-                while (reader.Read())
-                {
-                    string tableName = reader.GetString(0);
-                    cbBang.Items.Add(tableName);
-                }
+				while (reader.Read())
+				{
+					string tableName = reader.GetString(0);
+					cbBang.Items.Add(tableName);
+				}
 
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load danh sách bảng:\n" + ex.Message);
-            }
-        }
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi load danh sách bảng:\n" + ex.Message);
+			}
+		}
 
-        private void HandleItemCheck(CheckedListBox listBox, ItemCheckEventArgs e, Control targetTextBox, string defaultText)
+		private void HandleItemCheck(CheckedListBox listBox, ItemCheckEventArgs e, Control targetTextBox, string defaultText)
         {
             List<string> selected = new List<string>();
             foreach (var item in listBox.CheckedItems)
@@ -171,44 +172,62 @@ namespace ATBM_PH1
             }
         }
 
-        private void LoadColumnsToChecklist(string tableName, CheckedListBox listBox)
-        {
-            string sql = @"
-        SELECT COLUMN_NAME 
-        FROM USER_TAB_COLUMNS 
-        WHERE TABLE_NAME = :tableName";
+		private void LoadColumnsToChecklist(string tableName, CheckedListBox listBox)
+		{
+			listBox.Items.Clear();
 
-            using (OracleCommand cmd = new OracleCommand(sql, MainClass.conn))
-            {
-                cmd.Parameters.Add(":tableName", tableName.ToUpper());
+			try
+			{
+				using (OracleCommand cmd = new OracleCommand("get_columns_by_table", MainClass.conn))
+				{
+					cmd.CommandType = CommandType.StoredProcedure;
 
-                using (OracleDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        listBox.Items.Add(reader.GetString(0), false);
-                    }
-                }
-            }
-        }
+					cmd.Parameters.Add("p_table_name", OracleDbType.Varchar2).Value = tableName;
+					cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-        void LoadViewsToChecklistBox()
-        {
-            string sql = @"SELECT VIEW_NAME FROM USER_VIEWS ORDER BY VIEW_NAME";
+					using (OracleDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							listBox.Items.Add(reader.GetString(0), false);
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi load danh sách cột:\n" + ex.Message);
+			}
+		}
 
-            OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
-            OracleDataReader reader = cmd.ExecuteReader();
+		void LoadViewsToChecklistBox()
+		{
+			try
+			{
+				OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
+				cmd.CommandType = CommandType.StoredProcedure;
 
-            while (reader.Read())
-            {
-                string tableName = reader.GetString(0);
-                checkedListBox4.Items.Add(tableName);
-            }
+				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-            reader.Close();
-        }
+				OracleDataReader reader = cmd.ExecuteReader();
 
-        private void checkedListBox4_ItemCheck(object sender, ItemCheckEventArgs e)
+				checkedListBox4.Items.Clear();
+
+				while (reader.Read())
+				{
+					string viewName = reader.GetString(0);
+					checkedListBox4.Items.Add(viewName);
+				}
+
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi load danh sách view:\n" + ex.Message);
+			}
+		}
+
+		private void checkedListBox4_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox4, e, txtView, "Chưa chọn view nào");
         }
@@ -220,26 +239,34 @@ namespace ATBM_PH1
             checkedListBox4.Location = new Point(txtView.Left, txtView.Bottom);
         }
 
-        void LoadFunctionsToChecklistBox()
-        {
-            string sql = @"SELECT OBJECT_NAME 
-               FROM USER_PROCEDURES 
-               WHERE OBJECT_TYPE = 'FUNCTION' 
-               ORDER BY OBJECT_NAME";
+		void LoadFunctionsToChecklistBox()
+		{
+			try
+			{
+				OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
+				cmd.CommandType = CommandType.StoredProcedure;
 
-            OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
-            OracleDataReader reader = cmd.ExecuteReader();
+				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-            while (reader.Read())
-            {
-                string tableName = reader.GetString(0);
-                checkedListBox5.Items.Add(tableName);
-            }
+				OracleDataReader reader = cmd.ExecuteReader();
 
-            reader.Close();
-        }
+				checkedListBox5.Items.Clear();
 
-        private void checkedListBox5_ItemCheck(object sender, ItemCheckEventArgs e)
+				while (reader.Read())
+				{
+					string functionName = reader.GetString(0);
+					checkedListBox5.Items.Add(functionName);
+				}
+
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi load danh sách function:\n" + ex.Message);
+			}
+		}
+
+		private void checkedListBox5_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox5, e, txtf, "Chưa chọn function nào");
         }
@@ -258,56 +285,65 @@ namespace ATBM_PH1
             checkedListBox6.Location = new Point(txtproc.Left, txtproc.Bottom);
         }
 
-        void LoadProcsToChecklistBox()
-        {
-            string sql = @"SELECT OBJECT_NAME 
-               FROM USER_PROCEDURES 
-               WHERE OBJECT_TYPE = 'PROCEDURE' 
-               ORDER BY OBJECT_NAME";
+		void LoadProcsToChecklistBox()
+		{
+			try
+			{
+				OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
+				cmd.CommandType = CommandType.StoredProcedure;
 
+				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-            OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
-            OracleDataReader reader = cmd.ExecuteReader();
+				OracleDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                string tableName = reader.GetString(0);
-                checkedListBox6.Items.Add(tableName);
-            }
+				checkedListBox6.Items.Clear();
 
-            reader.Close();
-        }
+				while (reader.Read())
+				{
+					string procName = reader.GetString(0);
+					checkedListBox6.Items.Add(procName);
+				}
 
-        private void checkedListBox6_ItemCheck(object sender, ItemCheckEventArgs e)
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi load danh sách procedure:\n" + ex.Message);
+			}
+		}
+
+		private void checkedListBox6_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox6, e, txtproc, "Chưa chọn procedure nào");
         }
 
-        private void LoadRolesToComboBox()
-        {
-            try
-            {
-                string sql = "SELECT role FROM dba_roles WHERE oracle_maintained = 'N' ORDER BY role";
-                using (OracleCommand cmd = new OracleCommand(sql, MainClass.conn))
-                {
-                    using (OracleDataReader reader = cmd.ExecuteReader())
-                    {
-                        cbCaprole.Items.Clear();
+		private void LoadRolesToComboBox()
+		{
+			try
+			{
+				OracleCommand cmd = new OracleCommand("get_custom_roles", MainClass.conn);
+				cmd.CommandType = CommandType.StoredProcedure;
 
-                        while (reader.Read())
-                        {
-                            string roleName = reader.GetString(0);
-                            cbCaprole.Items.Add(roleName);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể tải danh sách roles:\n" + ex.Message);
-            }
-        }
-        private void txtQuyen_Click(object sender, EventArgs e)
+				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+				using (OracleDataReader reader = cmd.ExecuteReader())
+				{
+					cbCaprole.Items.Clear();
+
+					while (reader.Read())
+					{
+						string roleName = reader.GetString(0);
+						cbCaprole.Items.Add(roleName);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Không thể tải danh sách roles:\n" + ex.Message);
+			}
+		}
+
+		private void txtQuyen_Click(object sender, EventArgs e)
         {
             // Khi người dùng nhấn vào textbox, sẽ hiện ra checklistbox tương ứng
             checkedListBox2.Visible = !checkedListBox2.Visible;

@@ -28,273 +28,273 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lbSelect = new System.Windows.Forms.Label();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCapQuyen = new Guna.UI2.WinForms.Guna2Button();
-            this.checkbwgo = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbCaprole = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtCapRole = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnDropDown = new Guna.UI2.WinForms.Guna2Button();
-            this.txtQuyen = new Guna.UI2.WinForms.Guna2TextBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.cbBang = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lbchuy = new System.Windows.Forms.Label();
-            this.btnView = new Guna.UI2.WinForms.Guna2Button();
-            this.txtView = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnFunction = new Guna.UI2.WinForms.Guna2Button();
-            this.txtf = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnproc = new Guna.UI2.WinForms.Guna2Button();
-            this.txtproc = new Guna.UI2.WinForms.Guna2TextBox();
-            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
-            this.lbuser = new System.Windows.Forms.Label();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2Panel2.Controls.Add(this.label6);
-            this.guna2Panel2.Controls.Add(this.lbSelect);
-            this.guna2Panel2.Controls.Add(this.checkedListBox3);
-            this.guna2Panel2.Controls.Add(this.checkedListBox1);
-            this.guna2Panel2.Location = new System.Drawing.Point(570, 111);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(213, 373);
-            this.guna2Panel2.TabIndex = 33;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(0, 192);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(213, 23);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "UPDATE trên thuộc tính";
-            // 
-            // lbSelect
-            // 
-            this.lbSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSelect.Location = new System.Drawing.Point(0, 0);
-            this.lbSelect.Name = "lbSelect";
-            this.lbSelect.Size = new System.Drawing.Size(213, 23);
-            this.lbSelect.TabIndex = 3;
-            this.lbSelect.Text = "SELECT trên thuộc tính";
-            // 
-            // checkedListBox3
-            // 
-            this.checkedListBox3.AllowDrop = true;
-            this.checkedListBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Location = new System.Drawing.Point(0, 218);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(210, 154);
-            this.checkedListBox3.TabIndex = 2;
-            this.checkedListBox3.Visible = false;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.AllowDrop = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(0, 26);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(210, 154);
-            this.checkedListBox1.TabIndex = 0;
-            this.checkedListBox1.Visible = false;
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnHuy.BorderColor = System.Drawing.Color.DimGray;
-            this.btnHuy.BorderRadius = 5;
-            this.btnHuy.BorderThickness = 2;
-            this.btnHuy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHuy.FillColor = System.Drawing.Color.Gainsboro;
-            this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.ForeColor = System.Drawing.Color.Black;
-            this.btnHuy.Location = new System.Drawing.Point(466, 614);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(150, 40);
-            this.btnHuy.TabIndex = 32;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnCapQuyen
-            // 
-            this.btnCapQuyen.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCapQuyen.BorderColor = System.Drawing.Color.DimGray;
-            this.btnCapQuyen.BorderRadius = 5;
-            this.btnCapQuyen.BorderThickness = 2;
-            this.btnCapQuyen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCapQuyen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCapQuyen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCapQuyen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCapQuyen.FillColor = System.Drawing.Color.Gainsboro;
-            this.btnCapQuyen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapQuyen.ForeColor = System.Drawing.Color.Black;
-            this.btnCapQuyen.Location = new System.Drawing.Point(126, 614);
-            this.btnCapQuyen.Name = "btnCapQuyen";
-            this.btnCapQuyen.Size = new System.Drawing.Size(150, 40);
-            this.btnCapQuyen.TabIndex = 31;
-            this.btnCapQuyen.Text = "Cấp quyền";
-            this.btnCapQuyen.Click += new System.EventHandler(this.btnCapQuyen_Click);
-            // 
-            // checkbwgo
-            // 
-            this.checkbwgo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbwgo.Location = new System.Drawing.Point(246, 557);
-            this.checkbwgo.Name = "checkbwgo";
-            this.checkbwgo.Size = new System.Drawing.Size(232, 30);
-            this.checkbwgo.TabIndex = 30;
-            this.checkbwgo.Text = "With grant option";
-            this.checkbwgo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkbwgo.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 490);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(176, 28);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Stored procedure";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 412);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 28);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Function";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 343);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 28);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "View";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 269);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 28);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Bảng";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 192);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 28);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Quyền";
-            // 
-            // cbCaprole
-            // 
-            this.cbCaprole.BackColor = System.Drawing.Color.Transparent;
-            this.cbCaprole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCaprole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCaprole.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCaprole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCaprole.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCaprole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbCaprole.ItemHeight = 30;
-            this.cbCaprole.Location = new System.Drawing.Point(219, 111);
-            this.cbCaprole.Name = "cbCaprole";
-            this.cbCaprole.Size = new System.Drawing.Size(300, 36);
-            this.cbCaprole.TabIndex = 19;
-            // 
-            // txtCapRole
-            // 
-            this.txtCapRole.AutoSize = true;
-            this.txtCapRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCapRole.Location = new System.Drawing.Point(21, 111);
-            this.txtCapRole.Name = "txtCapRole";
-            this.txtCapRole.Size = new System.Drawing.Size(176, 28);
-            this.txtCapRole.TabIndex = 18;
-            this.txtCapRole.Text = "Cấp role cho user";
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.guna2Panel1.Controls.Add(this.lbuser);
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(802, 56);
-            this.guna2Panel1.TabIndex = 35;
-            // 
-            // btnDropDown
-            // 
-            this.btnDropDown.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.btnDropDown.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDropDown.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDropDown.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDropDown.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDropDown.FillColor = System.Drawing.Color.White;
-            this.btnDropDown.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDropDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.btnDropDown.Location = new System.Drawing.Point(483, 184);
-            this.btnDropDown.Name = "btnDropDown";
-            this.btnDropDown.Size = new System.Drawing.Size(36, 36);
-            this.btnDropDown.TabIndex = 37;
-            this.btnDropDown.Text = "▼";
-            this.btnDropDown.Click += new System.EventHandler(this.btnDropDown_Click);
-            // 
-            // txtQuyen
-            // 
-            this.txtQuyen.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtQuyen.DefaultText = "";
-            this.txtQuyen.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtQuyen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtQuyen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtQuyen.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtQuyen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQuyen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuyen.ForeColor = System.Drawing.Color.Black;
-            this.txtQuyen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQuyen.Location = new System.Drawing.Point(219, 184);
-            this.txtQuyen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtQuyen.Name = "txtQuyen";
-            this.txtQuyen.PlaceholderText = "";
-            this.txtQuyen.ReadOnly = true;
-            this.txtQuyen.SelectedText = "";
-            this.txtQuyen.Size = new System.Drawing.Size(300, 36);
-            this.txtQuyen.TabIndex = 36;
-            this.txtQuyen.Click += new System.EventHandler(this.txtQuyen_Click);
-            // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.AllowDrop = true;
-            this.checkedListBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
+			this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+			this.label6 = new System.Windows.Forms.Label();
+			this.lbSelect = new System.Windows.Forms.Label();
+			this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
+			this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+			this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
+			this.btnCapQuyen = new Guna.UI2.WinForms.Guna2Button();
+			this.checkbwgo = new System.Windows.Forms.CheckBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.cbCaprole = new Guna.UI2.WinForms.Guna2ComboBox();
+			this.txtCapRole = new System.Windows.Forms.Label();
+			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.btnDropDown = new Guna.UI2.WinForms.Guna2Button();
+			this.txtQuyen = new Guna.UI2.WinForms.Guna2TextBox();
+			this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+			this.cbBang = new Guna.UI2.WinForms.Guna2ComboBox();
+			this.lbchuy = new System.Windows.Forms.Label();
+			this.btnView = new Guna.UI2.WinForms.Guna2Button();
+			this.txtView = new Guna.UI2.WinForms.Guna2TextBox();
+			this.btnFunction = new Guna.UI2.WinForms.Guna2Button();
+			this.txtf = new Guna.UI2.WinForms.Guna2TextBox();
+			this.btnproc = new Guna.UI2.WinForms.Guna2Button();
+			this.txtproc = new Guna.UI2.WinForms.Guna2TextBox();
+			this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
+			this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
+			this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
+			this.lbuser = new System.Windows.Forms.Label();
+			this.guna2Panel2.SuspendLayout();
+			this.guna2Panel1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// guna2Panel2
+			// 
+			this.guna2Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.guna2Panel2.Controls.Add(this.label6);
+			this.guna2Panel2.Controls.Add(this.lbSelect);
+			this.guna2Panel2.Controls.Add(this.checkedListBox3);
+			this.guna2Panel2.Controls.Add(this.checkedListBox1);
+			this.guna2Panel2.Location = new System.Drawing.Point(570, 111);
+			this.guna2Panel2.Name = "guna2Panel2";
+			this.guna2Panel2.Size = new System.Drawing.Size(213, 373);
+			this.guna2Panel2.TabIndex = 33;
+			// 
+			// label6
+			// 
+			this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Location = new System.Drawing.Point(0, 192);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(213, 23);
+			this.label6.TabIndex = 4;
+			this.label6.Text = "UPDATE trên thuộc tính";
+			// 
+			// lbSelect
+			// 
+			this.lbSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbSelect.Location = new System.Drawing.Point(0, 0);
+			this.lbSelect.Name = "lbSelect";
+			this.lbSelect.Size = new System.Drawing.Size(213, 23);
+			this.lbSelect.TabIndex = 3;
+			this.lbSelect.Text = "SELECT trên thuộc tính";
+			// 
+			// checkedListBox3
+			// 
+			this.checkedListBox3.AllowDrop = true;
+			this.checkedListBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkedListBox3.FormattingEnabled = true;
+			this.checkedListBox3.Location = new System.Drawing.Point(0, 218);
+			this.checkedListBox3.Name = "checkedListBox3";
+			this.checkedListBox3.Size = new System.Drawing.Size(210, 154);
+			this.checkedListBox3.TabIndex = 2;
+			this.checkedListBox3.Visible = false;
+			// 
+			// checkedListBox1
+			// 
+			this.checkedListBox1.AllowDrop = true;
+			this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkedListBox1.FormattingEnabled = true;
+			this.checkedListBox1.Location = new System.Drawing.Point(0, 26);
+			this.checkedListBox1.Name = "checkedListBox1";
+			this.checkedListBox1.Size = new System.Drawing.Size(210, 154);
+			this.checkedListBox1.TabIndex = 0;
+			this.checkedListBox1.Visible = false;
+			// 
+			// btnHuy
+			// 
+			this.btnHuy.BackColor = System.Drawing.SystemColors.ControlLight;
+			this.btnHuy.BorderColor = System.Drawing.Color.DimGray;
+			this.btnHuy.BorderRadius = 5;
+			this.btnHuy.BorderThickness = 2;
+			this.btnHuy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnHuy.FillColor = System.Drawing.Color.Gainsboro;
+			this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnHuy.ForeColor = System.Drawing.Color.Black;
+			this.btnHuy.Location = new System.Drawing.Point(466, 614);
+			this.btnHuy.Name = "btnHuy";
+			this.btnHuy.Size = new System.Drawing.Size(150, 40);
+			this.btnHuy.TabIndex = 32;
+			this.btnHuy.Text = "Hủy";
+			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+			// 
+			// btnCapQuyen
+			// 
+			this.btnCapQuyen.BackColor = System.Drawing.SystemColors.ControlLight;
+			this.btnCapQuyen.BorderColor = System.Drawing.Color.DimGray;
+			this.btnCapQuyen.BorderRadius = 5;
+			this.btnCapQuyen.BorderThickness = 2;
+			this.btnCapQuyen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnCapQuyen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnCapQuyen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnCapQuyen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnCapQuyen.FillColor = System.Drawing.Color.Gainsboro;
+			this.btnCapQuyen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnCapQuyen.ForeColor = System.Drawing.Color.Black;
+			this.btnCapQuyen.Location = new System.Drawing.Point(126, 614);
+			this.btnCapQuyen.Name = "btnCapQuyen";
+			this.btnCapQuyen.Size = new System.Drawing.Size(150, 40);
+			this.btnCapQuyen.TabIndex = 31;
+			this.btnCapQuyen.Text = "Cấp quyền";
+			this.btnCapQuyen.Click += new System.EventHandler(this.btnCapQuyen_Click);
+			// 
+			// checkbwgo
+			// 
+			this.checkbwgo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkbwgo.Location = new System.Drawing.Point(246, 557);
+			this.checkbwgo.Name = "checkbwgo";
+			this.checkbwgo.Size = new System.Drawing.Size(232, 30);
+			this.checkbwgo.TabIndex = 30;
+			this.checkbwgo.Text = "With grant option";
+			this.checkbwgo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.checkbwgo.UseVisualStyleBackColor = true;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Location = new System.Drawing.Point(21, 490);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(176, 28);
+			this.label5.TabIndex = 28;
+			this.label5.Text = "Stored procedure";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(21, 412);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(94, 28);
+			this.label4.TabIndex = 26;
+			this.label4.Text = "Function";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(21, 343);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(58, 28);
+			this.label3.TabIndex = 24;
+			this.label3.Text = "View";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(21, 269);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(60, 28);
+			this.label2.TabIndex = 22;
+			this.label2.Text = "Bảng";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(21, 192);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(73, 28);
+			this.label1.TabIndex = 20;
+			this.label1.Text = "Quyền";
+			// 
+			// cbCaprole
+			// 
+			this.cbCaprole.BackColor = System.Drawing.Color.Transparent;
+			this.cbCaprole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.cbCaprole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbCaprole.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbCaprole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbCaprole.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbCaprole.ForeColor = System.Drawing.Color.Black;
+			this.cbCaprole.ItemHeight = 30;
+			this.cbCaprole.Location = new System.Drawing.Point(219, 111);
+			this.cbCaprole.Name = "cbCaprole";
+			this.cbCaprole.Size = new System.Drawing.Size(300, 36);
+			this.cbCaprole.TabIndex = 19;
+			// 
+			// txtCapRole
+			// 
+			this.txtCapRole.AutoSize = true;
+			this.txtCapRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtCapRole.Location = new System.Drawing.Point(21, 111);
+			this.txtCapRole.Name = "txtCapRole";
+			this.txtCapRole.Size = new System.Drawing.Size(176, 28);
+			this.txtCapRole.TabIndex = 18;
+			this.txtCapRole.Text = "Cấp role cho user";
+			// 
+			// guna2Panel1
+			// 
+			this.guna2Panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.guna2Panel1.Controls.Add(this.lbuser);
+			this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+			this.guna2Panel1.Name = "guna2Panel1";
+			this.guna2Panel1.Size = new System.Drawing.Size(802, 56);
+			this.guna2Panel1.TabIndex = 35;
+			// 
+			// btnDropDown
+			// 
+			this.btnDropDown.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+			this.btnDropDown.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnDropDown.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnDropDown.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnDropDown.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnDropDown.FillColor = System.Drawing.Color.White;
+			this.btnDropDown.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDropDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+			this.btnDropDown.Location = new System.Drawing.Point(483, 184);
+			this.btnDropDown.Name = "btnDropDown";
+			this.btnDropDown.Size = new System.Drawing.Size(36, 36);
+			this.btnDropDown.TabIndex = 37;
+			this.btnDropDown.Text = "▼";
+			this.btnDropDown.Click += new System.EventHandler(this.btnDropDown_Click);
+			// 
+			// txtQuyen
+			// 
+			this.txtQuyen.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.txtQuyen.DefaultText = "";
+			this.txtQuyen.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.txtQuyen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.txtQuyen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.txtQuyen.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.txtQuyen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.txtQuyen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtQuyen.ForeColor = System.Drawing.Color.Black;
+			this.txtQuyen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.txtQuyen.Location = new System.Drawing.Point(219, 184);
+			this.txtQuyen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.txtQuyen.Name = "txtQuyen";
+			this.txtQuyen.PlaceholderText = "";
+			this.txtQuyen.ReadOnly = true;
+			this.txtQuyen.SelectedText = "";
+			this.txtQuyen.Size = new System.Drawing.Size(300, 36);
+			this.txtQuyen.TabIndex = 36;
+			this.txtQuyen.Click += new System.EventHandler(this.txtQuyen_Click);
+			// 
+			// checkedListBox2
+			// 
+			this.checkedListBox2.AllowDrop = true;
+			this.checkedListBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkedListBox2.FormattingEnabled = true;
+			this.checkedListBox2.Items.AddRange(new object[] {
             "SELECT",
             "INSERT",
             "UPDATE",
@@ -478,6 +478,16 @@
 			this.checkedListBox6.TabIndex = 49;
 			this.checkedListBox6.Visible = false;
 			// 
+			// lbuser
+			// 
+			this.lbuser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbuser.Location = new System.Drawing.Point(12, 9);
+			this.lbuser.Name = "lbuser";
+			this.lbuser.Size = new System.Drawing.Size(368, 35);
+			this.lbuser.TabIndex = 0;
+			this.lbuser.Text = "label7";
+			this.lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// CapQuyen_CSDL
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -513,6 +523,7 @@
 			this.Name = "CapQuyen_CSDL";
 			this.Text = "Cấp Quyền";
 			this.guna2Panel2.ResumeLayout(false);
+			this.guna2Panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -549,5 +560,6 @@
 		private System.Windows.Forms.CheckedListBox checkedListBox4;
 		private System.Windows.Forms.CheckedListBox checkedListBox5;
 		private System.Windows.Forms.CheckedListBox checkedListBox6;
+		private System.Windows.Forms.Label lbuser;
 	}
 }
