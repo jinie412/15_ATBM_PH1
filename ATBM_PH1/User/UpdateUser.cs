@@ -81,9 +81,14 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
-                // Câu lệnh ALTER USER để cập nhật mật khẩu
-                string alterUserQuery = $"ALTER USER {username} IDENTIFIED BY \"{newPassword}\"";
-                MainClass.ExecuteQuery(alterUserQuery);
+                using (OracleCommand cmd = new OracleCommand("UpdateUserPassword", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                    cmd.Parameters.Add("p_new_password", OracleDbType.Varchar2).Value = newPassword;
+
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -98,6 +103,7 @@ namespace ATBM_PH1
             }
         }
 
+
         private void LockUserAccount(string username)
         {
             try
@@ -107,9 +113,13 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
-                // Câu lệnh ALTER USER để khóa tài khoản
-                string lockQuery = $"ALTER USER {username} ACCOUNT LOCK";
-                MainClass.ExecuteQuery(lockQuery);
+                using (OracleCommand cmd = new OracleCommand("LockUserAccount", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -124,6 +134,7 @@ namespace ATBM_PH1
             }
         }
 
+
         private void UnlockUserAccount(string username)
         {
             try
@@ -133,9 +144,13 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
-                // Câu lệnh ALTER USER để mở khóa tài khoản
-                string unlockQuery = $"ALTER USER {username} ACCOUNT UNLOCK";
-                MainClass.ExecuteQuery(unlockQuery);
+                using (OracleCommand cmd = new OracleCommand("UnlockUserAccount", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -149,6 +164,7 @@ namespace ATBM_PH1
                 }
             }
         }
+
 
         private void BtnExit_Click_1(object sender, EventArgs e)
         {
@@ -177,11 +193,20 @@ namespace ATBM_PH1
         {
             try
             {
-                string query = $"SELECT ACCOUNT_STATUS FROM DBA_USERS WHERE USERNAME = '{username}'";
-                DataTable result = MainClass.ExecuteQuery(query);
-                if (result.Rows.Count > 0)
+                if (MainClass.conn.State == ConnectionState.Closed)
                 {
-                    string status = result.Rows[0]["ACCOUNT_STATUS"].ToString();
+                    MainClass.conn.Open();
+                }
+
+                using (OracleCommand cmd = new OracleCommand("GetUserStatus", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+                    cmd.Parameters.Add("p_status", OracleDbType.Varchar2, 50).Direction = ParameterDirection.Output;
+
+                    cmd.ExecuteNonQuery();
+
+                    string status = cmd.Parameters["p_status"].Value.ToString();
                     if (status.Contains("LOCKED"))
                     {
                         CheckLock.Checked = true;
@@ -197,6 +222,13 @@ namespace ATBM_PH1
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi kiểm tra trạng thái tài khoản: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                {
+                    MainClass.conn.Close();
+                }
             }
         }
     }
