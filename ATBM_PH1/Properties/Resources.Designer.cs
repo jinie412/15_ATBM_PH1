@@ -93,6 +93,16 @@ namespace ATBM_PH1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap grant {
+            get {
+                object obj = ResourceManager.GetObject("grant", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Bin {
             get {
                 object obj = ResourceManager.GetObject("Icon_Bin", resourceCulture);

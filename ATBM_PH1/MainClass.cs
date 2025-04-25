@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using Newtonsoft.Json;
 using System.Data;
+using ATBM_PH1;
 
 namespace Sushi_Restaurant
 {
@@ -20,74 +21,36 @@ namespace Sushi_Restaurant
         public static OracleConnection conn;
         public static string ConnectionString = "";
 
-        //// ---------- [3] Load config từ file JSON ----------
-        //public static void LoadFromJson(string path = "config.json")
-        //{
-        //    if (!File.Exists(path))
-        //    {
-        //        MessageBox.Show("Không tìm thấy file cấu hình: config.json");
-        //        return;
-        //    }
-
-        //    var json = File.ReadAllText(path);
-        //    var config = JsonConvert.DeserializeObject<DbConfig>(json);
-
-        //    CurrentUser.Username = config.username;
-        //    CurrentUser.Password = config.password;
-
-        //    // Nếu login bằng SYSDBA, bạn thêm " as sysdba" ở đây:
-        //    ConnectionString = $"User Id={config.username};Password={config.password};Data Source=localhost:1521/QLDULIEUNOIBO;";
-        //    conn = new OracleConnection(ConnectionString);
-        //}
-        //// ---------- [4] Kết nối đến Oracle ----------
-        //public static void ConnectToOracle()
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Không thể kết nối CSDL Oracle: " + ex.Message);
-        //    }
-        //}
-        public static DataTable ExecuteQuery(string query)
+        // ---------- [3] Hàm làm mờ nền ----------
+        public static void BlurBackground(Form model)
         {
-            DataTable dataTable = new DataTable();
-
-            try
+            // Giả sử frmMain.Instance là form chính bạn muốn làm mờ
+            Form background = new Form
             {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
+                StartPosition = FormStartPosition.Manual,
+                FormBorderStyle = FormBorderStyle.None,
+                Opacity = 0.5d,
+                BackColor = Color.Black,
+                Size = frmMain.Instance.Size,
+                Location = frmMain.Instance.Location,
+                ShowInTaskbar = false
+            };
 
-                using (OracleCommand command = new OracleCommand(query, conn))
-                {
-                    using (OracleDataAdapter adapter = new OracleDataAdapter(command))
-                    {
-                        adapter.Fill(dataTable);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi thực thi câu lệnh SQL: " + ex.Message);
-                throw;
-            }
+            // Hiển thị form nền mờ
+            background.Show();
 
-            return dataTable;
-        }
+            // Đặt form model là con của form nền (mục đích để show chồng lên đúng vị trí)
+            model.Owner = background;
 
-        // ---------- [6] Cấu trúc file config ----------
-        private class DbConfig
-        {
-            public string username { get; set; }
-            public string password { get; set; }
+            // Hiển thị form nhập liệu (không bị che)
+            model.ShowDialog();
+
+            // Khi form model đóng thì dọn form nền mờ
+            background.Dispose();
         }
     }
 
-    // ---------- [7] Thông tin người dùng đăng nhập ----------
+    // ---------- [4] Thông tin người dùng đăng nhập ----------
     public class User
     {
         public string Username { get; set; }      // Tài khoản đăng nhập vào app

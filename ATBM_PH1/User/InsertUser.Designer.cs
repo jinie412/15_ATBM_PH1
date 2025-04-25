@@ -50,23 +50,22 @@
             this.Username.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Username.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Username.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Username.Location = new System.Drawing.Point(75, 148);
+            this.Username.Location = new System.Drawing.Point(61, 148);
             this.Username.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Username.Name = "Username";
             this.Username.PlaceholderText = "";
             this.Username.SelectedText = "";
-            this.Username.Size = new System.Drawing.Size(229, 48);
+            this.Username.Size = new System.Drawing.Size(243, 48);
             this.Username.TabIndex = 2;
-            this.Username.TextChanged += new System.EventHandler(this.Username_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 28);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(77, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 54);
+            this.label1.Size = new System.Drawing.Size(215, 62);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tạo user";
             // 
@@ -74,13 +73,13 @@
             // 
             this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2CustomGradientPanel1.Controls.Add(this.label1);
-            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(-15, -8);
+            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(-2, 0);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(450, 97);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(385, 89);
             this.guna2CustomGradientPanel1.TabIndex = 4;
             // 
             // Password
@@ -94,32 +93,31 @@
             this.Password.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Password.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Password.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Password.Location = new System.Drawing.Point(75, 237);
+            this.Password.Location = new System.Drawing.Point(61, 253);
             this.Password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Password.Name = "Password";
             this.Password.PlaceholderText = "";
             this.Password.SelectedText = "";
-            this.Password.Size = new System.Drawing.Size(229, 48);
+            this.Password.Size = new System.Drawing.Size(243, 48);
             this.Password.TabIndex = 2;
-            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(70, 119);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(56, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.Size = new System.Drawing.Size(103, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "Tài khoản";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(70, 208);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(57, 221);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 25);
+            this.label3.Size = new System.Drawing.Size(102, 28);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mật khẩu";
             // 
@@ -131,11 +129,11 @@
             this.Insert_User_Button.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.Insert_User_Button.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.Insert_User_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
-            this.Insert_User_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.Insert_User_Button.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Insert_User_Button.ForeColor = System.Drawing.Color.White;
-            this.Insert_User_Button.Location = new System.Drawing.Point(9, 314);
+            this.Insert_User_Button.Location = new System.Drawing.Point(31, 344);
             this.Insert_User_Button.Name = "Insert_User_Button";
-            this.Insert_User_Button.Size = new System.Drawing.Size(162, 45);
+            this.Insert_User_Button.Size = new System.Drawing.Size(127, 45);
             this.Insert_User_Button.TabIndex = 6;
             this.Insert_User_Button.Text = "Tạo";
             this.Insert_User_Button.UseWaitCursor = true;
@@ -149,11 +147,11 @@
             this.BtnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.BtnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnExit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
-            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExit.ForeColor = System.Drawing.Color.White;
-            this.BtnExit.Location = new System.Drawing.Point(198, 314);
+            this.BtnExit.Location = new System.Drawing.Point(199, 344);
             this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(170, 45);
+            this.BtnExit.Size = new System.Drawing.Size(128, 45);
             this.BtnExit.TabIndex = 6;
             this.BtnExit.Text = "Thoát";
             this.BtnExit.UseWaitCursor = true;
@@ -164,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(380, 450);
+            this.ClientSize = new System.Drawing.Size(380, 443);
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.Insert_User_Button);
             this.Controls.Add(this.label3);

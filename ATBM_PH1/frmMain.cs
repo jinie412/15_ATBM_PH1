@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sushi_Restaurant;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace ATBM_PH1
 {
     public partial class frmMain : Form
     {
+        public static frmMain Instance { get; private set; }
+
         public frmMain()
         {
             InitializeComponent();
+            Instance = this;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -26,23 +30,30 @@ namespace ATBM_PH1
 		{
 			PhanQuyen phanQuyen = new PhanQuyen();
 			phanQuyen.StartPosition = FormStartPosition.CenterScreen;
-			phanQuyen.Show();
-			this.Hide();
-		}
+            MainClass.BlurBackground(phanQuyen);
+        }
 
         private void User_Click(object sender, EventArgs e)
         {
             ViewUser newForm = new ViewUser();
-            this.Hide();
-            newForm.Show();
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(newForm);
 
         }
 
         private void Role_Click(object sender, EventArgs e)
         {
             Role role = new Role();
-            role.Show();
-            this.Hide();
+            role.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(role);
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.StartPosition = FormStartPosition.CenterScreen;
+            dangNhap.Show();
+            this.Close();
         }
     }
 }

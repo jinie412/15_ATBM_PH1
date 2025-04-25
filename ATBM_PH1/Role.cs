@@ -6,6 +6,10 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using Sushi_Restaurant;
+using System.Security.Cryptography;
+using System.Web.Security;
+using TheArtOfDevHtmlRenderer.Adapters;
 
 namespace ATBM_PH1
 {
@@ -183,7 +187,18 @@ namespace ATBM_PH1
                 return;
             }
 
-            string roleName = dataGridViewRoles.SelectedRows[0].Cells["Role"].Value.ToString();
+            string roleName = string.Empty;
+
+            if (dataGridViewRoles.SelectedRows.Count > 0)
+            {
+                // Lấy giá trị từ cột "Tên Role" (khớp với tên cột từ stored procedure)
+                var cellValue = dataGridViewRoles.SelectedRows[0].Cells["Tên Role"].Value;
+                roleName = cellValue != null ? cellValue.ToString() : string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một hàng trong danh sách role!");
+            }
 
             // Xác nhận người dùng
             var result = MessageBox.Show($"Do you want to delete '{roleName}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -224,74 +239,11 @@ namespace ATBM_PH1
                 }
             }
         }
-
-
-        private void btnGrant_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Cấp quyền cho role đã chọn");
-        }
-
-        private void btnRevoke_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(selectedRevokeRole))
-            {
-                MessageBox.Show("Vui lòng chọn role để thu hồi quyền.");
-                return;
-            }
-
-            List<string> revokePrivs = new List<string>();
-
-            if (checkBoxRevokeSelect.Checked) revokePrivs.Add("SELECT");
-            if (checkBoxRevokeInsert.Checked) revokePrivs.Add("INSERT");
-            if (checkBoxRevokeUpdate.Checked) revokePrivs.Add("UPDATE");
-            if (checkBoxRevokeDelete.Checked) revokePrivs.Add("DELETE");
-
-            if (revokePrivs.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn ít nhất một quyền để thu hồi.");
-                return;
-            }
-
-            string objectName = comboBoxObjectName.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(objectName))
-            {
-                MessageBox.Show("Vui lòng chọn đối tượng cần thu hồi quyền.");
-                return;
-            }
-
-            foreach (var priv in revokePrivs)
-            {
-                string sql = $"REVOKE {priv} ON {objectName} FROM {selectedRevokeRole}";
-                ExecuteNonQuery(sql);
-            }
-
-            MessageBox.Show("Thu hồi quyền thành công.");
-        }
-
-        private void dataGridViewGrantRoles_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                selectedGrantRole = dataGridViewGrantRoles.Rows[e.RowIndex].Cells[0].Value.ToString();
-                MessageBox.Show($"Đã chọn role để cấp quyền: {selectedGrantRole}");
-            }
-        }
-
-        private void dataGridViewRevokeRoles_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                selectedRevokeRole = dataGridViewRevokeRoles.Rows[e.RowIndex].Cells[0].Value.ToString();
-                MessageBox.Show($"Đã chọn role để thu hồi quyền: {selectedRevokeRole}");
-            }
-        }
-
+       
         private void ShowManageRolesContent()
         {
             panelManageRoles.Visible = true;
-            panelGrantPermissions.Visible = false;
-            panelRevokePermissions.Visible = false;
-            panelViewPermissions.Visible = false;
+           
 
             string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
             using (var conn = new OracleConnection(connectionString))
@@ -321,49 +273,78 @@ namespace ATBM_PH1
                             dataGridViewRoles.Refresh();         // Làm mới giao diện
                         }
 
-                        //using (var reader = cmd.ExecuteReader())
-                        //{
-
-                        //    int columnCount = reader.FieldCount;
-                        //    if (columnCount != 3)
-                        //    {
-                        //        MessageBox.Show($"Lỗi: Stored procedure trả về {columnCount} cột, nhưng cần 3 cột.");
-                        //        return;
-                        //    }
-
-                        //    dataGridViewRoles.Rows.Clear();
-                        //    while (reader.Read())
-                        //    {
-                        //        int roleIndex = reader.GetOrdinal("ROLE");
-                        //        int privilegesIndex = reader.GetOrdinal("PRIVILEGES");
-                        //        int hasPasswordIndex = reader.GetOrdinal("HAS_PASSWORD");
-
-                        //        string role = reader.IsDBNull(roleIndex) ? "" : reader.GetString(roleIndex);
-                        //        string privileges = reader.IsDBNull(privilegesIndex) ? "Không có quyền" : reader.GetString(privilegesIndex);
-                        //        string hasPassword = reader.IsDBNull(hasPasswordIndex) ? "Không xác định" : reader.GetString(hasPasswordIndex);
-
-                        //        dataGridViewRoles.Rows.Add(role, privileges, hasPassword);
-                        //    }
-                        //}
                         using (var reader = cmd.ExecuteReader())
                         {
                             _cachedDataTable = new DataTable();
                             _cachedDataTable.Load(reader);
-                            dataGridViewRoles.Columns.Clear();
-                            dataGridViewRoles.DataSource = _cachedDataTable;
 
-                            // Đặt lại tiêu đề cột
-                            dataGridViewRoles.Columns["ROLE"].HeaderText = "Tên Role";
-                            dataGridViewRoles.Columns["PRIVILEGES"].HeaderText = "Quyền Được Cấp";
-                            dataGridViewRoles.Columns["HAS_PASSWORD"].HeaderText = "Mật Khẩu";
-
-                            // Kiểm tra số cột nếu muốn
-                            if (_cachedDataTable.Columns.Count != 3)
+                            // Kiểm tra DataGridView có tồn tại không
+                            if (dataGridViewRoles == null)
                             {
-                                MessageBox.Show($"Lỗi: Stored procedure trả về {_cachedDataTable.Columns.Count} cột, nhưng cần 3 cột.");
+                                MessageBox.Show("Lỗi: DataGridViewRoles không được khởi tạo!");
                                 return;
                             }
+
+                            // Tạo DataTable mới chỉ chứa các cột "Tên Role" và "Mật Khẩu"
+                            DataTable filteredTable = new DataTable();
+                            if (_cachedDataTable.Columns.Contains("Tên Role") && _cachedDataTable.Columns.Contains("Mật Khẩu"))
+                            {
+                                filteredTable.Columns.Add("Tên Role", typeof(string));
+                                filteredTable.Columns.Add("Mật Khẩu", typeof(string));
+
+                                // Sao chép dữ liệu từ _cachedDataTable sang filteredTable
+                                foreach (DataRow row in _cachedDataTable.Rows)
+                                {
+                                    filteredTable.Rows.Add(row["Tên Role"], row["Mật Khẩu"]);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi: Tên cột không khớp với kết quả từ stored procedure!");
+                                return;
+                            }
+
+                            // Kiểm tra số cột
+                            if (filteredTable.Columns.Count != 2)
+                            {
+                                MessageBox.Show($"Lỗi: Dữ liệu sau khi lọc có {filteredTable.Columns.Count} cột, nhưng cần 2 cột.");
+                                return;
+                            }
+
+                            // Xóa cột cũ và gán DataSource
+                            dataGridViewRoles.Columns.Clear();
+
+                            // Thêm cột STT trước khi gán DataSource
+                            DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
+                            {
+                                Name = "STT",
+                                HeaderText = "STT",
+                                ReadOnly = true
+                            };
+                            dataGridViewRoles.Columns.Add(sttColumn); // Thêm cột STT
+
+                            // Gán DataSource
+                            dataGridViewRoles.DataSource = filteredTable;
+
+                            // Đặt lại tiêu đề cột
+                            dataGridViewRoles.Columns["Tên Role"].HeaderText = "Tên Role";
+                            dataGridViewRoles.Columns["Mật Khẩu"].HeaderText = "Mật Khẩu";
+
+                            // Đảm bảo cột STT ở vị trí đầu tiên
+                            dataGridViewRoles.Columns["STT"].DisplayIndex = 0;
+
+                            // Tự động điền giá trị STT sau khi dữ liệu được gán
+                            dataGridViewRoles.DataBindingComplete += (sender, e) =>
+                            {
+                                int stt = 1;
+                                foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                                {
+                                    if (row.IsNewRow) continue; // Bỏ qua hàng mới (nếu có)
+                                    row.Cells[0].Value = stt++; // Sử dụng chỉ số cột 0 (cột STT)
+                                }
+                            };
                         }
+
 
                     }
                 }
@@ -375,267 +356,7 @@ namespace ATBM_PH1
         }
 
 
-
-        private void ShowGrantPermissionsContent()
-        {
-            panelManageRoles.Visible = false;
-            panelGrantPermissions.Visible = true;
-            panelRevokePermissions.Visible = false;
-            panelViewPermissions.Visible = false;
-
-            // Load roles from database
-            List<string> roles = ExecuteColumnQuery("SELECT role FROM dba_roles");
-            dataGridViewGrantRoles.Rows.Clear();
-            foreach (var role in roles)
-            {
-                dataGridViewGrantRoles.Rows.Add(role);
-            }
-        }
-
-        private void ShowRevokePermissionsContent()
-        {
-            panelManageRoles.Visible = false;
-            panelGrantPermissions.Visible = false;
-            panelRevokePermissions.Visible = true;
-            panelViewPermissions.Visible = false;
-
-            // Load roles from database
-            List<string> roles = ExecuteColumnQuery("SELECT role FROM dba_roles");
-            dataGridViewRevokeRoles.Rows.Clear();
-            foreach (var role in roles)
-            {
-                dataGridViewRevokeRoles.Rows.Add(role);
-            }
-        }
-
-        private void ShowViewPermissionsContent()
-        {
-            panelManageRoles.Visible = false;
-            panelGrantPermissions.Visible = false;
-            panelRevokePermissions.Visible = false;
-            panelViewPermissions.Visible = true;
-
-            // Load permissions from database
-            string sql = "SELECT table_name, privilege FROM dba_tab_privs WHERE grantee IN (SELECT role FROM dba_roles)";
-            using (var conn = new OracleConnection("User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO"))
-            {
-                try
-                {
-                    conn.Open();
-                    using (var cmd = new OracleCommand(sql, conn))
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        dataGridViewPermissions.Rows.Clear();
-                        while (reader.Read())
-                        {
-                            string tableName = reader.GetString(0);
-                            string privilege = reader.GetString(1);
-                            // Add to DataGridView based on privilege
-                            int rowIndex = -1;
-                            foreach (DataGridViewRow row in dataGridViewPermissions.Rows)
-                            {
-                                if (row.Cells["TableName"].Value?.ToString() == tableName)
-                                {
-                                    rowIndex = row.Index;
-                                    break;
-                                }
-                            }
-                            if (rowIndex == -1)
-                            {
-                                rowIndex = dataGridViewPermissions.Rows.Add();
-                                dataGridViewPermissions.Rows[rowIndex].Cells["TableName"].Value = tableName;
-                            }
-                            if (privilege == "SELECT") dataGridViewPermissions.Rows[rowIndex].Cells["Select"].Value = "Yes";
-                            else if (privilege == "INSERT") dataGridViewPermissions.Rows[rowIndex].Cells["Insert"].Value = "Yes";
-                            else if (privilege == "UPDATE") dataGridViewPermissions.Rows[rowIndex].Cells["Update"].Value = "Yes";
-                            else if (privilege == "DELETE") dataGridViewPermissions.Rows[rowIndex].Cells["Delete"].Value = "Yes";
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi tải quyền: {ex.Message}");
-                }
-            }
-        }
-
-        private void btnManageRolesTab_Click(object sender, EventArgs e)
-        {
-            ShowManageRolesContent();
-            SetActiveButton(btnManageRolesTab);
-        }
-
-        private void btnGrantPermissionsTab_Click(object sender, EventArgs e)
-        {
-            ShowGrantPermissionsContent();
-            SetActiveButton(btnGrantPermissionsTab);
-        }
-
-        private void btnRevokePermissionsTab_Click(object sender, EventArgs e)
-        {
-            ShowRevokePermissionsContent();
-            SetActiveButton(btnRevokePermissionsTab);
-        }
-
-        private void btnViewPermissionsTab_Click(object sender, EventArgs e)
-        {
-            ShowViewPermissionsContent();
-            SetActiveButton(btnViewPermissionsTab);
-        }
-
-        private void SetActiveButton(Guna.UI2.WinForms.Guna2Button activeButton)
-        {
-            btnManageRolesTab.FillColor = Color.Transparent;
-            btnGrantPermissionsTab.FillColor = Color.Transparent;
-            btnRevokePermissionsTab.FillColor = Color.Transparent;
-            btnViewPermissionsTab.FillColor = Color.Transparent;
-
-            activeButton.FillColor = Color.FromArgb(76, 132, 255);
-        }
-
-        private void btnGrantPermission_Click(object sender, EventArgs e)
-        {
-            string role = selectedGrantRole;
-            string objectType = comboBoxObjectType.SelectedItem?.ToString();
-            string objectName = comboBoxObjectName.SelectedItem?.ToString();
-            List<string> privileges = new List<string>();
-
-            if (checkBoxSelect.Checked) privileges.Add("SELECT");
-            if (checkBoxInsert.Checked) privileges.Add("INSERT");
-            if (checkBoxUpdate.Checked) privileges.Add("UPDATE");
-            if (checkBoxDelete.Checked) privileges.Add("DELETE");
-
-            if (string.IsNullOrEmpty(role) || string.IsNullOrEmpty(objectName) || privileges.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn đầy đủ Role, Đối tượng và Quyền.");
-                return;
-            }
-
-            string withGrant = checkBoxWithGrantOption.Checked ? " WITH GRANT OPTION" : "";
-            foreach (var priv in privileges)
-            {
-                string sql = $"GRANT {priv} ON {objectName} TO {role}{withGrant}";
-                ExecuteNonQuery(sql);
-            }
-
-            MessageBox.Show("Đã cấp quyền thành công.");
-        }
-
-        private List<string> ExecuteColumnQuery(string sql)
-        {
-            List<string> result = new List<string>();
-            string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-
-            using (var conn = new OracleConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    using (var cmd = new OracleCommand(sql, conn))
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            result.Add(reader.GetString(0));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi truy vấn: {ex.Message}");
-                }
-            }
-
-            return result;
-        }
-
-        private void ExecuteNonQuery(string sql)
-        {
-            string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-
-            using (var conn = new OracleConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    using (var cmd = new OracleCommand(sql, conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi thực thi: {ex.Message}");
-                }
-            }
-        }
-
-        private void checkBoxSelect_CheckedChanged(object sender, EventArgs e)
-        {
-            panelSelectColumns.Visible = checkBoxSelect.Checked;
-        }
-
-        private void checkBoxUpdate_CheckedChanged(object sender, EventArgs e)
-        {
-            panelUpdateColumns.Visible = checkBoxUpdate.Checked;
-        }
-
-        private void comboBoxObjectType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string objectType = comboBoxObjectType.SelectedItem?.ToString();
-            comboBoxObjectName.Items.Clear();
-
-            if (string.IsNullOrEmpty(objectType)) return;
-
-            string sql = "";
-            switch (objectType)
-            {
-                case "TABLE":
-                    sql = "SELECT table_name FROM user_tables";
-                    break;
-                case "VIEW":
-                    sql = "SELECT view_name FROM user_views";
-                    break;
-                case "PROCEDURE":
-                    sql = "SELECT object_name FROM user_procedures WHERE object_type = 'PROCEDURE'";
-                    break;
-                case "FUNCTION":
-                    sql = "SELECT object_name FROM user_procedures WHERE object_type = 'FUNCTION'";
-                    break;
-            }
-
-            List<string> objects = ExecuteColumnQuery(sql);
-            comboBoxObjectName.Items.AddRange(objects.ToArray());
-        }
-
-        private void LoadColumnsToPanels(string tableName)
-        {
-            panelSelectColumns.Controls.Clear();
-            panelUpdateColumns.Controls.Clear();
-
-            string sql = $"SELECT column_name FROM user_tab_columns WHERE table_name = '{tableName.ToUpper()}'";
-            List<string> columns = ExecuteColumnQuery(sql);
-
-            foreach (string col in columns)
-            {
-                var chkSelect = new Guna.UI2.WinForms.Guna2CheckBox
-                {
-                    Text = col,
-                    ForeColor = Color.Black,
-                    Font = new Font("Segoe UI", 10)
-                };
-                panelSelectColumns.Controls.Add(chkSelect);
-
-                var chkUpdate = new Guna.UI2.WinForms.Guna2CheckBox
-                {
-                    Text = col,
-                    ForeColor = Color.Black,
-                    Font = new Font("Segoe UI", 10)
-                };
-                panelUpdateColumns.Controls.Add(chkUpdate);
-            }
-        }
-
+       
         private void textRole_TextChanged(object sender, EventArgs e)
         {
             _searchCancellationTokenSource?.Cancel();
@@ -668,7 +389,7 @@ namespace ATBM_PH1
                     DataView dataView = _cachedDataTable.DefaultView;
                     dataView.RowFilter = string.IsNullOrEmpty(searchText)
                         ? string.Empty
-                        : $"ROLE LIKE '%{searchText}%'";
+                        : $"[Tên Role] LIKE '%{searchText}%'";
 
                     dataGridViewRoles.DataSource = dataView;
                 }

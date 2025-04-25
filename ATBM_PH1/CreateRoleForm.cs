@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using Sushi_Restaurant;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,10 +59,13 @@ namespace ATBM_PH1
                         if (result == DialogResult.Yes)
                         {
                             this.Hide();
+                            MainClass.Role = roleName;
+                            MainClass.User = "";
                             CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
                             capQuyen.StartPosition = FormStartPosition.CenterScreen;
                             capQuyen.Show();
                             
+
                         }
                         else
                         {

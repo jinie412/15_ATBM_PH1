@@ -134,14 +134,6 @@ namespace ATBM_PH1
             }
         }
 
-        private void Username_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

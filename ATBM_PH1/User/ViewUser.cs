@@ -294,17 +294,11 @@ namespace ATBM_PH1
                 MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            frmMain main = new frmMain();
-            this.Close();
-            main.Show();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+           
+            this.Close();
+         
         }
     }
 }

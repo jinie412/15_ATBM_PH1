@@ -189,14 +189,11 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
-	</EmbeddedResource>
-	  
+    </EmbeddedResource>
     <EmbeddedResource Include="PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="User\InsertUser.resx">
       <DependentUpon>InsertUser.cs</DependentUpon>
@@ -215,11 +212,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="Role.resx">
       <DependentUpon>Role.cs</DependentUpon>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="ThuHoi.resx">
       <DependentUpon>ThuHoi.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icon_Bin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grant.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
