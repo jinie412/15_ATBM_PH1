@@ -1,5 +1,4 @@
-﻿// BaseForm.cs
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 using Sushi_Restaurant;
 using System;
 using System.Collections.Generic;
@@ -41,14 +40,13 @@ namespace ATBM_PH1
             try
             {
                 string query = @"
-                    SELECT USERNAME
-                    FROM DBA_USERS
-                    WHERE ORACLE_MAINTAINED = 'N'
-                      AND ACCOUNT_STATUS = 'OPEN'
-                      AND USERNAME NOT IN ('SYS', 'SYSTEM')
-                        AND USERNAME NOT LIKE 'PDB_ADMIN'
-                    ORDER BY USERNAME
-                ";
+            SELECT USERNAME
+            FROM DBA_USERS
+            WHERE ORACLE_MAINTAINED = 'N'
+              AND USERNAME NOT IN ('SYS', 'SYSTEM')
+              AND USERNAME NOT LIKE 'PDB_ADMIN'
+            ORDER BY USERNAME
+        ";
 
                 _cachedDataTable = MainClass.ExecuteQuery(query);
 
@@ -67,14 +65,55 @@ namespace ATBM_PH1
                 // Gán dữ liệu vào DataGridView
                 LoadViewUser.DataSource = _cachedDataTable;
 
+                // Đặt tiêu đề cho các cột
+                LoadViewUser.Columns["STT"].HeaderText = "STT";
+                LoadViewUser.Columns["USERNAME"].HeaderText = "User";
+
+                // Thêm cột CUpdate nếu chưa tồn tại
+                if (!LoadViewUser.Columns.Contains("CUpdate"))
+                {
+                    DataGridViewButtonColumn updateColumn = new DataGridViewButtonColumn
+                    {
+                        Name = "CUpdate",
+                        HeaderText = "Cập nhật",
+                        Text = "Cập nhật",
+                        UseColumnTextForButtonValue = true
+                    };
+                    LoadViewUser.Columns.Add(updateColumn);
+                }
+
+                // Thêm cột CGrant nếu chưa tồn tại
+                if (!LoadViewUser.Columns.Contains("CGrant"))
+                {
+                    DataGridViewButtonColumn grantColumn = new DataGridViewButtonColumn
+                    {
+                        Name = "CGrant",
+                        HeaderText = "Cấp quyền",
+                        Text = "Cấp quyền",
+                        UseColumnTextForButtonValue = true
+                    };
+                    LoadViewUser.Columns.Add(grantColumn);
+                }
+
+                // Thêm cột CDelete nếu chưa tồn tại
+                if (!LoadViewUser.Columns.Contains("CDelete"))
+                {
+                    DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+                    {
+                        Name = "CDelete",
+                        HeaderText = "Xóa",
+                        Text = "Xóa",
+                        UseColumnTextForButtonValue = true
+                    };
+                    LoadViewUser.Columns.Add(deleteColumn);
+                }
+
                 // Cập nhật vị trí các cột hiển thị trong DataGridView
                 LoadViewUser.Columns["STT"].DisplayIndex = 0;
                 LoadViewUser.Columns["USERNAME"].DisplayIndex = 1;
-
-                if (LoadViewUser.Columns.Contains("CUpdate"))
-                    LoadViewUser.Columns["CUpdate"].DisplayIndex = 2;
-                if (LoadViewUser.Columns.Contains("CDelete"))
-                    LoadViewUser.Columns["CDelete"].DisplayIndex = 3;
+                LoadViewUser.Columns["CUpdate"].DisplayIndex = 2;
+                LoadViewUser.Columns["CGrant"].DisplayIndex = 3;
+                LoadViewUser.Columns["CDelete"].DisplayIndex = 4;
             }
             catch (Exception ex)
             {
@@ -98,16 +137,24 @@ namespace ATBM_PH1
                 // Kiểm tra nếu người dùng click vào cột "CUpdate"
                 if (LoadViewUser.Columns[e.ColumnIndex].Name == "CUpdate")
                 {
-                    // Không yêu cầu mật khẩu admin
                     KillUserSessions(username);
                     UpdateUser updateUser = new UpdateUser(username);
                     updateUser.FormClosed += (s, args) => LoadUserList();
                     updateUser.Show();
                 }
+                // Kiểm tra nếu người dùng click vào cột "CGrant"
+                else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CGrant")
+                {
+                    MainClass.User = username;
+                    MainClass.Role = "";
+                    CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
+                    capQuyen.StartPosition = FormStartPosition.CenterScreen;
+                    capQuyen.Show();
+                    //this.Hide();
+                }
                 // Kiểm tra nếu người dùng click vào cột "CDelete"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CDelete")
                 {
-                    // Không yêu cầu mật khẩu admin
                     DeleteUser(username);
                     LoadUserList();
                 }
@@ -148,79 +195,6 @@ namespace ATBM_PH1
                 MessageBox.Show($"Lỗi khi xóa user: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        //private bool PromptForAdminPassword()
-        //{
-        //    string inputPassword = PromptForPassword();
-        //    if (string.IsNullOrEmpty(inputPassword))
-        //    {
-        //        MessageBox.Show("Bạn đã hủy thao tác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        return false;
-        //    }
-
-        //    if (ValidateAdminPassword(inputPassword))
-        //    {
-        //        _adminPassword = inputPassword; // Lưu mật khẩu admin để sử dụng
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Mật khẩu admin không đúng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
-        //}
-
-        //private string PromptForPassword()
-        //{
-        //    using (Form passwordForm = new Form())
-        //    {
-        //        passwordForm.Text = "Mật khẩu admin";
-        //        passwordForm.Size = new Size(300, 150);
-        //        passwordForm.StartPosition = FormStartPosition.CenterParent;
-
-        //        Label lblPassword = new Label() { Left = 20, Top = 20, Text = "Mật khẩu:", AutoSize = true };
-        //        TextBox txtPassword = new TextBox() { Left = 100, Top = 20, Width = 150, PasswordChar = '*' };
-        //        Button btnOK = new Button() { Text = "OK", Left = 100, Top = 60, Width = 70, DialogResult = DialogResult.OK };
-        //        Button btnCancel = new Button() { Text = "Hủy", Left = 180, Top = 60, Width = 70, DialogResult = DialogResult.Cancel };
-
-        //        passwordForm.Controls.Add(lblPassword);
-        //        passwordForm.Controls.Add(txtPassword);
-        //        passwordForm.Controls.Add(btnOK);
-        //        passwordForm.Controls.Add(btnCancel);
-
-        //        passwordForm.AcceptButton = btnOK;
-        //        passwordForm.CancelButton = btnCancel;
-
-        //        if (passwordForm.ShowDialog() == DialogResult.OK)
-        //        {
-        //            return txtPassword.Text;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
-
-        //private bool ValidateAdminPassword(string password)
-        //{
-        //    try
-        //    {
-        //        string adminConnectionString = $"User Id=PDB_ADMIN;Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
-        //        using (OracleConnection adminConn = new OracleConnection(adminConnectionString))
-        //        {
-        //            adminConn.Open();
-        //            adminConn.Close();
-        //        }
-
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
 
         private void KillUserSessions(string username)
         {
@@ -272,6 +246,7 @@ namespace ATBM_PH1
                 }
             }, token);
         }
+
         private void PerformSearch(string searchText)
         {
             try
@@ -290,6 +265,18 @@ namespace ATBM_PH1
             {
                 MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            frmMain main = new frmMain();
+            this.Close();
+            main.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

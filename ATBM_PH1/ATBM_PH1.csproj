@@ -189,8 +189,14 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
+	</EmbeddedResource>
+	  
+    <EmbeddedResource Include="PhanQuyen.resx">
+      <DependentUpon>PhanQuyen.cs</DependentUpon>
+>>>>>>> fa227c77dc73eeeb3c576aef99a652bfb4913b71
     </EmbeddedResource>
     <EmbeddedResource Include="User\InsertUser.resx">
       <DependentUpon>InsertUser.cs</DependentUpon>
