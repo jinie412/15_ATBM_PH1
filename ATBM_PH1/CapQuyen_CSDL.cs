@@ -474,7 +474,7 @@ namespace ATBM_PH1
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -488,7 +488,7 @@ namespace ATBM_PH1
         {
             PhanQuyen phanQuyen = new PhanQuyen();
             phanQuyen.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

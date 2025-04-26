@@ -242,7 +242,7 @@ namespace ATBM_PH1
             }
             
         }
-       
+
         private void ShowManageRolesContent()
         {
             panelManageRoles.Visible = true;
@@ -254,46 +254,71 @@ namespace ATBM_PH1
                     MainClass.conn.Open();
                 }
 
-                // Tạo lệnh gọi Stored Procedure
                 using (OracleCommand cmd = new OracleCommand("GET_ROLES_INFO", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Thêm tham số output kiểu RefCursor
                     var pCursor = new OracleParameter("p_cursor", OracleDbType.RefCursor)
                     {
                         Direction = ParameterDirection.Output
                     };
                     cmd.Parameters.Add(pCursor);
 
-                    // Dùng OracleDataAdapter để fill thẳng vào DataTable
                     using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
+                        
                         if (dataGridViewRoles.DataSource != null)
-                            ((DataTable)dataGridViewRoles.DataSource).Clear();
-                        dataGridViewRoles.DataSource = dt;    // Gán mới
+                        {
+                            if (dataGridViewRoles.DataSource is DataView view)
+                            {
+                                view.Table.Clear();
+                            }
+                            else if (dataGridViewRoles.DataSource is DataTable table)
+                            {
+                                table.Clear();
+                            }
+                            else
+                            {
+                                dataGridViewRoles.DataSource = null;
+                            }
+                        }
+
+                        // Gán dữ liệu mới
                         _cachedDataTable = dt;
-                        // Sau khi binding xong, tự động điền số thứ tự
+                        dataGridViewRoles.DataSource = _cachedDataTable;
+
+                        // Nếu chưa có cột STT, thì thêm vào
+                        if (!dataGridViewRoles.Columns.Contains("STT"))
+                        {
+                            DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
+                            {
+                                Name = "STT",
+                                HeaderText = "STT",
+                                ReadOnly = true,
+                                Width = 50
+                            };
+                            dataGridViewRoles.Columns.Insert(0, sttColumn);
+                        }
+
+                        // Sau khi gán xong, cập nhật STT
                         int stt = 1;
                         foreach (DataGridViewRow row in dataGridViewRoles.Rows)
                         {
                             if (row.IsNewRow) continue;
                             row.Cells["STT"].Value = stt++;
                         }
-
-                    
                     }
                 }
             }
             catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi tải role: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                }
-            
+            {
+                MessageBox.Show($"Lỗi khi tải role: {ex.Message}\nStackTrace: {ex.StackTrace}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
 
