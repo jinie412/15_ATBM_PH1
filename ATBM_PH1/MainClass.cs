@@ -6,7 +6,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using ATBM_PH1;
 
-namespace Sushi_Restaurant
+namespace ATBM_PH1
 {
     public static class MainClass
     {

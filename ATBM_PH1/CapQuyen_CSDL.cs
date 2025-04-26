@@ -1,5 +1,4 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using Sushi_Restaurant;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -486,8 +485,6 @@ namespace ATBM_PH1
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            PhanQuyen phanQuyen = new PhanQuyen();
-            phanQuyen.Show();
             this.Close();
         }
     }

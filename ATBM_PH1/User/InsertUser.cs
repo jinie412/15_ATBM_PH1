@@ -1,5 +1,4 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using Sushi_Restaurant;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Data.OracleClient; 
 
 namespace ATBM_PH1
 {
