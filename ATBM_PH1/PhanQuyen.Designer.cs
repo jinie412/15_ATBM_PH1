@@ -59,7 +59,6 @@
             this.colCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtGrantee = new Guna.UI2.WinForms.Guna2TextBox();
             this.rolePrivs = new Guna.UI2.WinForms.Guna2DataGridView();
             this.checkRole = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.roleGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +68,7 @@
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtGrantee = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablePrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colPrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolePrivs)).BeginInit();
@@ -114,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(14, 20);
+            this.label1.Location = new System.Drawing.Point(29, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 29);
             this.label1.TabIndex = 4;
@@ -431,27 +431,6 @@
             this.colGrantable.Name = "colGrantable";
             this.colGrantable.ReadOnly = true;
             // 
-            // txtGrantee
-            // 
-            this.txtGrantee.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtGrantee.DefaultText = "";
-            this.txtGrantee.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtGrantee.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtGrantee.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtGrantee.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtGrantee.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGrantee.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtGrantee.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGrantee.IconRight = global::ATBM_PH1.Properties.Resources.search;
-            this.txtGrantee.Location = new System.Drawing.Point(33, 85);
-            this.txtGrantee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtGrantee.Name = "txtGrantee";
-            this.txtGrantee.PlaceholderText = "Tìm kiếm";
-            this.txtGrantee.SelectedText = "";
-            this.txtGrantee.Size = new System.Drawing.Size(229, 45);
-            this.txtGrantee.TabIndex = 2;
-            this.txtGrantee.IconRightClick += new System.EventHandler(this.txtGrantee_IconRightClick);
-            // 
             // rolePrivs
             // 
             this.rolePrivs.AllowUserToAddRows = false;
@@ -604,6 +583,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1145, 60);
             this.panel1.TabIndex = 13;
+            // 
+            // txtGrantee
+            // 
+            this.txtGrantee.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtGrantee.DefaultText = "";
+            this.txtGrantee.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtGrantee.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtGrantee.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGrantee.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGrantee.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGrantee.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtGrantee.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGrantee.IconRight = global::ATBM_PH1.Properties.Resources.search;
+            this.txtGrantee.Location = new System.Drawing.Point(33, 85);
+            this.txtGrantee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtGrantee.Name = "txtGrantee";
+            this.txtGrantee.PlaceholderText = "Tìm kiếm";
+            this.txtGrantee.SelectedText = "";
+            this.txtGrantee.Size = new System.Drawing.Size(229, 45);
+            this.txtGrantee.TabIndex = 2;
+            this.txtGrantee.IconRightClick += new System.EventHandler(this.txtGrantee_IconRightClick);
             // 
             // PhanQuyen
             // 

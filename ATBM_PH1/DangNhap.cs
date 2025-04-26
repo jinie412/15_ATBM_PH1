@@ -73,8 +73,9 @@ namespace ATBM_PH1
 
             // Đổi icon tương ứng
             btnPass.Image = isPasswordHidden
-                ? Properties.Resources.show   // Mắt mở: đang ẩn
-                : Properties.Resources.hide; // Mắt đóng: đang hiện
+            ? Properties.Resources.hide   // Mắt đóng: đang ẩn
+            : Properties.Resources.show;  // Mắt mở: đang hiện
+
         }
 
 

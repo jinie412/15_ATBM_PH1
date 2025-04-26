@@ -72,7 +72,12 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
@@ -178,7 +183,11 @@ namespace ATBM_PH1
 
 			try
 			{
-				using (OracleCommand cmd = new OracleCommand("get_columns_by_table", MainClass.conn))
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+                using (OracleCommand cmd = new OracleCommand("get_columns_by_table", MainClass.conn))
 				{
 					cmd.CommandType = CommandType.StoredProcedure;
 
@@ -204,7 +213,11 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+                OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
@@ -243,7 +256,11 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+                OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
@@ -289,7 +306,11 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+                OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
@@ -321,7 +342,11 @@ namespace ATBM_PH1
 		{
 			try
 			{
-				OracleCommand cmd = new OracleCommand("get_custom_roles", MainClass.conn);
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+                OracleCommand cmd = new OracleCommand("get_custom_roles", MainClass.conn);
 				cmd.CommandType = CommandType.StoredProcedure;
 
 				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
@@ -376,8 +401,8 @@ namespace ATBM_PH1
             try
             {
                 string selectedUser = !string.IsNullOrEmpty(MainClass.User)
-    ? MainClass.User
-    : (!string.IsNullOrEmpty(MainClass.Role) ? MainClass.Role : "");
+                    ? MainClass.User
+                    : (!string.IsNullOrEmpty(MainClass.Role) ? MainClass.Role : "");
 
                 string selectedTable = cbBang.SelectedItem?.ToString();
                 string selectedRole = cbCaprole.SelectedItem?.ToString();
@@ -394,8 +419,23 @@ namespace ATBM_PH1
                 string selectedFunctions = string.Join(",", checkedListBox5.CheckedItems.Cast<string>());
                 string selectedProcedures = string.Join(",", checkedListBox6.CheckedItems.Cast<string>());
 
-                // NEW: checkbox kiểm tra cấp quyền WITH GRANT OPTION
                 bool withGrantOption = checkbwgo.Checked;
+
+                // KIỂM TRA: nếu không chọn quyền nào và chỉ chọn WITH GRANT OPTION
+                if (insertChecked == 0 && deleteChecked == 0 && selectChecked == 0 && updateChecked == 0
+                    && string.IsNullOrWhiteSpace(selectedSelectCols)
+                    && string.IsNullOrWhiteSpace(selectedUpdateCols)
+                    && string.IsNullOrWhiteSpace(selectedViews)
+                    && string.IsNullOrWhiteSpace(selectedFunctions)
+                    && string.IsNullOrWhiteSpace(selectedProcedures))
+                {
+                    MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc đối tượng để cấp quyền.");
+                    return;
+                }
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
 
                 using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
                 {
@@ -422,14 +462,11 @@ namespace ATBM_PH1
                     cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value =
                         string.IsNullOrEmpty(selectedRole) ? (object)DBNull.Value : selectedRole;
 
-                    // NEW: truyền tham số WITH GRANT OPTION
                     cmd.Parameters.Add("p_with_grant", OracleDbType.Int32).Value = withGrantOption ? 1 : 0;
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
-                    PhanQuyen phanQuyen = new PhanQuyen();
-                    phanQuyen.Show();
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -438,11 +475,20 @@ namespace ATBM_PH1
             }
         }
 
+
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
-       
+        private Form parentForm;
+
+        //public CapQuyen_CSDL(Form parent)
+        //{
+        //    InitializeComponent();
+        //    this.parentForm = parent;
+        //}
+
+
     }
 }

@@ -90,12 +90,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapQuyen_UI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CapQuyen_UI.Designer.cs">
-      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
-    </Compile>
     <Compile Include="CreateRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,15 +162,6 @@
     <Compile Include="User\InsertUser.Designer.cs">
       <DependentUpon>InsertUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThuHoi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ThuHoi.Designer.cs">
-      <DependentUpon>ThuHoi.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="CapQuyen_UI.resx">
-      <DependentUpon>CapQuyen_UI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,9 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Role.resx">
       <DependentUpon>Role.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ThuHoi.resx">
-      <DependentUpon>ThuHoi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>

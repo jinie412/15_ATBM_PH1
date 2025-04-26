@@ -25,9 +25,6 @@ namespace ATBM_PH1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelManageRoles = new System.Windows.Forms.Panel();
             this.dataGridViewRoles = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
@@ -38,6 +35,9 @@ namespace ATBM_PH1
             this.btnMinimize = new Guna.UI2.WinForms.Guna2Button();
             this.labelFormTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelManageRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).BeginInit();
             this.contentPanel.SuspendLayout();
@@ -74,7 +74,7 @@ namespace ATBM_PH1
             this.dataGridViewRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stt,
             this.dgvRole,
-            this.dataGridViewTextBoxColumn3});
+            this.dgvPass});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -111,24 +111,6 @@ namespace ATBM_PH1
             this.dataGridViewRoles.ThemeStyle.RowsStyle.Height = 22;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // stt
-            // 
-            this.stt.HeaderText = "STT";
-            this.stt.MinimumWidth = 6;
-            this.stt.Name = "stt";
-            // 
-            // dgvRole
-            // 
-            this.dgvRole.HeaderText = "Tên Role";
-            this.dgvRole.MinimumWidth = 6;
-            this.dgvRole.Name = "dgvRole";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Mật Khẩu";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // btnEdit
             // 
@@ -259,6 +241,26 @@ namespace ATBM_PH1
             this.panelTitleBar.Size = new System.Drawing.Size(1449, 54);
             this.panelTitleBar.TabIndex = 1;
             // 
+            // stt
+            // 
+            this.stt.HeaderText = "STT";
+            this.stt.MinimumWidth = 6;
+            this.stt.Name = "stt";
+            // 
+            // dgvRole
+            // 
+            this.dgvRole.DataPropertyName = "ROLE";
+            this.dgvRole.HeaderText = "Tên Role";
+            this.dgvRole.MinimumWidth = 6;
+            this.dgvRole.Name = "dgvRole";
+            // 
+            // dgvPass
+            // 
+            this.dgvPass.DataPropertyName = "HAS_PASSWORD";
+            this.dgvPass.HeaderText = "Mật Khẩu";
+            this.dgvPass.MinimumWidth = 6;
+            this.dgvPass.Name = "dgvPass";
+            // 
             // Role
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -285,13 +287,13 @@ namespace ATBM_PH1
         private Guna2Button btnDelete;
         private Guna2TextBox textRole;
         private Panel contentPanel;
-        private DataGridViewTextBoxColumn stt;
-        private DataGridViewTextBoxColumn dgvRole;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Guna2Button btnClose;
         private Guna2Button btnMaximizeRestore;
         private Guna2Button btnMinimize;
         private Label labelFormTitle;
         private Panel panelTitleBar;
+        private DataGridViewTextBoxColumn stt;
+        private DataGridViewTextBoxColumn dgvRole;
+        private DataGridViewTextBoxColumn dgvPass;
     }
 }
