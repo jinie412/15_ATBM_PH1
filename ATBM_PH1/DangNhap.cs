@@ -18,6 +18,7 @@ namespace ATBM_PH1
         {
             InitializeComponent();
         }
+        private bool isPasswordHidden = true;
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -63,6 +64,19 @@ namespace ATBM_PH1
                 MessageBox.Show("Đăng nhập thất bại:\n" + ex.Message);
             }
         }
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+            isPasswordHidden = !isPasswordHidden;
+
+            // Toggle hiển thị mật khẩu
+            txtPass.UseSystemPasswordChar = isPasswordHidden;
+
+            // Đổi icon tương ứng
+            btnPass.Image = isPasswordHidden
+                ? Properties.Resources.show   // Mắt mở: đang ẩn
+                : Properties.Resources.hide; // Mắt đóng: đang hiện
+        }
+
 
     }
 }

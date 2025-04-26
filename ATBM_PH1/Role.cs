@@ -113,6 +113,7 @@ namespace ATBM_PH1
         {
             // Mở form CreateRoleForm
             CreateRoleForm createRoleForm = new CreateRoleForm();
+            createRoleForm.StartPosition = FormStartPosition.CenterScreen;
             createRoleForm.ShowDialog(); // Mở form dưới dạng dialog (chờ người dùng nhập xong)
 
             // Sau khi form đóng, làm mới danh sách role
@@ -133,6 +134,7 @@ namespace ATBM_PH1
             // Hiển thị form nhập mật khẩu
             using (UpdatePasswordForm passwordForm = new UpdatePasswordForm(roleName))
             {
+                passwordForm.StartPosition = FormStartPosition.CenterScreen;
                 if (passwordForm.ShowDialog() != DialogResult.OK)
                 {
                     return; // Người dùng nhấn Cancel
@@ -143,32 +145,34 @@ namespace ATBM_PH1
                 // Gọi stored procedure để cập nhật mật khẩu
                 try
                 {
-                    string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-                    using (OracleConnection conn = new OracleConnection(connectionString))
+                    if (MainClass.conn.State == ConnectionState.Closed)
                     {
-                        conn.Open();
-                        using (OracleCommand cmd = new OracleCommand("UPDATE_ROLE_PASSWORD", conn))
+                        MainClass.conn.Open();
+                    }
+
+                    using (OracleCommand cmd = new OracleCommand("UPDATE_ROLE_PASSWORD", MainClass.conn))
+                    { 
+                       
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm các tham số cho stored procedure
+                        cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
+                        cmd.Parameters.Add("p_new_password", OracleDbType.Varchar2).Value = newPassword;
+                        cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
+
+                        // Thực thi stored procedure
+                        cmd.ExecuteNonQuery();
+
+                        // Lấy kết quả từ tham số output
+                        string result = cmd.Parameters["p_result"].Value.ToString();
+                        MessageBox.Show(result);
+
+                        // Nếu cập nhật thành công, làm mới DataGridView
+                        if (result.Contains("thành công"))
                         {
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            // Thêm các tham số cho stored procedure
-                            cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
-                            cmd.Parameters.Add("p_new_password", OracleDbType.Varchar2).Value = newPassword;
-                            cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
-
-                            // Thực thi stored procedure
-                            cmd.ExecuteNonQuery();
-
-                            // Lấy kết quả từ tham số output
-                            string result = cmd.Parameters["p_result"].Value.ToString();
-                            MessageBox.Show(result);
-
-                            // Nếu cập nhật thành công, làm mới DataGridView
-                            if (result.Contains("thành công"))
-                            {
-                                ShowManageRolesContent();
-                            }
+                            ShowManageRolesContent();
                         }
+                        
                     }
                 }
                 catch (Exception ex)
@@ -201,43 +205,42 @@ namespace ATBM_PH1
             }
 
             // Xác nhận người dùng
-            var result = MessageBox.Show($"Do you want to delete '{roleName}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show($"Bạn có muốn xóa role '{roleName}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result != DialogResult.Yes)
                 return;
-
-            string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-
-            using (var conn = new OracleConnection(connectionString))
+           
+            try
             {
-                try
+                if (MainClass.conn.State == ConnectionState.Closed)
                 {
-                    conn.Open();
-                    using (var cmd = new OracleCommand("DROP_EXISTING_ROLE", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
-                        cmd.Parameters.Add("p_error", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
-
-                        cmd.ExecuteNonQuery();
-
-                        string error = cmd.Parameters["p_error"].Value?.ToString();
-                        if (string.IsNullOrEmpty(error))
-                        {
-                            MessageBox.Show(error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Đã xoá role '{roleName}' thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                             
-                        }
-                        ShowManageRolesContent(); // Tải lại danh sách role
-                    }
+                    MainClass.conn.Open();
                 }
-                catch (Exception ex)
+                using (OracleCommand cmd = new OracleCommand("DROP_EXISTING_ROLE", MainClass.conn))
                 {
-                    MessageBox.Show($"Lỗi khi xoá role: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_role_name", OracleDbType.Varchar2).Value = roleName;
+                    cmd.Parameters.Add("p_error", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
+
+                    cmd.ExecuteNonQuery();
+
+                    string error = cmd.Parameters["p_error"].Value?.ToString();
+                    if (string.IsNullOrEmpty(error))
+                    {
+                        MessageBox.Show(error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Đã xoá role '{roleName}' thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                             
+                    }
+                    ShowManageRolesContent(); // Tải lại danh sách role
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xoá role: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
        
         private void ShowManageRolesContent()
@@ -245,15 +248,17 @@ namespace ATBM_PH1
             panelManageRoles.Visible = true;
            
 
-            string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-            using (var conn = new OracleConnection(connectionString))
-            {
+            
 
                 try
                 {
-                    conn.Open();
+                    if (MainClass.conn.State == ConnectionState.Closed)
+                    {
+                        MainClass.conn.Open();
+                    }
+                  
 
-                    using (var cmd = new OracleCommand("GET_ROLES_INFO", conn))
+                    using (OracleCommand cmd = new OracleCommand("GET_ROLES_INFO", MainClass.conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -352,7 +357,7 @@ namespace ATBM_PH1
                 {
                     MessageBox.Show($"Lỗi khi tải role: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 }
-            }
+            
         }
 
 

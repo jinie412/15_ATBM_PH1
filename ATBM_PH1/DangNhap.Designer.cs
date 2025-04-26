@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
@@ -36,19 +35,10 @@
             this.txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnPass = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::ATBM_PH1.Properties.Resources.LoginDes;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(-35, -14);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(457, 453);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -122,6 +112,7 @@
             this.txtPass.SelectedText = "";
             this.txtPass.Size = new System.Drawing.Size(301, 48);
             this.txtPass.TabIndex = 5;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -151,12 +142,43 @@
             this.btnExit.TabIndex = 7;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnPass
+            // 
+            this.btnPass.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPass.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPass.FillColor = System.Drawing.Color.Transparent;
+            this.btnPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPass.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPass.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.btnPass.Image = global::ATBM_PH1.Properties.Resources.hide;
+            this.btnPass.Location = new System.Drawing.Point(717, 281);
+            this.btnPass.Name = "btnPass";
+            this.btnPass.PressedColor = System.Drawing.Color.Transparent;
+            this.btnPass.Size = new System.Drawing.Size(55, 38);
+            this.btnPass.TabIndex = 8;
+            this.btnPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::ATBM_PH1.Properties.Resources.LoginDes;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(-35, -14);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(457, 453);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(860, 435);
+            this.Controls.Add(this.btnPass);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPass);
@@ -185,6 +207,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private Guna.UI2.WinForms.Guna2ControlBox btnExit;
+        private Guna.UI2.WinForms.Guna2Button btnPass;
     }
 }
 

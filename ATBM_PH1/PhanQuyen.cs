@@ -23,12 +23,15 @@ namespace ATBM_PH1
         }
         private int CheckUserOrRoleExists(string grantee)
         {
-            string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
-            using (OracleConnection conn = new OracleConnection(connStr))
+            if (MainClass.conn.State == ConnectionState.Closed)
             {
-                conn.Open();
+                MainClass.conn.Open();
+            }
 
-                OracleCommand cmd = new OracleCommand("SP_KTRA_TON_TAI", conn);
+            // Ngắt kết nối các session của user
+            using (OracleCommand cmd = new OracleCommand("SP_KTRA_TON_TAI", MainClass.conn))
+            {
+                
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee.ToUpper();
@@ -67,45 +70,44 @@ namespace ATBM_PH1
                 grantee = MainClass.Role;
             }
 
-            string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
-
-            using (OracleConnection conn = new OracleConnection(connStr))
+            if (MainClass.conn.State == ConnectionState.Closed)
             {
-                conn.Open();
-
-                // Load quyền bảng/view/function
-                OracleCommand cmdTab = new OracleCommand("SP_TAB_DA_CAP", conn);
-                cmdTab.CommandType = CommandType.StoredProcedure;
-                cmdTab.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                cmdTab.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataAdapter daTab = new OracleDataAdapter(cmdTab);
-                DataTable dtTab = new DataTable();
-                daTab.Fill(dtTab);
-                tablePrivs.DataSource = dtTab;
-
-                // Load quyền cột
-                OracleCommand cmdCol = new OracleCommand("SP_COL_DA_CAP", conn);
-                cmdCol.CommandType = CommandType.StoredProcedure;
-                cmdCol.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                cmdCol.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataAdapter daCol = new OracleDataAdapter(cmdCol);
-                DataTable dtCol = new DataTable();
-                daCol.Fill(dtCol);
-                colPrivs.DataSource = dtCol;
-
-                // Load role của user
-                OracleCommand cmdRole = new OracleCommand("SP_XAC_DINH_ROLE_CHO_USER", conn);
-                cmdRole.CommandType = CommandType.StoredProcedure;
-                cmdRole.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                cmdRole.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataAdapter daRole = new OracleDataAdapter(cmdRole);
-                DataTable dtRole = new DataTable();
-                daRole.Fill(dtRole);
-                rolePrivs.DataSource = dtRole;
+                MainClass.conn.Open();
             }
+
+            // Load quyền bảng/view/function
+            OracleCommand cmdTab = new OracleCommand("SP_TAB_DA_CAP", MainClass.conn);
+            cmdTab.CommandType = CommandType.StoredProcedure;
+            cmdTab.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+            cmdTab.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            OracleDataAdapter daTab = new OracleDataAdapter(cmdTab);
+            DataTable dtTab = new DataTable();
+            daTab.Fill(dtTab);
+            tablePrivs.DataSource = dtTab;
+
+            // Load quyền cột
+            OracleCommand cmdCol = new OracleCommand("SP_COL_DA_CAP", MainClass.conn);
+            cmdCol.CommandType = CommandType.StoredProcedure;
+            cmdCol.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+            cmdCol.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            OracleDataAdapter daCol = new OracleDataAdapter(cmdCol);
+            DataTable dtCol = new DataTable();
+            daCol.Fill(dtCol);
+            colPrivs.DataSource = dtCol;
+
+            // Load role của user
+            OracleCommand cmdRole = new OracleCommand("SP_XAC_DINH_ROLE_CHO_USER", MainClass.conn);
+            cmdRole.CommandType = CommandType.StoredProcedure;
+            cmdRole.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+            cmdRole.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+            OracleDataAdapter daRole = new OracleDataAdapter(cmdRole);
+            DataTable dtRole = new DataTable();
+            daRole.Fill(dtRole);
+            rolePrivs.DataSource = dtRole;
+
         }
 
         private void txtGrantee_IconRightClick(object sender, EventArgs e)
@@ -168,12 +170,15 @@ namespace ATBM_PH1
                 MessageBox.Show("Vui lòng nhập user hoặc role.");
                 return;
             }
-            bool hasChecked = false; // Cờ kiểm tra có chọn dòng nào không
-            string connStr = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO;";
-
-            using (OracleConnection conn = new OracleConnection(connStr))
+            try
             {
-                conn.Open();
+                // Mở kết nối nếu chưa mở
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                bool hasChecked = false;
 
                 // 1. Thu hồi quyền theo bảng
                 foreach (DataGridViewRow row in tablePrivs.Rows)
@@ -186,23 +191,23 @@ namespace ATBM_PH1
                         string owner = row.Cells["tabOwner"].Value.ToString();
                         string table = row.Cells["tabTable"].Value.ToString();
                         string privilege = row.Cells["tabPriv"].Value.ToString();
-                        string grantable = row.Cells["tabGrantable"].Value.ToString();
 
-                        OracleCommand cmd = new OracleCommand("SP_THU_HOI_QUYEN_TAB", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                        cmd.Parameters.Add("p_owner", OracleDbType.Varchar2).Value = owner;
-                        cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = table;
-                        cmd.Parameters.Add("p_priv", OracleDbType.Varchar2).Value = privilege;
-                        cmd.ExecuteNonQuery();
-                        
+                        using (OracleCommand cmd = new OracleCommand("SP_THU_HOI_QUYEN_TAB", MainClass.conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+                            cmd.Parameters.Add("p_owner", OracleDbType.Varchar2).Value = owner;
+                            cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = table;
+                            cmd.Parameters.Add("p_priv", OracleDbType.Varchar2).Value = privilege;
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
 
                 // 2. Thu hồi quyền theo cột
                 foreach (DataGridViewRow row in colPrivs.Rows)
                 {
-
                     bool isChecked = Convert.ToBoolean(row.Cells["checkCol"].Value);
                     if (isChecked)
                     {
@@ -212,58 +217,63 @@ namespace ATBM_PH1
                         string table = row.Cells["colTable"].Value.ToString();
                         string col = row.Cells["colCol"].Value.ToString();
                         string privilege = row.Cells["colPriv"].Value.ToString();
-                        string grantable = row.Cells["colGrantable"].Value.ToString();
-                        
-                        OracleCommand cmd;
-                        if (privilege == "UPDATE")
+
+                        using (OracleCommand cmd = (privilege == "UPDATE")
+                            ? new OracleCommand("SP_THU_HOI_QUYEN_UPDATE_COL", MainClass.conn)
+                            : new OracleCommand("SP_THU_HOI_QUYEN_COL", MainClass.conn))
                         {
-                            cmd = new OracleCommand("SP_THU_HOI_QUYEN_UPDATE_COL", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+                            cmd.Parameters.Add("p_owner", OracleDbType.Varchar2).Value = owner;
+                            cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = table;
+                            cmd.Parameters.Add("p_col", OracleDbType.Varchar2).Value = col;
+
+                            if (privilege != "UPDATE")
+                            {
+                                cmd.Parameters.Add("p_priv", OracleDbType.Varchar2).Value = privilege;
+                            }
+
+                            cmd.ExecuteNonQuery();
                         }
-                        else
-                        { cmd = new OracleCommand("SP_THU_HOI_QUYEN_COL", conn);
-                          cmd.Parameters.Add("p_priv", OracleDbType.Varchar2).Value = privilege;
-                        }
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                        cmd.Parameters.Add("p_owner", OracleDbType.Varchar2).Value = owner;
-                        cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = table;
-                        cmd.Parameters.Add("p_col", OracleDbType.Varchar2).Value = col;
-                       
-                        cmd.ExecuteNonQuery();
                     }
                 }
 
                 // 3. Thu hồi role
                 foreach (DataGridViewRow row in rolePrivs.Rows)
                 {
-
                     bool isChecked = Convert.ToBoolean(row.Cells["checkRole"].Value);
                     if (isChecked)
                     {
                         hasChecked = true;
                         string grantee = row.Cells["roleGrantee"].Value.ToString();
                         string role = row.Cells["dgvRole"].Value.ToString();
-                       
 
-                        OracleCommand cmd;
-                       
-                        cmd = new OracleCommand("SP_THU_HOI_ROLE", conn);
-                       
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
-                        cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = role;
-                        cmd.ExecuteNonQuery();
+                        using (OracleCommand cmd = new OracleCommand("SP_THU_HOI_ROLE", MainClass.conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("p_grantee", OracleDbType.Varchar2).Value = grantee;
+                            cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value = role;
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
-                if (!hasChecked)
-                {
-                    MessageBox.Show("Vui lòng chọn ít nhất một quyền để thu hồi.");
-                    return;
-                }
 
-                MessageBox.Show("Đã thu hồi quyền thành công.");
-                LoadPrivileges();
+                if (hasChecked)
+                {
+                    MessageBox.Show("Thu hồi quyền thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn ít nhất một quyền để thu hồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            LoadPrivileges();
         }
 
         private void tablePrivs_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -300,7 +310,7 @@ namespace ATBM_PH1
         {
             CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
             capQuyen.StartPosition = FormStartPosition.CenterScreen;
-            capQuyen.Show();
+            MainClass.BlurBackground(capQuyen);
             this.Hide();
         }
     }

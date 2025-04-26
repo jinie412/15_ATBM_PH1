@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Web.Security;
 
 namespace ATBM_PH1
 {
@@ -127,7 +128,9 @@ namespace ATBM_PH1
         {
             InsertUser insertUser = new InsertUser();
             insertUser.FormClosed += (s, args) => LoadUserList();
-            insertUser.Show();
+            insertUser.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(insertUser);
+
         }
 
         private void LoadViewUser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -142,7 +145,8 @@ namespace ATBM_PH1
                     KillUserSessions(username);
                     UpdateUser updateUser = new UpdateUser(username);
                     updateUser.FormClosed += (s, args) => LoadUserList();
-                    updateUser.Show();
+                    updateUser.StartPosition = FormStartPosition.CenterScreen;
+                    MainClass.BlurBackground(updateUser);
                 }
                 // Kiểm tra nếu người dùng click vào cột "CGrant"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CGrant")
@@ -151,8 +155,7 @@ namespace ATBM_PH1
                     MainClass.Role = "";
                     CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
                     capQuyen.StartPosition = FormStartPosition.CenterScreen;
-                    capQuyen.Show();
-                    //this.Hide();
+                    MainClass.BlurBackground(capQuyen);
                 }
                 // Kiểm tra nếu người dùng click vào cột "CDelete"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CDelete")

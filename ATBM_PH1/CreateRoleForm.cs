@@ -30,13 +30,16 @@ namespace ATBM_PH1
                 return;
             }
 
-            string connectionString = "User Id=pdb_admin;Password=MyPassword;Data Source=localhost:1521/QLDULIEUNOIBO";
-            using (var conn = new OracleConnection(connectionString))
-            {
+            
                 try
                 {
-                    conn.Open();
-                    using (var cmd = new OracleCommand("CREATE_NEW_ROLE", conn))
+                    if (MainClass.conn.State == ConnectionState.Closed)
+                    {
+                        MainClass.conn.Open();
+                    }
+
+                 
+                    using (OracleCommand cmd = new OracleCommand("CREATE_NEW_ROLE", MainClass.conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -58,15 +61,14 @@ namespace ATBM_PH1
                         DialogResult result = MessageBox.Show("Bạn có muốn cấp quyền cho role này không?", "Cấp quyền", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            this.Hide();
                             MainClass.Role = roleName;
                             MainClass.User = "";
                             CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
                             capQuyen.StartPosition = FormStartPosition.CenterScreen;
-                            capQuyen.Show();
-                            
+                            MainClass.BlurBackground(capQuyen);
 
-                        }
+
+                    }
                         else
                         {
                             this.Close();
@@ -78,12 +80,9 @@ namespace ATBM_PH1
                     MessageBox.Show($"Lỗi khi tạo role: {ex.Message}");
                 }
             }
-        }
+        
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

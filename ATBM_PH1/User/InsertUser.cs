@@ -111,8 +111,8 @@ namespace ATBM_PH1
                     MainClass.Role = "";
                     CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
                     capQuyen.StartPosition = FormStartPosition.CenterScreen;
-                    capQuyen.Show();
-                    this.Hide();
+                    MainClass.BlurBackground(capQuyen);
+                   
                 }
                 else
                 {

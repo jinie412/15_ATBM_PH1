@@ -51,14 +51,15 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
             this.btnSubmit.Location = new System.Drawing.Point(159, 109);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(91, 43);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Tạo";
-            this.btnSubmit.BackColor = System.Drawing.Color.Navy;
-            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label1
@@ -70,7 +71,6 @@
             this.label1.Size = new System.Drawing.Size(86, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "Mật khẩu:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textPassword
             // 

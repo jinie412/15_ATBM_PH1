@@ -33,12 +33,12 @@ namespace ATBM_PH1
 			{
 				cbCaprole.Enabled = false;
 				checkbwgo.Enabled = false;
-				lbuser.Text = "Role: " + MainClass.Role;
+				lbuser.Text = "ROLE: " + MainClass.Role;
 			}
 			else
 			{
 				cbCaprole.Enabled = true;
-				lbuser.Text = "User: " + MainClass.User;
+				lbuser.Text = "USER: " + MainClass.User;
 			}
 		}
 
@@ -440,9 +440,9 @@ namespace ATBM_PH1
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            PhanQuyen phanQuyen = new PhanQuyen();
-            phanQuyen.Show();
-            this.Hide();
+            this.Close();
         }
+
+       
     }
 }
