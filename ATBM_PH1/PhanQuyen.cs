@@ -59,7 +59,7 @@ namespace ATBM_PH1
 
             string grantee = MainClass.Role;
 
-            //string grantee = "";
+            
             if (!string.IsNullOrWhiteSpace(MainClass.User) && string.IsNullOrWhiteSpace(MainClass.Role))
             {
                 grantee = MainClass.User;
@@ -113,7 +113,7 @@ namespace ATBM_PH1
         {
             string grantee = txtGrantee.Text.Trim();
 
-            MainClass.Role = grantee;
+            //MainClass.Role = grantee;
 
 
 
