@@ -3,7 +3,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
-using Newtonsoft.Json;
 using System.Data;
 using ATBM_PH1;
 

@@ -256,7 +256,7 @@ namespace ATBM_PH1
             this.panelTitleBar.Controls.Add(this.btnClose);
             this.panelTitleBar.Location = new System.Drawing.Point(0, -2);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1449, 60);
+            this.panelTitleBar.Size = new System.Drawing.Size(1449, 54);
             this.panelTitleBar.TabIndex = 1;
             // 
             // Role
