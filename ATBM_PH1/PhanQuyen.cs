@@ -307,10 +307,11 @@ namespace ATBM_PH1
 
         private void btnGrant_Click(object sender, EventArgs e)
         {
+            
             CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
             capQuyen.StartPosition = FormStartPosition.CenterScreen;
             MainClass.BlurBackground(capQuyen);
-            this.Hide();
+            
         }
     }
 }
