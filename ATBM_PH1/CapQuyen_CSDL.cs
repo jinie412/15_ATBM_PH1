@@ -433,6 +433,14 @@ namespace ATBM_PH1
                     MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc đối tượng để cấp quyền.");
                     return;
                 }
+               
+                // KIỂM TRA: nếu chọn quyền (S, I, U, D) nhưng không chọn bảng
+                if ((insertChecked == 1 || deleteChecked == 1 || selectChecked == 1 || updateChecked == 1)
+                    && string.IsNullOrWhiteSpace(selectedTable))
+                {
+                    MessageBox.Show("Vui lòng chọn bảng khi cấp quyền SELECT, INSERT, UPDATE hoặc DELETE.");
+                    return;
+                }
                 if (MainClass.conn.State == ConnectionState.Closed)
                 {
                     MainClass.conn.Open();
