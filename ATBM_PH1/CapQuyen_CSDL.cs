@@ -72,6 +72,10 @@ namespace ATBM_PH1
         {
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -178,6 +182,10 @@ namespace ATBM_PH1
 
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 using (OracleCommand cmd = new OracleCommand("get_columns_by_table", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -204,6 +212,10 @@ namespace ATBM_PH1
         {
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -243,6 +255,10 @@ namespace ATBM_PH1
         {
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -289,6 +305,10 @@ namespace ATBM_PH1
         {
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -321,6 +341,10 @@ namespace ATBM_PH1
         {
             try
             {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 OracleCommand cmd = new OracleCommand("get_custom_roles", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -409,7 +433,10 @@ namespace ATBM_PH1
                     MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc đối tượng để cấp quyền.");
                     return;
                 }
-
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
                 using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
