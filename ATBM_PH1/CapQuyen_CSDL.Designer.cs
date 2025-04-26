@@ -326,14 +326,14 @@
             this.btnDropDown.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDropDown.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDropDown.FillColor = System.Drawing.Color.White;
-            this.btnDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDropDown.ForeColor = System.Drawing.Color.Black;
             this.btnDropDown.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.btnDropDown.Location = new System.Drawing.Point(481, 186);
+            this.btnDropDown.Location = new System.Drawing.Point(480, 187);
             this.btnDropDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDropDown.Name = "btnDropDown";
             this.btnDropDown.PressedColor = System.Drawing.Color.Transparent;
-            this.btnDropDown.Size = new System.Drawing.Size(35, 35);
+            this.btnDropDown.Size = new System.Drawing.Size(38, 38);
             this.btnDropDown.TabIndex = 37;
             this.btnDropDown.Text = "▼";
             this.btnDropDown.Click += new System.EventHandler(this.btnDropDown_Click);
@@ -356,7 +356,7 @@
             this.txtQuyen.PlaceholderText = "";
             this.txtQuyen.ReadOnly = true;
             this.txtQuyen.SelectedText = "";
-            this.txtQuyen.Size = new System.Drawing.Size(300, 40);
+            this.txtQuyen.Size = new System.Drawing.Size(300, 42);
             this.txtQuyen.TabIndex = 36;
             this.txtQuyen.Click += new System.EventHandler(this.txtQuyen_Click);
             // 
@@ -412,14 +412,14 @@
             this.btnView.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnView.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnView.FillColor = System.Drawing.Color.White;
-            this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.Color.Black;
             this.btnView.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.btnView.Location = new System.Drawing.Point(481, 333);
+            this.btnView.Location = new System.Drawing.Point(480, 330);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnView.Name = "btnView";
             this.btnView.PressedColor = System.Drawing.Color.Transparent;
-            this.btnView.Size = new System.Drawing.Size(35, 35);
+            this.btnView.Size = new System.Drawing.Size(38, 38);
             this.btnView.TabIndex = 42;
             this.btnView.Text = "▼";
             this.btnView.Click += new System.EventHandler(this.btnView_Click_1);
@@ -442,7 +442,7 @@
             this.txtView.PlaceholderText = "";
             this.txtView.ReadOnly = true;
             this.txtView.SelectedText = "";
-            this.txtView.Size = new System.Drawing.Size(300, 40);
+            this.txtView.Size = new System.Drawing.Size(300, 42);
             this.txtView.TabIndex = 41;
             this.txtView.Click += new System.EventHandler(this.txtView_Click);
             // 
@@ -455,14 +455,14 @@
             this.btnFunction.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFunction.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnFunction.FillColor = System.Drawing.Color.White;
-            this.btnFunction.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFunction.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFunction.ForeColor = System.Drawing.Color.Black;
             this.btnFunction.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.btnFunction.Location = new System.Drawing.Point(482, 409);
+            this.btnFunction.Location = new System.Drawing.Point(479, 408);
             this.btnFunction.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFunction.Name = "btnFunction";
             this.btnFunction.PressedColor = System.Drawing.Color.Transparent;
-            this.btnFunction.Size = new System.Drawing.Size(35, 35);
+            this.btnFunction.Size = new System.Drawing.Size(38, 38);
             this.btnFunction.TabIndex = 44;
             this.btnFunction.Text = "▼";
             this.btnFunction.Click += new System.EventHandler(this.btnFunction_Click);
@@ -485,7 +485,7 @@
             this.txtf.PlaceholderText = "";
             this.txtf.ReadOnly = true;
             this.txtf.SelectedText = "";
-            this.txtf.Size = new System.Drawing.Size(300, 40);
+            this.txtf.Size = new System.Drawing.Size(300, 42);
             this.txtf.TabIndex = 43;
             this.txtf.Click += new System.EventHandler(this.txtf_Click);
             // 
@@ -498,14 +498,14 @@
             this.btnproc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnproc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnproc.FillColor = System.Drawing.Color.White;
-            this.btnproc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnproc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnproc.ForeColor = System.Drawing.Color.Black;
             this.btnproc.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.btnproc.Location = new System.Drawing.Point(479, 486);
+            this.btnproc.Location = new System.Drawing.Point(480, 485);
             this.btnproc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnproc.Name = "btnproc";
             this.btnproc.PressedColor = System.Drawing.Color.Transparent;
-            this.btnproc.Size = new System.Drawing.Size(35, 35);
+            this.btnproc.Size = new System.Drawing.Size(38, 38);
             this.btnproc.TabIndex = 46;
             this.btnproc.Text = "▼";
             this.btnproc.Click += new System.EventHandler(this.btnproc_Click);
@@ -528,7 +528,7 @@
             this.txtproc.PlaceholderText = "";
             this.txtproc.ReadOnly = true;
             this.txtproc.SelectedText = "";
-            this.txtproc.Size = new System.Drawing.Size(300, 40);
+            this.txtproc.Size = new System.Drawing.Size(300, 42);
             this.txtproc.TabIndex = 45;
             this.txtproc.Click += new System.EventHandler(this.txtproc_Click);
             // 

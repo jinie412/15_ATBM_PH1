@@ -53,7 +53,7 @@
             this.guna2CustomGradientPanel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(-2, -2);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(403, 95);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(416, 95);
             this.guna2CustomGradientPanel1.TabIndex = 6;
             // 
             // label1
@@ -204,7 +204,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(398, 472);
+            this.ClientSize = new System.Drawing.Size(413, 478);
             this.Controls.Add(this.CheckUnlock);
             this.Controls.Add(this.CheckLock);
             this.Controls.Add(this.BtnExit);

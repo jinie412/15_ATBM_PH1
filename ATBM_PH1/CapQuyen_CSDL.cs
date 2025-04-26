@@ -28,19 +28,19 @@ namespace ATBM_PH1
             checkedListBox6.ItemCheck += checkedListBox6_ItemCheck;
             LoadRolesToComboBox();
 
-			lbuser.Text = "";
-			if (!string.IsNullOrEmpty(MainClass.Role))
-			{
-				cbCaprole.Enabled = false;
-				checkbwgo.Enabled = false;
-				lbuser.Text = "ROLE: " + MainClass.Role;
-			}
-			else
-			{
-				cbCaprole.Enabled = true;
-				lbuser.Text = "USER: " + MainClass.User;
-			}
-		}
+            lbuser.Text = "";
+            if (!string.IsNullOrEmpty(MainClass.Role))
+            {
+                cbCaprole.Enabled = false;
+                checkbwgo.Enabled = false;
+                lbuser.Text = "Role: " + MainClass.Role;
+            }
+            else
+            {
+                cbCaprole.Enabled = true;
+                lbuser.Text = "User: " + MainClass.User;
+            }
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,39 +68,34 @@ namespace ATBM_PH1
             checkedListBox2.BringToFront();
             checkedListBox2.Location = new Point(txtQuyen.Left, txtQuyen.Bottom);
         }
-		private void LoadTableNames()
-		{
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
+        private void LoadTableNames()
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                cbBang.Items.Clear();
+
+                while (reader.Read())
                 {
-                    MainClass.conn.Open();
+                    string tableName = reader.GetString(0);
+                    cbBang.Items.Add(tableName);
                 }
 
-                OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
-				cmd.CommandType = CommandType.StoredProcedure;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load danh sách bảng:\n" + ex.Message);
+            }
+        }
 
-				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-				OracleDataReader reader = cmd.ExecuteReader();
-
-				cbBang.Items.Clear();
-
-				while (reader.Read())
-				{
-					string tableName = reader.GetString(0);
-					cbBang.Items.Add(tableName);
-				}
-
-				reader.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi load danh sách bảng:\n" + ex.Message);
-			}
-		}
-
-		private void HandleItemCheck(CheckedListBox listBox, ItemCheckEventArgs e, Control targetTextBox, string defaultText)
+        private void HandleItemCheck(CheckedListBox listBox, ItemCheckEventArgs e, Control targetTextBox, string defaultText)
         {
             List<string> selected = new List<string>();
             foreach (var item in listBox.CheckedItems)
@@ -177,70 +172,62 @@ namespace ATBM_PH1
             }
         }
 
-		private void LoadColumnsToChecklist(string tableName, CheckedListBox listBox)
-		{
-			listBox.Items.Clear();
+        private void LoadColumnsToChecklist(string tableName, CheckedListBox listBox)
+        {
+            listBox.Items.Clear();
 
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
+            try
+            {
                 using (OracleCommand cmd = new OracleCommand("get_columns_by_table", MainClass.conn))
-				{
-					cmd.CommandType = CommandType.StoredProcedure;
-
-					cmd.Parameters.Add("p_table_name", OracleDbType.Varchar2).Value = tableName;
-					cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-					using (OracleDataReader reader = cmd.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							listBox.Items.Add(reader.GetString(0), false);
-						}
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi load danh sách cột:\n" + ex.Message);
-			}
-		}
-
-		void LoadViewsToChecklistBox()
-		{
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
                 {
-                    MainClass.conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("p_table_name", OracleDbType.Varchar2).Value = tableName;
+                    cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listBox.Items.Add(reader.GetString(0), false);
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load danh sách cột:\n" + ex.Message);
+            }
+        }
+
+        void LoadViewsToChecklistBox()
+        {
+            try
+            {
                 OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
-				cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-				OracleDataReader reader = cmd.ExecuteReader();
+                OracleDataReader reader = cmd.ExecuteReader();
 
-				checkedListBox4.Items.Clear();
+                checkedListBox4.Items.Clear();
 
-				while (reader.Read())
-				{
-					string viewName = reader.GetString(0);
-					checkedListBox4.Items.Add(viewName);
-				}
+                while (reader.Read())
+                {
+                    string viewName = reader.GetString(0);
+                    checkedListBox4.Items.Add(viewName);
+                }
 
-				reader.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi load danh sách view:\n" + ex.Message);
-			}
-		}
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load danh sách view:\n" + ex.Message);
+            }
+        }
 
-		private void checkedListBox4_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void checkedListBox4_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox4, e, txtView, "Chưa chọn view nào");
         }
@@ -252,38 +239,34 @@ namespace ATBM_PH1
             checkedListBox4.Location = new Point(txtView.Left, txtView.Bottom);
         }
 
-		void LoadFunctionsToChecklistBox()
-		{
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
+        void LoadFunctionsToChecklistBox()
+        {
+            try
+            {
                 OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
-				cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-				OracleDataReader reader = cmd.ExecuteReader();
+                OracleDataReader reader = cmd.ExecuteReader();
 
-				checkedListBox5.Items.Clear();
+                checkedListBox5.Items.Clear();
 
-				while (reader.Read())
-				{
-					string functionName = reader.GetString(0);
-					checkedListBox5.Items.Add(functionName);
-				}
+                while (reader.Read())
+                {
+                    string functionName = reader.GetString(0);
+                    checkedListBox5.Items.Add(functionName);
+                }
 
-				reader.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi load danh sách function:\n" + ex.Message);
-			}
-		}
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load danh sách function:\n" + ex.Message);
+            }
+        }
 
-		private void checkedListBox5_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void checkedListBox5_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox5, e, txtf, "Chưa chọn function nào");
         }
@@ -302,73 +285,65 @@ namespace ATBM_PH1
             checkedListBox6.Location = new Point(txtproc.Left, txtproc.Bottom);
         }
 
-		void LoadProcsToChecklistBox()
-		{
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
+        void LoadProcsToChecklistBox()
+        {
+            try
+            {
                 OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
-				cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-				OracleDataReader reader = cmd.ExecuteReader();
+                OracleDataReader reader = cmd.ExecuteReader();
 
-				checkedListBox6.Items.Clear();
+                checkedListBox6.Items.Clear();
 
-				while (reader.Read())
-				{
-					string procName = reader.GetString(0);
-					checkedListBox6.Items.Add(procName);
-				}
+                while (reader.Read())
+                {
+                    string procName = reader.GetString(0);
+                    checkedListBox6.Items.Add(procName);
+                }
 
-				reader.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi load danh sách procedure:\n" + ex.Message);
-			}
-		}
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load danh sách procedure:\n" + ex.Message);
+            }
+        }
 
-		private void checkedListBox6_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void checkedListBox6_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             HandleItemCheck(checkedListBox6, e, txtproc, "Chưa chọn procedure nào");
         }
 
-		private void LoadRolesToComboBox()
-		{
-			try
-			{
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
+        private void LoadRolesToComboBox()
+        {
+            try
+            {
                 OracleCommand cmd = new OracleCommand("get_custom_roles", MainClass.conn);
-				cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
-				using (OracleDataReader reader = cmd.ExecuteReader())
-				{
-					cbCaprole.Items.Clear();
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    cbCaprole.Items.Clear();
 
-					while (reader.Read())
-					{
-						string roleName = reader.GetString(0);
-						cbCaprole.Items.Add(roleName);
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Không thể tải danh sách roles:\n" + ex.Message);
-			}
-		}
+                    while (reader.Read())
+                    {
+                        string roleName = reader.GetString(0);
+                        cbCaprole.Items.Add(roleName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể tải danh sách roles:\n" + ex.Message);
+            }
+        }
 
-		private void txtQuyen_Click(object sender, EventArgs e)
+        private void txtQuyen_Click(object sender, EventArgs e)
         {
             // Khi người dùng nhấn vào textbox, sẽ hiện ra checklistbox tương ứng
             checkedListBox2.Visible = !checkedListBox2.Visible;
@@ -427,14 +402,12 @@ namespace ATBM_PH1
                     && string.IsNullOrWhiteSpace(selectedUpdateCols)
                     && string.IsNullOrWhiteSpace(selectedViews)
                     && string.IsNullOrWhiteSpace(selectedFunctions)
-                    && string.IsNullOrWhiteSpace(selectedProcedures))
+                    && string.IsNullOrWhiteSpace(selectedProcedures)
+                    && string.IsNullOrWhiteSpace(selectedRole)
+                    )
                 {
                     MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc đối tượng để cấp quyền.");
                     return;
-                }
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
                 }
 
                 using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
@@ -466,7 +439,7 @@ namespace ATBM_PH1
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
-                    this.Close();
+                    this.Hide();
                 }
             }
             catch (Exception ex)
@@ -478,17 +451,9 @@ namespace ATBM_PH1
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            PhanQuyen phanQuyen = new PhanQuyen();
+            phanQuyen.Show();
             this.Hide();
         }
-
-        private Form parentForm;
-
-        //public CapQuyen_CSDL(Form parent)
-        //{
-        //    InitializeComponent();
-        //    this.parentForm = parent;
-        //}
-
-
     }
 }
