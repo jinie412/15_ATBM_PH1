@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using ATBM_PH1;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM_PH1
 {
@@ -20,6 +21,7 @@ namespace ATBM_PH1
         public static OracleConnection conn;
         public static string ConnectionString = "";
 
+  
         // ---------- [3] Hàm làm mờ nền ----------
         public static void BlurBackground(Form model)
         {
@@ -55,4 +57,6 @@ namespace ATBM_PH1
         public string Username { get; set; }      // Tài khoản đăng nhập vào app
         public string Password { get; set; }      // Mật khẩu Oracle (chỉ dùng nội bộ)
     }
+
+
 }

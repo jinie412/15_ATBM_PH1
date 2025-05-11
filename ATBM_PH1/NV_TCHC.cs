@@ -1,0 +1,496 @@
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace ATBM_PH1
+{
+    public partial class NV_TCHC : Form
+    {
+        private bool isDragging = false;
+        private Point dragStartPosition;
+        private CancellationTokenSource _searchCancellationTokenSource;
+        private DataTable _cachedDataTable;
+
+        public NV_TCHC()
+        {
+            try
+            {
+                InitializeComponent();
+
+                // Enable dragging on the title bar
+                panelTitleBar.MouseDown += new MouseEventHandler(panelTitleBar_MouseDown);
+                panelTitleBar.MouseMove += new MouseEventHandler(panelTitleBar_MouseMove);
+                panelTitleBar.MouseUp += new MouseEventHandler(panelTitleBar_MouseUp);
+                labelFormTitle.MouseDown += new MouseEventHandler(panelTitleBar_MouseDown);
+                labelFormTitle.MouseMove += new MouseEventHandler(panelTitleBar_MouseMove);
+                labelFormTitle.MouseUp += new MouseEventHandler(panelTitleBar_MouseUp);
+
+                // Show Manage Roles content by default
+                ShowManageRolesContent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi khởi tạo form: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Role_Load(object sender, EventArgs e)
+        {
+#if DEBUG
+            ShowManageRolesContent();
+#endif
+        }
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                dragStartPosition = new Point(e.X, e.Y);
+            }
+        }
+
+        private void panelTitleBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point p = PointToScreen(new Point(e.X, e.Y));
+                Location = new Point(p.X - dragStartPosition.X, p.Y - dragStartPosition.Y);
+            }
+        }
+
+        private void panelTitleBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximizeRestore_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                btnMaximizeRestore.Text = "❐";
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                btnMaximizeRestore.Text = "□";
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddRole_Click(object sender, EventArgs e)
+        {
+            NhanVienForm tchc = new NhanVienForm();
+            tchc.StartPosition = FormStartPosition.CenterScreen;
+            if (tchc.ShowDialog() == DialogResult.OK)
+            {
+                // Sau khi thêm thành công, làm mới danh sách
+                ShowManageRolesContent();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRoles.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Lấy thông tin nhân viên từ hàng được chọn
+            DataGridViewRow selectedRow = dataGridViewRoles.SelectedRows[0];
+
+            if (!dataGridViewRoles.Columns.Contains("MANLD") || !dataGridViewRoles.Columns.Contains("HOTEN") ||
+                !dataGridViewRoles.Columns.Contains("PHAI") || !dataGridViewRoles.Columns.Contains("NGSINH") ||
+                !dataGridViewRoles.Columns.Contains("LUONG") || !dataGridViewRoles.Columns.Contains("PHUCAP") ||
+                !dataGridViewRoles.Columns.Contains("DT") || !dataGridViewRoles.Columns.Contains("VAITRO") ||
+                !dataGridViewRoles.Columns.Contains("MADV"))
+            {
+                MessageBox.Show("Dữ liệu nhân viên không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string manld = selectedRow.Cells["MANLD"].Value?.ToString();
+            string hoten = selectedRow.Cells["HOTEN"].Value?.ToString();
+            string phai = selectedRow.Cells["PHAI"].Value?.ToString();
+            DateTime ngsinh;
+            try
+            {
+                ngsinh = Convert.ToDateTime(selectedRow.Cells["NGSINH"].Value);
+            }
+            catch
+            {
+                MessageBox.Show("Dữ liệu ngày sinh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            decimal luong;
+            try
+            {
+                luong = Convert.ToDecimal(selectedRow.Cells["LUONG"].Value);
+            }
+            catch
+            {
+                MessageBox.Show("Dữ liệu lương không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            decimal phucap;
+            try
+            {
+                phucap = Convert.ToDecimal(selectedRow.Cells["PHUCAP"].Value);
+            }
+            catch
+            {
+                MessageBox.Show("Dữ liệu phụ cấp không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string dt = selectedRow.Cells["DT"].Value?.ToString();
+            string vaitro = selectedRow.Cells["VAITRO"].Value?.ToString();
+            string madv = selectedRow.Cells["MADV"].Value?.ToString();
+
+            // Mở form chỉnh sửa với dữ liệu hiện tại
+            using (NhanVienForm editForm = new NhanVienForm(manld, hoten, phai, ngsinh, luong, phucap, dt, vaitro, madv))
+            {
+                editForm.StartPosition = FormStartPosition.CenterScreen;
+                if (editForm.ShowDialog() != DialogResult.OK)
+                {
+                    return; // Người dùng nhấn Cancel
+                }
+
+                // Lấy dữ liệu từ form chỉnh sửa và gọi stored procedure
+                try
+                {
+                    if (MainClass.conn.State == ConnectionState.Closed)
+                    {
+                        MainClass.conn.Open();
+                    }
+
+                    using (OracleCommand cmd = new OracleCommand("pdb_admin.SP_UPDATE_NHANVIEN", MainClass.conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm các tham số cho stored procedure
+                        cmd.Parameters.Add("p_manld", OracleDbType.Varchar2).Value = editForm.MANLD;
+                        cmd.Parameters.Add("p_hoten", OracleDbType.Varchar2).Value = editForm.HOTEN;
+                        cmd.Parameters.Add("p_phai", OracleDbType.Varchar2).Value = editForm.PHAI;
+                        cmd.Parameters.Add("p_ngsinh", OracleDbType.Date).Value = editForm.NGSINH;
+                        cmd.Parameters.Add("p_luong", OracleDbType.Decimal).Value = editForm.LUONG;
+                        cmd.Parameters.Add("p_phucap", OracleDbType.Decimal).Value = editForm.PHUCAP;
+                        cmd.Parameters.Add("p_dt", OracleDbType.Varchar2).Value = editForm.DT;
+                        cmd.Parameters.Add("p_vaitro", OracleDbType.Varchar2).Value = editForm.VAITRO;
+                        cmd.Parameters.Add("p_madv", OracleDbType.Varchar2).Value = editForm.MADV;
+                        cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
+
+                        // Thực thi stored procedure
+                        cmd.ExecuteNonQuery();
+
+                        // Lấy kết quả từ tham số output
+                        string result = cmd.Parameters["p_result"].Value.ToString();
+                        MessageBox.Show(result);
+
+                        // Nếu cập nhật thành công, làm mới DataGridView
+                        if (result.Contains("Cập nhật nhân viên thành công"))
+                        {
+                            ShowManageRolesContent();
+                        }
+                    }
+                }
+                catch (OracleException oraEx)
+                {
+                    string errorMessage = $"Lỗi khi cập nhật nhân viên: {oraEx.Message}";
+                    if (oraEx.Number != 0)
+                        errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
+                    if (oraEx.InnerException != null)
+                        errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
+                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Ghi log vào file
+                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+                }
+                catch (Exception ex)
+                {
+                    string errorMessage = $"Lỗi khi cập nhật nhân viên: {ex.Message}";
+                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Ghi log vào file
+                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+                }
+                finally
+                {
+                    if (MainClass.conn.State == ConnectionState.Open)
+                    {
+                        MainClass.conn.Close();
+                    }
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRoles.CurrentRow == null || dataGridViewRoles.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để xoá.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Kiểm tra sự tồn tại của cột MANLD
+            if (!dataGridViewRoles.Columns.Contains("MANLD"))
+            {
+                MessageBox.Show("Không tìm thấy cột Mã NLĐ trong danh sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Giả sử MANLD nằm trong cột tên "MANLD"
+            string manld = dataGridViewRoles.CurrentRow.Cells["MANLD"].Value?.ToString();
+
+            if (string.IsNullOrEmpty(manld))
+            {
+                MessageBox.Show("Không tìm thấy mã nhân viên để xoá.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show($"Bạn có chắc chắn muốn xoá nhân viên với Mã NLĐ: {manld}?",
+                                                          "Xác nhận xoá",
+                                                          MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Warning);
+
+            if (confirmResult != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                    MainClass.conn.Open();
+
+                using (OracleCommand cmd = new OracleCommand("pdb_admin.SP_DELETE_NHANVIEN", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("p_manld", OracleDbType.Varchar2).Value = manld;
+                    cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
+
+                    cmd.ExecuteNonQuery();
+
+                    string result = cmd.Parameters["p_result"].Value.ToString();
+                    MessageBox.Show(result);
+
+                    // Nếu xoá thành công thì refresh lại danh sách
+                    if (result.Contains("Xoá nhân viên thành công"))
+                    {
+                        ShowManageRolesContent(); // Reload lại danh sách nhân viên
+                    }
+                }
+            }
+            catch (OracleException oraEx)
+            {
+                string errorMessage = $"Lỗi khi xoá nhân viên: {oraEx.Message}";
+                if (oraEx.Number != 0)
+                    errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
+                if (oraEx.InnerException != null)
+                    errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Ghi log vào file
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Lỗi khi xoá nhân viên: {ex.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Ghi log vào file
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                    MainClass.conn.Close();
+            }
+        }
+
+        private void ShowManageRolesContent()
+        {
+            panelManageRoles.Visible = true;
+
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                using (OracleCommand cmd = new OracleCommand("pdb_admin.SP_GET_NHANVIEN", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    var pCursor = new OracleParameter("p_cursor", OracleDbType.RefCursor)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(pCursor);
+
+                    using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        if (dataGridViewRoles.DataSource != null)
+                        {
+                            if (dataGridViewRoles.DataSource is DataView view)
+                            {
+                                view.Table.Clear();
+                            }
+                            else if (dataGridViewRoles.DataSource is DataTable table)
+                            {
+                                table.Clear();
+                            }
+                            else
+                            {
+                                dataGridViewRoles.DataSource = null;
+                            }
+                        }
+
+                        // Gán dữ liệu mới
+                        _cachedDataTable = dt;
+                        dataGridViewRoles.DataSource = _cachedDataTable;
+
+                        // Nếu chưa có cột STT, thì thêm vào
+                        if (!dataGridViewRoles.Columns.Contains("STT"))
+                        {
+                            DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
+                            {
+                                Name = "STT",
+                                HeaderText = "STT",
+                                ReadOnly = true,
+                                Width = 50
+                            };
+                            dataGridViewRoles.Columns.Insert(0, sttColumn);
+                        }
+
+                        // Sau khi gán xong, cập nhật STT
+                        int stt = 1;
+                        foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            row.Cells["STT"].Value = stt++;
+                        }
+                    }
+                }
+            }
+            catch (OracleException oraEx)
+            {
+                string errorMessage = $"Lỗi khi tải nhân viên: {oraEx.Message}";
+                if (oraEx.Number != 0)
+                    errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
+                if (oraEx.InnerException != null)
+                    errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Ghi log vào file
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Lỗi khi tải nhân viên: {ex.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Ghi log vào file
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+            finally
+            {
+                if (MainClass.conn.State == ConnectionState.Open)
+                    MainClass.conn.Close();
+            }
+        }
+
+        private void textRole_TextChanged(object sender, EventArgs e)
+        {
+            _searchCancellationTokenSource?.Cancel();
+            _searchCancellationTokenSource = new CancellationTokenSource();
+            var token = _searchCancellationTokenSource.Token;
+
+            Task.Run(async () =>
+            {
+                try
+                {
+                    await Task.Delay(300, token);
+
+                    Invoke(new Action(() =>
+                    {
+                        PerformSearch(textRole.Text.Trim());
+                    }));
+                }
+                catch (TaskCanceledException)
+                {
+                    // Bỏ qua nếu tác vụ bị hủy
+                }
+            }, token);
+        }
+
+        private void PerformSearch(string searchText)
+        {
+            try
+            {
+                if (_cachedDataTable != null)
+                {
+                    DataView dataView = new DataView(_cachedDataTable);
+
+                    if (string.IsNullOrEmpty(searchText))
+                    {
+                        dataView.RowFilter = string.Empty;
+                    }
+                    else
+                    {
+                        // Tìm kiếm theo HOTEN hoặc MANLD
+                        dataView.RowFilter = $"HOTEN LIKE '%{searchText}%' OR MANLD LIKE '%{searchText}%'";
+                    }
+
+                    // Gán lại DataSource
+                    dataGridViewRoles.DataSource = dataView;
+
+                    // Thêm lại cột STT nếu cần
+                    if (!dataGridViewRoles.Columns.Contains("STT"))
+                    {
+                        DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
+                        {
+                            Name = "STT",
+                            HeaderText = "STT",
+                            ReadOnly = true,
+                            Width = 50
+                        };
+                        dataGridViewRoles.Columns.Insert(0, sttColumn);
+                    }
+
+                    // Cập nhật lại giá trị STT
+                    int stt = 1;
+                    foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            row.Cells["STT"].Value = stt++;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Ghi log vào file
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: Lỗi khi tìm kiếm nhân viên: {ex.Message}\n");
+            }
+        }
+    }
+}
