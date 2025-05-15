@@ -54,8 +54,9 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                frmMain main = new frmMain();
-                main.Show();
+                Student student = new Student();
+                student.StartPosition = FormStartPosition.CenterScreen;
+                student.Show();
                 this.Hide();
             }
             catch (OracleException ex)

@@ -108,11 +108,29 @@
     <Compile Include="CapQuyen_CSDL.Designer.cs">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachMoMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhSachMoMon.Designer.cs">
+      <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student.Designer.cs">
+      <DependentUpon>Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinChung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinChung.Designer.cs">
+      <DependentUpon>ThongTinChung.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdatePasswordForm.cs">
       <SubType>Form</SubType>
@@ -168,8 +186,17 @@
     <EmbeddedResource Include="CapQuyen_CSDL.resx">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DanhSachMoMon.resx">
+      <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student.resx">
+      <DependentUpon>Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinChung.resx">
+      <DependentUpon>ThongTinChung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
