@@ -20,11 +20,11 @@ namespace ATBM_PH1
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelManageRoles = new System.Windows.Forms.Panel();
-            this.dataGridViewRoles = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewDiem = new Guna.UI2.WinForms.Guna2DataGridView();
             this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.textRole = new Guna.UI2.WinForms.Guna2TextBox();
@@ -35,14 +35,14 @@ namespace ATBM_PH1
             this.labelFormTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelManageRoles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDiem)).BeginInit();
             this.contentPanel.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelManageRoles
             // 
-            this.panelManageRoles.Controls.Add(this.dataGridViewRoles);
+            this.panelManageRoles.Controls.Add(this.dataGridViewDiem);
             this.panelManageRoles.Controls.Add(this.btnEdit);
             this.panelManageRoles.Controls.Add(this.textRole);
             this.panelManageRoles.Location = new System.Drawing.Point(57, 34);
@@ -50,59 +50,59 @@ namespace ATBM_PH1
             this.panelManageRoles.Size = new System.Drawing.Size(1137, 587);
             this.panelManageRoles.TabIndex = 0;
             // 
-            // dataGridViewRoles
+            // dataGridViewDiem
             // 
-            this.dataGridViewRoles.AllowUserToDeleteRows = false;
-            this.dataGridViewRoles.AllowUserToResizeColumns = false;
-            this.dataGridViewRoles.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewRoles.ColumnHeadersHeight = 35;
-            this.dataGridViewRoles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewDiem.AllowUserToDeleteRows = false;
+            this.dataGridViewDiem.AllowUserToResizeColumns = false;
+            this.dataGridViewDiem.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewDiem.ColumnHeadersHeight = 35;
+            this.dataGridViewDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stt});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewRoles.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewRoles.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridViewRoles.Location = new System.Drawing.Point(46, 122);
-            this.dataGridViewRoles.Name = "dataGridViewRoles";
-            this.dataGridViewRoles.RowHeadersVisible = false;
-            this.dataGridViewRoles.RowHeadersWidth = 51;
-            this.dataGridViewRoles.Size = new System.Drawing.Size(1021, 445);
-            this.dataGridViewRoles.TabIndex = 0;
-            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dataGridViewRoles.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dataGridViewRoles.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewRoles.ThemeStyle.HeaderStyle.Height = 35;
-            this.dataGridViewRoles.ThemeStyle.ReadOnly = false;
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.Height = 22;
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDiem.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewDiem.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDiem.Location = new System.Drawing.Point(46, 122);
+            this.dataGridViewDiem.Name = "dataGridViewDiem";
+            this.dataGridViewDiem.RowHeadersVisible = false;
+            this.dataGridViewDiem.RowHeadersWidth = 51;
+            this.dataGridViewDiem.Size = new System.Drawing.Size(1021, 445);
+            this.dataGridViewDiem.TabIndex = 0;
+            this.dataGridViewDiem.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewDiem.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewDiem.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewDiem.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewDiem.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewDiem.ThemeStyle.HeaderStyle.Height = 35;
+            this.dataGridViewDiem.ThemeStyle.ReadOnly = false;
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDiem.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // stt
             // 
@@ -226,14 +226,14 @@ namespace ATBM_PH1
             this.Text = "Quản Lý Role";
             this.Load += new System.EventHandler(this.Role_Load);
             this.panelManageRoles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDiem)).EndInit();
             this.contentPanel.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
         private Panel panelManageRoles;
-        private Guna2DataGridView dataGridViewRoles;
+        private Guna2DataGridView dataGridViewDiem;
         private Guna2Button btnEdit;
         private Guna2TextBox textRole;
         private Panel contentPanel;

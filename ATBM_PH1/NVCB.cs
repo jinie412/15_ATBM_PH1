@@ -36,7 +36,7 @@ namespace ATBM_PH1
                 labelFormTitle.MouseUp += new MouseEventHandler(panelTitleBar_MouseUp);
 
                 // Show Manage Roles content by default
-                ShowManageRolesContent();
+                ShowManageContent();
                 SetupDataGridViewColumns();
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace ATBM_PH1
         private void Role_Load(object sender, EventArgs e)
         {
 #if DEBUG
-            ShowManageRolesContent();
+            ShowManageContent();
 #endif
         }
 
@@ -104,21 +104,21 @@ namespace ATBM_PH1
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRoles.SelectedRows.Count == 0)
+            if (dataGridViewNVCB.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn một dòng để sửa số điện thoại.");
                 return;
             }
 
-            var selectedRow = dataGridViewRoles.SelectedRows[0];
+            var selectedRow = dataGridViewNVCB.SelectedRows[0];
             string columnName = "DT";
 
             // Kiểm tra cột DT trong dataGridViewRoles.Columns
-            if (!dataGridViewRoles.Columns.Contains(columnName) && dataGridViewRoles.Columns.Contains("dt"))
+            if (!dataGridViewNVCB.Columns.Contains(columnName) && dataGridViewNVCB.Columns.Contains("dt"))
             {
                 columnName = "dt"; // Sử dụng "dt" nếu tìm thấy
             }
-            else if (!dataGridViewRoles.Columns.Contains(columnName))
+            else if (!dataGridViewNVCB.Columns.Contains(columnName))
             {
                 MessageBox.Show("Cột DT không tồn tại trong dữ liệu. Vui lòng kiểm tra dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -165,7 +165,7 @@ namespace ATBM_PH1
                         // Nếu cập nhật thành công, làm mới DataGridView
                         if (result.Contains("thành công"))
                         {
-                            ShowManageRolesContent();
+                            ShowManageContent();
                         }
                     }
                 }
@@ -184,7 +184,7 @@ namespace ATBM_PH1
         }
 
 
-        private void ShowManageRolesContent()
+        private void ShowManageContent()
         {
             panelManageRoles.Visible = true;
 
@@ -208,11 +208,11 @@ namespace ATBM_PH1
                         adapter.Fill(dt);
 
                         _cachedDataTable = dt;
-                        dataGridViewRoles.DataSource = _cachedDataTable;
+                        dataGridViewNVCB.DataSource = _cachedDataTable;
 
-                        if (dataGridViewRoles.Columns.Contains("DT"))
+                        if (dataGridViewNVCB.Columns.Contains("DT"))
                         {
-                            dataGridViewRoles.Columns["DT"].ReadOnly = false;
+                            dataGridViewNVCB.Columns["DT"].ReadOnly = false;
                         }
                     }
                 }
@@ -230,25 +230,25 @@ namespace ATBM_PH1
 
         private void SetupDataGridViewColumns()
         {
-            dataGridViewRoles.AutoGenerateColumns = false;
-            dataGridViewRoles.Columns.Clear();
+            dataGridViewNVCB.AutoGenerateColumns = false;
+            dataGridViewNVCB.Columns.Clear();
 
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MANLD", DataPropertyName = "MANLD" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "HOTEN", DataPropertyName = "HOTEN" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHAI", DataPropertyName = "PHAI" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "NGSINH", DataPropertyName = "NGSINH" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "LUONG", DataPropertyName = "LUONG" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHUCAP", DataPropertyName = "PHUCAP" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MANLD", DataPropertyName = "MANLD" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "HOTEN", DataPropertyName = "HOTEN" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHAI", DataPropertyName = "PHAI" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "NGSINH", DataPropertyName = "NGSINH" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "LUONG", DataPropertyName = "LUONG" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHUCAP", DataPropertyName = "PHUCAP" });
             var dtColumn = new DataGridViewTextBoxColumn
             {
                 Name = "DT",                 
                 HeaderText = "DT",
                 DataPropertyName = "DT"
             };
-            dataGridViewRoles.Columns.Add(dtColumn);
+            dataGridViewNVCB.Columns.Add(dtColumn);
 
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "VAITRO", DataPropertyName = "VAITRO" });
-            dataGridViewRoles.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MADV", DataPropertyName = "MADV" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "VAITRO", DataPropertyName = "VAITRO" });
+            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MADV", DataPropertyName = "MADV" });
         }
 
 

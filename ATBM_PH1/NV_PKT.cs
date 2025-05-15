@@ -34,7 +34,7 @@ namespace ATBM_PH1
                 labelFormTitle.MouseUp += new MouseEventHandler(panelTitleBar_MouseUp);
 
                 // Show Manage Roles content by default
-                ShowManageRolesContent();
+                ShowManageContent();
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace ATBM_PH1
         private void Role_Load(object sender, EventArgs e)
         {
 #if DEBUG
-            ShowManageRolesContent();
+            ShowManageContent();
 #endif
         }
 
@@ -101,18 +101,18 @@ namespace ATBM_PH1
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRoles.SelectedRows.Count == 0)
+            if (dataGridViewDiem.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn một bản ghi để cập nhật điểm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // Lấy thông tin điểm số từ hàng được chọn
-            DataGridViewRow selectedRow = dataGridViewRoles.SelectedRows[0];
+            DataGridViewRow selectedRow = dataGridViewDiem.SelectedRows[0];
 
-            if (!dataGridViewRoles.Columns.Contains("MASV") || !dataGridViewRoles.Columns.Contains("MAMM") ||
-                !dataGridViewRoles.Columns.Contains("DIEMTH") || !dataGridViewRoles.Columns.Contains("DIEMQT") ||
-                !dataGridViewRoles.Columns.Contains("DIEMCK") || !dataGridViewRoles.Columns.Contains("DIEMTK"))
+            if (!dataGridViewDiem.Columns.Contains("MASV") || !dataGridViewDiem.Columns.Contains("MAMM") ||
+                !dataGridViewDiem.Columns.Contains("DIEMTH") || !dataGridViewDiem.Columns.Contains("DIEMQT") ||
+                !dataGridViewDiem.Columns.Contains("DIEMCK") || !dataGridViewDiem.Columns.Contains("DIEMTK"))
             {
                 MessageBox.Show("Dữ liệu điểm số không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -142,12 +142,12 @@ namespace ATBM_PH1
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     // Làm mới danh sách sau khi cập nhật thành công
-                    ShowManageRolesContent();
+                    ShowManageContent();
                 }
             }
         }
 
-        private void ShowManageRolesContent()
+        private void ShowManageContent()
         {
             panelManageRoles.Visible = true;
 
@@ -173,29 +173,29 @@ namespace ATBM_PH1
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        if (dataGridViewRoles.DataSource != null)
+                        if (dataGridViewDiem.DataSource != null)
                         {
-                            if (dataGridViewRoles.DataSource is DataView view)
+                            if (dataGridViewDiem.DataSource is DataView view)
                             {
                                 view.Table.Clear();
                             }
-                            else if (dataGridViewRoles.DataSource is DataTable table)
+                            else if (dataGridViewDiem.DataSource is DataTable table)
                             {
                                 table.Clear();
                             }
                             else
                             {
-                                dataGridViewRoles.DataSource = null;
+                                dataGridViewDiem.DataSource = null;
                             }
                         }
 
                         // Gán dữ liệu mới
                         _cachedDataTable = dt;
-                        dataGridViewRoles.DataSource = _cachedDataTable;
-                        dataGridViewRoles.Refresh();
+                        dataGridViewDiem.DataSource = _cachedDataTable;
+                        dataGridViewDiem.Refresh();
 
                         // Nếu chưa có cột STT, thì thêm vào
-                        if (!dataGridViewRoles.Columns.Contains("STT"))
+                        if (!dataGridViewDiem.Columns.Contains("STT"))
                         {
                             DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
                             {
@@ -204,12 +204,12 @@ namespace ATBM_PH1
                                 ReadOnly = true,
                                 Width = 50
                             };
-                            dataGridViewRoles.Columns.Insert(0, sttColumn);
+                            dataGridViewDiem.Columns.Insert(0, sttColumn);
                         }
 
                         // Sau khi gán xong, cập nhật STT
                         int stt = 1;
-                        foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                        foreach (DataGridViewRow row in dataGridViewDiem.Rows)
                         {
                             if (row.IsNewRow) continue;
                             row.Cells["STT"].Value = stt++;
@@ -285,10 +285,10 @@ namespace ATBM_PH1
                     }
 
                     // Gán lại DataSource
-                    dataGridViewRoles.DataSource = dataView;
+                    dataGridViewDiem.DataSource = dataView;
 
                     // Thêm lại cột STT nếu cần
-                    if (!dataGridViewRoles.Columns.Contains("STT"))
+                    if (!dataGridViewDiem.Columns.Contains("STT"))
                     {
                         DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
                         {
@@ -297,12 +297,12 @@ namespace ATBM_PH1
                             ReadOnly = true,
                             Width = 50
                         };
-                        dataGridViewRoles.Columns.Insert(0, sttColumn);
+                        dataGridViewDiem.Columns.Insert(0, sttColumn);
                     }
 
                     // Cập nhật lại giá trị STT
                     int stt = 1;
-                    foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                    foreach (DataGridViewRow row in dataGridViewDiem.Rows)
                     {
                         if (!row.IsNewRow)
                         {

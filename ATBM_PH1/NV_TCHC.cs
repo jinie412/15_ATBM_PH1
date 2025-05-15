@@ -29,8 +29,8 @@ namespace ATBM_PH1
                 labelFormTitle.MouseMove += new MouseEventHandler(panelTitleBar_MouseMove);
                 labelFormTitle.MouseUp += new MouseEventHandler(panelTitleBar_MouseUp);
 
-                // Show Manage Roles content by default
-                ShowManageRolesContent();
+                // Show Manage content by default
+                ShowManageContent();
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace ATBM_PH1
         private void Role_Load(object sender, EventArgs e)
         {
 #if DEBUG
-            ShowManageRolesContent();
+            ShowManageContent();
 #endif
         }
 
@@ -95,33 +95,33 @@ namespace ATBM_PH1
             this.Close();
         }
 
-        private void btnAddRole_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             NhanVienForm tchc = new NhanVienForm();
             tchc.StartPosition = FormStartPosition.CenterScreen;
             if (tchc.ShowDialog() == DialogResult.OK)
             {
                 // Sau khi thêm thành công, làm mới danh sách
-                ShowManageRolesContent();
+                ShowManageContent();
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRoles.SelectedRows.Count == 0)
+            if (dataGridViewNhanVien.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn một nhân viên để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // Lấy thông tin nhân viên từ hàng được chọn
-            DataGridViewRow selectedRow = dataGridViewRoles.SelectedRows[0];
+            DataGridViewRow selectedRow = dataGridViewNhanVien.SelectedRows[0];
 
-            if (!dataGridViewRoles.Columns.Contains("MANLD") || !dataGridViewRoles.Columns.Contains("HOTEN") ||
-                !dataGridViewRoles.Columns.Contains("PHAI") || !dataGridViewRoles.Columns.Contains("NGSINH") ||
-                !dataGridViewRoles.Columns.Contains("LUONG") || !dataGridViewRoles.Columns.Contains("PHUCAP") ||
-                !dataGridViewRoles.Columns.Contains("DT") || !dataGridViewRoles.Columns.Contains("VAITRO") ||
-                !dataGridViewRoles.Columns.Contains("MADV"))
+            if (!dataGridViewNhanVien.Columns.Contains("MANLD") || !dataGridViewNhanVien.Columns.Contains("HOTEN") ||
+                !dataGridViewNhanVien.Columns.Contains("PHAI") || !dataGridViewNhanVien.Columns.Contains("NGSINH") ||
+                !dataGridViewNhanVien.Columns.Contains("LUONG") || !dataGridViewNhanVien.Columns.Contains("PHUCAP") ||
+                !dataGridViewNhanVien.Columns.Contains("DT") || !dataGridViewNhanVien.Columns.Contains("VAITRO") ||
+                !dataGridViewNhanVien.Columns.Contains("MADV"))
             {
                 MessageBox.Show("Dữ liệu nhân viên không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -207,7 +207,7 @@ namespace ATBM_PH1
                         // Nếu cập nhật thành công, làm mới DataGridView
                         if (result.Contains("Cập nhật nhân viên thành công"))
                         {
-                            ShowManageRolesContent();
+                            ShowManageContent();
                         }
                     }
                 }
@@ -241,21 +241,21 @@ namespace ATBM_PH1
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRoles.CurrentRow == null || dataGridViewRoles.CurrentRow.IsNewRow)
+            if (dataGridViewNhanVien.CurrentRow == null || dataGridViewNhanVien.CurrentRow.IsNewRow)
             {
                 MessageBox.Show("Vui lòng chọn một nhân viên để xoá.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // Kiểm tra sự tồn tại của cột MANLD
-            if (!dataGridViewRoles.Columns.Contains("MANLD"))
+            if (!dataGridViewNhanVien.Columns.Contains("MANLD"))
             {
                 MessageBox.Show("Không tìm thấy cột Mã NLĐ trong danh sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Giả sử MANLD nằm trong cột tên "MANLD"
-            string manld = dataGridViewRoles.CurrentRow.Cells["MANLD"].Value?.ToString();
+            string manld = dataGridViewNhanVien.CurrentRow.Cells["MANLD"].Value?.ToString();
 
             if (string.IsNullOrEmpty(manld))
             {
@@ -293,7 +293,7 @@ namespace ATBM_PH1
                     // Nếu xoá thành công thì refresh lại danh sách
                     if (result.Contains("Xoá nhân viên thành công"))
                     {
-                        ShowManageRolesContent(); // Reload lại danh sách nhân viên
+                        ShowManageContent(); // Reload lại danh sách nhân viên
                     }
                 }
             }
@@ -322,7 +322,7 @@ namespace ATBM_PH1
             }
         }
 
-        private void ShowManageRolesContent()
+        private void ShowManageContent()
         {
             panelManageRoles.Visible = true;
 
@@ -348,28 +348,28 @@ namespace ATBM_PH1
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        if (dataGridViewRoles.DataSource != null)
+                        if (dataGridViewNhanVien.DataSource != null)
                         {
-                            if (dataGridViewRoles.DataSource is DataView view)
+                            if (dataGridViewNhanVien.DataSource is DataView view)
                             {
                                 view.Table.Clear();
                             }
-                            else if (dataGridViewRoles.DataSource is DataTable table)
+                            else if (dataGridViewNhanVien.DataSource is DataTable table)
                             {
                                 table.Clear();
                             }
                             else
                             {
-                                dataGridViewRoles.DataSource = null;
+                                dataGridViewNhanVien.DataSource = null;
                             }
                         }
 
                         // Gán dữ liệu mới
                         _cachedDataTable = dt;
-                        dataGridViewRoles.DataSource = _cachedDataTable;
+                        dataGridViewNhanVien.DataSource = _cachedDataTable;
 
                         // Nếu chưa có cột STT, thì thêm vào
-                        if (!dataGridViewRoles.Columns.Contains("STT"))
+                        if (!dataGridViewNhanVien.Columns.Contains("STT"))
                         {
                             DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
                             {
@@ -378,12 +378,12 @@ namespace ATBM_PH1
                                 ReadOnly = true,
                                 Width = 50
                             };
-                            dataGridViewRoles.Columns.Insert(0, sttColumn);
+                            dataGridViewNhanVien.Columns.Insert(0, sttColumn);
                         }
 
                         // Sau khi gán xong, cập nhật STT
                         int stt = 1;
-                        foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                        foreach (DataGridViewRow row in dataGridViewNhanVien.Rows)
                         {
                             if (row.IsNewRow) continue;
                             row.Cells["STT"].Value = stt++;
@@ -459,10 +459,10 @@ namespace ATBM_PH1
                     }
 
                     // Gán lại DataSource
-                    dataGridViewRoles.DataSource = dataView;
+                    dataGridViewNhanVien.DataSource = dataView;
 
                     // Thêm lại cột STT nếu cần
-                    if (!dataGridViewRoles.Columns.Contains("STT"))
+                    if (!dataGridViewNhanVien.Columns.Contains("STT"))
                     {
                         DataGridViewTextBoxColumn sttColumn = new DataGridViewTextBoxColumn
                         {
@@ -471,12 +471,12 @@ namespace ATBM_PH1
                             ReadOnly = true,
                             Width = 50
                         };
-                        dataGridViewRoles.Columns.Insert(0, sttColumn);
+                        dataGridViewNhanVien.Columns.Insert(0, sttColumn);
                     }
 
                     // Cập nhật lại giá trị STT
                     int stt = 1;
-                    foreach (DataGridViewRow row in dataGridViewRoles.Rows)
+                    foreach (DataGridViewRow row in dataGridViewNhanVien.Rows)
                     {
                         if (!row.IsNewRow)
                         {
