@@ -86,7 +86,15 @@ namespace ATBM_PH1
                     cmd.Parameters.Add("p_diachi", OracleDbType.Varchar2).Value = DCHI;
                     cmd.Parameters.Add("p_sdt", OracleDbType.Varchar2).Value = DT;
                     cmd.Parameters.Add("p_khoa", OracleDbType.Varchar2).Value = KHOA;
-                    cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
+                    //cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
+                    if (!string.IsNullOrWhiteSpace(TINHTRANG))
+                    {
+                        cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = DBNull.Value;
+                    }
                     //// Chỉ thêm p_tinhtrang khi gọi SP_INSERT_SINHVIEN (thêm mới)
                     //if (!_isEditMode)
                     //{
@@ -101,15 +109,27 @@ namespace ATBM_PH1
                     string result = cmd.Parameters["p_result"].Value.ToString();
                     MessageBox.Show(result);
 
-                    if (result.Contains("Cập nhật sinh viên thành công"))
+                    //if (result.Contains("Cập nhật sinh viên thành công"))
+                    //{
+                    //    DialogResult = DialogResult.OK;
+                    //    Close();
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show($"Cập nhật thất bại: {result}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    if ((_isEditMode && result.Contains("Cập nhật sinh viên thành công")) ||
+                        (!_isEditMode && result.Contains("Thêm mới sinh viên thành công")))
                     {
                         DialogResult = DialogResult.OK;
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show($"Cập nhật thất bại: {result}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"{(_isEditMode ? "Cập nhật" : "Thêm")} thất bại: {result}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+
                 }
             }
             catch (OracleException oraEx)
