@@ -53,6 +53,20 @@ namespace ATBM_PH1
             frm.Show();
         }
 
+        private void registersubject_Click(object sender, EventArgs e)
+        {
+            if (currentChildForm != null && !currentChildForm.IsDisposed)
+            {
+                currentChildForm.Close(); // Đóng form con hiện tại nếu có
+            }
 
+            DangKyHP frm = new DangKyHP();
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Location = new Point(this.Left + 197, this.Top + 37);
+
+            currentChildForm = frm;
+
+            frm.Show();
+        }
     }
 }

@@ -96,11 +96,11 @@
     <Compile Include="CreateRoleForm.Designer.cs">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DangKy.cs">
+    <Compile Include="DangKyHP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DangKy.Designer.cs">
-      <DependentUpon>DangKy.cs</DependentUpon>
+    <Compile Include="DangKyHP.Designer.cs">
+      <DependentUpon>DangKyHP.cs</DependentUpon>
     </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
@@ -119,6 +119,12 @@
     </Compile>
     <Compile Include="DanhSachMoMon.Designer.cs">
       <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DSHP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DSHP.Designer.cs">
+      <DependentUpon>DSHP.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -186,8 +192,8 @@
     <Compile Include="User\InsertUser.Designer.cs">
       <DependentUpon>InsertUser.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DangKy.resx">
-      <DependentUpon>DangKy.cs</DependentUpon>
+    <EmbeddedResource Include="DangKyHP.resx">
+      <DependentUpon>DangKyHP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DanhSachMoMon.resx">
       <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DSHP.resx">
+      <DependentUpon>DSHP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
