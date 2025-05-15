@@ -74,7 +74,7 @@
             this.pnThongTinChung.Controls.Add(this.label2);
             this.pnThongTinChung.Location = new System.Drawing.Point(0, 3);
             this.pnThongTinChung.Name = "pnThongTinChung";
-            this.pnThongTinChung.Size = new System.Drawing.Size(937, 610);
+            this.pnThongTinChung.Size = new System.Drawing.Size(987, 610);
             this.pnThongTinChung.TabIndex = 4;
             // 
             // btnThayDoi
@@ -87,7 +87,7 @@
             this.btnThayDoi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
             this.btnThayDoi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThayDoi.ForeColor = System.Drawing.Color.White;
-            this.btnThayDoi.Location = new System.Drawing.Point(355, 525);
+            this.btnThayDoi.Location = new System.Drawing.Point(392, 532);
             this.btnThayDoi.Name = "btnThayDoi";
             this.btnThayDoi.Size = new System.Drawing.Size(180, 45);
             this.btnThayDoi.TabIndex = 26;
@@ -119,7 +119,7 @@
             this.txtTinhTrang.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTinhTrang.ForeColor = System.Drawing.Color.Black;
             this.txtTinhTrang.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTinhTrang.Location = new System.Drawing.Point(512, 443);
+            this.txtTinhTrang.Location = new System.Drawing.Point(549, 450);
             this.txtTinhTrang.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTinhTrang.Name = "txtTinhTrang";
             this.txtTinhTrang.PlaceholderText = "";
@@ -140,7 +140,7 @@
             this.txtKhoa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKhoa.ForeColor = System.Drawing.Color.Black;
             this.txtKhoa.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKhoa.Location = new System.Drawing.Point(512, 344);
+            this.txtKhoa.Location = new System.Drawing.Point(549, 351);
             this.txtKhoa.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtKhoa.Name = "txtKhoa";
             this.txtKhoa.PlaceholderText = "";
@@ -161,7 +161,7 @@
             this.txtDienThoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDienThoai.ForeColor = System.Drawing.Color.Black;
             this.txtDienThoai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDienThoai.Location = new System.Drawing.Point(512, 233);
+            this.txtDienThoai.Location = new System.Drawing.Point(549, 240);
             this.txtDienThoai.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.PlaceholderText = "";
@@ -182,7 +182,7 @@
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
             this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Location = new System.Drawing.Point(512, 128);
+            this.txtDiaChi.Location = new System.Drawing.Point(549, 135);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PlaceholderText = "";
@@ -203,7 +203,7 @@
             this.txtNgaySinh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNgaySinh.ForeColor = System.Drawing.Color.Black;
             this.txtNgaySinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNgaySinh.Location = new System.Drawing.Point(97, 443);
+            this.txtNgaySinh.Location = new System.Drawing.Point(134, 450);
             this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.PlaceholderText = "";
@@ -224,7 +224,7 @@
             this.txtGioiTinh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGioiTinh.ForeColor = System.Drawing.Color.Black;
             this.txtGioiTinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGioiTinh.Location = new System.Drawing.Point(97, 344);
+            this.txtGioiTinh.Location = new System.Drawing.Point(134, 351);
             this.txtGioiTinh.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.PlaceholderText = "";
@@ -245,7 +245,7 @@
             this.txtHoTen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHoTen.ForeColor = System.Drawing.Color.Black;
             this.txtHoTen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtHoTen.Location = new System.Drawing.Point(94, 233);
+            this.txtHoTen.Location = new System.Drawing.Point(131, 240);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.PlaceholderText = "";
@@ -266,7 +266,7 @@
             this.txtMaSV.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaSV.ForeColor = System.Drawing.Color.Black;
             this.txtMaSV.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaSV.Location = new System.Drawing.Point(94, 128);
+            this.txtMaSV.Location = new System.Drawing.Point(131, 135);
             this.txtMaSV.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.PlaceholderText = "";
@@ -278,7 +278,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(507, 403);
+            this.label10.Location = new System.Drawing.Point(544, 410);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(101, 28);
             this.label10.TabIndex = 10;
@@ -288,7 +288,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(507, 306);
+            this.label9.Location = new System.Drawing.Point(544, 313);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 28);
             this.label9.TabIndex = 9;
@@ -298,7 +298,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(507, 191);
+            this.label8.Location = new System.Drawing.Point(544, 198);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 28);
             this.label8.TabIndex = 8;
@@ -308,7 +308,7 @@
             // 
             this.lb.AutoSize = true;
             this.lb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb.Location = new System.Drawing.Point(92, 403);
+            this.lb.Location = new System.Drawing.Point(129, 410);
             this.lb.Name = "lb";
             this.lb.Size = new System.Drawing.Size(99, 28);
             this.lb.TabIndex = 7;
@@ -318,7 +318,7 @@
             // 
             this.lbgt.AutoSize = true;
             this.lbgt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbgt.Location = new System.Drawing.Point(92, 306);
+            this.lbgt.Location = new System.Drawing.Point(129, 313);
             this.lbgt.Name = "lbgt";
             this.lbgt.Size = new System.Drawing.Size(87, 28);
             this.lbgt.TabIndex = 6;
@@ -328,7 +328,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(507, 87);
+            this.label6.Location = new System.Drawing.Point(544, 94);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 28);
             this.label6.TabIndex = 5;
@@ -338,7 +338,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(92, 191);
+            this.label4.Location = new System.Drawing.Point(129, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 28);
             this.label4.TabIndex = 3;
@@ -348,7 +348,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 87);
+            this.label2.Location = new System.Drawing.Point(129, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 28);
             this.label2.TabIndex = 0;
@@ -376,7 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 610);
+            this.ClientSize = new System.Drawing.Size(987, 610);
             this.Controls.Add(this.pnThongTinChung);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ThongTinChung";

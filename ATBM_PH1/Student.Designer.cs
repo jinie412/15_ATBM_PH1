@@ -30,7 +30,6 @@
         {
             Guna.UI2.WinForms.Guna2Button studentinfo;
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.point = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.registersubject = new Guna.UI2.WinForms.Guna2Button();
             this.subjectlist = new Guna.UI2.WinForms.Guna2Button();
@@ -49,7 +48,6 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.guna2Panel1.Controls.Add(this.point);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.guna2Button4);
             this.guna2Panel1.Controls.Add(studentinfo);
@@ -60,35 +58,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(263, 655);
             this.guna2Panel1.TabIndex = 0;
-            // 
-            // point
-            // 
-            this.point.AutoRoundedCorners = true;
-            this.point.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.point.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.point.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.point.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.point.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.point.CheckedState.Image = global::ATBM_PH1.Properties.Resources.authorize_black;
-            this.point.Cursor = System.Windows.Forms.Cursors.Default;
-            this.point.CustomizableEdges.BottomRight = false;
-            this.point.CustomizableEdges.TopRight = false;
-            this.point.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.point.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.point.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.point.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.point.FillColor = System.Drawing.Color.Transparent;
-            this.point.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.point.ForeColor = System.Drawing.Color.White;
-            this.point.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.point.ImageOffset = new System.Drawing.Point(10, 0);
-            this.point.Location = new System.Drawing.Point(3, 477);
-            this.point.Name = "point";
-            this.point.Size = new System.Drawing.Size(231, 54);
-            this.point.TabIndex = 8;
-            this.point.Text = "Bảng điểm";
-            this.point.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.point.TextOffset = new System.Drawing.Point(20, 0);
             // 
             // label1
             // 
@@ -120,11 +89,11 @@
             this.registersubject.FillColor = System.Drawing.Color.Transparent;
             this.registersubject.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registersubject.ForeColor = System.Drawing.Color.White;
-            this.registersubject.Location = new System.Drawing.Point(0, 401);
+            this.registersubject.Location = new System.Drawing.Point(3, 423);
             this.registersubject.Name = "registersubject";
             this.registersubject.Size = new System.Drawing.Size(248, 54);
             this.registersubject.TabIndex = 3;
-            this.registersubject.Text = "Kết quả ĐKHP";
+            this.registersubject.Text = "Kết quả học tập";
             this.registersubject.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.registersubject.TextOffset = new System.Drawing.Point(20, 0);
             // 
@@ -146,7 +115,7 @@
             this.subjectlist.FillColor = System.Drawing.Color.Transparent;
             this.subjectlist.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subjectlist.ForeColor = System.Drawing.Color.White;
-            this.subjectlist.Location = new System.Drawing.Point(-5, 312);
+            this.subjectlist.Location = new System.Drawing.Point(-14, 316);
             this.subjectlist.Name = "subjectlist";
             this.subjectlist.Size = new System.Drawing.Size(248, 71);
             this.subjectlist.TabIndex = 4;
@@ -172,7 +141,7 @@
             studentinfo.FillColor = System.Drawing.Color.Transparent;
             studentinfo.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             studentinfo.ForeColor = System.Drawing.Color.White;
-            studentinfo.Location = new System.Drawing.Point(-3, 237);
+            studentinfo.Location = new System.Drawing.Point(0, 220);
             studentinfo.Name = "studentinfo";
             studentinfo.Size = new System.Drawing.Size(251, 54);
             studentinfo.TabIndex = 5;
@@ -189,7 +158,7 @@
             this.guna2Panel2.Controls.Add(this.btnExit);
             this.guna2Panel2.Location = new System.Drawing.Point(263, -1);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(937, 48);
+            this.guna2Panel2.Size = new System.Drawing.Size(987, 48);
             this.guna2Panel2.TabIndex = 1;
             // 
             // guna2ControlBox3
@@ -200,7 +169,7 @@
             this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox3.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(778, 10);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(828, 10);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox3.TabIndex = 1;
@@ -213,7 +182,7 @@
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(829, 10);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(879, 10);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox2.TabIndex = 2;
@@ -224,7 +193,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.FillColor = System.Drawing.Color.Transparent;
             this.btnExit.IconColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(880, 10);
+            this.btnExit.Location = new System.Drawing.Point(930, 10);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 3;
@@ -251,7 +220,7 @@
             this.guna2Button4.Image = global::ATBM_PH1.Properties.Resources.logout;
             this.guna2Button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button4.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button4.Location = new System.Drawing.Point(12, 549);
+            this.guna2Button4.Location = new System.Drawing.Point(12, 528);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(231, 54);
             this.guna2Button4.TabIndex = 2;
@@ -276,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 655);
+            this.ClientSize = new System.Drawing.Size(1250, 655);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -298,7 +267,6 @@
         private Guna.UI2.WinForms.Guna2Button registersubject;
         private Guna.UI2.WinForms.Guna2Button subjectlist;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button point;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;

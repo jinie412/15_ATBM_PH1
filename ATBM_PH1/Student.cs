@@ -17,24 +17,42 @@ namespace ATBM_PH1
         {
             InitializeComponent();
         }
+        Form currentChildForm = null;
+
 
         private void studentinfo_Click(object sender, EventArgs e)
         {
-            // Hiện form tại vị trí mong muốn
+            if (currentChildForm != null && !currentChildForm.IsDisposed)
+            {
+                currentChildForm.Close(); // Đóng form con hiện tại nếu có
+            }
+
             ThongTinChung frm = new ThongTinChung();
             frm.StartPosition = FormStartPosition.Manual;
-            frm.Location = new Point(this.Left + 197, this.Top +37); // Tọa độ tùy chỉnh
+            frm.Location = new Point(this.Left + 197, this.Top + 37);
+
+            currentChildForm = frm; // Gán form hiện tại vào biến
+
             frm.Show();
         }
 
 
         private void subjectlist_Click(object sender, EventArgs e)
         {
+            if (currentChildForm != null && !currentChildForm.IsDisposed)
+            {
+                currentChildForm.Close(); // Đóng form con hiện tại nếu có
+            }
+
             DanhSachMoMon frm = new DanhSachMoMon();
             frm.StartPosition = FormStartPosition.Manual;
-            frm.Location = new Point(this.Left + 197, this.Top + 37); // Tọa độ tùy chỉnh
+            frm.Location = new Point(this.Left + 197, this.Top + 37);
+
+            currentChildForm = frm;
+
             frm.Show();
         }
+
 
     }
 }
