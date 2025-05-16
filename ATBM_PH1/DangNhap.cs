@@ -37,7 +37,6 @@ namespace ATBM_PH1
 
             try
             {
-                // Đổi từ XEPDB1 sang đúng tên PDB của bạn
                 string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
 
                 // Nếu login với SYS thì thêm quyền SYSDBA
@@ -51,11 +50,14 @@ namespace ATBM_PH1
 
                 // Nếu kết nối thành công, gán giá trị và chuyển form
                 MainClass.CurrentUser.Username = username;
-                MainClass.CurrentUser.Password = password;
+                //MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                frmMain main = new frmMain();
-                main.Show();
+                //frmMain main = new frmMain();
+                //main.Show();
+                //this.Hide();
+                GV GV = new GV(username);
+                GV.Show();
                 this.Hide();
             }
             catch (OracleException ex)

@@ -108,11 +108,29 @@
     <Compile Include="CapQuyen_CSDL.Designer.cs">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </Compile>
+    <Compile Include="DSDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DSDK.Designer.cs">
+      <DependentUpon>DSDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DSSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DSSV.Designer.cs">
+      <DependentUpon>DSSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV.Designer.cs">
+      <DependentUpon>GV.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdatePasswordForm.cs">
       <SubType>Form</SubType>
@@ -168,8 +186,17 @@
     <EmbeddedResource Include="CapQuyen_CSDL.resx">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DSDK.resx">
+      <DependentUpon>DSDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DSSV.resx">
+      <DependentUpon>DSSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GV.resx">
+      <DependentUpon>GV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
