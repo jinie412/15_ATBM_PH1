@@ -24,6 +24,59 @@ namespace ATBM_PH1
             Application.Exit();
         }
 
+        public string GoiHam_XacDinhRole(string input)
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                    MainClass.conn.Open();
+
+                string sql = "SELECT PDB_ADMIN.FUNC_XACDINH_DOITUONG(:p_input) FROM DUAL";
+
+                OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add("p_input", OracleDbType.Varchar2).Value = input;
+
+                object result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : "(null)";
+            }
+            catch (Exception ex)
+            {
+                return "Lỗi: " + ex.Message;
+            }
+        }
+
+
+        private void load_Form()
+        {
+            if (MainClass.CurrentUser.Username.ToLower() == "pdb_admin")
+            {
+                frmMain_PDT main = new frmMain_PDT();
+                main.Show();
+                this.Hide();
+            }
+            else
+            {
+                string role = GoiHam_XacDinhRole(MainClass.CurrentUser.Username);
+                if (role == "NV PĐT")
+                {
+                    frmMain_PDT main = new frmMain_PDT();
+                    main.Show();
+                    this.Hide();
+                }
+                else if (role == "TRGĐV")
+                {
+                    frmMain_trgDV main = new frmMain_trgDV();
+                    main.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Không xác định được quyền truy cập.");
+                }
+            }
+        }
+
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
 			string username = txtUser.Text.Trim();
@@ -54,9 +107,7 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                frmMain_PDT main = new frmMain_PDT();
-                main.Show();
-                this.Hide();
+                load_Form();
             }
             catch (OracleException ex)
             {

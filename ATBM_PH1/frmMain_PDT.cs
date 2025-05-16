@@ -19,24 +19,12 @@ namespace ATBM_PH1
         {
             InitializeComponent();
             Instance = this;
-            //if (MainClass.Role == "PDT")
-            //{
-            //    panel_PDT pdtControl = new panel_PDT(); // tạo instance
-            //    pdtControl.Dock = DockStyle.Fill;       // cho vừa khít menuPanel (tùy bạn)
-
-            //    menuPanel.Controls.Clear();             // xoá các control cũ nếu có
-            //    menuPanel.Controls.Add(pdtControl);     // thêm UserControl vào panel
-            //}
         }
-
-   
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-		
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
@@ -51,7 +39,6 @@ namespace ATBM_PH1
             PDT_momon frm = new PDT_momon();
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
-            this.Close();
         }
 
         private void btnDKHP_Click(object sender, EventArgs e)
@@ -59,7 +46,7 @@ namespace ATBM_PH1
             PDT_Dangky frm = new PDT_Dangky();
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
-            this.Close();
+            
         }
     }
 }
