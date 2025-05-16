@@ -114,6 +114,48 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain_PDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_PDT.Designer.cs">
+      <DependentUpon>frmMain_PDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_trgDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_trgDV.Designer.cs">
+      <DependentUpon>frmMain_trgDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT_Dangky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT_Dangky.Designer.cs">
+      <DependentUpon>PDT_Dangky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT_momon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT_momon.Designer.cs">
+      <DependentUpon>PDT_momon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT_Them.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT_Them.Designer.cs">
+      <DependentUpon>PDT_Them.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT_ThemDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT_ThemDK.Designer.cs">
+      <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="trgdv_dsnv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="trgdv_dsnv.Designer.cs">
+      <DependentUpon>trgdv_dsnv.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +212,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_PDT.resx">
+      <DependentUpon>frmMain_PDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_trgDV.resx">
+      <DependentUpon>frmMain_trgDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT_Dangky.resx">
+      <DependentUpon>PDT_Dangky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT_momon.resx">
+      <DependentUpon>PDT_momon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT_Them.resx">
+      <DependentUpon>PDT_Them.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT_ThemDK.resx">
+      <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="trgdv_dsnv.resx">
+      <DependentUpon>trgdv_dsnv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>

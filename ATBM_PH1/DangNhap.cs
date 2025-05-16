@@ -54,7 +54,7 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                frmMain main = new frmMain();
+                frmMain_PDT main = new frmMain_PDT();
                 main.Show();
                 this.Hide();
             }
