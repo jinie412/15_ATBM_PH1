@@ -174,10 +174,52 @@
     <Compile Include="CTSV\SinhVienForm.Designer.cs">
       <DependentUpon>SinhVienForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NVCB\UpdatePasswordForm.cs">
+    <Compile Include="PH1\UpdatePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NVCB\UpdatePasswordForm.Designer.cs">
+    <Compile Include="PDT\frmMain_PDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT\frmMain_PDT.Designer.cs">
+      <DependentUpon>frmMain_PDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRGDV\frmMain_trgDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRGDV\frmMain_trgDV.Designer.cs">
+      <DependentUpon>frmMain_trgDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT\PDT_Dangky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT\PDT_Dangky.Designer.cs">
+      <DependentUpon>PDT_Dangky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT\PDT_momon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT\PDT_momon.Designer.cs">
+      <DependentUpon>PDT_momon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT\PDT_Them.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT\PDT_Them.Designer.cs">
+      <DependentUpon>PDT_Them.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDT\PDT_ThemDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDT\PDT_ThemDK.Designer.cs">
+      <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRGDV\trgdv_dsnv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRGDV\trgdv_dsnv.Designer.cs">
+      <DependentUpon>trgdv_dsnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PH1\UpdatePasswordForm.Designer.cs">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NVCB\UpdatePhoneForm.cs">
@@ -273,8 +315,26 @@
     <EmbeddedResource Include="CTSV\SinhVienForm.resx">
       <DependentUpon>SinhVienForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NVCB\UpdatePasswordForm.resx">
-      <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="PDT\frmMain_PDT.resx">
+      <DependentUpon>frmMain_PDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRGDV\frmMain_trgDV.resx">
+      <DependentUpon>frmMain_trgDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT\PDT_Dangky.resx">
+      <DependentUpon>PDT_Dangky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT\PDT_momon.resx">
+      <DependentUpon>PDT_momon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT\PDT_Them.resx">
+      <DependentUpon>PDT_Them.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDT\PDT_ThemDK.resx">
+      <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRGDV\trgdv_dsnv.resx">
+      <DependentUpon>trgdv_dsnv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PH1\PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>

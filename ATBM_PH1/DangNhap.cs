@@ -76,9 +76,9 @@ namespace ATBM_PH1
                 }
                 else if (role == "NV PĐT")
                 {
-                    //frmMain_PDT main = new frmMain_PDT();
-                    //main.Show();
-                    //this.Hide();
+                    frmMain_PDT main = new frmMain_PDT();
+                    main.Show();
+                    this.Hide();
                 }
                 else if (role == "NV PKT")
                 {
@@ -100,9 +100,9 @@ namespace ATBM_PH1
                 }
                 else if (role == "TRGĐV")
                 {
-                    //frmMain_trgDV main = new frmMain_trgDV();
-                    //main.Show();
-                    //this.Hide();
+                    frmMain_trgDV main = new frmMain_trgDV();
+                    main.Show();
+                    this.Hide();
                 }
                 else
                 {
