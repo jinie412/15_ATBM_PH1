@@ -102,6 +102,12 @@
     <Compile Include="PH1\CreateRoleForm.Designer.cs">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SV\DangKyHP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SV\DangKyHP.Designer.cs">
+      <DependentUpon>DangKyHP.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,8 +216,32 @@
     <Compile Include="PDT\PDT_ThemDK.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SV\DanhSachMoMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SV\DanhSachMoMon.Designer.cs">
+      <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SV\DSHP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SV\DSHP.Designer.cs">
+      <DependentUpon>DSHP.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDT\PDT_ThemDK.Designer.cs">
       <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SV\Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SV\Student.Designer.cs">
+      <DependentUpon>Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SV\ThongTinChung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SV\ThongTinChung.Designer.cs">
+      <DependentUpon>ThongTinChung.cs</DependentUpon>
     </Compile>
     <Compile Include="TRGDV\trgdv_dsnv.cs">
       <SubType>Form</SubType>
@@ -279,6 +309,9 @@
     <Compile Include="User\InsertUser.Designer.cs">
       <DependentUpon>InsertUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SV\DangKyHP.resx">
+      <DependentUpon>DangKyHP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +365,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PDT\PDT_ThemDK.resx">
       <DependentUpon>PDT_ThemDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SV\DanhSachMoMon.resx">
+      <DependentUpon>DanhSachMoMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SV\DSHP.resx">
+      <DependentUpon>DSHP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SV\Student.resx">
+      <DependentUpon>Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SV\ThongTinChung.resx">
+      <DependentUpon>ThongTinChung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TRGDV\trgdv_dsnv.resx">
       <DependentUpon>trgdv_dsnv.cs</DependentUpon>

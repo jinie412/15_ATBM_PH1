@@ -57,7 +57,9 @@ namespace ATBM_PH1
             }
             else if (MainClass.CurrentUser.Username.StartsWith("SV"))
             {
-                // SINH VIÊN
+                Student student = new Student();
+                student.Show(); 
+                this.Hide();
             }
             else
             {

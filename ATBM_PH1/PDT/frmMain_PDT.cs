@@ -26,7 +26,7 @@ namespace ATBM_PH1
             Application.Exit();
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void btnDX_Click(object sender, EventArgs e)
         {
             DangNhap dangNhap = new DangNhap();
             dangNhap.StartPosition = FormStartPosition.CenterScreen;
