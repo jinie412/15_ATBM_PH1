@@ -128,7 +128,7 @@ namespace ATBM_PH1
             InsertUser insertUser = new InsertUser();
             insertUser.FormClosed += (s, args) => LoadUserList();
             insertUser.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(insertUser);
+            MainClass.BlurBackground(insertUser, this);
 
         }
 
@@ -145,7 +145,7 @@ namespace ATBM_PH1
                     UpdateUser updateUser = new UpdateUser(username);
                     updateUser.FormClosed += (s, args) => LoadUserList();
                     updateUser.StartPosition = FormStartPosition.CenterScreen;
-                    MainClass.BlurBackground(updateUser);
+                    MainClass.BlurBackground(updateUser, this);
                 }
                 // Kiểm tra nếu người dùng click vào cột "CGrant"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CGrant")
@@ -154,7 +154,7 @@ namespace ATBM_PH1
                     MainClass.Role = "";
                     CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
                     capQuyen.StartPosition = FormStartPosition.CenterScreen;
-                    MainClass.BlurBackground(capQuyen);
+                    MainClass.BlurBackground(capQuyen, this);
                 }
                 // Kiểm tra nếu người dùng click vào cột "CDelete"
                 else if (LoadViewUser.Columns[e.ColumnIndex].Name == "CDelete")

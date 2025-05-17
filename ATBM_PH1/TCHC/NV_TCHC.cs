@@ -117,23 +117,13 @@ namespace ATBM_PH1
             // Lấy thông tin nhân viên từ hàng được chọn
             DataGridViewRow selectedRow = dataGridViewNhanVien.SelectedRows[0];
 
-            if (!dataGridViewNhanVien.Columns.Contains("MANLD") || !dataGridViewNhanVien.Columns.Contains("HOTEN") ||
-                !dataGridViewNhanVien.Columns.Contains("PHAI") || !dataGridViewNhanVien.Columns.Contains("NGSINH") ||
-                !dataGridViewNhanVien.Columns.Contains("LUONG") || !dataGridViewNhanVien.Columns.Contains("PHUCAP") ||
-                !dataGridViewNhanVien.Columns.Contains("DT") || !dataGridViewNhanVien.Columns.Contains("VAITRO") ||
-                !dataGridViewNhanVien.Columns.Contains("MADV"))
-            {
-                MessageBox.Show("Dữ liệu nhân viên không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string manld = selectedRow.Cells["MANLD"].Value?.ToString();
-            string hoten = selectedRow.Cells["HOTEN"].Value?.ToString();
-            string phai = selectedRow.Cells["PHAI"].Value?.ToString();
+            string manld = selectedRow.Cells["tchc_manv"].Value?.ToString();
+            string hoten = selectedRow.Cells["tchc_ht"].Value?.ToString();
+            string phai = selectedRow.Cells["tchc_phai"].Value?.ToString();
             DateTime ngsinh;
             try
             {
-                ngsinh = Convert.ToDateTime(selectedRow.Cells["NGSINH"].Value);
+                ngsinh = Convert.ToDateTime(selectedRow.Cells["tchc_nsinh"].Value);
             }
             catch
             {
@@ -143,7 +133,7 @@ namespace ATBM_PH1
             decimal luong;
             try
             {
-                luong = Convert.ToDecimal(selectedRow.Cells["LUONG"].Value);
+                luong = Convert.ToDecimal(selectedRow.Cells["tchc_lg"].Value);
             }
             catch
             {
@@ -153,7 +143,7 @@ namespace ATBM_PH1
             decimal phucap;
             try
             {
-                phucap = Convert.ToDecimal(selectedRow.Cells["PHUCAP"].Value);
+                phucap = Convert.ToDecimal(selectedRow.Cells["tchc_pc"].Value);
             }
             catch
             {
@@ -161,8 +151,8 @@ namespace ATBM_PH1
                 return;
             }
             string dt = selectedRow.Cells["DT"].Value?.ToString();
-            string vaitro = selectedRow.Cells["VAITRO"].Value?.ToString();
-            string madv = selectedRow.Cells["MADV"].Value?.ToString();
+            string vaitro = selectedRow.Cells["tchc_vt"].Value?.ToString();
+            string madv = selectedRow.Cells["tchc_dv"].Value?.ToString();
 
             // Mở form chỉnh sửa với dữ liệu hiện tại
             using (NhanVienForm editForm = new NhanVienForm(manld, hoten, phai, ngsinh, luong, phucap, dt, vaitro, madv))
@@ -172,70 +162,10 @@ namespace ATBM_PH1
                 {
                     return; // Người dùng nhấn Cancel
                 }
-
-                // Lấy dữ liệu từ form chỉnh sửa và gọi stored procedure
-                try
-                {
-                    if (MainClass.conn.State == ConnectionState.Closed)
-                    {
-                        MainClass.conn.Open();
-                    }
-
-                    using (OracleCommand cmd = new OracleCommand("pdb_admin.SP_UPDATE_NHANVIEN", MainClass.conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        // Thêm các tham số cho stored procedure
-                        cmd.Parameters.Add("p_manld", OracleDbType.Varchar2).Value = editForm.MANLD;
-                        cmd.Parameters.Add("p_hoten", OracleDbType.Varchar2).Value = editForm.HOTEN;
-                        cmd.Parameters.Add("p_phai", OracleDbType.Varchar2).Value = editForm.PHAI;
-                        cmd.Parameters.Add("p_ngsinh", OracleDbType.Date).Value = editForm.NGSINH;
-                        cmd.Parameters.Add("p_luong", OracleDbType.Decimal).Value = editForm.LUONG;
-                        cmd.Parameters.Add("p_phucap", OracleDbType.Decimal).Value = editForm.PHUCAP;
-                        cmd.Parameters.Add("p_dt", OracleDbType.Varchar2).Value = editForm.DT;
-                        cmd.Parameters.Add("p_vaitro", OracleDbType.Varchar2).Value = editForm.VAITRO;
-                        cmd.Parameters.Add("p_madv", OracleDbType.Varchar2).Value = editForm.MADV;
-                        cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
-
-                        // Thực thi stored procedure
-                        cmd.ExecuteNonQuery();
-
-                        // Lấy kết quả từ tham số output
-                        string result = cmd.Parameters["p_result"].Value.ToString();
-                        MessageBox.Show(result);
-
-                        // Nếu cập nhật thành công, làm mới DataGridView
-                        if (result.Contains("Cập nhật nhân viên thành công"))
-                        {
-                            ShowManageContent();
-                        }
-                    }
+                else{
+                    ShowManageContent();
                 }
-                catch (OracleException oraEx)
-                {
-                    string errorMessage = $"Lỗi khi cập nhật nhân viên: {oraEx.Message}";
-                    if (oraEx.Number != 0)
-                        errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
-                    if (oraEx.InnerException != null)
-                        errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
-                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Ghi log vào file
-                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
-                }
-                catch (Exception ex)
-                {
-                    string errorMessage = $"Lỗi khi cập nhật nhân viên: {ex.Message}";
-                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Ghi log vào file
-                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
-                }
-                finally
-                {
-                    if (MainClass.conn.State == ConnectionState.Open)
-                    {
-                        MainClass.conn.Close();
-                    }
-                }
+
             }
         }
 
@@ -248,14 +178,14 @@ namespace ATBM_PH1
             }
 
             // Kiểm tra sự tồn tại của cột MANLD
-            if (!dataGridViewNhanVien.Columns.Contains("MANLD"))
+            if (!dataGridViewNhanVien.Columns.Contains("tchc_manv"))
             {
                 MessageBox.Show("Không tìm thấy cột Mã NLĐ trong danh sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Giả sử MANLD nằm trong cột tên "MANLD"
-            string manld = dataGridViewNhanVien.CurrentRow.Cells["MANLD"].Value?.ToString();
+            string manld = dataGridViewNhanVien.CurrentRow.Cells["tchc_manv"].Value?.ToString();
 
             if (string.IsNullOrEmpty(manld))
             {
@@ -347,22 +277,6 @@ namespace ATBM_PH1
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-
-                        if (dataGridViewNhanVien.DataSource != null)
-                        {
-                            if (dataGridViewNhanVien.DataSource is DataView view)
-                            {
-                                view.Table.Clear();
-                            }
-                            else if (dataGridViewNhanVien.DataSource is DataTable table)
-                            {
-                                table.Clear();
-                            }
-                            else
-                            {
-                                dataGridViewNhanVien.DataSource = null;
-                            }
-                        }
 
                         // Gán dữ liệu mới
                         _cachedDataTable = dt;

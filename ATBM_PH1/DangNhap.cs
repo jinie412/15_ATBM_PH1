@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM_PH1
 {
@@ -24,7 +25,93 @@ namespace ATBM_PH1
             Application.Exit();
         }
 
-		private void btnLogin_Click(object sender, EventArgs e)
+        public string GoiHam_XacDinhRole(string input)
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                    MainClass.conn.Open();
+
+                string sql = "SELECT PDB_ADMIN.FUNC_XACDINH_DOITUONG(:p_input) FROM DUAL";
+
+                OracleCommand cmd = new OracleCommand(sql, MainClass.conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add("p_input", OracleDbType.Varchar2).Value = input;
+
+                object result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : "(null)";
+            }
+            catch (Exception ex)
+            {
+                return "Lỗi: " + ex.Message;
+            }
+        }
+
+        private void load_Form()
+        {
+            if (MainClass.CurrentUser.Username.ToLower() == "pdb_admin")
+            {
+               frmMain main = new frmMain();
+                main.Show();
+                this.Hide();
+            }
+            else if (MainClass.CurrentUser.Username.StartsWith("SV"))
+            {
+                // SINH VIÊN
+            }
+            else
+            {
+                string role = GoiHam_XacDinhRole(MainClass.CurrentUser.Username);
+                if (role == "NVCB")
+                {
+                    frmMain_NVCB main = new frmMain_NVCB();
+                    main.Show();
+                    this.Hide();
+                }
+                else if (role == "GV")
+                {
+                    //frmMain_KT main = new frmMain_KT();
+                    //main.Show();
+                    //this.Hide();
+                }
+                else if (role == "NV PĐT")
+                {
+                    //frmMain_PDT main = new frmMain_PDT();
+                    //main.Show();
+                    //this.Hide();
+                }
+                else if (role == "NV PKT")
+                {
+                    frmMain_KT main = new frmMain_KT();
+                    main.Show();
+                    this.Hide();
+                }
+                else if (role == "NV TCHC")
+                {
+                    frmMain_TCHC main = new frmMain_TCHC();
+                    main.Show();
+                    this.Hide();
+                }
+                else if (role == "NV CTSV")
+                {
+                    frmMain_CTSV main = new frmMain_CTSV();
+                    main.Show();
+                    this.Hide();
+                }
+                else if (role == "TRGĐV")
+                {
+                    //frmMain_trgDV main = new frmMain_trgDV();
+                    //main.Show();
+                    //this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Không xác định được quyền truy cập.");
+                }
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
 		{
 			string username = txtUser.Text.Trim();
 			string password = txtPass.Text.Trim();
@@ -54,9 +141,7 @@ namespace ATBM_PH1
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 
-                frmMain main = new frmMain();
-                main.Show();
-                this.Hide();
+                load_Form();
             }
             catch (OracleException ex)
             {

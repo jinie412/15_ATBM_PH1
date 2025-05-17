@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ATBM_PH1
 {
@@ -16,7 +17,7 @@ namespace ATBM_PH1
         public DateTime NGSINH { get => dateTimePickerNgSinh.Value; }
         public string DCHI { get => textBoxDiaChi.Text.Trim(); }
         public string DT { get => textBoxDT.Text.Trim(); }
-        public string KHOA { get => textBoxKhoa.Text.Trim(); }
+        public string KHOA { get => comboBoxKhoa.Text.Trim(); }
         public string TINHTRANG { get => textBoxTrangThai.Text.Trim(); }
 
         // Constructor mặc định (dùng khi thêm mới)
@@ -26,6 +27,9 @@ namespace ATBM_PH1
             _isEditMode = false;
             this.Text = "Thêm sinh viên mới";
             InitializeComboBoxes();
+            LayMaSinhVienMoi(); // Gọi hàm để lấy mã sinh viên mới
+            textBoxMasv.Enabled = false;
+            LoadDSKhoa();
         }
 
         // Constructor để chỉnh sửa (nhận dữ liệu sinh viên hiện tại)
@@ -35,6 +39,7 @@ namespace ATBM_PH1
             _isEditMode = true;
             this.Text = "Chỉnh sửa sinh viên";
             InitializeComboBoxes();
+            LoadDSKhoa();
 
             // Gán dữ liệu vào các điều khiển
             textBoxMasv.Text = masv;
@@ -43,12 +48,13 @@ namespace ATBM_PH1
             dateTimePickerNgSinh.Value = ngsinh;
             textBoxDiaChi.Text = dchi;
             textBoxDT.Text = dt;
-            textBoxKhoa.Text = khoa;
+            comboBoxKhoa.Text = khoa;
             textBoxTrangThai.Text = tinhtrang;
 
             // Không cho sửa MASV khi chỉnh sửa
             textBoxMasv.ReadOnly = true;
             buttonLuu.Text = "Cập nhật";
+
         }
 
         private void InitializeComboBoxes()
@@ -95,12 +101,7 @@ namespace ATBM_PH1
                     {
                         cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = DBNull.Value;
                     }
-                    //// Chỉ thêm p_tinhtrang khi gọi SP_INSERT_SINHVIEN (thêm mới)
-                    //if (!_isEditMode)
-                    //{
-                    //    cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
-                    //}
-
+           
                     // Thêm tham số p_result (chung cho cả INSERT và UPDATE)
                     cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
 
@@ -109,15 +110,7 @@ namespace ATBM_PH1
                     string result = cmd.Parameters["p_result"].Value.ToString();
                     MessageBox.Show(result);
 
-                    //if (result.Contains("Cập nhật sinh viên thành công"))
-                    //{
-                    //    DialogResult = DialogResult.OK;
-                    //    Close();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show($"Cập nhật thất bại: {result}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                   
                     if ((_isEditMode && result.Contains("Cập nhật sinh viên thành công")) ||
                         (!_isEditMode && result.Contains("Thêm mới sinh viên thành công")))
                     {
@@ -156,5 +149,66 @@ namespace ATBM_PH1
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        // Hàm lấy mã sinh viên tiếp theo
+        private void LayMaSinhVienMoi()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.FN_SV_TT", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số trả về của FUNCTION
+                    cmd.Parameters.Add("return_value", OracleDbType.Varchar2, 20).Direction = ParameterDirection.ReturnValue;
+
+                    cmd.ExecuteNonQuery();
+
+                    string maSV = cmd.Parameters["return_value"].Value.ToString();
+                    textBoxMasv.Text = maSV;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lấy mã sinh viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void LoadDSKhoa()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_PDT_XEMDV", MainClass.conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                OracleDataAdapter da = new OracleDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                comboBoxKhoa.DataSource = dt;
+                comboBoxKhoa.DisplayMember = "MADV";
+                comboBoxKhoa.ValueMember = "MADV";
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

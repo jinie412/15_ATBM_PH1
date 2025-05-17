@@ -110,24 +110,24 @@ namespace ATBM_PH1
             // Lấy thông tin điểm số từ hàng được chọn
             DataGridViewRow selectedRow = dataGridViewDiem.SelectedRows[0];
 
-            if (!dataGridViewDiem.Columns.Contains("MASV") || !dataGridViewDiem.Columns.Contains("MAMM") ||
-                !dataGridViewDiem.Columns.Contains("DIEMTH") || !dataGridViewDiem.Columns.Contains("DIEMQT") ||
-                !dataGridViewDiem.Columns.Contains("DIEMCK") || !dataGridViewDiem.Columns.Contains("DIEMTK"))
-            {
-                MessageBox.Show("Dữ liệu điểm số không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!dataGridViewDiem.Columns.Contains("MASV") || !dataGridViewDiem.Columns.Contains("MAMM") ||
+            //    !dataGridViewDiem.Columns.Contains("DIEMTH") || !dataGridViewDiem.Columns.Contains("DIEMQT") ||
+            //    !dataGridViewDiem.Columns.Contains("DIEMCK") || !dataGridViewDiem.Columns.Contains("DIEMTK"))
+            //{
+            //    MessageBox.Show("Dữ liệu điểm số không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            string masv = selectedRow.Cells["MASV"].Value?.ToString();
-            string mamm = selectedRow.Cells["MAMM"].Value?.ToString();
+            string masv = selectedRow.Cells["kt_masv"].Value?.ToString();
+            string mamm = selectedRow.Cells["kt_mm"].Value?.ToString();
             float diemth, diemqt, diemck, diemtk;
 
             try
             {
-                diemth = float.Parse(selectedRow.Cells["DIEMTH"].Value?.ToString() ?? "-1");
-                diemqt = float.Parse(selectedRow.Cells["DIEMQT"].Value?.ToString() ?? "-1");
-                diemck = float.Parse(selectedRow.Cells["DIEMCK"].Value?.ToString() ?? "-1");
-                diemtk = float.Parse(selectedRow.Cells["DIEMTK"].Value?.ToString() ?? "-1");
+                diemth = float.Parse(selectedRow.Cells["kt_dth"].Value?.ToString() ?? "-1");
+                diemqt = float.Parse(selectedRow.Cells["kt_dqt"].Value?.ToString() ?? "-1");
+                diemck = float.Parse(selectedRow.Cells["kt_dck"].Value?.ToString() ?? "-1");
+                diemtk = float.Parse(selectedRow.Cells["kt_dtk"].Value?.ToString() ?? "-1");
             }
             catch
             {
@@ -173,21 +173,21 @@ namespace ATBM_PH1
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        if (dataGridViewDiem.DataSource != null)
-                        {
-                            if (dataGridViewDiem.DataSource is DataView view)
-                            {
-                                view.Table.Clear();
-                            }
-                            else if (dataGridViewDiem.DataSource is DataTable table)
-                            {
-                                table.Clear();
-                            }
-                            else
-                            {
-                                dataGridViewDiem.DataSource = null;
-                            }
-                        }
+                        //if (dataGridViewDiem.DataSource != null)
+                        //{
+                        //    if (dataGridViewDiem.DataSource is DataView view)
+                        //    {
+                        //        view.Table.Clear();
+                        //    }
+                        //    else if (dataGridViewDiem.DataSource is DataTable table)
+                        //    {
+                        //        table.Clear();
+                        //    }
+                        //    else
+                        //    {
+                        //        dataGridViewDiem.DataSource = null;
+                        //    }
+                        //}
 
                         // Gán dữ liệu mới
                         _cachedDataTable = dt;

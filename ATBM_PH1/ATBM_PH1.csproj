@@ -90,10 +90,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateRoleForm.cs">
+    <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateRoleForm.Designer.cs">
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PH1\CreateRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PH1\CreateRoleForm.Designer.cs">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DangNhap.cs">
@@ -102,70 +108,88 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="CapQuyen_CSDL.cs">
+    <Compile Include="PH1\CapQuyen_CSDL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CapQuyen_CSDL.Designer.cs">
+    <Compile Include="PH1\CapQuyen_CSDL.Designer.cs">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="CTSV\frmMain_CTSV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="CTSV\frmMain_CTSV.Designer.cs">
+      <DependentUpon>frmMain_CTSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVienForm.cs">
+    <Compile Include="NVKT\frmMain_KT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVienForm.Designer.cs">
+    <Compile Include="NVKT\frmMain_KT.Designer.cs">
+      <DependentUpon>frmMain_KT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NVCB\frmMain_NVCB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NVCB\frmMain_NVCB.Designer.cs">
+      <DependentUpon>frmMain_NVCB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCHC\frmMain_TCHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCHC\frmMain_TCHC.Designer.cs">
+      <DependentUpon>frmMain_TCHC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCHC\NhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCHC\NhanVienForm.Designer.cs">
       <DependentUpon>NhanVienForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NVCB.cs">
+    <Compile Include="NVCB\NVCB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NVCB.Designer.cs">
+    <Compile Include="NVCB\NVCB.Designer.cs">
       <DependentUpon>NVCB.cs</DependentUpon>
     </Compile>
-    <Compile Include="NV_CTSV.cs">
+    <Compile Include="CTSV\NV_CTSV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NV_CTSV.Designer.cs">
+    <Compile Include="CTSV\NV_CTSV.Designer.cs">
       <DependentUpon>NV_CTSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="NV_PKT.cs">
+    <Compile Include="NVKT\NV_PKT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NV_PKT.Designer.cs">
+    <Compile Include="NVKT\NV_PKT.Designer.cs">
       <DependentUpon>NV_PKT.cs</DependentUpon>
     </Compile>
-    <Compile Include="NV_TCHC.cs">
+    <Compile Include="TCHC\NV_TCHC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NV_TCHC.Designer.cs">
+    <Compile Include="TCHC\NV_TCHC.Designer.cs">
       <DependentUpon>NV_TCHC.cs</DependentUpon>
     </Compile>
-    <Compile Include="SinhVienForm.cs">
+    <Compile Include="CTSV\SinhVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SinhVienForm.Designer.cs">
+    <Compile Include="CTSV\SinhVienForm.Designer.cs">
       <DependentUpon>SinhVienForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdatePasswordForm.cs">
+    <Compile Include="NVCB\UpdatePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdatePasswordForm.Designer.cs">
+    <Compile Include="NVCB\UpdatePasswordForm.Designer.cs">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdatePhoneForm.cs">
+    <Compile Include="NVCB\UpdatePhoneForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdatePhoneForm.Designer.cs">
+    <Compile Include="NVCB\UpdatePhoneForm.Designer.cs">
       <DependentUpon>UpdatePhoneForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateScore.cs">
+    <Compile Include="NVKT\UpdateScore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateScore.Designer.cs">
+    <Compile Include="NVKT\UpdateScore.Designer.cs">
       <DependentUpon>UpdateScore.cs</DependentUpon>
     </Compile>
     <Compile Include="User\UpdateUser.cs">
@@ -187,21 +211,24 @@
     <Compile Include="ManageRolesTab.Designer.cs">
       <DependentUpon>ManageRolesTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhanQuyen.cs">
+    <Compile Include="PH1\PhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhanQuyen.Designer.cs">
+    <Compile Include="PH1\PhanQuyen.Designer.cs">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs">
+    <Compile Include="PH1\Role.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Role.Designer.cs">
+    <Compile Include="PH1\Role.Designer.cs">
       <DependentUpon>Role.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateRoleForm.resx">
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PH1\CreateRoleForm.resx">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="User\InsertUser.cs">
@@ -213,40 +240,49 @@
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CapQuyen_CSDL.resx">
+    <EmbeddedResource Include="PH1\CapQuyen_CSDL.resx">
       <DependentUpon>CapQuyen_CSDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="CTSV\frmMain_CTSV.resx">
+      <DependentUpon>frmMain_CTSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVienForm.resx">
+    <EmbeddedResource Include="NVKT\frmMain_KT.resx">
+      <DependentUpon>frmMain_KT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NVCB\frmMain_NVCB.resx">
+      <DependentUpon>frmMain_NVCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCHC\frmMain_TCHC.resx">
+      <DependentUpon>frmMain_TCHC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCHC\NhanVienForm.resx">
       <DependentUpon>NhanVienForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NVCB.resx">
+    <EmbeddedResource Include="NVCB\NVCB.resx">
       <DependentUpon>NVCB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NV_CTSV.resx">
+    <EmbeddedResource Include="CTSV\NV_CTSV.resx">
       <DependentUpon>NV_CTSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NV_PKT.resx">
+    <EmbeddedResource Include="NVKT\NV_PKT.resx">
       <DependentUpon>NV_PKT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NV_TCHC.resx">
+    <EmbeddedResource Include="TCHC\NV_TCHC.resx">
       <DependentUpon>NV_TCHC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SinhVienForm.resx">
+    <EmbeddedResource Include="CTSV\SinhVienForm.resx">
       <DependentUpon>SinhVienForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdatePasswordForm.resx">
+    <EmbeddedResource Include="NVCB\UpdatePasswordForm.resx">
       <DependentUpon>UpdatePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhanQuyen.resx">
+    <EmbeddedResource Include="PH1\PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdatePhoneForm.resx">
+    <EmbeddedResource Include="NVCB\UpdatePhoneForm.resx">
       <DependentUpon>UpdatePhoneForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateScore.resx">
+    <EmbeddedResource Include="NVKT\UpdateScore.resx">
       <DependentUpon>UpdateScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\InsertUser.resx">
@@ -266,7 +302,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Role.resx">
+    <EmbeddedResource Include="PH1\Role.resx">
       <DependentUpon>Role.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
@@ -348,5 +384,6 @@
   <ItemGroup>
     <None Include="Resources\trash.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

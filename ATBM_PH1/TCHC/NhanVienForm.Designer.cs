@@ -47,9 +47,9 @@ namespace ATBM_PH1
             this.labelVaiTro = new System.Windows.Forms.Label();
             this.comboBoxVaiTro = new System.Windows.Forms.ComboBox();
             this.labelMaDV = new System.Windows.Forms.Label();
-            this.textBoxMaDV = new System.Windows.Forms.TextBox();
             this.buttonLuu = new System.Windows.Forms.Button();
             this.buttonHuy = new System.Windows.Forms.Button();
+            this.comboBoxDV = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelManld
@@ -204,13 +204,6 @@ namespace ATBM_PH1
             this.labelMaDV.TabIndex = 16;
             this.labelMaDV.Text = "Mã đơn vị:";
             // 
-            // textBoxMaDV
-            // 
-            this.textBoxMaDV.Location = new System.Drawing.Point(150, 337);
-            this.textBoxMaDV.Name = "textBoxMaDV";
-            this.textBoxMaDV.Size = new System.Drawing.Size(200, 22);
-            this.textBoxMaDV.TabIndex = 17;
-            // 
             // buttonLuu
             // 
             this.buttonLuu.Location = new System.Drawing.Point(80, 380);
@@ -231,6 +224,23 @@ namespace ATBM_PH1
             this.buttonHuy.UseVisualStyleBackColor = true;
             this.buttonHuy.Click += new System.EventHandler(this.buttonHuy_Click);
             // 
+            // comboBoxDV
+            // 
+            this.comboBoxDV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDV.FormattingEnabled = true;
+            this.comboBoxDV.Items.AddRange(new object[] {
+            "NVCB",
+            "GV",
+            "NV PĐT",
+            "NV PKT",
+            "NV TCHC",
+            "NV CTSV",
+            "TRGĐV"});
+            this.comboBoxDV.Location = new System.Drawing.Point(150, 337);
+            this.comboBoxDV.Name = "comboBoxDV";
+            this.comboBoxDV.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxDV.TabIndex = 15;
+            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,8 +248,8 @@ namespace ATBM_PH1
             this.ClientSize = new System.Drawing.Size(400, 450);
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.buttonLuu);
-            this.Controls.Add(this.textBoxMaDV);
             this.Controls.Add(this.labelMaDV);
+            this.Controls.Add(this.comboBoxDV);
             this.Controls.Add(this.comboBoxVaiTro);
             this.Controls.Add(this.labelVaiTro);
             this.Controls.Add(this.textBoxDT);
@@ -282,8 +292,8 @@ namespace ATBM_PH1
         private System.Windows.Forms.Label labelVaiTro;
         private System.Windows.Forms.ComboBox comboBoxVaiTro;
         private System.Windows.Forms.Label labelMaDV;
-        private System.Windows.Forms.TextBox textBoxMaDV;
         private System.Windows.Forms.Button buttonLuu;
         private System.Windows.Forms.Button buttonHuy;
+        private System.Windows.Forms.ComboBox comboBoxDV;
     }
 }

@@ -18,7 +18,7 @@ namespace ATBM_PH1
         public decimal PHUCAP { get => decimal.TryParse(textBoxPhuCap.Text, out decimal result) ? result : 0; }
         public string DT { get => textBoxDT.Text.Trim(); }
         public string VAITRO { get => comboBoxVaiTro.SelectedItem?.ToString(); }
-        public string MADV { get => textBoxMaDV.Text.Trim(); }
+        public string MADV { get => comboBoxDV.Text.Trim(); }
 
         // Constructor mặc định (dùng khi thêm mới)
         public NhanVienForm()
@@ -26,7 +26,10 @@ namespace ATBM_PH1
             InitializeComponent();
             _isEditMode = false;
             this.Text = "Thêm nhân viên mới";
+            textBoxManld.Enabled = false; // Không cho sửa mã nhân viên
             InitializeComboBoxes();
+            LayMaNhanVienMoi();
+            LoadDSDonVi();
         }
 
         // Constructor để chỉnh sửa (nhận dữ liệu nhân viên hiện tại)
@@ -36,6 +39,7 @@ namespace ATBM_PH1
             _isEditMode = true;
             this.Text = "Chỉnh sửa nhân viên";
             InitializeComboBoxes();
+            LoadDSDonVi();
 
             // Gán dữ liệu vào các điều khiển
             textBoxManld.Text = manld;
@@ -46,7 +50,7 @@ namespace ATBM_PH1
             textBoxPhuCap.Text = phucap.ToString();
             textBoxDT.Text = dt;
             comboBoxVaiTro.SelectedItem = vaitro;
-            textBoxMaDV.Text = madv;
+            comboBoxDV.Text = madv;
 
             // Không cho sửa MANLD khi chỉnh sửa
             textBoxManld.ReadOnly = true;
@@ -73,7 +77,7 @@ namespace ATBM_PH1
             // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrWhiteSpace(textBoxManld.Text) || string.IsNullOrWhiteSpace(textBoxHoten.Text) ||
                 comboBoxPhai.SelectedItem == null || comboBoxVaiTro.SelectedItem == null ||
-                string.IsNullOrWhiteSpace(textBoxMaDV.Text))
+                string.IsNullOrWhiteSpace(comboBoxDV.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin bắt buộc.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -156,6 +160,65 @@ namespace ATBM_PH1
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void LayMaNhanVienMoi()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.FN_MANV_TT", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số trả về của FUNCTION
+                    cmd.Parameters.Add("return_value", OracleDbType.Varchar2, 20).Direction = ParameterDirection.ReturnValue;
+
+                    cmd.ExecuteNonQuery();
+
+                    string maSV = cmd.Parameters["return_value"].Value.ToString();
+                    textBoxManld.Text = maSV;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lấy mã nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void LoadDSDonVi()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_TCHC_XEMDV", MainClass.conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                OracleDataAdapter da = new OracleDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                comboBoxDV.DataSource = dt;
+                comboBoxDV.DisplayMember = "MADV";
+                comboBoxDV.ValueMember = "MADV";
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

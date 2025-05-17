@@ -121,32 +121,23 @@ namespace ATBM_PH1
             // Lấy thông tin sinh viên từ hàng được chọn
             DataGridViewRow selectedRow = dataGridViewSinhVien.SelectedRows[0];
 
-            if (!dataGridViewSinhVien.Columns.Contains("MASV") || !dataGridViewSinhVien.Columns.Contains("HOTEN") ||
-                !dataGridViewSinhVien.Columns.Contains("PHAI") || !dataGridViewSinhVien.Columns.Contains("NGSINH") ||
-                !dataGridViewSinhVien.Columns.Contains("DCHI") || !dataGridViewSinhVien.Columns.Contains("DT") ||
-                !dataGridViewSinhVien.Columns.Contains("KHOA") || !dataGridViewSinhVien.Columns.Contains("TINHTRANG"))
-            {
-                MessageBox.Show("Dữ liệu sinh viên không đầy đủ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string masv = selectedRow.Cells["MASV"].Value?.ToString();
-            string hoten = selectedRow.Cells["HOTEN"].Value?.ToString();
-            string phai = selectedRow.Cells["PHAI"].Value?.ToString();
+            string masv = selectedRow.Cells["ctsv_masv"].Value?.ToString();
+            string hoten = selectedRow.Cells["ctsv_ht"].Value?.ToString();
+            string phai = selectedRow.Cells["ctsv_phai"].Value?.ToString();
             DateTime ngaysinh;
             try
             {
-                ngaysinh = Convert.ToDateTime(selectedRow.Cells["NGSINH"].Value);
+                ngaysinh = Convert.ToDateTime(selectedRow.Cells["ctsv_nsinh"].Value);
             }
             catch
             {
                 MessageBox.Show("Dữ liệu ngày sinh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string diachi = selectedRow.Cells["DCHI"].Value?.ToString();
+            string diachi = selectedRow.Cells["ctsv_dc"].Value?.ToString();
             string dt = selectedRow.Cells["DT"].Value?.ToString();
-            string khoa = selectedRow.Cells["KHOA"].Value?.ToString();
-            string tinhtrang = selectedRow.Cells["TINHTRANG"].Value?.ToString();
+            string khoa = selectedRow.Cells["ctsv_khoa"].Value?.ToString();
+            string tinhtrang = selectedRow.Cells["ctsv_tt"].Value?.ToString();
 
             // Mở form chỉnh sửa với dữ liệu hiện tại
             using (SinhVienForm editForm = new SinhVienForm(masv, hoten, phai, ngaysinh, diachi, dt, khoa, tinhtrang))
@@ -156,69 +147,12 @@ namespace ATBM_PH1
                 {
                     return; // Người dùng nhấn Cancel
                 }
-
-                // Lấy dữ liệu từ form chỉnh sửa và gọi stored procedure
-                try
+                else 
                 {
-                    if (MainClass.conn.State == ConnectionState.Closed)
-                    {
-                        MainClass.conn.Open();
-                    }
-
-                    using (OracleCommand cmd = new OracleCommand("SP_UPDATE_SINHVIEN", MainClass.conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        // Thêm các tham số cho stored procedure
-                        cmd.Parameters.Add("p_masv", OracleDbType.Varchar2).Value = editForm.MASV;
-                        cmd.Parameters.Add("p_hoten", OracleDbType.Varchar2).Value = editForm.HOTEN;
-                        cmd.Parameters.Add("p_phai", OracleDbType.Varchar2).Value = editForm.PHAI;
-                        cmd.Parameters.Add("p_ngaysinh", OracleDbType.Date).Value = editForm.NGSINH;
-                        cmd.Parameters.Add("p_diachi", OracleDbType.Varchar2).Value = editForm.DCHI;
-                        cmd.Parameters.Add("p_sdt", OracleDbType.Varchar2).Value = editForm.DT;
-                        cmd.Parameters.Add("p_khoa", OracleDbType.Varchar2).Value = editForm.KHOA;
-                        cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
-
-                        // Thực thi stored procedure
-                        cmd.ExecuteNonQuery();
-
-                        // Lấy kết quả từ tham số output
-                        string result = cmd.Parameters["p_result"].Value.ToString();
-                        MessageBox.Show(result);
-
-                        // Làm mới danh sách bất kể kết quả
-                        ShowManageContent();
-
-                        // Nếu cập nhật thành công, làm mới DataGridView
-                        if (result.Contains("Cập nhật sinh viên thành công"))
-                        {
-                            ShowManageContent();
-                        }
-                    }
+                    // Sau khi thêm thành công, làm mới danh sách
+                    ShowManageContent();
                 }
-                catch (OracleException oraEx)
-                {
-                    string errorMessage = $"Lỗi khi cập nhật sinh viên: {oraEx.Message}";
-                    if (oraEx.Number != 0)
-                        errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
-                    if (oraEx.InnerException != null)
-                        errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
-                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
-                }
-                catch (Exception ex)
-                {
-                    string errorMessage = $"Lỗi khi cập nhật sinh viên: {ex.Message}";
-                    MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
-                }
-                finally
-                {
-                    if (MainClass.conn.State == ConnectionState.Open)
-                    {
-                        MainClass.conn.Close();
-                    }
-                }
+
             }
         }
 
@@ -232,15 +166,8 @@ namespace ATBM_PH1
                 return;
             }
 
-            // Kiểm tra sự tồn tại của cột MANLD
-            if (!dataGridViewSinhVien.Columns.Contains("MASV"))
-            {
-                MessageBox.Show("Không tìm thấy cột Mã SV trong danh sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             // Giả sử MANLD nằm trong cột tên "MANLD"
-            string manld = dataGridViewSinhVien.CurrentRow.Cells["MASV"].Value?.ToString();
+            string manld = dataGridViewSinhVien.CurrentRow.Cells["ctsv_masv"].Value?.ToString();
 
             if (string.IsNullOrEmpty(manld))
             {
@@ -332,22 +259,6 @@ namespace ATBM_PH1
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-
-                        if (dataGridViewSinhVien.DataSource != null)
-                        {
-                            if (dataGridViewSinhVien.DataSource is DataView view)
-                            {
-                                view.Table.Clear();
-                            }
-                            else if (dataGridViewSinhVien.DataSource is DataTable table)
-                            {
-                                table.Clear();
-                            }
-                            else
-                            {
-                                dataGridViewSinhVien.DataSource = null;
-                            }
-                        }
 
                         // Gán dữ liệu mới
                         _cachedDataTable = dt;

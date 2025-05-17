@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Security;
 using System.Windows.Forms;
 
 namespace ATBM_PH1
@@ -30,14 +29,14 @@ namespace ATBM_PH1
 		{
 			PhanQuyen phanQuyen = new PhanQuyen();
 			phanQuyen.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(phanQuyen);
+            MainClass.BlurBackground(phanQuyen, this);
         }
 
         private void User_Click(object sender, EventArgs e)
         {
             ViewUser newForm = new ViewUser();
             newForm.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(newForm);
+            MainClass.BlurBackground(newForm, this);
 
         }
 
@@ -45,7 +44,7 @@ namespace ATBM_PH1
         {
             Role role = new Role();
             role.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(role);
+            MainClass.BlurBackground(role, this);
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -54,34 +53,6 @@ namespace ATBM_PH1
             dangNhap.StartPosition = FormStartPosition.CenterScreen;
             dangNhap.Show();
             this.Close();
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            NVCB nvcb = new NVCB();
-            nvcb.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(nvcb);
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            NV_TCHC tchc = new NV_TCHC();
-            tchc.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(tchc);
-        }
-
-        private void guna2Button5_Click(object sender, EventArgs e)
-        {
-            NV_CTSV ctsv = new NV_CTSV();
-            ctsv.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(ctsv);
-        }
-
-        private void guna2Button6_Click(object sender, EventArgs e)
-        {
-            NV_PKT pkt = new NV_PKT();
-            pkt.StartPosition = FormStartPosition.CenterScreen;
-            MainClass.BlurBackground(pkt);
         }
     }
 }

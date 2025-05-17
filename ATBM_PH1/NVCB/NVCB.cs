@@ -37,7 +37,7 @@ namespace ATBM_PH1
 
                 // Show Manage Roles content by default
                 ShowManageContent();
-                SetupDataGridViewColumns();
+              
             }
             catch (Exception ex)
             {
@@ -228,28 +228,7 @@ namespace ATBM_PH1
             }
         }
 
-        private void SetupDataGridViewColumns()
-        {
-            dataGridViewNVCB.AutoGenerateColumns = false;
-            dataGridViewNVCB.Columns.Clear();
-
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MANLD", DataPropertyName = "MANLD" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "HOTEN", DataPropertyName = "HOTEN" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHAI", DataPropertyName = "PHAI" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "NGSINH", DataPropertyName = "NGSINH" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "LUONG", DataPropertyName = "LUONG" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "PHUCAP", DataPropertyName = "PHUCAP" });
-            var dtColumn = new DataGridViewTextBoxColumn
-            {
-                Name = "DT",                 
-                HeaderText = "DT",
-                DataPropertyName = "DT"
-            };
-            dataGridViewNVCB.Columns.Add(dtColumn);
-
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "VAITRO", DataPropertyName = "VAITRO" });
-            dataGridViewNVCB.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MADV", DataPropertyName = "MADV" });
-        }
+        
 
 
     }

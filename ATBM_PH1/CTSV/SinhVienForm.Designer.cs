@@ -10,7 +10,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerNgSinh;
         private System.Windows.Forms.TextBox textBoxDiaChi;
         private System.Windows.Forms.TextBox textBoxDT;
-        private System.Windows.Forms.TextBox textBoxKhoa;
         private System.Windows.Forms.TextBox textBoxTrangThai;
         private System.Windows.Forms.Button buttonLuu;
 
@@ -36,7 +35,6 @@
             this.dateTimePickerNgSinh = new System.Windows.Forms.DateTimePicker();
             this.textBoxDiaChi = new System.Windows.Forms.TextBox();
             this.textBoxDT = new System.Windows.Forms.TextBox();
-            this.textBoxKhoa = new System.Windows.Forms.TextBox();
             this.textBoxTrangThai = new System.Windows.Forms.TextBox();
             this.buttonLuu = new System.Windows.Forms.Button();
             this.labelManld = new System.Windows.Forms.Label();
@@ -48,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonHuy = new System.Windows.Forms.Button();
+            this.comboBoxKhoa = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBoxMasv
@@ -66,6 +65,7 @@
             // 
             // comboBoxPhai
             // 
+            this.comboBoxPhai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPhai.Location = new System.Drawing.Point(100, 100);
             this.comboBoxPhai.Name = "comboBoxPhai";
             this.comboBoxPhai.Size = new System.Drawing.Size(200, 24);
@@ -91,13 +91,6 @@
             this.textBoxDT.Name = "textBoxDT";
             this.textBoxDT.Size = new System.Drawing.Size(200, 22);
             this.textBoxDT.TabIndex = 5;
-            // 
-            // textBoxKhoa
-            // 
-            this.textBoxKhoa.Location = new System.Drawing.Point(100, 260);
-            this.textBoxKhoa.Name = "textBoxKhoa";
-            this.textBoxKhoa.Size = new System.Drawing.Size(200, 22);
-            this.textBoxKhoa.TabIndex = 6;
             // 
             // textBoxTrangThai
             // 
@@ -198,6 +191,14 @@
             this.buttonHuy.UseVisualStyleBackColor = true;
             this.buttonHuy.Click += new System.EventHandler(this.buttonHuy_Click);
             // 
+            // comboBoxKhoa
+            // 
+            this.comboBoxKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxKhoa.Location = new System.Drawing.Point(100, 263);
+            this.comboBoxKhoa.Name = "comboBoxKhoa";
+            this.comboBoxKhoa.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxKhoa.TabIndex = 2;
+            // 
             // SinhVienForm
             // 
             this.ClientSize = new System.Drawing.Size(400, 400);
@@ -212,11 +213,11 @@
             this.Controls.Add(this.labelManld);
             this.Controls.Add(this.textBoxMasv);
             this.Controls.Add(this.textBoxHoten);
+            this.Controls.Add(this.comboBoxKhoa);
             this.Controls.Add(this.comboBoxPhai);
             this.Controls.Add(this.dateTimePickerNgSinh);
             this.Controls.Add(this.textBoxDiaChi);
             this.Controls.Add(this.textBoxDT);
-            this.Controls.Add(this.textBoxKhoa);
             this.Controls.Add(this.textBoxTrangThai);
             this.Controls.Add(this.buttonLuu);
             this.Name = "SinhVienForm";
@@ -237,5 +238,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonHuy;
+        private System.Windows.Forms.ComboBox comboBoxKhoa;
     }
 }

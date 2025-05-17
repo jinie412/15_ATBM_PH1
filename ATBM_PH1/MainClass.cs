@@ -21,34 +21,27 @@ namespace ATBM_PH1
         public static OracleConnection conn;
         public static string ConnectionString = "";
 
-  
+
         // ---------- [3] Hàm làm mờ nền ----------
-        public static void BlurBackground(Form model)
+        public static void BlurBackground(Form model, Form parentForm)
         {
-            // Giả sử frmMain.Instance là form chính bạn muốn làm mờ
             Form background = new Form
             {
                 StartPosition = FormStartPosition.Manual,
                 FormBorderStyle = FormBorderStyle.None,
                 Opacity = 0.5d,
                 BackColor = Color.Black,
-                Size = frmMain.Instance.Size,
-                Location = frmMain.Instance.Location,
+                Size = parentForm.Size,
+                Location = parentForm.Location,
                 ShowInTaskbar = false
             };
 
-            // Hiển thị form nền mờ
             background.Show();
-
-            // Đặt form model là con của form nền (mục đích để show chồng lên đúng vị trí)
             model.Owner = background;
-
-            // Hiển thị form nhập liệu (không bị che)
             model.ShowDialog();
-
-            // Khi form model đóng thì dọn form nền mờ
             background.Dispose();
         }
+
     }
 
     // ---------- [4] Thông tin người dùng đăng nhập ----------
