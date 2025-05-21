@@ -23,7 +23,7 @@ namespace ATBM_PH1
         {
             try
             {
-                OracleCommand cmd = new OracleCommand("PROC_GET_MYINFO", MainClass.conn);
+                OracleCommand cmd = new OracleCommand("PDB_ADMIN.PROC_GET_MYINFO", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // Tạo REF CURSOR
@@ -67,7 +67,7 @@ namespace ATBM_PH1
 
             try
             {
-                OracleCommand cmd = new OracleCommand("PROC_UPDATE_CONTACT", MainClass.conn);
+                OracleCommand cmd = new OracleCommand("PDB_ADMIN.PROC_UPDATE_CONTACT", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("p_dchi", OracleDbType.Varchar2).Value = string.IsNullOrWhiteSpace(diaChi) ? (object)DBNull.Value : diaChi;

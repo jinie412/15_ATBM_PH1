@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ATBM_PH1
+namespace ATBM_PH1.RBAC_VPD_GV
 {
-    public partial class ManageRolesTab : UserControl
+    public partial class GV : Form
     {
-        public ManageRolesTab()
+        public GV()
         {
             InitializeComponent();
         }

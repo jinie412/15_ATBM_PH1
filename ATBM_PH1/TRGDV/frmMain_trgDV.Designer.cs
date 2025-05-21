@@ -34,15 +34,15 @@
             this.Staff = new Guna.UI2.WinForms.Guna2Button();
             this.btnTTC = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.guna2CustomGradientPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -141,7 +141,7 @@
             this.btnTTC.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
             this.btnTTC.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTC.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.user_black;
+            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.information_b;
             this.btnTTC.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnTTC.CustomizableEdges.BottomRight = false;
             this.btnTTC.CustomizableEdges.TopRight = false;
@@ -152,7 +152,7 @@
             this.btnTTC.FillColor = System.Drawing.Color.Transparent;
             this.btnTTC.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTC.ForeColor = System.Drawing.Color.White;
-            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.user;
+            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.information;
             this.btnTTC.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTTC.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnTTC.Location = new System.Drawing.Point(12, 225);
@@ -177,15 +177,6 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // guna2CustomGradientPanel2
-            // 
-            this.guna2CustomGradientPanel2.Controls.Add(this.panel1);
-            this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(1198, 677);
-            this.guna2CustomGradientPanel2.TabIndex = 4;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
@@ -193,10 +184,10 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.guna2ControlBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(299, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1198, 58);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(899, 56);
+            this.panel1.TabIndex = 5;
             // 
             // guna2ControlBox3
             // 
@@ -206,7 +197,7 @@
             this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox3.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1025, 18);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(726, 18);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox3.TabIndex = 1;
@@ -217,11 +208,10 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.FillColor = System.Drawing.Color.Transparent;
             this.btnExit.IconColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(1127, 18);
+            this.btnExit.Location = new System.Drawing.Point(828, 18);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 3;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // guna2ControlBox2
             // 
@@ -231,18 +221,36 @@
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1076, 18);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(777, 18);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox2.TabIndex = 2;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Image = global::ATBM_PH1.Properties.Resources._20945549;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(299, 56);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(899, 621);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 6;
+            this.guna2PictureBox2.TabStop = false;
+            this.guna2PictureBox2.UseTransparentBackground = true;
             // 
             // frmMain_trgDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1198, 677);
+            this.Controls.Add(this.guna2PictureBox2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.guna2CustomGradientPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain_trgDV";
             this.Text = "frmMain_trgDV";
@@ -250,8 +258,8 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.guna2CustomGradientPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,10 +272,10 @@
         private Guna.UI2.WinForms.Guna2Button Staff;
         private Guna.UI2.WinForms.Guna2Button btnTTC;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox btnExit;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
     }
 }

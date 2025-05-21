@@ -68,7 +68,7 @@ namespace ATBM_PH1
 
         private void LoadMonHocDangKy()
         {
-            using (OracleCommand cmd = new OracleCommand("SP_GET_MOMON_SV", MainClass.conn))
+            using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_GET_MOMON_SV", MainClass.conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -156,11 +156,15 @@ namespace ATBM_PH1
 
             try
             {
-                using (OracleCommand cmd = new OracleCommand("SP_DELETE_DANGKY", MainClass.conn))
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_DELETE_DANGKY", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("p_mamm", OracleDbType.Varchar2).Value = mamm;
+                    var masvParam = new OracleParameter("p_masv", OracleDbType.Varchar2);
+                    masvParam.Value = DBNull.Value;
+                    cmd.Parameters.Add(masvParam);
+
                     var deletedCountParam = new OracleParameter("p_deleted_count", OracleDbType.Int32)
                     {
                         Direction = ParameterDirection.Output

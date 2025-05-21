@@ -72,9 +72,9 @@ namespace ATBM_PH1
                 }
                 else if (role == "GV")
                 {
-                    //frmMain_KT main = new frmMain_KT();
-                    //main.Show();
-                    //this.Hide();
+                    frmMain_GV GV = new frmMain_GV(MainClass.CurrentUser.Username);
+                    GV.Show();
+                    this.Hide();
                 }
                 else if (role == "NV PĐT")
                 {
@@ -126,7 +126,6 @@ namespace ATBM_PH1
 
             try
             {
-                // Đổi từ XEPDB1 sang đúng tên PDB của bạn
                 string connStr = $"User Id={username};Password={password};Data Source=localhost:1521/QLDULIEUNOIBO;";
 
                 // Nếu login với SYS thì thêm quyền SYSDBA

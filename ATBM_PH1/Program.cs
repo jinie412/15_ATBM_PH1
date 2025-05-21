@@ -17,7 +17,7 @@ namespace ATBM_PH1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap());
-            //Application.Run(new NVCB());
+
         }
     }
 }

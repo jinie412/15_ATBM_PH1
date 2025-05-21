@@ -108,35 +108,21 @@ namespace ATBM_PH1
 
         private void dgvSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             if (e.ColumnIndex == dgvSV.Columns["checkSV"].Index && e.RowIndex >= 0)
             {
-                // Đặt tất cả các checkbox về false
-                foreach (DataGridViewRow row in dgvSV.Rows)
-                {
-                    row.Cells["checkSV"].Value = false;
-                }
-
-                // Chỉ bật checkbox của dòng được click
-                dgvSV.Rows[e.RowIndex].Cells["checkSV"].Value = true;
-                // Gán mã HP được chọn
-                maSV = dgvSV.Rows[e.RowIndex].Cells["sv"].Value?.ToString() ?? "";
+                bool current = Convert.ToBoolean(dgvSV.Rows[e.RowIndex].Cells["checkSV"].Value ?? false);
+                dgvSV.Rows[e.RowIndex].Cells["checkSV"].Value = !current; // Toggle chọn/bỏ chọn
             }
         }
 
         private void pdt_mm_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == pdt_mm.Columns["checkmm"].Index && e.RowIndex >= 0)
+            
+            if (e.ColumnIndex == pdt_mm.Columns["checkMM"].Index && e.RowIndex >= 0)
             {
-                // Đặt tất cả các checkbox về false
-                foreach (DataGridViewRow row in pdt_mm.Rows)
-                {
-                    row.Cells["checkmm"].Value = false;
-                }
-
-                // Chỉ bật checkbox của dòng được click
-                pdt_mm.Rows[e.RowIndex].Cells["checkmm"].Value = true;
-                // Gán mã HP được chọn
-                maMM = pdt_mm.Rows[e.RowIndex].Cells["mm"].Value?.ToString() ?? "";
+                bool current = Convert.ToBoolean(pdt_mm.Rows[e.RowIndex].Cells["checkMM"].Value ?? false);
+                pdt_mm.Rows[e.RowIndex].Cells["checkMM"].Value = !current; // Toggle chọn/bỏ chọn
             }
         }
 
@@ -191,6 +177,7 @@ namespace ATBM_PH1
         {
             maSV = txtSV.Text.Trim();
             Load_SV();
+
         }
 
         private void LoadDSDonVi()
@@ -226,29 +213,70 @@ namespace ATBM_PH1
 
         private void btnCN_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                // Lấy danh sách sinh viên được chọn
+                List<string> selectedSVs = new List<string>();
+                foreach (DataGridViewRow row in dgvSV.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells["checkSV"].Value ?? false);
+                    if (isChecked)
+                    {
+                        string masv = row.Cells["sv"].Value?.ToString();
+                        if (!string.IsNullOrWhiteSpace(masv))
+                            selectedSVs.Add(masv);
+                    }
+                }
+
+                // Lấy danh sách mở môn được chọn
+                List<string> selectedMMs = new List<string>();
+                foreach (DataGridViewRow row in pdt_mm.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells["checkMM"].Value ?? false);
+                    if (isChecked)
+                    {
+                        string mamm = row.Cells["mm"].Value?.ToString();
+                        if (!string.IsNullOrWhiteSpace(mamm))
+                            selectedMMs.Add(mamm);
+                    }
+                }
+
+                if (selectedSVs.Count == 0 || selectedMMs.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn ít nhất một sinh viên và một học phần!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string csvSV = string.Join(",", selectedSVs);
+                string csvMM = string.Join(",", selectedMMs);
+
                 if (MainClass.conn.State == ConnectionState.Closed)
                 {
                     MainClass.conn.Open();
                 }
 
-                OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_PDT_THEMDK", MainClass.conn);
-                cmd.CommandType = CommandType.StoredProcedure;
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_DANGKY_NHIEU", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                // Truyền tham số
-                cmd.Parameters.Add("p_masv", OracleDbType.Varchar2).Value = maSV;
-                cmd.Parameters.Add("p_mamm", OracleDbType.Varchar2).Value = maMM;
+                    cmd.Parameters.Add("p_masvs", OracleDbType.Varchar2).Value = csvSV;
+                    cmd.Parameters.Add("p_mamms", OracleDbType.Varchar2).Value = csvMM;
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                }
 
-                MessageBox.Show("Đăng ký học phần thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đăng ký thành công cho tất cả sinh viên và học phần đã chọn!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show("Lỗi Oracle: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi đăng ký học phần:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi không xác định: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+                
     }
 }

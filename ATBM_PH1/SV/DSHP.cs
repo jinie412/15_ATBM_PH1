@@ -113,13 +113,18 @@ namespace ATBM_PH1
             }
 
             string mammsCsv = string.Join(",", selectedMAMMs);
+            string masvsCsv = ""; // Bỏ trống nếu muốn mặc định lấy SESSION_USER từ Oracle
 
             try
             {
-                using (OracleCommand cmd = new OracleCommand("SP_DANGKY_MONHOC", MainClass.conn))
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_DANGKY_NHIEU", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Truyền danh sách mã môn
+                    cmd.Parameters.Add("p_masvs", OracleDbType.Varchar2).Value = masvsCsv;  // Rỗng sẽ lấy SESSION_USER trong procedure
                     cmd.Parameters.Add("p_mamms", OracleDbType.Varchar2).Value = mammsCsv;
+
                     cmd.ExecuteNonQuery();
                 }
 

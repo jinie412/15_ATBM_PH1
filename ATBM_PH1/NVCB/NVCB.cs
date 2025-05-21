@@ -26,7 +26,7 @@ namespace ATBM_PH1
             try
             {
                 InitializeComponent();
-
+             
                 // Enable dragging on the title bar
                 panelTitleBar.MouseDown += new MouseEventHandler(panelTitleBar_MouseDown);
                 panelTitleBar.MouseMove += new MouseEventHandler(panelTitleBar_MouseMove);

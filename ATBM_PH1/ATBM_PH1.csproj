@@ -96,6 +96,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GV\frmMain_GV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV\frmMain_GV.Designer.cs">
+      <DependentUpon>frmMain_GV.cs</DependentUpon>
+    </Compile>
     <Compile Include="PH1\CreateRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,18 @@
     <Compile Include="SV\Student.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GV\DSDK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV\DSDK.Designer.cs">
+      <DependentUpon>DSDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GV\DSSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV\DSSV.Designer.cs">
+      <DependentUpon>DSSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="SV\Student.Designer.cs">
       <DependentUpon>Student.cs</DependentUpon>
     </Compile>
@@ -245,6 +263,12 @@
     </Compile>
     <Compile Include="TRGDV\trgdv_dsnv.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV\GV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GV\GV.Designer.cs">
+      <DependentUpon>GV.cs</DependentUpon>
     </Compile>
     <Compile Include="TRGDV\trgdv_dsnv.Designer.cs">
       <DependentUpon>trgdv_dsnv.cs</DependentUpon>
@@ -277,12 +301,6 @@
       <DependentUpon>ViewUser.cs</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
-    <Compile Include="ManageRolesTab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ManageRolesTab.Designer.cs">
-      <DependentUpon>ManageRolesTab.cs</DependentUpon>
-    </Compile>
     <Compile Include="PH1\PhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +317,15 @@
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GV\DSDK.resx">
+      <DependentUpon>DSDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GV\DSSV.resx">
+      <DependentUpon>DSSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GV\frmMain_GV.resx">
+      <DependentUpon>frmMain_GV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PH1\CreateRoleForm.resx">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
@@ -378,6 +405,9 @@
     <EmbeddedResource Include="SV\ThongTinChung.resx">
       <DependentUpon>ThongTinChung.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GV\GV.resx">
+      <DependentUpon>GV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TRGDV\trgdv_dsnv.resx">
       <DependentUpon>trgdv_dsnv.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,9 +428,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\ViewUser.resx">
       <DependentUpon>ViewUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManageRolesTab.resx">
-      <DependentUpon>ManageRolesTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -489,6 +516,35 @@
   <ItemGroup>
     <None Include="Resources\trash.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\education_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\education.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exam_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\school.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\school_b.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

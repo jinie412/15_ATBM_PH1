@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,7 +75,6 @@ namespace ATBM_PH1
         {
             try
             {
-
                 if (pdt_mm.SelectedRows.Count == 0)
                 {
                     MessageBox.Show("Vui lòng chọn một dòng để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -84,40 +84,56 @@ namespace ATBM_PH1
                 string maMM = pdt_mm.SelectedRows[0].Cells[0].Value.ToString();
                 string masv = pdt_mm.SelectedRows[0].Cells[3].Value.ToString();
 
-
                 DialogResult result = MessageBox.Show(
-                        $"Bạn có chắc chắn muốn xóa dòng đăng ký:\nMã môn: {maMM}\nMã sinh viên: {masv}?",
-                        "Xác nhận xóa",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
+                    $"Bạn có chắc chắn muốn xóa dòng đăng ký:\nMã môn: {maMM}\nMã sinh viên: {masv}?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 if (result != DialogResult.Yes)
                 {
                     return;
                 }
 
-
                 if (MainClass.conn.State == ConnectionState.Closed)
                 {
                     MainClass.conn.Open();
                 }
 
-                OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_PDT_XOADK", MainClass.conn);
+                OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_XOA_DANGKY", MainClass.conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+
+                // Thêm đầy đủ tham số
                 cmd.Parameters.Add("p_mamm", OracleDbType.Varchar2).Value = maMM;
                 cmd.Parameters.Add("p_masv", OracleDbType.Varchar2).Value = masv;
 
+                var deletedCountParam = new OracleParameter("p_deleted_count", OracleDbType.Int32)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(deletedCountParam);
+
+                // Thực thi duy nhất 1 lần
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Load_DSDK();
+                // Lấy kết quả
+                int deletedRows = ((OracleDecimal)deletedCountParam.Value).ToInt32();
+                if (deletedRows > 0)
+                {
+                    MessageBox.Show("Xóa thành công.");
+                    Load_DSDK();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa. Có thể bạn không có quyền hoặc dòng đã bị thay đổi.");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi xóa đăng ký: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }

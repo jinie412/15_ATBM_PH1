@@ -69,7 +69,7 @@
             this.btnTTNV.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
             this.btnTTNV.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTNV.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnTTNV.CheckedState.Image = global::ATBM_PH1.Properties.Resources.user_black;
+            this.btnTTNV.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
             this.btnTTNV.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnTTNV.CustomizableEdges.BottomRight = false;
             this.btnTTNV.CustomizableEdges.TopRight = false;
@@ -80,7 +80,7 @@
             this.btnTTNV.FillColor = System.Drawing.Color.Transparent;
             this.btnTTNV.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTNV.ForeColor = System.Drawing.Color.White;
-            this.btnTTNV.Image = global::ATBM_PH1.Properties.Resources.user;
+            this.btnTTNV.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette;
             this.btnTTNV.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTTNV.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnTTNV.Location = new System.Drawing.Point(12, 304);
@@ -100,7 +100,7 @@
             this.btnTTC.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
             this.btnTTC.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTC.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.user_black;
+            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.information_b;
             this.btnTTC.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnTTC.CustomizableEdges.BottomRight = false;
             this.btnTTC.CustomizableEdges.TopRight = false;
@@ -111,7 +111,7 @@
             this.btnTTC.FillColor = System.Drawing.Color.Transparent;
             this.btnTTC.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTC.ForeColor = System.Drawing.Color.White;
-            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.user;
+            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.information;
             this.btnTTC.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTTC.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnTTC.Location = new System.Drawing.Point(12, 244);

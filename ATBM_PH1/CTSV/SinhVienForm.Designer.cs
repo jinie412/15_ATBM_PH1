@@ -201,7 +201,7 @@
             // 
             // SinhVienForm
             // 
-            this.ClientSize = new System.Drawing.Size(400, 400);
+            this.ClientSize = new System.Drawing.Size(390, 400);
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

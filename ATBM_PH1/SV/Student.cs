@@ -19,7 +19,10 @@ namespace ATBM_PH1
         }
         Form currentChildForm = null;
 
-
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         private void studentinfo_Click(object sender, EventArgs e)
         {
             if (currentChildForm != null && !currentChildForm.IsDisposed)
@@ -28,12 +31,14 @@ namespace ATBM_PH1
             }
 
             ThongTinChung frm = new ThongTinChung();
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Location = new Point(this.Left + 197, this.Top + 37);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            //frm.Location = new Point(this.Left + 197, this.Top + 37);
 
             currentChildForm = frm; // Gán form hiện tại vào biến
 
-            frm.Show();
+            //frm.Show();
+            MainClass.BlurBackground(frm, this);
+
         }
 
 
@@ -45,12 +50,13 @@ namespace ATBM_PH1
             }
 
             DanhSachMoMon frm = new DanhSachMoMon();
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Location = new Point(this.Left + 197, this.Top + 37);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            //frm.Location = new Point(this.Left + 197, this.Top + 37);
 
             currentChildForm = frm;
 
-            frm.Show();
+            //frm.Show();
+            MainClass.BlurBackground(frm, this);
         }
 
         private void registersubject_Click(object sender, EventArgs e)
@@ -61,17 +67,21 @@ namespace ATBM_PH1
             }
 
             DangKyHP frm = new DangKyHP();
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.Location = new Point(this.Left + 197, this.Top + 37);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            //frm.Location = new Point(this.Left + 197, this.Top + 37);
 
             currentChildForm = frm;
 
-            frm.Show();
+            //frm.Show();
+            MainClass.BlurBackground(frm, this);
         }
 
         private void btnDX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.StartPosition = FormStartPosition.CenterScreen;
+            dangNhap.Show();
+            this.Close();
         }
     }
 }
