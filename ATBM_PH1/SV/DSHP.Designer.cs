@@ -49,7 +49,7 @@
             this.btnDangKy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
             this.btnDangKy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
-            this.btnDangKy.Location = new System.Drawing.Point(782, 497);
+            this.btnDangKy.Location = new System.Drawing.Point(782, 583);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(180, 45);
             this.btnDangKy.TabIndex = 29;
@@ -82,12 +82,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSHP.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSHP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSHP.Location = new System.Drawing.Point(44, 68);
+            this.dgvDSHP.Location = new System.Drawing.Point(44, 75);
             this.dgvDSHP.Name = "dgvDSHP";
             this.dgvDSHP.RowHeadersVisible = false;
             this.dgvDSHP.RowHeadersWidth = 51;
             this.dgvDSHP.RowTemplate.Height = 26;
-            this.dgvDSHP.Size = new System.Drawing.Size(918, 404);
+            this.dgvDSHP.Size = new System.Drawing.Size(918, 484);
             this.dgvDSHP.TabIndex = 30;
             this.dgvDSHP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSHP.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -119,7 +119,7 @@
             this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox3.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(815, 22);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(796, 22);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox3.TabIndex = 31;
@@ -132,7 +132,7 @@
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(866, 22);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(847, 22);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox2.TabIndex = 32;
@@ -143,7 +143,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.FillColor = System.Drawing.Color.Transparent;
             this.btnExit.IconColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(917, 22);
+            this.btnExit.Location = new System.Drawing.Point(898, 22);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(45, 29);
             this.btnExit.TabIndex = 33;
@@ -153,7 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1004, 577);
+            this.ClientSize = new System.Drawing.Size(985, 663);
             this.Controls.Add(this.guna2ControlBox3);
             this.Controls.Add(this.guna2ControlBox2);
             this.Controls.Add(this.btnExit);

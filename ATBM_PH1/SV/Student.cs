@@ -31,13 +31,23 @@ namespace ATBM_PH1
             }
 
             ThongTinChung frm = new ThongTinChung();
-            frm.StartPosition = FormStartPosition.CenterScreen;
-            //frm.Location = new Point(this.Left + 197, this.Top + 37);
-
-            currentChildForm = frm; // Gán form hiện tại vào biến
+            frm.StartPosition = FormStartPosition.Manual;
+            // frm.Location = new Point(this.Left + 197, this.Top + 37);
+         
+            //currentChildForm = frm; // Gán form hiện tại vào biến
 
             //frm.Show();
-            MainClass.BlurBackground(frm, this);
+            //MainClass.BlurBackground(frm, this);
+
+            frm.TopLevel = false; // Cho phép nhúng form vào panel
+            frm.FormBorderStyle = FormBorderStyle.None; // Ẩn viền
+            frm.Dock = DockStyle.Fill; // Tự động lấp đầy panel
+
+            guna2Panel3.Controls.Clear(); // Xóa control cũ nếu có
+            guna2Panel3.Controls.Add(frm); // Thêm form vào panel
+            frm.Show(); // Hiển thị form
+
+            currentChildForm = frm;
 
         }
 
@@ -50,13 +60,22 @@ namespace ATBM_PH1
             }
 
             DanhSachMoMon frm = new DanhSachMoMon();
-            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.StartPosition = FormStartPosition.Manual;
             //frm.Location = new Point(this.Left + 197, this.Top + 37);
 
-            currentChildForm = frm;
+            //currentChildForm = frm;
 
             //frm.Show();
-            MainClass.BlurBackground(frm, this);
+            //MainClass.BlurBackground(frm, this);
+            frm.TopLevel = false; // Cho phép nhúng form vào panel
+            frm.FormBorderStyle = FormBorderStyle.None; // Ẩn viền
+            frm.Dock = DockStyle.Fill; // Tự động lấp đầy panel
+
+            guna2Panel3.Controls.Clear(); // Xóa control cũ nếu có
+            guna2Panel3.Controls.Add(frm); // Thêm form vào panel
+            frm.Show(); // Hiển thị form
+
+            currentChildForm = frm;
         }
 
         private void registersubject_Click(object sender, EventArgs e)
@@ -67,13 +86,23 @@ namespace ATBM_PH1
             }
 
             DangKyHP frm = new DangKyHP();
-            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.StartPosition = FormStartPosition.Manual;
             //frm.Location = new Point(this.Left + 197, this.Top + 37);
 
-            currentChildForm = frm;
+            //currentChildForm = frm;
 
             //frm.Show();
-            MainClass.BlurBackground(frm, this);
+            // MainClass.BlurBackground(frm, this);
+
+            frm.TopLevel = false; // Cho phép nhúng form vào panel
+            frm.FormBorderStyle = FormBorderStyle.None; // Ẩn viền
+            frm.Dock = DockStyle.Fill; // Tự động lấp đầy panel
+
+            guna2Panel3.Controls.Clear(); // Xóa control cũ nếu có
+            guna2Panel3.Controls.Add(frm); // Thêm form vào panel
+            frm.Show(); // Hiển thị form
+
+            currentChildForm = frm;
         }
 
         private void btnDX_Click(object sender, EventArgs e)
