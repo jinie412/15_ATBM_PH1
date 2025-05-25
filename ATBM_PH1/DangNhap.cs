@@ -49,10 +49,17 @@ namespace ATBM_PH1
 
         private void load_Form()
         {
+            
             if (MainClass.CurrentUser.Username.ToLower() == "pdb_admin")
             {
                frmMain main = new frmMain();
                 main.Show();
+                this.Hide();
+            }
+            else if (MainClass.CurrentUser.Username.ToLower().StartsWith("u"))
+            {
+                thongbao thongBaoForm = new thongbao();
+                thongBaoForm.Show();
                 this.Hide();
             }
             else if (MainClass.CurrentUser.Username.StartsWith("SV"))

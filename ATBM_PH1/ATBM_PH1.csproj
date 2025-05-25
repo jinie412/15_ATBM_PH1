@@ -102,6 +102,12 @@
     <Compile Include="GV\frmMain_GV.Designer.cs">
       <DependentUpon>frmMain_GV.cs</DependentUpon>
     </Compile>
+    <Compile Include="OLS\thongbao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OLS\thongbao.Designer.cs">
+      <DependentUpon>thongbao.cs</DependentUpon>
+    </Compile>
     <Compile Include="PH1\CreateRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GV\frmMain_GV.resx">
       <DependentUpon>frmMain_GV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OLS\thongbao.resx">
+      <DependentUpon>thongbao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PH1\CreateRoleForm.resx">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
