@@ -106,7 +106,7 @@
             this.btnThayDoi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
             this.btnThayDoi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThayDoi.ForeColor = System.Drawing.Color.White;
-            this.btnThayDoi.Location = new System.Drawing.Point(366, 532);
+            this.btnThayDoi.Location = new System.Drawing.Point(401, 531);
             this.btnThayDoi.Name = "btnThayDoi";
             this.btnThayDoi.Size = new System.Drawing.Size(180, 45);
             this.btnThayDoi.TabIndex = 26;

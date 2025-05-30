@@ -82,9 +82,22 @@ namespace ATBM_PH1
                 // Gán dữ liệu lên DataGridView
                 dgvlistsubject.DataSource = dt;
                 originalData = dt;
+
+                // ✅ Đổi tên header các cột
+                dgvlistsubject.Columns["HK"].HeaderText = "HK";
+                dgvlistsubject.Columns["NAM"].HeaderText = "Năm";
+                dgvlistsubject.Columns["MAMM"].HeaderText = "Mã MM";
+                dgvlistsubject.Columns["MAHP"].HeaderText = "Mã HP";
+                dgvlistsubject.Columns["TENHP"].HeaderText = "Tên HP";
+                dgvlistsubject.Columns["DIEMTH"].HeaderText = "Điểm TH";
+                dgvlistsubject.Columns["DIEMQT"].HeaderText = "Điểm QT";
+                dgvlistsubject.Columns["DIEMCK"].HeaderText = "Điểm CK";
+                dgvlistsubject.Columns["DIEMTK"].HeaderText = "Điểm TK";
+
                 LoadComboBoxData();
             }
         }
+
 
         private void FilterData(object sender, EventArgs e)
         {
@@ -156,7 +169,7 @@ namespace ATBM_PH1
 
             try
             {
-                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_DELETE_DANGKY", MainClass.conn))
+                using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.SP_XOA_DANGKY", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
