@@ -47,12 +47,11 @@ namespace ATBM_PH1
             MainClass.BlurBackground(role, this);
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void Btn_audit_Click(object sender, EventArgs e)
         {
-            DangNhap dangNhap = new DangNhap();
-            dangNhap.StartPosition = FormStartPosition.CenterScreen;
-            dangNhap.Show();
-            this.Close();
+            audit_.Audit auditForm = new audit_.Audit();
+            auditForm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(auditForm, this);
         }
     }
 }
