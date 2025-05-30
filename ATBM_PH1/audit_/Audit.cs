@@ -65,8 +65,9 @@ namespace ATBM_PH1.audit_
 
         private void Close_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
+            this.Close();
         }
+        
 
         private void tablePrivs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
