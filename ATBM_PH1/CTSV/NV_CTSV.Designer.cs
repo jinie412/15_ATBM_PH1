@@ -25,6 +25,15 @@ namespace ATBM_PH1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelManageRoles = new System.Windows.Forms.Panel();
             this.dataGridViewSinhVien = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_masv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_ht = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_phai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_nsinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_dc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctsv_tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
@@ -35,15 +44,6 @@ namespace ATBM_PH1
             this.btnMinimize = new Guna.UI2.WinForms.Guna2Button();
             this.labelFormTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_masv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_ht = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_phai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_nsinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_dc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctsv_tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelManageRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinhVien)).BeginInit();
             this.contentPanel.SuspendLayout();
@@ -126,6 +126,86 @@ namespace ATBM_PH1
             this.dataGridViewSinhVien.ThemeStyle.RowsStyle.Height = 30;
             this.dataGridViewSinhVien.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewSinhVien.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.MinimumWidth = 6;
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Width = 125;
+            // 
+            // ctsv_masv
+            // 
+            this.ctsv_masv.DataPropertyName = "MASV";
+            this.ctsv_masv.HeaderText = "Mã SV";
+            this.ctsv_masv.MinimumWidth = 6;
+            this.ctsv_masv.Name = "ctsv_masv";
+            this.ctsv_masv.ReadOnly = true;
+            this.ctsv_masv.Width = 117;
+            // 
+            // ctsv_ht
+            // 
+            this.ctsv_ht.DataPropertyName = "HOTEN";
+            this.ctsv_ht.HeaderText = "Họ tên";
+            this.ctsv_ht.MinimumWidth = 6;
+            this.ctsv_ht.Name = "ctsv_ht";
+            this.ctsv_ht.ReadOnly = true;
+            this.ctsv_ht.Width = 118;
+            // 
+            // ctsv_phai
+            // 
+            this.ctsv_phai.DataPropertyName = "PHAI";
+            this.ctsv_phai.HeaderText = "Phái";
+            this.ctsv_phai.MinimumWidth = 6;
+            this.ctsv_phai.Name = "ctsv_phai";
+            this.ctsv_phai.ReadOnly = true;
+            this.ctsv_phai.Width = 117;
+            // 
+            // ctsv_nsinh
+            // 
+            this.ctsv_nsinh.DataPropertyName = "NGSINH";
+            this.ctsv_nsinh.HeaderText = "Ngày sinh";
+            this.ctsv_nsinh.MinimumWidth = 6;
+            this.ctsv_nsinh.Name = "ctsv_nsinh";
+            this.ctsv_nsinh.ReadOnly = true;
+            this.ctsv_nsinh.Width = 117;
+            // 
+            // ctsv_dc
+            // 
+            this.ctsv_dc.DataPropertyName = "DCHI";
+            this.ctsv_dc.HeaderText = "Địa chỉ";
+            this.ctsv_dc.MinimumWidth = 6;
+            this.ctsv_dc.Name = "ctsv_dc";
+            this.ctsv_dc.ReadOnly = true;
+            this.ctsv_dc.Width = 118;
+            // 
+            // DT
+            // 
+            this.DT.DataPropertyName = "DT";
+            this.DT.HeaderText = "DT";
+            this.DT.MinimumWidth = 6;
+            this.DT.Name = "DT";
+            this.DT.ReadOnly = true;
+            this.DT.Width = 117;
+            // 
+            // ctsv_khoa
+            // 
+            this.ctsv_khoa.DataPropertyName = "KHOA";
+            this.ctsv_khoa.HeaderText = "Khoa";
+            this.ctsv_khoa.MinimumWidth = 6;
+            this.ctsv_khoa.Name = "ctsv_khoa";
+            this.ctsv_khoa.ReadOnly = true;
+            this.ctsv_khoa.Width = 118;
+            // 
+            // ctsv_tt
+            // 
+            this.ctsv_tt.DataPropertyName = "TINHTRANG";
+            this.ctsv_tt.HeaderText = "Tình trạng";
+            this.ctsv_tt.MinimumWidth = 6;
+            this.ctsv_tt.Name = "ctsv_tt";
+            this.ctsv_tt.ReadOnly = true;
+            this.ctsv_tt.Width = 117;
             // 
             // btnEdit
             // 
@@ -240,7 +320,7 @@ namespace ATBM_PH1
             this.labelFormTitle.ForeColor = System.Drawing.Color.White;
             this.labelFormTitle.Location = new System.Drawing.Point(10, 10);
             this.labelFormTitle.Name = "labelFormTitle";
-            this.labelFormTitle.Size = new System.Drawing.Size(343, 30);
+            this.labelFormTitle.Size = new System.Drawing.Size(477, 30);
             this.labelFormTitle.TabIndex = 0;
             this.labelFormTitle.Text = "Nhân viên Công tác sinh viên";
             // 
@@ -255,86 +335,6 @@ namespace ATBM_PH1
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1449, 54);
             this.panelTitleBar.TabIndex = 1;
-            // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.MinimumWidth = 6;
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            this.STT.Width = 125;
-            // 
-            // ctsv_masv
-            // 
-            this.ctsv_masv.DataPropertyName = "MASV";
-            this.ctsv_masv.HeaderText = "Mã SV";
-            this.ctsv_masv.MinimumWidth = 6;
-            this.ctsv_masv.Name = "ctsv_masv";
-            this.ctsv_masv.ReadOnly = true;
-            this.ctsv_masv.Width = 117;
-            // 
-            // ctsv_ht
-            // 
-            this.ctsv_ht.DataPropertyName = "HOTEN";
-            this.ctsv_ht.HeaderText = "Họ tên";
-            this.ctsv_ht.MinimumWidth = 6;
-            this.ctsv_ht.Name = "ctsv_ht";
-            this.ctsv_ht.ReadOnly = true;
-            this.ctsv_ht.Width = 118;
-            // 
-            // ctsv_phai
-            // 
-            this.ctsv_phai.DataPropertyName = "PHAI";
-            this.ctsv_phai.HeaderText = "Phái";
-            this.ctsv_phai.MinimumWidth = 6;
-            this.ctsv_phai.Name = "ctsv_phai";
-            this.ctsv_phai.ReadOnly = true;
-            this.ctsv_phai.Width = 117;
-            // 
-            // ctsv_nsinh
-            // 
-            this.ctsv_nsinh.DataPropertyName = "NGSINH";
-            this.ctsv_nsinh.HeaderText = "Ngày sinh";
-            this.ctsv_nsinh.MinimumWidth = 6;
-            this.ctsv_nsinh.Name = "ctsv_nsinh";
-            this.ctsv_nsinh.ReadOnly = true;
-            this.ctsv_nsinh.Width = 117;
-            // 
-            // ctsv_dc
-            // 
-            this.ctsv_dc.DataPropertyName = "DCHI";
-            this.ctsv_dc.HeaderText = "Địa chỉ";
-            this.ctsv_dc.MinimumWidth = 6;
-            this.ctsv_dc.Name = "ctsv_dc";
-            this.ctsv_dc.ReadOnly = true;
-            this.ctsv_dc.Width = 118;
-            // 
-            // DT
-            // 
-            this.DT.DataPropertyName = "DT";
-            this.DT.HeaderText = "DT";
-            this.DT.MinimumWidth = 6;
-            this.DT.Name = "DT";
-            this.DT.ReadOnly = true;
-            this.DT.Width = 117;
-            // 
-            // ctsv_khoa
-            // 
-            this.ctsv_khoa.DataPropertyName = "KHOA";
-            this.ctsv_khoa.HeaderText = "Khoa";
-            this.ctsv_khoa.MinimumWidth = 6;
-            this.ctsv_khoa.Name = "ctsv_khoa";
-            this.ctsv_khoa.ReadOnly = true;
-            this.ctsv_khoa.Width = 118;
-            // 
-            // ctsv_tt
-            // 
-            this.ctsv_tt.DataPropertyName = "TINHTRANG";
-            this.ctsv_tt.HeaderText = "Tình trạng";
-            this.ctsv_tt.MinimumWidth = 6;
-            this.ctsv_tt.Name = "ctsv_tt";
-            this.ctsv_tt.ReadOnly = true;
-            this.ctsv_tt.Width = 117;
             // 
             // NV_CTSV
             // 
