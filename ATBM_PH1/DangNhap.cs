@@ -62,6 +62,13 @@ namespace ATBM_PH1
                 thongBaoForm.Show();
                 this.Hide();
             }
+
+            else if (MainClass.CurrentUser.Username.ToLower() == "lbacsys")
+            {
+                frmMain_OLS thongBaoForm = new frmMain_OLS();
+                thongBaoForm.Show();
+                this.Hide();
+            }
             else if (MainClass.CurrentUser.Username.StartsWith("SV"))
             {
                 Student student = new Student();

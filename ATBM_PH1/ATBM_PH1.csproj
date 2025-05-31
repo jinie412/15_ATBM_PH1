@@ -108,6 +108,24 @@
     <Compile Include="GV\frmMain_GV.Designer.cs">
       <DependentUpon>frmMain_GV.cs</DependentUpon>
     </Compile>
+    <Compile Include="OLS\frmMain_OLS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OLS\frmMain_OLS.Designer.cs">
+      <DependentUpon>frmMain_OLS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OLS\OLS_GanUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OLS\OLS_GanUser.Designer.cs">
+      <DependentUpon>OLS_GanUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OLS\OLS_TaoLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OLS\OLS_TaoLabel.Designer.cs">
+      <DependentUpon>OLS_TaoLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="OLS\thongbao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GV\frmMain_GV.resx">
       <DependentUpon>frmMain_GV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OLS\frmMain_OLS.resx">
+      <DependentUpon>frmMain_OLS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OLS\OLS_GanUser.resx">
+      <DependentUpon>OLS_GanUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OLS\OLS_TaoLabel.resx">
+      <DependentUpon>OLS_TaoLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OLS\thongbao.resx">
       <DependentUpon>thongbao.cs</DependentUpon>
