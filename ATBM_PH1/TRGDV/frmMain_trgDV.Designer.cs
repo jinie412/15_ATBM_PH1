@@ -35,11 +35,12 @@
             this.btnTTC = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.btnThongBao);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.btnDX);
             this.guna2Panel1.Controls.Add(this.Staff);
@@ -94,7 +96,7 @@
             this.btnDX.Image = global::ATBM_PH1.Properties.Resources.logout;
             this.btnDX.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDX.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnDX.Location = new System.Drawing.Point(12, 345);
+            this.btnDX.Location = new System.Drawing.Point(12, 405);
             this.btnDX.Name = "btnDX";
             this.btnDX.Size = new System.Drawing.Size(284, 54);
             this.btnDX.TabIndex = 0;
@@ -191,6 +193,17 @@
             this.panel1.Size = new System.Drawing.Size(899, 56);
             this.panel1.TabIndex = 5;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(32, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 28);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Trưởng đơn vị";
+            // 
             // guna2ControlBox3
             // 
             this.guna2ControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -244,16 +257,36 @@
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
             // 
-            // label2
+            // btnThongBao
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 28);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Trưởng đơn vị";
+            this.btnThongBao.AutoRoundedCorners = true;
+            this.btnThongBao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.btnThongBao.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnThongBao.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.btnThongBao.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongBao.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btnThongBao.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
+            this.btnThongBao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnThongBao.CustomizableEdges.BottomRight = false;
+            this.btnThongBao.CustomizableEdges.TopRight = false;
+            this.btnThongBao.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongBao.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongBao.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThongBao.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThongBao.FillColor = System.Drawing.Color.Transparent;
+            this.btnThongBao.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.btnThongBao.ForeColor = System.Drawing.Color.White;
+            this.btnThongBao.Image = global::ATBM_PH1.Properties.Resources.bell;
+            this.btnThongBao.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThongBao.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnThongBao.Location = new System.Drawing.Point(12, 345);
+            this.btnThongBao.Name = "btnThongBao";
+            this.btnThongBao.Size = new System.Drawing.Size(287, 54);
+            this.btnThongBao.TabIndex = 2;
+            this.btnThongBao.Text = "Thông báo";
+            this.btnThongBao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThongBao.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnThongBao.Click += new System.EventHandler(this.btnThongBao_Click);
             // 
             // frmMain_trgDV
             // 
@@ -292,5 +325,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Button btnThongBao;
     }
 }

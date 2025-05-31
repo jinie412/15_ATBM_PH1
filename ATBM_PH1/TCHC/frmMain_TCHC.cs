@@ -47,5 +47,12 @@ namespace ATBM_PH1
             tchc.StartPosition = FormStartPosition.CenterScreen;
             MainClass.BlurBackground(tchc, this);
         }
+
+        private void btnThongBao_Click(object sender, EventArgs e)
+        {
+            thongbao frm = new thongbao();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(frm, this);
+        }
     }
 }

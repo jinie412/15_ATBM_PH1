@@ -112,5 +112,12 @@ namespace ATBM_PH1
             dangNhap.Show();
             this.Close();
         }
+
+        private void btnThongBao_Click(object sender, EventArgs e)
+        {
+            thongbao frm = new thongbao();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(frm, this);
+        }
     }
 }

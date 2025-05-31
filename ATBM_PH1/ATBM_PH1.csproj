@@ -612,5 +612,8 @@
   <ItemGroup>
     <None Include="Resources\audit_b.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,5 +41,11 @@ namespace ATBM_PH1
             MainClass.BlurBackground(nvcb, this);
         }
 
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            thongbao frm = new thongbao();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(frm, this);
+        }
     }
 }
