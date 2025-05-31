@@ -66,7 +66,11 @@ namespace ATBM_PH1
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MainClass.CurrentUser.Username.ToLower().StartsWith("u"))
+            {
+                Application.Exit();
+            }
+            
         }
 
     }

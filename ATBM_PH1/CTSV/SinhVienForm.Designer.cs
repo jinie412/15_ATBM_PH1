@@ -94,6 +94,7 @@
             // 
             // textBoxTrangThai
             // 
+            this.textBoxTrangThai.Enabled = false;
             this.textBoxTrangThai.Location = new System.Drawing.Point(100, 300);
             this.textBoxTrangThai.Name = "textBoxTrangThai";
             this.textBoxTrangThai.Size = new System.Drawing.Size(200, 22);

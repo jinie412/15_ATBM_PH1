@@ -33,14 +33,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.ols_tb = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.manld = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelFormTitle = new System.Windows.Forms.Label();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.manld = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ols_tb)).BeginInit();
             this.guna2Panel2.SuspendLayout();
@@ -120,6 +120,30 @@
             this.ols_tb.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.ols_tb.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // manld
+            // 
+            this.manld.DataPropertyName = "ID";
+            this.manld.HeaderText = "Mã TB";
+            this.manld.MinimumWidth = 6;
+            this.manld.Name = "manld";
+            this.manld.ReadOnly = true;
+            // 
+            // hoten
+            // 
+            this.hoten.DataPropertyName = "NOIDUNG";
+            this.hoten.HeaderText = "Nội dung";
+            this.hoten.MinimumWidth = 6;
+            this.hoten.Name = "hoten";
+            this.hoten.ReadOnly = true;
+            // 
+            // phai
+            // 
+            this.phai.DataPropertyName = "LABEL";
+            this.phai.HeaderText = "Label";
+            this.phai.MinimumWidth = 6;
+            this.phai.Name = "phai";
+            this.phai.ReadOnly = true;
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
@@ -181,30 +205,6 @@
             this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox2.TabIndex = 12;
             // 
-            // manld
-            // 
-            this.manld.DataPropertyName = "ID";
-            this.manld.HeaderText = "Mã TB";
-            this.manld.MinimumWidth = 6;
-            this.manld.Name = "manld";
-            this.manld.ReadOnly = true;
-            // 
-            // hoten
-            // 
-            this.hoten.DataPropertyName = "NOIDUNG";
-            this.hoten.HeaderText = "Nội dung";
-            this.hoten.MinimumWidth = 6;
-            this.hoten.Name = "hoten";
-            this.hoten.ReadOnly = true;
-            // 
-            // phai
-            // 
-            this.phai.DataPropertyName = "LABEL";
-            this.phai.HeaderText = "Label";
-            this.phai.MinimumWidth = 6;
-            this.phai.Name = "phai";
-            this.phai.ReadOnly = true;
-            // 
             // thongbao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,7 +216,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "thongbao";
             this.Text = "trgdv_dsnv";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.thongbao_Load);
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ols_tb)).EndInit();

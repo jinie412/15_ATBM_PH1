@@ -92,16 +92,7 @@ namespace ATBM_PH1
                     cmd.Parameters.Add("p_diachi", OracleDbType.Varchar2).Value = DCHI;
                     cmd.Parameters.Add("p_sdt", OracleDbType.Varchar2).Value = DT;
                     cmd.Parameters.Add("p_khoa", OracleDbType.Varchar2).Value = KHOA;
-                    //cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
-                    if (!string.IsNullOrWhiteSpace(TINHTRANG))
-                    {
-                        cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = TINHTRANG;
-                    }
-                    else
-                    {
-                        cmd.Parameters.Add("p_tinhtrang", OracleDbType.Varchar2).Value = DBNull.Value;
-                    }
-           
+                             
                     // Thêm tham số p_result (chung cho cả INSERT và UPDATE)
                     cmd.Parameters.Add("p_result", OracleDbType.Varchar2, 200).Direction = ParameterDirection.Output;
 

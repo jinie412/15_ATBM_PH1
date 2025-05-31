@@ -53,5 +53,13 @@ namespace ATBM_PH1
             auditForm.StartPosition = FormStartPosition.CenterScreen;
             MainClass.BlurBackground(auditForm, this);
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.StartPosition = FormStartPosition.CenterScreen;
+            dangNhap.Show();
+            this.Close();
+        }
     }
 }
