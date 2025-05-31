@@ -152,7 +152,7 @@ namespace ATBM_PH1
 				conn.Open();
 
                 // Nếu kết nối thành công, gán giá trị và chuyển form
-                MainClass.CurrentUser.Username = username;
+                MainClass.CurrentUser.Username = username.ToUpper();
                 MainClass.CurrentUser.Password = password;
                 MainClass.conn = conn;
 

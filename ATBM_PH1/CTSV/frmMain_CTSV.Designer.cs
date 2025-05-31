@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnTTSV = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTTC = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDX = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnTTSV = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTTC = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDX = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.guna2CustomGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -61,6 +62,68 @@
             this.guna2Panel1.Size = new System.Drawing.Size(283, 655);
             this.guna2Panel1.TabIndex = 0;
             // 
+            // btnTTSV
+            // 
+            this.btnTTSV.AutoRoundedCorners = true;
+            this.btnTTSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.btnTTSV.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnTTSV.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.btnTTSV.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTTSV.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btnTTSV.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
+            this.btnTTSV.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnTTSV.CustomizableEdges.BottomRight = false;
+            this.btnTTSV.CustomizableEdges.TopRight = false;
+            this.btnTTSV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTTSV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTTSV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTTSV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTTSV.FillColor = System.Drawing.Color.Transparent;
+            this.btnTTSV.Font = new System.Drawing.Font("Segoe UI", 13.8F);
+            this.btnTTSV.ForeColor = System.Drawing.Color.White;
+            this.btnTTSV.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette;
+            this.btnTTSV.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTTSV.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTTSV.Location = new System.Drawing.Point(12, 304);
+            this.btnTTSV.Name = "btnTTSV";
+            this.btnTTSV.Size = new System.Drawing.Size(271, 54);
+            this.btnTTSV.TabIndex = 5;
+            this.btnTTSV.Text = "Sinh viên";
+            this.btnTTSV.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTTSV.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnTTSV.Click += new System.EventHandler(this.btnTTSV_Click);
+            // 
+            // btnTTC
+            // 
+            this.btnTTC.AutoRoundedCorners = true;
+            this.btnTTC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.btnTTC.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnTTC.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.btnTTC.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTTC.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.information_b;
+            this.btnTTC.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnTTC.CustomizableEdges.BottomRight = false;
+            this.btnTTC.CustomizableEdges.TopRight = false;
+            this.btnTTC.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTTC.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTTC.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTTC.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTTC.FillColor = System.Drawing.Color.Transparent;
+            this.btnTTC.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTTC.ForeColor = System.Drawing.Color.White;
+            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.information;
+            this.btnTTC.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTTC.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTTC.Location = new System.Drawing.Point(12, 244);
+            this.btnTTC.Name = "btnTTC";
+            this.btnTTC.Size = new System.Drawing.Size(271, 54);
+            this.btnTTC.TabIndex = 2;
+            this.btnTTC.Text = "Thông tin chung";
+            this.btnTTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTTC.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnTTC.Click += new System.EventHandler(this.btnTTC_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -73,8 +136,53 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "TEAM 15";
             // 
+            // btnDX
+            // 
+            this.btnDX.AutoRoundedCorners = true;
+            this.btnDX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.btnDX.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnDX.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.btnDX.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDX.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.btnDX.CheckedState.Image = global::ATBM_PH1.Properties.Resources.logout_black;
+            this.btnDX.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDX.CustomizableEdges.BottomRight = false;
+            this.btnDX.CustomizableEdges.TopRight = false;
+            this.btnDX.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDX.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDX.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDX.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDX.FillColor = System.Drawing.Color.Transparent;
+            this.btnDX.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDX.ForeColor = System.Drawing.Color.White;
+            this.btnDX.Image = global::ATBM_PH1.Properties.Resources.logout;
+            this.btnDX.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDX.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnDX.Location = new System.Drawing.Point(12, 364);
+            this.btnDX.Name = "btnDX";
+            this.btnDX.Size = new System.Drawing.Size(271, 54);
+            this.btnDX.TabIndex = 0;
+            this.btnDX.Text = "Đăng xuất";
+            this.btnDX.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDX.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnDX.Click += new System.EventHandler(this.btnDX_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::ATBM_PH1.Properties.Resources.secure_data;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(50, 12);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(146, 111);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.UseTransparentBackground = true;
+            // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.Controls.Add(this.label2);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2ControlBox3);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnExit);
@@ -87,6 +195,17 @@
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(944, 58);
             this.guna2CustomGradientPanel1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(28, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(281, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nhân viên Công tác Sinh viên";
             // 
             // guna2ControlBox3
             // 
@@ -151,112 +270,6 @@
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
             // 
-            // btnTTSV
-            // 
-            this.btnTTSV.AutoRoundedCorners = true;
-            this.btnTTSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.btnTTSV.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnTTSV.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.btnTTSV.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTTSV.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnTTSV.CheckedState.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette_black;
-            this.btnTTSV.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnTTSV.CustomizableEdges.BottomRight = false;
-            this.btnTTSV.CustomizableEdges.TopRight = false;
-            this.btnTTSV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTTSV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTTSV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTTSV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTTSV.FillColor = System.Drawing.Color.Transparent;
-            this.btnTTSV.Font = new System.Drawing.Font("Segoe UI", 13.8F);
-            this.btnTTSV.ForeColor = System.Drawing.Color.White;
-            this.btnTTSV.Image = global::ATBM_PH1.Properties.Resources.multiple_users_silhouette;
-            this.btnTTSV.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTTSV.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnTTSV.Location = new System.Drawing.Point(12, 304);
-            this.btnTTSV.Name = "btnTTSV";
-            this.btnTTSV.Size = new System.Drawing.Size(271, 54);
-            this.btnTTSV.TabIndex = 5;
-            this.btnTTSV.Text = "Sinh viên";
-            this.btnTTSV.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTTSV.TextOffset = new System.Drawing.Point(20, 0);
-            this.btnTTSV.Click += new System.EventHandler(this.btnTTSV_Click);
-            // 
-            // btnTTC
-            // 
-            this.btnTTC.AutoRoundedCorners = true;
-            this.btnTTC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.btnTTC.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnTTC.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.btnTTC.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTTC.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnTTC.CheckedState.Image = global::ATBM_PH1.Properties.Resources.information_b;
-            this.btnTTC.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnTTC.CustomizableEdges.BottomRight = false;
-            this.btnTTC.CustomizableEdges.TopRight = false;
-            this.btnTTC.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTTC.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTTC.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTTC.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTTC.FillColor = System.Drawing.Color.Transparent;
-            this.btnTTC.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTTC.ForeColor = System.Drawing.Color.White;
-            this.btnTTC.Image = global::ATBM_PH1.Properties.Resources.information;
-            this.btnTTC.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTTC.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnTTC.Location = new System.Drawing.Point(12, 244);
-            this.btnTTC.Name = "btnTTC";
-            this.btnTTC.Size = new System.Drawing.Size(271, 54);
-            this.btnTTC.TabIndex = 2;
-            this.btnTTC.Text = "Thông tin chung";
-            this.btnTTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTTC.TextOffset = new System.Drawing.Point(20, 0);
-            this.btnTTC.Click += new System.EventHandler(this.btnTTC_Click);
-            // 
-            // btnDX
-            // 
-            this.btnDX.AutoRoundedCorners = true;
-            this.btnDX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.btnDX.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnDX.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.btnDX.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDX.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btnDX.CheckedState.Image = global::ATBM_PH1.Properties.Resources.logout_black;
-            this.btnDX.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnDX.CustomizableEdges.BottomRight = false;
-            this.btnDX.CustomizableEdges.TopRight = false;
-            this.btnDX.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDX.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDX.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDX.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDX.FillColor = System.Drawing.Color.Transparent;
-            this.btnDX.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDX.ForeColor = System.Drawing.Color.White;
-            this.btnDX.Image = global::ATBM_PH1.Properties.Resources.logout;
-            this.btnDX.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDX.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnDX.Location = new System.Drawing.Point(12, 364);
-            this.btnDX.Name = "btnDX";
-            this.btnDX.Size = new System.Drawing.Size(271, 54);
-            this.btnDX.TabIndex = 0;
-            this.btnDX.Text = "Đăng xuất";
-            this.btnDX.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDX.TextOffset = new System.Drawing.Point(20, 0);
-            this.btnDX.Click += new System.EventHandler(this.btnDX_Click);
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::ATBM_PH1.Properties.Resources.secure_data;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(50, 12);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(146, 111);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.UseTransparentBackground = true;
-            // 
             // frmMain_CTSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -272,10 +285,11 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
+            this.guna2CustomGradientPanel1.PerformLayout();
             this.guna2CustomGradientPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -295,5 +309,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2Button btnTTC;
         private Guna.UI2.WinForms.Guna2Button btnTTSV;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -38,6 +38,7 @@
             this.checkSV = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.sv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tinhtrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.lbldv = new System.Windows.Forms.Label();
@@ -81,7 +82,8 @@
             this.dgvSV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkSV,
             this.sv,
-            this.dataGridViewTextBoxColumn2});
+            this.dataGridViewTextBoxColumn2,
+            this.tinhtrang});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,7 +99,7 @@
             this.dgvSV.RowHeadersVisible = false;
             this.dgvSV.RowHeadersWidth = 51;
             this.dgvSV.RowTemplate.Height = 30;
-            this.dgvSV.Size = new System.Drawing.Size(443, 393);
+            this.dgvSV.Size = new System.Drawing.Size(508, 393);
             this.dgvSV.TabIndex = 29;
             this.dgvSV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSV.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -150,6 +152,14 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // tinhtrang
+            // 
+            this.tinhtrang.DataPropertyName = "TINHTRANG";
+            this.tinhtrang.HeaderText = "Tình trạng";
+            this.tinhtrang.MinimumWidth = 6;
+            this.tinhtrang.Name = "tinhtrang";
+            this.tinhtrang.ReadOnly = true;
+            // 
             // guna2Button2
             // 
             this.guna2Button2.BorderRadius = 5;
@@ -160,7 +170,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(985, 109);
+            this.guna2Button2.Location = new System.Drawing.Point(1050, 109);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(153, 45);
             this.guna2Button2.TabIndex = 27;
@@ -463,9 +473,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cbDV;
         private Guna.UI2.WinForms.Guna2DataGridView pdt_mm;
         private Guna.UI2.WinForms.Guna2TextBox txtSV;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn checkSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkmm;
         private System.Windows.Forms.DataGridViewTextBoxColumn mm;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -478,5 +485,9 @@
         private System.Windows.Forms.Label labelFormTitle;
         private Guna.UI2.WinForms.Guna2ControlBox btnExit;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tinhtrang;
     }
 }

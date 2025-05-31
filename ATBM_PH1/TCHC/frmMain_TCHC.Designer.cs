@@ -40,6 +40,7 @@
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -181,6 +182,7 @@
             // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.Controls.Add(this.label2);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2ControlBox3);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnExit);
@@ -257,6 +259,17 @@
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(29, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(290, 28);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nhân viên Tổ chức hành chính";
+            // 
             // frmMain_TCHC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -274,6 +287,7 @@
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
+            this.guna2CustomGradientPanel1.PerformLayout();
             this.guna2CustomGradientPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -296,5 +310,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2Button btnTTC;
         private Guna.UI2.WinForms.Guna2Button btnTTNV;
+        private System.Windows.Forms.Label label2;
     }
 }
