@@ -174,10 +174,10 @@ namespace ATBM_PH1
                 if (Convert.ToInt32(cbLV.SelectedValue) == -1)
                 {
                     string compQuery = @"
-                SELECT SHORT_NAME 
-                FROM ALL_SA_COMPARTMENTS 
-                WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                ORDER BY COMPARTMENT";
+                    SELECT SHORT_NAME 
+                    FROM ALL_SA_COMPARTMENTS 
+                    WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
+                    ORDER BY COMP_NUM";
                     OracleCommand compCmd = new OracleCommand(compQuery, MainClass.conn);
                     OracleDataReader compReader = compCmd.ExecuteReader();
                     List<string> compList = new List<string>();
@@ -198,10 +198,10 @@ namespace ATBM_PH1
                 if (Convert.ToInt32(cbCS.SelectedValue) == -1)
                 {
                     string groupQuery = @"
-                SELECT SHORT_NAME 
-                FROM ALL_SA_GROUPS 
-                WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                ORDER BY GROUP";
+                    SELECT SHORT_NAME 
+                    FROM ALL_SA_GROUPS 
+                    WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
+                    ORDER BY GROUP_NUM";
                     OracleCommand groupCmd = new OracleCommand(groupQuery, MainClass.conn);
                     OracleDataReader groupReader = groupCmd.ExecuteReader();
                     List<string> groupList = new List<string>();
@@ -272,8 +272,7 @@ namespace ATBM_PH1
 
                 string query = @"
             SELECT manld, hoten
-            FROM pdb_admin.nhanvien
-            FETCH FIRST 30 ROWS ONLY";  // Nếu dùng Oracle 12c+
+            FROM pdb_admin.nhanvien";  
 
                 using (OracleCommand cmd = new OracleCommand(query, MainClass.conn))
                 {

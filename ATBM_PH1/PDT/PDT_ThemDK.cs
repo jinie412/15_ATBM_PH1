@@ -16,10 +16,11 @@ namespace ATBM_PH1
         public PDT_ThemDK()
         {
             InitializeComponent();
+            
         }
 
-        public int hocKy = 3;
-        public int Nam = 2025;
+        public int hocKy = 0;
+        public int Nam = 0;
         public string maMM = "";
         public string maSV = "";
         public string dvDangChon = "";
@@ -28,7 +29,30 @@ namespace ATBM_PH1
             LoadDSDonVi();
             Load_DSMM();   
             Load_SV();
+            CapNhatHocKyVaNam(ref hocKy, ref Nam);
         }
+
+        public void CapNhatHocKyVaNam(ref int hocKy, ref int Nam)
+        {
+            DateTime now = DateTime.Now;
+            Nam = now.Year;
+
+            int month = now.Month;
+
+            if (month >= 9 && month <= 12)
+            {
+                hocKy = 1;
+            }
+            else if (month >= 1 && month <= 4)
+            {
+                hocKy = 2;
+            }
+            else
+            {
+                hocKy = 3;
+            }
+        }
+
 
         private void Load_DSMM()
         {

@@ -225,7 +225,7 @@ namespace ATBM_PH1
                     SELECT SHORT_NAME 
                     FROM ALL_SA_COMPARTMENTS 
                     WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                    ORDER BY COMPARTMENT";
+                    ORDER BY COMP_NUM";
                         OracleCommand compCmd = new OracleCommand(compQuery, MainClass.conn);
                         OracleDataReader compReader = compCmd.ExecuteReader();
                         List<string> compList = new List<string>();
@@ -248,7 +248,7 @@ namespace ATBM_PH1
                     SELECT SHORT_NAME 
                     FROM ALL_SA_GROUPS 
                     WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                    ORDER BY GROUP";
+                    ORDER BY GROUP_NUM";
                         OracleCommand groupCmd = new OracleCommand(groupQuery, MainClass.conn);
                         OracleDataReader groupReader = groupCmd.ExecuteReader();
                         List<string> groupList = new List<string>();
@@ -268,7 +268,7 @@ namespace ATBM_PH1
 
                     string labelTag = "";
                     int baseTag = 2000;
-                    bool tagExists = true;
+                    bool tagExists = true; // Kiểm tra số tag đó đã tồn tại chưa.
 
                     while (tagExists)
                     {

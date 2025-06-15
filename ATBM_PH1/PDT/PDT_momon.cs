@@ -17,8 +17,8 @@ namespace ATBM_PH1
         {
             InitializeComponent();
         }
-        public int hocKy = 3;
-        public int Nam = 2025;
+        public int hocKy = 0;
+        public int Nam = 0;
 
         public static string thaoTac = "";
         public static string maMM = "";
@@ -90,10 +90,33 @@ namespace ATBM_PH1
             cbHK.Items.AddRange(new object[] { 1, 2, 3 });
             cbNam.Items.AddRange(new object[] { 2020, 2021, 2022, 2023, 2024, 2025 });
 
-            cbHK.SelectedItem = 3;
-            cbNam.SelectedItem = 2025;
+            CapNhatHocKyVaNam(ref hocKy, ref Nam);
+            cbHK.SelectedItem = hocKy;
+            cbNam.SelectedItem = Nam;
             Load_DSMM();
+            
 
+        }
+
+        public void CapNhatHocKyVaNam(ref int hocKy, ref int Nam)
+        {
+            DateTime now = DateTime.Now;
+            Nam = now.Year;
+
+            int month = now.Month;
+
+            if (month >= 9 && month <= 12)
+            {
+                hocKy = 1;
+            }
+            else if (month >= 1 && month <= 4)
+            {
+                hocKy = 2;
+            }
+            else
+            {
+                hocKy = 3;
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

@@ -56,7 +56,7 @@
             this.cbCB.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCB.ItemHeight = 30;
-            this.cbCB.Location = new System.Drawing.Point(309, 121);
+            this.cbCB.Location = new System.Drawing.Point(313, 117);
             this.cbCB.Name = "cbCB";
             this.cbCB.Size = new System.Drawing.Size(212, 36);
             this.cbCB.TabIndex = 15;
@@ -65,7 +65,7 @@
             // 
             this.lbldv.AutoSize = true;
             this.lbldv.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldv.Location = new System.Drawing.Point(132, 121);
+            this.lbldv.Location = new System.Drawing.Point(136, 117);
             this.lbldv.Name = "lbldv";
             this.lbldv.Size = new System.Drawing.Size(130, 28);
             this.lbldv.TabIndex = 16;
@@ -81,7 +81,7 @@
             this.btnCN.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.btnCN.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCN.ForeColor = System.Drawing.Color.White;
-            this.btnCN.Location = new System.Drawing.Point(235, 522);
+            this.btnCN.Location = new System.Drawing.Point(313, 515);
             this.btnCN.Name = "btnCN";
             this.btnCN.Size = new System.Drawing.Size(150, 45);
             this.btnCN.TabIndex = 18;
@@ -99,7 +99,7 @@
             this.cbLV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbLV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbLV.ItemHeight = 30;
-            this.cbLV.Location = new System.Drawing.Point(309, 197);
+            this.cbLV.Location = new System.Drawing.Point(313, 193);
             this.cbLV.Name = "cbLV";
             this.cbLV.Size = new System.Drawing.Size(212, 36);
             this.cbLV.TabIndex = 15;
@@ -108,7 +108,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 205);
+            this.label1.Location = new System.Drawing.Point(38, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 28);
             this.label1.TabIndex = 16;
@@ -125,7 +125,7 @@
             this.cbCS.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCS.ItemHeight = 30;
-            this.cbCS.Location = new System.Drawing.Point(309, 274);
+            this.cbCS.Location = new System.Drawing.Point(313, 270);
             this.cbCS.Name = "cbCS";
             this.cbCS.Size = new System.Drawing.Size(212, 36);
             this.cbCS.TabIndex = 15;
@@ -134,7 +134,7 @@
             // 
             this.cb_CS.AutoSize = true;
             this.cb_CS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_CS.Location = new System.Drawing.Point(153, 282);
+            this.cb_CS.Location = new System.Drawing.Point(157, 278);
             this.cb_CS.Name = "cb_CS";
             this.cb_CS.Size = new System.Drawing.Size(109, 28);
             this.cb_CS.TabIndex = 16;
@@ -170,7 +170,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvGV.Location = new System.Drawing.Point(616, 121);
+            this.dgvGV.Location = new System.Drawing.Point(619, 117);
             this.dgvGV.Name = "dgvGV";
             this.dgvGV.ReadOnly = true;
             this.dgvGV.RowHeadersVisible = false;
