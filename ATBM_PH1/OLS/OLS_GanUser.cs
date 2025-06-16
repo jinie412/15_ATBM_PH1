@@ -19,9 +19,8 @@ namespace ATBM_PH1
             InitializeComponent();
           
         }
-        public string dvDangChon = "";
+        public string labelDangChon = "";
         public string nvDangChon = "";
-        public string hpDangChon = "";
 
         private void PDT_Them_Load(object sender, EventArgs e)
         {
@@ -30,6 +29,7 @@ namespace ATBM_PH1
             Load_Comp();
             Load_Grp();
             ShowManageContent();
+            ShowLabel();    
 
         }
 
@@ -222,6 +222,8 @@ namespace ATBM_PH1
 
                 // --------- Tạo label_id duy nhất ---------
 
+                MessageBox.Show("Tạo label mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 using (OracleCommand cmd = new OracleCommand("SA_USER_ADMIN.SET_USER_LABELS", MainClass.conn))
                 {
@@ -234,6 +236,16 @@ namespace ATBM_PH1
                     cmd.ExecuteNonQuery();
                 }
 
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    cmd.Connection = MainClass.conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    string grantSql = $"GRANT EXECUTE ON PDB_ADMIN.SP_XEMTHONGBAO TO {nvDangChon}";
+                    cmd.CommandText = grantSql;
+
+                    cmd.ExecuteNonQuery();
+                }
 
                 MessageBox.Show("Gán label thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -261,6 +273,23 @@ namespace ATBM_PH1
             }
         }
 
+        private void dgvnv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvnv.Columns["checknv"].Index && e.RowIndex >= 0)
+            {
+                // Đặt tất cả các checkbox về false
+                foreach (DataGridViewRow row in dgvnv.Rows)
+                {
+                    row.Cells["checknv"].Value = false;
+                }
+
+                // Chỉ bật checkbox của dòng được click
+                dgvnv.Rows[e.RowIndex].Cells["checknv"].Value = true;
+                // Gán mã HP được chọn
+                nvDangChon = dgvnv.Rows[e.RowIndex].Cells["manv"].Value?.ToString() ?? "";
+            }
+        }
+
         private void ShowManageContent()
         {
             try
@@ -283,8 +312,9 @@ namespace ATBM_PH1
 
                         // Gán vào DataGridView
                         dgvGV.DataSource = dt;
+                        dgvnv.DataSource = dt;
 
-                       
+
                     }
                 }
             }
@@ -306,5 +336,108 @@ namespace ATBM_PH1
             }
         }
 
+        private void dgvlabel_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvlabel.Columns["checklb"].Index && e.RowIndex >= 0)
+            {
+                // Đặt tất cả các checkbox về false
+                foreach (DataGridViewRow row in dgvlabel.Rows)
+                {
+                    row.Cells["checklb"].Value = false;
+                }
+
+                // Chỉ bật checkbox của dòng được click
+                dgvlabel.Rows[e.RowIndex].Cells["checklb"].Value = true;
+                //// Gán mã HP được chọn
+                labelDangChon = dgvlabel.Rows[e.RowIndex].Cells["LABEL"].Value?.ToString() ?? "";
+            }
+        }
+        private void ShowLabel()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+                string query = @"
+            SELECT LABEL, LABEL_TAG
+            FROM all_sa_labels
+            ";
+
+                using (OracleCommand cmd = new OracleCommand(query, MainClass.conn))
+                {
+                    using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        // Gán vào DataGridView
+                        dgvlabel.DataSource = dt;
+
+
+                    }
+                }
+            }
+            catch (OracleException oraEx)
+            {
+                string errorMessage = $"Lỗi khi tải label: {oraEx.Message}";
+                if (oraEx.Number != 0)
+                    errorMessage += $"\nMã lỗi Oracle: {oraEx.Number}";
+                if (oraEx.InnerException != null)
+                    errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Lỗi khi tải label: {ex.Message}";
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+            }
+        }
+
+        private void btnGan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                {
+                    MainClass.conn.Open();
+                }
+
+
+                using (OracleCommand cmd = new OracleCommand("SA_USER_ADMIN.SET_USER_LABELS", MainClass.conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("policy_name", OracleDbType.Varchar2).Value = "OLS_NOTIFY_POLICY";
+                    cmd.Parameters.Add("user_name", OracleDbType.Varchar2).Value = nvDangChon;
+                    cmd.Parameters.Add("label", OracleDbType.Varchar2).Value = labelDangChon;
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    cmd.Connection = MainClass.conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    string grantSql = $"GRANT EXECUTE ON PDB_ADMIN.SP_XEMTHONGBAO TO {nvDangChon}";
+                    cmd.CommandText = grantSql;
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Gán label thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi gán label: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
     }
 }

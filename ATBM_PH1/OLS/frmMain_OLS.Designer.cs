@@ -231,7 +231,7 @@
             // 
             this.guna2Panel3.Location = new System.Drawing.Point(350, 57);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1259, 727);
+            this.guna2Panel3.Size = new System.Drawing.Size(1942, 1100);
             this.guna2Panel3.TabIndex = 2;
             // 
             // frmMain_OLS
