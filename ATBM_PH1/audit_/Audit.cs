@@ -223,54 +223,54 @@ namespace ATBM_PH1.audit_
             LoadAuditLog("ALL"); // Mặc định tải tất cả dữ liệu audit khi form được tải
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Hiển thị hộp thoại xác nhận
-                DialogResult result = MessageBox.Show(
-                    "Bạn có chắc chắn muốn xóa tất cả dữ liệu unified audit trail?",
-                    "Xác nhận xóa",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Hiển thị hộp thoại xác nhận
+        //        DialogResult result = MessageBox.Show(
+        //            "Bạn có chắc chắn muốn xóa tất cả dữ liệu unified audit trail?",
+        //            "Xác nhận xóa",
+        //            MessageBoxButtons.YesNo,
+        //            MessageBoxIcon.Warning
+        //        );
 
-                // Kiểm tra người dùng chọn Yes hay No
-                if (result == DialogResult.Yes)
-                {
-                    if (MainClass.conn.State == ConnectionState.Closed)
-                    {
-                        MainClass.conn.Open();
-                    }
+        //        // Kiểm tra người dùng chọn Yes hay No
+        //        if (result == DialogResult.Yes)
+        //        {
+        //            if (MainClass.conn.State == ConnectionState.Closed)
+        //            {
+        //                MainClass.conn.Open();
+        //            }
 
-                    using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.PROC_DELETE_AUDIT_UNIFIED", MainClass.conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
+        //            using (OracleCommand cmd = new OracleCommand("PDB_ADMIN.PROC_DELETE_AUDIT_UNIFIED", MainClass.conn))
+        //            {
+        //                cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.ExecuteNonQuery();
+        //                cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Đã xoá tất cả dữ liệu unified audit trail!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                MessageBox.Show("Đã xoá tất cả dữ liệu unified audit trail!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Tải lại dữ liệu vào DataGridView
-                        LoadAuditLog("ALL");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Hành động xóa đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (MainClass.conn.State == ConnectionState.Open)
-                {
-                    MainClass.conn.Close();
-                }
-            }
-        }
+        //                // Tải lại dữ liệu vào DataGridView
+        //                LoadAuditLog("ALL");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Hành động xóa đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        if (MainClass.conn.State == ConnectionState.Open)
+        //        {
+        //            MainClass.conn.Close();
+        //        }
+        //    }
+        //}
     }
 }
