@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnTTC = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDX = new Guna.UI2.WinForms.Guna2Button();
@@ -40,7 +41,6 @@
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -61,6 +61,37 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(299, 655);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
+            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
+            this.guna2Button1.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.CheckedState.Image = global::ATBM_PH1.Properties.Resources.bell_b;
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Button1.CustomizableEdges.BottomRight = false;
+            this.guna2Button1.CustomizableEdges.TopRight = false;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::ATBM_PH1.Properties.Resources.bell;
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageOffset = new System.Drawing.Point(10, 0);
+            this.guna2Button1.Location = new System.Drawing.Point(12, 304);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(287, 54);
+            this.guna2Button1.TabIndex = 3;
+            this.guna2Button1.Text = "Thông báo";
+            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.TextOffset = new System.Drawing.Point(20, 0);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // btnTTC
             // 
@@ -238,37 +269,6 @@
             this.guna2PictureBox2.TabIndex = 0;
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(74)))));
-            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(253)))));
-            this.guna2Button1.CheckedState.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.CheckedState.Image = global::ATBM_PH1.Properties.Resources.information_b;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Button1.CustomizableEdges.BottomRight = false;
-            this.guna2Button1.CustomizableEdges.TopRight = false;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::ATBM_PH1.Properties.Resources.bell;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button1.Location = new System.Drawing.Point(12, 304);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(287, 54);
-            this.guna2Button1.TabIndex = 3;
-            this.guna2Button1.Text = "Thông báo";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.TextOffset = new System.Drawing.Point(20, 0);
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // frmMain_NVCB
             // 

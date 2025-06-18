@@ -230,7 +230,13 @@ namespace ATBM_PH1
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Thêm môn mở thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string message = $"Thêm môn mở thành công!\n\n" +
+                 $"Mã mở môn: {txtMaMM.Text}\n" +
+                 $"Mã học phần: {hpDangChon}\n" +
+                 $"Mã giảng viên: {gvDangChon}";
+
+                    MessageBox.Show(message, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
 
 
                 }
@@ -257,7 +263,13 @@ namespace ATBM_PH1
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Sửa mở môn thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string message = $"Sửa môn mở thành công!\n\n" +
+                 $"Mã mở môn: {txtMaMM.Text}\n" +
+                 $"Mã học phần: {hpDangChon}\n" +
+                 $"Mã giảng viên: {gvDangChon}";
+
+                    MessageBox.Show(message, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
 
 
                 }

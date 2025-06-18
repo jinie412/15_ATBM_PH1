@@ -39,7 +39,6 @@
             this.txtMaMM = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.dgvHP = new Guna.UI2.WinForms.Guna2DataGridView();
             this.checkHP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mahp = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,22 +133,6 @@
             this.btnCN.TabIndex = 18;
             this.btnCN.Text = "Cập nhật";
             this.btnCN.Click += new System.EventHandler(this.btnCN_Click);
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderRadius = 5;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(1032, 104);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(153, 45);
-            this.guna2Button2.TabIndex = 18;
-            this.guna2Button2.Text = "Hủy";
             // 
             // dgvHP
             // 
@@ -415,7 +398,6 @@
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.dgvGV);
             this.Controls.Add(this.dgvHP);
-            this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.btnCN);
             this.Controls.Add(this.txtMaMM);
             this.Controls.Add(this.label2);
@@ -440,7 +422,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMaMM;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btnCN;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2DataGridView dgvHP;
         private Guna.UI2.WinForms.Guna2DataGridView dgvGV;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkHP;

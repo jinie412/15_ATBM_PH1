@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATBM_PH1.PH1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -60,6 +61,13 @@ namespace ATBM_PH1
             dangNhap.StartPosition = FormStartPosition.CenterScreen;
             dangNhap.Show();
             this.Close();
+        }
+
+        private void btnDTDL_Click(object sender, EventArgs e)
+        {
+            frm_dtdl dtdlForm = new frm_dtdl();
+            dtdlForm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(dtdlForm, this);
         }
     }
 }

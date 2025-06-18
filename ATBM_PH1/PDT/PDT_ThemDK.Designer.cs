@@ -39,7 +39,6 @@
             this.sv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tinhtrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
             this.lbldv = new System.Windows.Forms.Label();
             this.cbDV = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -159,22 +158,6 @@
             this.tinhtrang.MinimumWidth = 6;
             this.tinhtrang.Name = "tinhtrang";
             this.tinhtrang.ReadOnly = true;
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderRadius = 5;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(1050, 109);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(153, 45);
-            this.guna2Button2.TabIndex = 27;
-            this.guna2Button2.Text = "Hủy";
             // 
             // btnCN
             // 
@@ -449,7 +432,6 @@
             this.Controls.Add(this.txtSV);
             this.Controls.Add(this.pdt_mm);
             this.Controls.Add(this.dgvSV);
-            this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.btnCN);
             this.Controls.Add(this.lbldv);
             this.Controls.Add(this.cbDV);
@@ -467,7 +449,6 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView dgvSV;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button btnCN;
         private System.Windows.Forms.Label lbldv;
         private Guna.UI2.WinForms.Guna2ComboBox cbDV;

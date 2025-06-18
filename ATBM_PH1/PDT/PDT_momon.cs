@@ -19,6 +19,7 @@ namespace ATBM_PH1
         }
         public int hocKy = 0;
         public int Nam = 0;
+        public int HKcoDinh =0, NamcoDinh = 0;
 
         public static string thaoTac = "";
         public static string maMM = "";
@@ -40,7 +41,7 @@ namespace ATBM_PH1
                 hocKy = Convert.ToInt32(cbHK.SelectedItem.ToString());
                 Nam = Convert.ToInt32(cbNam.SelectedItem.ToString());
 
-                if (hocKy == 3 && Nam == 2025)
+                if (hocKy == HKcoDinh && Nam == NamcoDinh)
                 {
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
@@ -93,6 +94,8 @@ namespace ATBM_PH1
             CapNhatHocKyVaNam(ref hocKy, ref Nam);
             cbHK.SelectedItem = hocKy;
             cbNam.SelectedItem = Nam;
+            HKcoDinh = hocKy;
+            NamcoDinh = Nam;
             Load_DSMM();
             
 
@@ -102,7 +105,7 @@ namespace ATBM_PH1
         {
             DateTime now = DateTime.Now;
             Nam = now.Year;
-
+            
             int month = now.Month;
 
             if (month >= 9 && month <= 12)
@@ -162,7 +165,11 @@ namespace ATBM_PH1
 
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                string message = $"Xóa môn mở thành công!\n\n" +
+                 $"Mã mở môn: {maMM}\n";
+
+                MessageBox.Show(message, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Load_DSMM();
             }

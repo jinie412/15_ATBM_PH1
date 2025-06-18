@@ -291,10 +291,19 @@ namespace ATBM_PH1
                 }
 
                 MessageBox.Show("Đăng ký thành công cho tất cả sinh viên và học phần đã chọn!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (OracleException ex)
             {
-                MessageBox.Show("Lỗi Oracle: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.Number == 28115)
+                {
+                    MessageBox.Show("Bạn không được phép đăng ký môn học này do chính sách bảo mật dữ liệu.", "Lỗi truy cập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi Oracle: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             catch (Exception ex)
             {

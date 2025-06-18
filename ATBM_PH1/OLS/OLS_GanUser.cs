@@ -312,7 +312,10 @@ namespace ATBM_PH1
 
                         // Gán vào DataGridView
                         dgvGV.DataSource = dt;
-                        dgvnv.DataSource = dt;
+
+                        DataTable dt2 = dt.Copy();                   
+                        dgvnv.DataSource = dt2;
+                       
 
 
                     }
@@ -326,13 +329,13 @@ namespace ATBM_PH1
                 if (oraEx.InnerException != null)
                     errorMessage += $"\nChi tiết: {oraEx.InnerException.Message}";
                 MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+
             }
             catch (Exception ex)
             {
                 string errorMessage = $"Lỗi khi tải nhân viên: {ex.Message}";
                 MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.IO.File.AppendAllText("error_log.txt", $"{DateTime.Now}: {errorMessage}\n");
+                
             }
         }
 

@@ -144,6 +144,12 @@
     <Compile Include="PH1\CreateRoleForm.Designer.cs">
       <DependentUpon>CreateRoleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PH1\frm_dtdl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PH1\frm_dtdl.Designer.cs">
+      <DependentUpon>frm_dtdl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SV\DangKyHP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +396,9 @@
     <Compile Include="User\InsertUser.Designer.cs">
       <DependentUpon>InsertUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PH1\frm_dtdl.resx">
+      <DependentUpon>frm_dtdl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SV\DangKyHP.resx">
       <DependentUpon>DangKyHP.cs</DependentUpon>
     </EmbeddedResource>
@@ -614,6 +623,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\notification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_b.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

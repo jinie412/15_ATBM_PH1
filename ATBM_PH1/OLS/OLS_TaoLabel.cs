@@ -314,22 +314,51 @@ namespace ATBM_PH1
         }
 
 
+        //private void dgvGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.ColumnIndex == dgvGV.Columns["checkGV"].Index && e.RowIndex >= 0)
+        //    {
+        //        // Đặt tất cả các checkbox về false
+        //        foreach (DataGridViewRow row in dgvGV.Rows)
+        //        {
+        //            row.Cells["checkGV"].Value = false;
+        //        }
+
+        //        // Chỉ bật checkbox của dòng được click
+        //        dgvGV.Rows[e.RowIndex].Cells["checkGV"].Value = true;
+        //        //// Gán mã HP được chọn
+        //        //lbldangchon = dgvGV.Rows[e.RowIndex].Cells["magv"].Value?.ToString() ?? "";
+        //    }
+        //}
+
         private void dgvGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvGV.Columns["checkGV"].Index && e.RowIndex >= 0)
             {
-                // Đặt tất cả các checkbox về false
+                DataGridViewRow clickedRow = dgvGV.Rows[e.RowIndex];
+
+                // Lấy trạng thái hiện tại của checkbox dòng được click
+                bool currentlyChecked = Convert.ToBoolean(clickedRow.Cells["checkGV"].Value ?? false);
+
+                // Bỏ chọn tất cả checkbox
                 foreach (DataGridViewRow row in dgvGV.Rows)
                 {
                     row.Cells["checkGV"].Value = false;
                 }
 
-                // Chỉ bật checkbox của dòng được click
-                dgvGV.Rows[e.RowIndex].Cells["checkGV"].Value = true;
-                //// Gán mã HP được chọn
-                //lbldangchon = dgvGV.Rows[e.RowIndex].Cells["magv"].Value?.ToString() ?? "";
+                // Nếu dòng đang click chưa được chọn → chọn
+                // Nếu đã được chọn → toggle bỏ chọn (không làm gì thêm)
+                if (!currentlyChecked)
+                {
+                    clickedRow.Cells["checkGV"].Value = true;
+                }
+
+                // (Tùy chọn) Cập nhật mã GV nếu cần:
+                // lbldangchon = clickedRow.Cells["magv"].Value?.ToString() ?? "";
+                // else lbldangchon = "";  // nếu bạn muốn xóa khi bỏ chọn
             }
         }
+
 
         private void ShowLabel()
         {
