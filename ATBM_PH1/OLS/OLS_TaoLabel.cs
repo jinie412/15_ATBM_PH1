@@ -319,10 +319,22 @@ namespace ATBM_PH1
                     MessageBox.Show("Tạo label mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 12453)
+                {
+                    MessageBox.Show("Label đã tồn tại trong hệ thống.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show($"Lỗi Oracle: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi xử lý: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
