@@ -172,7 +172,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 479);
+            this.label3.Location = new System.Drawing.Point(21, 485);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 28);
             this.label3.TabIndex = 24;
@@ -182,7 +182,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 357);
+            this.label2.Location = new System.Drawing.Point(21, 360);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 28);
             this.label2.TabIndex = 22;
@@ -192,7 +192,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 233);
+            this.label1.Location = new System.Drawing.Point(20, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 28);
             this.label1.TabIndex = 20;
@@ -361,7 +361,7 @@
             this.cbBang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBang.ForeColor = System.Drawing.Color.Black;
             this.cbBang.ItemHeight = 30;
-            this.cbBang.Location = new System.Drawing.Point(219, 349);
+            this.cbBang.Location = new System.Drawing.Point(219, 354);
             this.cbBang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbBang.Name = "cbBang";
             this.cbBang.Size = new System.Drawing.Size(300, 36);
@@ -426,7 +426,7 @@
             "VIEW",
             "FUNCTION",
             "PROCEDURE"});
-            this.cbObjectType.Location = new System.Drawing.Point(219, 233);
+            this.cbObjectType.Location = new System.Drawing.Point(218, 238);
             this.cbObjectType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbObjectType.Name = "cbObjectType";
             this.cbObjectType.Size = new System.Drawing.Size(300, 36);
