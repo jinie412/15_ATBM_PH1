@@ -58,36 +58,6 @@ namespace ATBM_PH1
             checkedListBox2.BringToFront();
             checkedListBox2.Location = new Point(txtQuyen.Left, txtQuyen.Bottom);
         }
-        private void LoadTableNames()
-        {
-            try
-            {
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
-                OracleCommand cmd = new OracleCommand("get_user_tables", MainClass.conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                cbBang.Items.Clear();
-
-                while (reader.Read())
-                {
-                    string tableName = reader.GetString(0);
-                    cbBang.Items.Add(tableName);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load danh sách bảng:\n" + ex.Message);
-            }
-        }
 
         private void HandleItemCheck(CheckedListBox listBox, ItemCheckEventArgs e, Control targetTextBox, string defaultText)
         {
@@ -244,100 +214,6 @@ namespace ATBM_PH1
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi load danh sách cột:\n" + ex.Message);
-            }
-        }
-
-        void LoadViewsToChecklistBox()
-        {
-            try
-            {
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
-                OracleCommand cmd = new OracleCommand("get_user_views", MainClass.conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                checkedListBox4.Items.Clear();
-
-                while (reader.Read())
-                {
-                    string viewName = reader.GetString(0);
-                    checkedListBox4.Items.Add(viewName);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load danh sách view:\n" + ex.Message);
-            }
-        }
-
-
-        void LoadFunctionsToChecklistBox()
-        {
-            try
-            {
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
-                OracleCommand cmd = new OracleCommand("get_user_functions", MainClass.conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                checkedListBox5.Items.Clear();
-
-                while (reader.Read())
-                {
-                    string functionName = reader.GetString(0);
-                    checkedListBox5.Items.Add(functionName);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load danh sách function:\n" + ex.Message);
-            }
-        }
-
-        void LoadProcsToChecklistBox()
-        {
-            try
-            {
-                if (MainClass.conn.State == ConnectionState.Closed)
-                {
-                    MainClass.conn.Open();
-                }
-                OracleCommand cmd = new OracleCommand("get_user_procedures", MainClass.conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-                OracleDataReader reader = cmd.ExecuteReader();
-
-                checkedListBox6.Items.Clear();
-
-                while (reader.Read())
-                {
-                    string procName = reader.GetString(0);
-                    checkedListBox6.Items.Add(procName);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load danh sách procedure:\n" + ex.Message);
             }
         }
 
