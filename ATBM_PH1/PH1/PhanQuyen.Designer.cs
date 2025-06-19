@@ -28,19 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnGrant = new Guna.UI2.WinForms.Guna2Button();
             this.btnRevoke = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tablePrivs = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.checkTab = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -53,22 +60,16 @@
             this.colPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rolePrivs = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.checkRole = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.roleGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSelected = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtGrantee = new Guna.UI2.WinForms.Guna2TextBox();
-            this.checkRole = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.roleGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkTab = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabGrantee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPriv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabGrantable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lstGrantee = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablePrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colPrivs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolePrivs)).BeginInit();
@@ -125,16 +126,16 @@
             this.tablePrivs.AllowUserToAddRows = false;
             this.tablePrivs.AllowUserToDeleteRows = false;
             this.tablePrivs.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.tablePrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablePrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.White;
+            this.tablePrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablePrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.tablePrivs.ColumnHeadersHeight = 40;
             this.tablePrivs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkTab,
@@ -144,14 +145,14 @@
             this.tabPriv,
             this.tabGrantable,
             this.tabType});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablePrivs.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablePrivs.DefaultCellStyle = dataGridViewCellStyle48;
             this.tablePrivs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tablePrivs.Location = new System.Drawing.Point(33, 176);
             this.tablePrivs.Name = "tablePrivs";
@@ -183,6 +184,80 @@
             this.tablePrivs.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tablePrivs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.tablePrivs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablePrivs_CellContentClick);
+            // 
+            // checkTab
+            // 
+            this.checkTab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.checkTab.FillWeight = 30F;
+            this.checkTab.HeaderText = "";
+            this.checkTab.MinimumWidth = 30;
+            this.checkTab.Name = "checkTab";
+            this.checkTab.ReadOnly = true;
+            this.checkTab.Width = 30;
+            // 
+            // tabGrantee
+            // 
+            this.tabGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tabGrantee.DataPropertyName = "GRANTEE";
+            this.tabGrantee.HeaderText = "GRANTEE";
+            this.tabGrantee.MinimumWidth = 90;
+            this.tabGrantee.Name = "tabGrantee";
+            this.tabGrantee.ReadOnly = true;
+            this.tabGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // tabOwner
+            // 
+            this.tabOwner.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabOwner.DataPropertyName = "OWNER";
+            this.tabOwner.FillWeight = 80F;
+            this.tabOwner.HeaderText = "OWNER";
+            this.tabOwner.MinimumWidth = 80;
+            this.tabOwner.Name = "tabOwner";
+            this.tabOwner.ReadOnly = true;
+            this.tabOwner.Width = 80;
+            // 
+            // tabTable
+            // 
+            this.tabTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabTable.DataPropertyName = "TABLE_NAME";
+            this.tabTable.FillWeight = 125F;
+            this.tabTable.HeaderText = "TABLE_NAME";
+            this.tabTable.MinimumWidth = 150;
+            this.tabTable.Name = "tabTable";
+            this.tabTable.ReadOnly = true;
+            this.tabTable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.tabTable.Width = 150;
+            // 
+            // tabPriv
+            // 
+            this.tabPriv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabPriv.DataPropertyName = "PRIVILEGE";
+            this.tabPriv.FillWeight = 80F;
+            this.tabPriv.HeaderText = "PRIVILEGE";
+            this.tabPriv.MinimumWidth = 80;
+            this.tabPriv.Name = "tabPriv";
+            this.tabPriv.ReadOnly = true;
+            this.tabPriv.Width = 80;
+            // 
+            // tabGrantable
+            // 
+            this.tabGrantable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tabGrantable.DataPropertyName = "GRANTABLE";
+            this.tabGrantable.FillWeight = 90F;
+            this.tabGrantable.HeaderText = "GRANTABLE";
+            this.tabGrantable.MinimumWidth = 90;
+            this.tabGrantable.Name = "tabGrantable";
+            this.tabGrantable.ReadOnly = true;
+            this.tabGrantable.Width = 90;
+            // 
+            // tabType
+            // 
+            this.tabType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tabType.DataPropertyName = "TYPE";
+            this.tabType.HeaderText = "TYPE";
+            this.tabType.MinimumWidth = 100;
+            this.tabType.Name = "tabType";
+            this.tabType.ReadOnly = true;
             // 
             // label2
             // 
@@ -219,16 +294,16 @@
             this.colPrivs.AllowUserToAddRows = false;
             this.colPrivs.AllowUserToDeleteRows = false;
             this.colPrivs.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.colPrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.White;
+            this.colPrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
             this.colPrivs.ColumnHeadersHeight = 40;
             this.colPrivs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkCol,
@@ -238,14 +313,14 @@
             this.colCol,
             this.colPriv,
             this.colGrantable});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.colPrivs.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.colPrivs.DefaultCellStyle = dataGridViewCellStyle51;
             this.colPrivs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.colPrivs.Location = new System.Drawing.Point(34, 503);
             this.colPrivs.Name = "colPrivs";
@@ -360,29 +435,29 @@
             this.rolePrivs.AllowUserToDeleteRows = false;
             this.rolePrivs.AllowUserToResizeColumns = false;
             this.rolePrivs.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.rolePrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rolePrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle52.BackColor = System.Drawing.Color.White;
+            this.rolePrivs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rolePrivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
             this.rolePrivs.ColumnHeadersHeight = 40;
             this.rolePrivs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkRole,
             this.roleGrantee,
             this.dgvRole});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.rolePrivs.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.rolePrivs.DefaultCellStyle = dataGridViewCellStyle54;
             this.rolePrivs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.rolePrivs.Location = new System.Drawing.Point(1000, 176);
             this.rolePrivs.Name = "rolePrivs";
@@ -415,11 +490,42 @@
             this.rolePrivs.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.rolePrivs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rolePrivs_CellContentClick);
             // 
+            // checkRole
+            // 
+            this.checkRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.checkRole.FillWeight = 25F;
+            this.checkRole.HeaderText = "";
+            this.checkRole.MinimumWidth = 25;
+            this.checkRole.Name = "checkRole";
+            this.checkRole.ReadOnly = true;
+            this.checkRole.Width = 25;
+            // 
+            // roleGrantee
+            // 
+            this.roleGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.roleGrantee.DataPropertyName = "GRANTEE";
+            this.roleGrantee.FillWeight = 80F;
+            this.roleGrantee.HeaderText = "GRANTEE";
+            this.roleGrantee.MinimumWidth = 80;
+            this.roleGrantee.Name = "roleGrantee";
+            this.roleGrantee.ReadOnly = true;
+            this.roleGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.roleGrantee.Width = 80;
+            // 
+            // dgvRole
+            // 
+            this.dgvRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvRole.DataPropertyName = "GRANTED_ROLE";
+            this.dgvRole.HeaderText = "ROLE";
+            this.dgvRole.MinimumWidth = 100;
+            this.dgvRole.Name = "dgvRole";
+            this.dgvRole.ReadOnly = true;
+            // 
             // lblSelected
             // 
             this.lblSelected.AutoSize = true;
             this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelected.Location = new System.Drawing.Point(294, 105);
+            this.lblSelected.Location = new System.Drawing.Point(396, 105);
             this.lblSelected.Name = "lblSelected";
             this.lblSelected.Size = new System.Drawing.Size(57, 25);
             this.lblSelected.TabIndex = 8;
@@ -493,114 +599,22 @@
             this.txtGrantee.Name = "txtGrantee";
             this.txtGrantee.PlaceholderText = "Tìm kiếm";
             this.txtGrantee.SelectedText = "";
-            this.txtGrantee.Size = new System.Drawing.Size(229, 45);
+            this.txtGrantee.Size = new System.Drawing.Size(307, 45);
             this.txtGrantee.TabIndex = 2;
             this.txtGrantee.IconRightClick += new System.EventHandler(this.txtGrantee_IconRightClick);
+            this.txtGrantee.TextChanged += new System.EventHandler(this.txtGrantee_TextChanged);
             // 
-            // checkRole
+            // lstGrantee
             // 
-            this.checkRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.checkRole.FillWeight = 25F;
-            this.checkRole.HeaderText = "";
-            this.checkRole.MinimumWidth = 25;
-            this.checkRole.Name = "checkRole";
-            this.checkRole.ReadOnly = true;
-            this.checkRole.Width = 25;
-            // 
-            // roleGrantee
-            // 
-            this.roleGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.roleGrantee.DataPropertyName = "GRANTEE";
-            this.roleGrantee.FillWeight = 80F;
-            this.roleGrantee.HeaderText = "GRANTEE";
-            this.roleGrantee.MinimumWidth = 80;
-            this.roleGrantee.Name = "roleGrantee";
-            this.roleGrantee.ReadOnly = true;
-            this.roleGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.roleGrantee.Width = 80;
-            // 
-            // dgvRole
-            // 
-            this.dgvRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgvRole.DataPropertyName = "GRANTED_ROLE";
-            this.dgvRole.HeaderText = "ROLE";
-            this.dgvRole.MinimumWidth = 100;
-            this.dgvRole.Name = "dgvRole";
-            this.dgvRole.ReadOnly = true;
-            // 
-            // checkTab
-            // 
-            this.checkTab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.checkTab.FillWeight = 30F;
-            this.checkTab.HeaderText = "";
-            this.checkTab.MinimumWidth = 30;
-            this.checkTab.Name = "checkTab";
-            this.checkTab.ReadOnly = true;
-            this.checkTab.Width = 30;
-            // 
-            // tabGrantee
-            // 
-            this.tabGrantee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tabGrantee.DataPropertyName = "GRANTEE";
-            this.tabGrantee.HeaderText = "GRANTEE";
-            this.tabGrantee.MinimumWidth = 90;
-            this.tabGrantee.Name = "tabGrantee";
-            this.tabGrantee.ReadOnly = true;
-            this.tabGrantee.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // tabOwner
-            // 
-            this.tabOwner.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabOwner.DataPropertyName = "OWNER";
-            this.tabOwner.FillWeight = 80F;
-            this.tabOwner.HeaderText = "OWNER";
-            this.tabOwner.MinimumWidth = 80;
-            this.tabOwner.Name = "tabOwner";
-            this.tabOwner.ReadOnly = true;
-            this.tabOwner.Width = 80;
-            // 
-            // tabTable
-            // 
-            this.tabTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabTable.DataPropertyName = "TABLE_NAME";
-            this.tabTable.FillWeight = 125F;
-            this.tabTable.HeaderText = "TABLE_NAME";
-            this.tabTable.MinimumWidth = 150;
-            this.tabTable.Name = "tabTable";
-            this.tabTable.ReadOnly = true;
-            this.tabTable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabTable.Width = 150;
-            // 
-            // tabPriv
-            // 
-            this.tabPriv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabPriv.DataPropertyName = "PRIVILEGE";
-            this.tabPriv.FillWeight = 80F;
-            this.tabPriv.HeaderText = "PRIVILEGE";
-            this.tabPriv.MinimumWidth = 80;
-            this.tabPriv.Name = "tabPriv";
-            this.tabPriv.ReadOnly = true;
-            this.tabPriv.Width = 80;
-            // 
-            // tabGrantable
-            // 
-            this.tabGrantable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tabGrantable.DataPropertyName = "GRANTABLE";
-            this.tabGrantable.FillWeight = 90F;
-            this.tabGrantable.HeaderText = "GRANTABLE";
-            this.tabGrantable.MinimumWidth = 90;
-            this.tabGrantable.Name = "tabGrantable";
-            this.tabGrantable.ReadOnly = true;
-            this.tabGrantable.Width = 90;
-            // 
-            // tabType
-            // 
-            this.tabType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tabType.DataPropertyName = "TYPE";
-            this.tabType.HeaderText = "TYPE";
-            this.tabType.MinimumWidth = 100;
-            this.tabType.Name = "tabType";
-            this.tabType.ReadOnly = true;
+            this.lstGrantee.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstGrantee.FormattingEnabled = true;
+            this.lstGrantee.ItemHeight = 23;
+            this.lstGrantee.Location = new System.Drawing.Point(33, 133);
+            this.lstGrantee.Name = "lstGrantee";
+            this.lstGrantee.Size = new System.Drawing.Size(307, 142);
+            this.lstGrantee.TabIndex = 14;
+            this.lstGrantee.Visible = false;
+            this.lstGrantee.Click += new System.EventHandler(this.lstGrantee_Click);
             // 
             // PhanQuyen
             // 
@@ -608,6 +622,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1325, 820);
+            this.Controls.Add(this.lstGrantee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblSelected);
             this.Controls.Add(this.colPrivs);
@@ -622,6 +637,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PhanQuyen";
             this.Text = "PhanQuyen";
+            this.Load += new System.EventHandler(this.PhanQuyen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablePrivs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colPrivs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolePrivs)).EndInit();
@@ -665,5 +681,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tabPriv;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabGrantable;
         private System.Windows.Forms.DataGridViewTextBoxColumn tabType;
+        private System.Windows.Forms.ListBox lstGrantee;
     }
 }

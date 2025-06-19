@@ -390,7 +390,30 @@ namespace ATBM_PH1
             }
         }
 
+        private void btnGrant_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRoles.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một user trong danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
 
+            DataGridViewRow selectedRow = dataGridViewRoles.SelectedRows[0];
+
+
+            string selectedUsername = selectedRow.Cells["dgvRole"].Value?.ToString();
+
+            if (string.IsNullOrWhiteSpace(selectedUsername))
+            {
+                MessageBox.Show("Không thể lấy tên user từ dòng được chọn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            PhanQuyen frm = new PhanQuyen(selectedUsername);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            MainClass.BlurBackground(frm, this);
+        }
     }
 }

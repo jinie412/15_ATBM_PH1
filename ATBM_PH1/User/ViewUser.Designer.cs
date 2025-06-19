@@ -29,11 +29,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.InsertUser = new Guna.UI2.WinForms.Guna2Button();
             this.LoadViewUser = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.CUpdate = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CGrant = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -44,9 +47,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CUpdate = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CGrant = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnGrant = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.LoadViewUser)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -75,29 +76,29 @@
             this.LoadViewUser.AllowUserToDeleteRows = false;
             this.LoadViewUser.AllowUserToResizeColumns = false;
             this.LoadViewUser.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.LoadViewUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LoadViewUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.LoadViewUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LoadViewUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.LoadViewUser.ColumnHeadersHeight = 35;
             this.LoadViewUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CUpdate,
             this.CGrant,
             this.CDelete});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LoadViewUser.DefaultCellStyle = dataGridViewCellStyle6;
             this.LoadViewUser.GridColor = System.Drawing.Color.Black;
             this.LoadViewUser.Location = new System.Drawing.Point(18, 198);
             this.LoadViewUser.Name = "LoadViewUser";
@@ -128,6 +129,39 @@
             this.LoadViewUser.ThemeStyle.RowsStyle.Height = 24;
             this.LoadViewUser.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.LoadViewUser.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // CUpdate
+            // 
+            this.CUpdate.HeaderText = "Chỉnh sửa";
+            this.CUpdate.Image = global::ATBM_PH1.Properties.Resources.edit;
+            this.CUpdate.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CUpdate.MinimumWidth = 6;
+            this.CUpdate.Name = "CUpdate";
+            this.CUpdate.ReadOnly = true;
+            this.CUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CGrant
+            // 
+            this.CGrant.HeaderText = "Cấp quyền";
+            this.CGrant.Image = global::ATBM_PH1.Properties.Resources.grant;
+            this.CGrant.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CGrant.MinimumWidth = 6;
+            this.CGrant.Name = "CGrant";
+            this.CGrant.ReadOnly = true;
+            this.CGrant.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CGrant.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CDelete
+            // 
+            this.CDelete.HeaderText = "Xóa";
+            this.CDelete.Image = global::ATBM_PH1.Properties.Resources.trash;
+            this.CDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CDelete.MinimumWidth = 6;
+            this.CDelete.Name = "CDelete";
+            this.CDelete.ReadOnly = true;
+            this.CDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label1
             // 
@@ -252,38 +286,23 @@
             this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn3.Width = 312;
             // 
-            // CUpdate
+            // btnGrant
             // 
-            this.CUpdate.HeaderText = "Chỉnh sửa";
-            this.CUpdate.Image = global::ATBM_PH1.Properties.Resources.edit;
-            this.CUpdate.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.CUpdate.MinimumWidth = 6;
-            this.CUpdate.Name = "CUpdate";
-            this.CUpdate.ReadOnly = true;
-            this.CUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CGrant
-            // 
-            this.CGrant.HeaderText = "Cấp quyền";
-            this.CGrant.Image = global::ATBM_PH1.Properties.Resources.grant;
-            this.CGrant.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.CGrant.MinimumWidth = 6;
-            this.CGrant.Name = "CGrant";
-            this.CGrant.ReadOnly = true;
-            this.CGrant.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CGrant.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CDelete
-            // 
-            this.CDelete.HeaderText = "Xóa";
-            this.CDelete.Image = global::ATBM_PH1.Properties.Resources.trash;
-            this.CDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.CDelete.MinimumWidth = 6;
-            this.CDelete.Name = "CDelete";
-            this.CDelete.ReadOnly = true;
-            this.CDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnGrant.BackColor = System.Drawing.Color.Transparent;
+            this.btnGrant.BorderRadius = 5;
+            this.btnGrant.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGrant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGrant.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGrant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGrant.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
+            this.btnGrant.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrant.ForeColor = System.Drawing.Color.White;
+            this.btnGrant.Location = new System.Drawing.Point(219, 117);
+            this.btnGrant.Name = "btnGrant";
+            this.btnGrant.Size = new System.Drawing.Size(180, 45);
+            this.btnGrant.TabIndex = 1;
+            this.btnGrant.Text = "Xem quyền";
+            this.btnGrant.Click += new System.EventHandler(this.btnGrant_Click);
             // 
             // ViewUser
             // 
@@ -296,6 +315,7 @@
             this.Controls.Add(this.Search_label);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.LoadViewUser);
+            this.Controls.Add(this.btnGrant);
             this.Controls.Add(this.InsertUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewUser";
@@ -325,5 +345,6 @@
         private System.Windows.Forms.DataGridViewImageColumn CUpdate;
         private System.Windows.Forms.DataGridViewImageColumn CGrant;
         private System.Windows.Forms.DataGridViewImageColumn CDelete;
+        private Guna.UI2.WinForms.Guna2Button btnGrant;
     }
 }

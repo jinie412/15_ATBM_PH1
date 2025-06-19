@@ -34,9 +34,7 @@
             this.cbCB = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbldv = new System.Windows.Forms.Label();
             this.btnCN = new Guna.UI2.WinForms.Guna2Button();
-            this.cbLV = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbCS = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cb_CS = new System.Windows.Forms.Label();
             this.txtNoidung = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +42,8 @@
             this.checkGV = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.magv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LABEL_TAG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lstCompart = new System.Windows.Forms.CheckedListBox();
+            this.lstGroup = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             this.cbCB.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCB.ItemHeight = 30;
-            this.cbCB.Location = new System.Drawing.Point(303, 80);
+            this.cbCB.Location = new System.Drawing.Point(303, 54);
             this.cbCB.Name = "cbCB";
             this.cbCB.Size = new System.Drawing.Size(276, 36);
             this.cbCB.TabIndex = 15;
@@ -67,7 +67,7 @@
             // 
             this.lbldv.AutoSize = true;
             this.lbldv.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldv.Location = new System.Drawing.Point(126, 80);
+            this.lbldv.Location = new System.Drawing.Point(126, 54);
             this.lbldv.Name = "lbldv";
             this.lbldv.Size = new System.Drawing.Size(130, 28);
             this.lbldv.TabIndex = 16;
@@ -83,60 +83,28 @@
             this.btnCN.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
             this.btnCN.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCN.ForeColor = System.Drawing.Color.White;
-            this.btnCN.Location = new System.Drawing.Point(354, 565);
+            this.btnCN.Location = new System.Drawing.Point(610, 688);
             this.btnCN.Name = "btnCN";
             this.btnCN.Size = new System.Drawing.Size(150, 45);
             this.btnCN.TabIndex = 18;
             this.btnCN.Text = "Thêm";
             this.btnCN.Click += new System.EventHandler(this.btnCN_Click);
             // 
-            // cbLV
-            // 
-            this.cbLV.BackColor = System.Drawing.Color.Transparent;
-            this.cbLV.BorderRadius = 3;
-            this.cbLV.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbLV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLV.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbLV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbLV.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbLV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbLV.ItemHeight = 30;
-            this.cbLV.Location = new System.Drawing.Point(303, 156);
-            this.cbLV.Name = "cbLV";
-            this.cbLV.Size = new System.Drawing.Size(276, 36);
-            this.cbLV.TabIndex = 15;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 164);
+            this.label1.Location = new System.Drawing.Point(28, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 28);
             this.label1.TabIndex = 16;
             this.label1.Text = "Chọn lĩnh vực hoạt động";
             // 
-            // cbCS
-            // 
-            this.cbCS.BackColor = System.Drawing.Color.Transparent;
-            this.cbCS.BorderRadius = 3;
-            this.cbCS.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCS.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCS.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCS.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbCS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbCS.ItemHeight = 30;
-            this.cbCS.Location = new System.Drawing.Point(303, 233);
-            this.cbCS.Name = "cbCS";
-            this.cbCS.Size = new System.Drawing.Size(276, 36);
-            this.cbCS.TabIndex = 15;
-            // 
             // cb_CS
             // 
             this.cb_CS.AutoSize = true;
             this.cb_CS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_CS.Location = new System.Drawing.Point(147, 241);
+            this.cb_CS.Location = new System.Drawing.Point(147, 296);
             this.cb_CS.Name = "cb_CS";
             this.cb_CS.Size = new System.Drawing.Size(109, 28);
             this.cb_CS.TabIndex = 16;
@@ -153,7 +121,7 @@
             this.txtNoidung.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNoidung.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNoidung.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNoidung.Location = new System.Drawing.Point(303, 337);
+            this.txtNoidung.Location = new System.Drawing.Point(303, 429);
             this.txtNoidung.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNoidung.Name = "txtNoidung";
             this.txtNoidung.PlaceholderText = "";
@@ -165,7 +133,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(147, 337);
+            this.label2.Location = new System.Drawing.Point(147, 429);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 28);
             this.label2.TabIndex = 16;
@@ -201,13 +169,13 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGV.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvGV.Location = new System.Drawing.Point(667, 80);
+            this.dgvGV.Location = new System.Drawing.Point(731, 54);
             this.dgvGV.Name = "dgvGV";
             this.dgvGV.ReadOnly = true;
             this.dgvGV.RowHeadersVisible = false;
             this.dgvGV.RowHeadersWidth = 51;
             this.dgvGV.RowTemplate.Height = 30;
-            this.dgvGV.Size = new System.Drawing.Size(533, 448);
+            this.dgvGV.Size = new System.Drawing.Size(588, 448);
             this.dgvGV.TabIndex = 22;
             this.dgvGV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvGV.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -262,12 +230,32 @@
             this.LABEL_TAG.Name = "LABEL_TAG";
             this.LABEL_TAG.ReadOnly = true;
             // 
+            // lstCompart
+            // 
+            this.lstCompart.FormattingEnabled = true;
+            this.lstCompart.Location = new System.Drawing.Point(303, 151);
+            this.lstCompart.Name = "lstCompart";
+            this.lstCompart.Size = new System.Drawing.Size(276, 106);
+            this.lstCompart.TabIndex = 24;
+            this.lstCompart.SelectedIndexChanged += new System.EventHandler(this.lstCompart_SelectedIndexChanged);
+            // 
+            // lstGroup
+            // 
+            this.lstGroup.FormattingEnabled = true;
+            this.lstGroup.Location = new System.Drawing.Point(303, 296);
+            this.lstGroup.Name = "lstGroup";
+            this.lstGroup.Size = new System.Drawing.Size(276, 89);
+            this.lstGroup.TabIndex = 24;
+            this.lstGroup.SelectedIndexChanged += new System.EventHandler(this.lstCompart_SelectedIndexChanged);
+            // 
             // OLS_TaoLabel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1233, 642);
+            this.ClientSize = new System.Drawing.Size(1424, 793);
+            this.Controls.Add(this.lstGroup);
+            this.Controls.Add(this.lstCompart);
             this.Controls.Add(this.dgvGV);
             this.Controls.Add(this.txtNoidung);
             this.Controls.Add(this.btnCN);
@@ -275,8 +263,6 @@
             this.Controls.Add(this.cb_CS);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbldv);
-            this.Controls.Add(this.cbCS);
-            this.Controls.Add(this.cbLV);
             this.Controls.Add(this.cbCB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OLS_TaoLabel";
@@ -293,9 +279,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox cbCB;
         private System.Windows.Forms.Label lbldv;
         private Guna.UI2.WinForms.Guna2Button btnCN;
-        private Guna.UI2.WinForms.Guna2ComboBox cbLV;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ComboBox cbCS;
         private System.Windows.Forms.Label cb_CS;
         private Guna.UI2.WinForms.Guna2TextBox txtNoidung;
         private System.Windows.Forms.Label label2;
@@ -303,5 +287,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn magv;
         private System.Windows.Forms.DataGridViewTextBoxColumn LABEL_TAG;
+        private System.Windows.Forms.CheckedListBox lstCompart;
+        private System.Windows.Forms.CheckedListBox lstGroup;
     }
 }
