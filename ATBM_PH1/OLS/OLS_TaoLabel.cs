@@ -355,16 +355,12 @@ namespace ATBM_PH1
                     row.Cells["checkGV"].Value = false;
                 }
 
-                // Nếu dòng đang click chưa được chọn → chọn
-                // Nếu đã được chọn → toggle bỏ chọn (không làm gì thêm)
+                
                 if (!currentlyChecked)
                 {
                     clickedRow.Cells["checkGV"].Value = true;
                 }
 
-                // (Tùy chọn) Cập nhật mã GV nếu cần:
-                // lbldangchon = clickedRow.Cells["magv"].Value?.ToString() ?? "";
-                // else lbldangchon = "";  // nếu bạn muốn xóa khi bỏ chọn
             }
         }
 
@@ -380,8 +376,7 @@ namespace ATBM_PH1
 
                 string query = @"
             SELECT LABEL, LABEL_TAG
-            FROM all_sa_labels
-            ";  
+            FROM all_sa_labels";  
 
                 using (OracleCommand cmd = new OracleCommand(query, MainClass.conn))
                 {
@@ -415,9 +410,6 @@ namespace ATBM_PH1
             }
         }
 
-        private void lstCompart_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
