@@ -20,6 +20,13 @@ namespace ATBM_PH1
         {
             InitializeComponent();
         }
+
+        public PhanQuyen(string user)
+        {
+            InitializeComponent();
+            HandleGranteeSelection(user);
+        }
+
         private int CheckUserOrRoleExists(string grantee)
         {
             if (MainClass.conn.State == ConnectionState.Closed)
@@ -109,13 +116,8 @@ namespace ATBM_PH1
 
         }
 
-        private void txtGrantee_IconRightClick(object sender, EventArgs e)
+        private void HandleGranteeSelection(string grantee)
         {
-            string grantee = txtGrantee.Text.Trim();
-
-            //MainClass.Role = grantee;
-
-
 
 
             if (string.IsNullOrWhiteSpace(grantee))
@@ -126,7 +128,7 @@ namespace ATBM_PH1
                 return;
             }
             int res = CheckUserOrRoleExists(grantee);
-            if (res==0)
+            if (res == 0)
             {
                 ClearDataGrids();
                 lblSelected.Visible = false;
@@ -135,12 +137,12 @@ namespace ATBM_PH1
             }
             try
             {
-               
+
                 lblSelected.Visible = true;
                 if (res == 1)
                 {
                     MainClass.User = grantee.ToUpper();
-                    MainClass.Role = "";    
+                    MainClass.Role = "";
                     lblSelected.Text = "USER: " + MainClass.User;
                 }
                 else
@@ -155,7 +157,14 @@ namespace ATBM_PH1
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
-            
+        }
+
+
+        private void txtGrantee_IconRightClick(object sender, EventArgs e)
+        {
+            string grantee = txtGrantee.Text.Trim();
+            HandleGranteeSelection(grantee);
+
         }
 
         private void btnRevoke_Click(object sender, EventArgs e)
@@ -312,6 +321,69 @@ namespace ATBM_PH1
             capQuyen.StartPosition = FormStartPosition.CenterScreen;
             MainClass.BlurBackground(capQuyen, this);
             
+        }
+
+
+        List<string> allUsernames = new List<string>();
+
+        private void txtGrantee_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = txtGrantee.Text.ToLower();
+            var filtered = allUsernames
+                            .Where(u => u.ToLower().Contains(keyword))
+                            .ToList();
+
+            lstGrantee.Items.Clear();
+            lstGrantee.Items.AddRange(filtered.ToArray());
+            lstGrantee.Visible = filtered.Count > 0;
+        }
+
+
+        private void LoadUsernames()
+        {
+            try
+            {
+                if (MainClass.conn.State == ConnectionState.Closed)
+                    MainClass.conn.Open();
+
+                string query = @"
+            SELECT username FROM all_users
+            UNION
+            SELECT role FROM dba_roles
+            ";
+
+                using (OracleCommand cmd = new OracleCommand(query, MainClass.conn))
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    allUsernames.Clear();
+                    while (reader.Read())
+                    {
+                        allUsernames.Add(reader.GetString(0));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách user/role: " + ex.Message);
+            }
+        }
+
+
+        private void lstGrantee_Click(object sender, EventArgs e)
+        {
+           
+            if (lstGrantee.SelectedItem != null)
+            {
+                txtGrantee.Text = lstGrantee.SelectedItem.ToString();
+                lstGrantee.Visible = false;
+                string grantee = txtGrantee.Text.Trim();
+                HandleGranteeSelection(grantee);
+            }
+        }
+
+        private void PhanQuyen_Load(object sender, EventArgs e)
+        {
+            LoadUsernames();
         }
     }
 }

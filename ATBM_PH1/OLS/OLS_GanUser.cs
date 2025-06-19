@@ -34,7 +34,6 @@ namespace ATBM_PH1
         }
 
 
-
         private void Load_Level()
         {
             try
@@ -98,9 +97,12 @@ namespace ATBM_PH1
                         allRow["LONG_NAME"] = "ALL";
                         dt.Rows.InsertAt(allRow, 0);
 
-                        cbLV.DataSource = dt;
-                        cbLV.DisplayMember = "SHORT_NAME";
-                        cbLV.ValueMember = "COMP_NUM";
+                        // Gán dữ liệu cho ListBox
+                        lstCompart.DataSource = dt;
+                        lstCompart.DisplayMember = "SHORT_NAME";
+                        lstCompart.ValueMember = "COMP_NUM";
+
+
                     }
                 }
             }
@@ -109,8 +111,6 @@ namespace ATBM_PH1
                 MessageBox.Show($"Lỗi khi tải danh sách COMPARTMENT: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
 
         private void Load_Grp()
@@ -142,9 +142,12 @@ namespace ATBM_PH1
                         allRow["LONG_NAME"] = "ALL";
                         dt.Rows.InsertAt(allRow, 0);
 
-                        cbCS.DataSource = dt;
-                        cbCS.DisplayMember = "SHORT_NAME";
-                        cbCS.ValueMember = "GROUP_NUM";
+                        // Gán dữ liệu cho ListBox
+                        lstGroup.DataSource = dt;
+                        lstGroup.DisplayMember = "SHORT_NAME";
+                        lstGroup.ValueMember = "GROUP_NUM";
+
+
                     }
                 }
             }
@@ -169,55 +172,62 @@ namespace ATBM_PH1
                 // Lấy LEVEL
                 string levelName = ((DataRowView)cbCB.SelectedItem)["SHORT_NAME"].ToString();
 
-                // --------- Xử lý COMPARTMENT ----------
-                string compPart;
-                if (Convert.ToInt32(cbLV.SelectedValue) == -1)
+                // === COMPARTMENTS ===
+                List<string> selectedCompartments = new List<string>();
+                foreach (var item in lstCompart.CheckedItems)
                 {
-                    string compQuery = @"
-                    SELECT SHORT_NAME 
-                    FROM ALL_SA_COMPARTMENTS 
-                    WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                    ORDER BY COMP_NUM";
-                    OracleCommand compCmd = new OracleCommand(compQuery, MainClass.conn);
-                    OracleDataReader compReader = compCmd.ExecuteReader();
-                    List<string> compList = new List<string>();
-                    while (compReader.Read())
+                    var row = item as DataRowView;
+                    string comp = row["SHORT_NAME"].ToString();
+                    if (comp == "ALL")
                     {
-                        compList.Add(compReader.GetString(0));
+                        // Load tất cả từ DB
+                        string compQuery = @"
+                        SELECT SHORT_NAME 
+                        FROM ALL_SA_COMPARTMENTS 
+                        WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
+                        ORDER BY COMP_NUM";
+                        using (OracleCommand compCmd = new OracleCommand(compQuery, MainClass.conn))
+                        using (OracleDataReader compReader = compCmd.ExecuteReader())
+                        {
+                            while (compReader.Read())
+                            {
+                                selectedCompartments.Add(compReader.GetString(0));
+                            }
+                        }
+                        break; // Không xử lý thêm nếu đã chọn ALL
                     }
-                    compReader.Close();
-                    compPart = string.Join(",", compList);
+                    selectedCompartments.Add(comp);
                 }
-                else
-                {
-                    compPart = ((DataRowView)cbLV.SelectedItem)["SHORT_NAME"].ToString();
-                }
+                string compPart = selectedCompartments.Count > 0 ? string.Join(",", selectedCompartments) : "";
 
-                // --------- Xử lý GROUP ----------
-                string groupPart;
-                if (Convert.ToInt32(cbCS.SelectedValue) == -1)
+                // === GROUPS ===
+                List<string> selectedGroups = new List<string>();
+                foreach (var item in lstGroup.CheckedItems)
                 {
-                    string groupQuery = @"
-                    SELECT SHORT_NAME 
-                    FROM ALL_SA_GROUPS 
-                    WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
-                    ORDER BY GROUP_NUM";
-                    OracleCommand groupCmd = new OracleCommand(groupQuery, MainClass.conn);
-                    OracleDataReader groupReader = groupCmd.ExecuteReader();
-                    List<string> groupList = new List<string>();
-                    while (groupReader.Read())
+                    var row = item as DataRowView;
+                    string grp = row["SHORT_NAME"].ToString();
+                    if (grp == "ALL")
                     {
-                        groupList.Add(groupReader.GetString(0));
+                        string groupQuery = @"
+                        SELECT SHORT_NAME 
+                        FROM ALL_SA_GROUPS 
+                        WHERE POLICY_NAME = 'OLS_NOTIFY_POLICY'
+                        ORDER BY GROUP_NUM";
+                        using (OracleCommand groupCmd = new OracleCommand(groupQuery, MainClass.conn))
+                        using (OracleDataReader groupReader = groupCmd.ExecuteReader())
+                        {
+                            while (groupReader.Read())
+                            {
+                                selectedGroups.Add(groupReader.GetString(0));
+                            }
+                        }
+                        break;
                     }
-                    groupReader.Close();
-                    groupPart = string.Join(",", groupList);
+                    selectedGroups.Add(grp);
                 }
-                else
-                {
-                    groupPart = ((DataRowView)cbCS.SelectedItem)["SHORT_NAME"].ToString();
-                }
+                string groupPart = selectedGroups.Count > 0 ? string.Join(",", selectedGroups) : "";
 
-                // --------- Tạo label tag theo định dạng LEVEL:COMP:GROUP ---------
+                // === TẠO LABEL ===
                 string label = $"{levelName}:{compPart}:{groupPart}";
 
                 // --------- Tạo label_id duy nhất ---------

@@ -25,6 +25,9 @@ namespace ATBM_PH1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelManageRoles = new System.Windows.Forms.Panel();
             this.dataGridViewRoles = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
@@ -35,9 +38,7 @@ namespace ATBM_PH1
             this.btnMinimize = new Guna.UI2.WinForms.Guna2Button();
             this.labelFormTitle = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGrant = new Guna.UI2.WinForms.Guna2Button();
             this.panelManageRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).BeginInit();
             this.contentPanel.SuspendLayout();
@@ -49,6 +50,7 @@ namespace ATBM_PH1
             this.panelManageRoles.Controls.Add(this.dataGridViewRoles);
             this.panelManageRoles.Controls.Add(this.btnEdit);
             this.panelManageRoles.Controls.Add(this.btnCreate);
+            this.panelManageRoles.Controls.Add(this.btnGrant);
             this.panelManageRoles.Controls.Add(this.btnDelete);
             this.panelManageRoles.Controls.Add(this.textRole);
             this.panelManageRoles.Location = new System.Drawing.Point(57, 34);
@@ -58,6 +60,7 @@ namespace ATBM_PH1
             // 
             // dataGridViewRoles
             // 
+            this.dataGridViewRoles.AllowUserToAddRows = false;
             this.dataGridViewRoles.AllowUserToDeleteRows = false;
             this.dataGridViewRoles.AllowUserToResizeColumns = false;
             this.dataGridViewRoles.AllowUserToResizeRows = false;
@@ -86,6 +89,7 @@ namespace ATBM_PH1
             this.dataGridViewRoles.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewRoles.Location = new System.Drawing.Point(46, 122);
             this.dataGridViewRoles.Name = "dataGridViewRoles";
+            this.dataGridViewRoles.ReadOnly = true;
             this.dataGridViewRoles.RowHeadersVisible = false;
             this.dataGridViewRoles.RowHeadersWidth = 51;
             this.dataGridViewRoles.Size = new System.Drawing.Size(1021, 445);
@@ -103,7 +107,7 @@ namespace ATBM_PH1
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewRoles.ThemeStyle.HeaderStyle.Height = 35;
-            this.dataGridViewRoles.ThemeStyle.ReadOnly = false;
+            this.dataGridViewRoles.ThemeStyle.ReadOnly = true;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -111,6 +115,29 @@ namespace ATBM_PH1
             this.dataGridViewRoles.ThemeStyle.RowsStyle.Height = 22;
             this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewRoles.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // stt
+            // 
+            this.stt.HeaderText = "STT";
+            this.stt.MinimumWidth = 6;
+            this.stt.Name = "stt";
+            this.stt.ReadOnly = true;
+            // 
+            // dgvRole
+            // 
+            this.dgvRole.DataPropertyName = "ROLE";
+            this.dgvRole.HeaderText = "Tên Role";
+            this.dgvRole.MinimumWidth = 6;
+            this.dgvRole.Name = "dgvRole";
+            this.dgvRole.ReadOnly = true;
+            // 
+            // dgvPass
+            // 
+            this.dgvPass.DataPropertyName = "HAS_PASSWORD";
+            this.dgvPass.HeaderText = "Mật Khẩu";
+            this.dgvPass.MinimumWidth = 6;
+            this.dgvPass.Name = "dgvPass";
+            this.dgvPass.ReadOnly = true;
             // 
             // btnEdit
             // 
@@ -241,25 +268,18 @@ namespace ATBM_PH1
             this.panelTitleBar.Size = new System.Drawing.Size(1449, 54);
             this.panelTitleBar.TabIndex = 1;
             // 
-            // stt
+            // btnGrant
             // 
-            this.stt.HeaderText = "STT";
-            this.stt.MinimumWidth = 6;
-            this.stt.Name = "stt";
-            // 
-            // dgvRole
-            // 
-            this.dgvRole.DataPropertyName = "ROLE";
-            this.dgvRole.HeaderText = "Tên Role";
-            this.dgvRole.MinimumWidth = 6;
-            this.dgvRole.Name = "dgvRole";
-            // 
-            // dgvPass
-            // 
-            this.dgvPass.DataPropertyName = "HAS_PASSWORD";
-            this.dgvPass.HeaderText = "Mật Khẩu";
-            this.dgvPass.MinimumWidth = 6;
-            this.dgvPass.Name = "dgvPass";
+            this.btnGrant.BorderRadius = 5;
+            this.btnGrant.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(52)))), ((int)(((byte)(184)))));
+            this.btnGrant.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrant.ForeColor = System.Drawing.Color.White;
+            this.btnGrant.Location = new System.Drawing.Point(450, 53);
+            this.btnGrant.Name = "btnGrant";
+            this.btnGrant.Size = new System.Drawing.Size(120, 40);
+            this.btnGrant.TabIndex = 3;
+            this.btnGrant.Text = "Quyền";
+            this.btnGrant.Click += new System.EventHandler(this.btnGrant_Click);
             // 
             // Role
             // 
@@ -295,5 +315,6 @@ namespace ATBM_PH1
         private DataGridViewTextBoxColumn stt;
         private DataGridViewTextBoxColumn dgvRole;
         private DataGridViewTextBoxColumn dgvPass;
+        private Guna2Button btnGrant;
     }
 }
