@@ -133,8 +133,6 @@ namespace ATBM_PH1
             DataTable filteredTable = dv.ToTable();
 
             // Cập nhật lại cột STT (nếu có)
-            if (!filteredTable.Columns.Contains("STT"))
-                filteredTable.Columns.Add("STT", typeof(int));
 
             for (int i = 0; i < filteredTable.Rows.Count; i++)
             {

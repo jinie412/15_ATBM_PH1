@@ -18,14 +18,8 @@ namespace ATBM_PH1
         {
             InitializeComponent();
             checkedListBox2.ItemCheck += checkedListBox2_ItemCheck;
-            LoadTableNames();
-            LoadViewsToChecklistBox();
-            checkedListBox4.ItemCheck += checkedListBox4_ItemCheck;
-            LoadFunctionsToChecklistBox();
-            checkedListBox5.ItemCheck += checkedListBox5_ItemCheck;
-            LoadProcsToChecklistBox();
-            checkedListBox6.ItemCheck += checkedListBox6_ItemCheck;
             LoadRolesToComboBox();
+            cbObjectType.SelectedIndexChanged += cbObjectType_SelectedIndexChanged;
 
             lbuser.Text = "";
             if (!string.IsNullOrEmpty(MainClass.Role))
@@ -56,9 +50,6 @@ namespace ATBM_PH1
             checkedListBox6.CheckOnClick = true;
             // Đăng ký sự kiện Click cho TextBox
             txtQuyen.Click += txtQuyen_Click;
-            txtView.Click += txtView_Click;
-            txtf.Click += txtf_Click;
-            txtproc.Click += txtproc_Click;
         }
 
         private void btnDropDown_Click(object sender, EventArgs e)
@@ -139,6 +130,55 @@ namespace ATBM_PH1
             // Dùng BeginInvoke để cập nhật sau khi trạng thái checkbox được thay đổi
             this.BeginInvoke(new Action(UpdateColumnChecklistStates));
         }
+
+        private void cbObjectType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedType = cbObjectType.SelectedItem.ToString();
+
+            LoadObjectNamesByType(selectedType);  // Load vào cbBang
+            LoadPrivilegesByType(selectedType);   // Load vào checkedListBox2
+        }
+
+        private void LoadObjectNamesByType(string objectType)
+        {
+            cbBang.Items.Clear();
+
+            using (OracleCommand cmd = new OracleCommand("GET_OBJECTS_BY_TYPE", MainClass.conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_object_type", OracleDbType.Varchar2).Value = objectType;
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cbBang.Items.Add(reader.GetString(0)); // object_name
+                    }
+                }
+            }
+
+            if (cbBang.Items.Count > 0)
+                cbBang.SelectedIndex = 0;
+        }
+
+        private void LoadPrivilegesByType(string objectType)
+        {
+            checkedListBox2.Items.Clear();
+
+            if (objectType == "TABLE" || objectType == "VIEW")
+            {
+                checkedListBox2.Items.Add("SELECT");
+                checkedListBox2.Items.Add("INSERT");
+                checkedListBox2.Items.Add("UPDATE");
+                checkedListBox2.Items.Add("DELETE");
+            }
+            else if (objectType == "FUNCTION" || objectType == "PROCEDURE")
+            {
+                checkedListBox2.Items.Add("EXECUTE");
+            }
+        }
+
 
         private void cbBang_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -238,17 +278,6 @@ namespace ATBM_PH1
             }
         }
 
-        private void checkedListBox4_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            HandleItemCheck(checkedListBox4, e, txtView, "Chưa chọn view nào");
-        }
-
-        private void btnView_Click_1(object sender, EventArgs e)
-        {
-            checkedListBox4.Visible = !checkedListBox4.Visible;
-            checkedListBox4.BringToFront();
-            checkedListBox4.Location = new Point(txtView.Left, txtView.Bottom);
-        }
 
         void LoadFunctionsToChecklistBox()
         {
@@ -281,25 +310,6 @@ namespace ATBM_PH1
             }
         }
 
-        private void checkedListBox5_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            HandleItemCheck(checkedListBox5, e, txtf, "Chưa chọn function nào");
-        }
-
-        private void btnFunction_Click(object sender, EventArgs e)
-        {
-            checkedListBox5.Visible = !checkedListBox5.Visible;
-            checkedListBox5.BringToFront();
-            checkedListBox5.Location = new Point(txtf.Left, txtf.Bottom);
-        }
-
-        private void btnproc_Click(object sender, EventArgs e)
-        {
-            checkedListBox6.Visible = !checkedListBox6.Visible;
-            checkedListBox6.BringToFront();
-            checkedListBox6.Location = new Point(txtproc.Left, txtproc.Bottom);
-        }
-
         void LoadProcsToChecklistBox()
         {
             try
@@ -329,11 +339,6 @@ namespace ATBM_PH1
             {
                 MessageBox.Show("Lỗi khi load danh sách procedure:\n" + ex.Message);
             }
-        }
-
-        private void checkedListBox6_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            HandleItemCheck(checkedListBox6, e, txtproc, "Chưa chọn procedure nào");
         }
 
         private void LoadRolesToComboBox()
@@ -374,26 +379,6 @@ namespace ATBM_PH1
             checkedListBox2.Location = new Point(txtQuyen.Left, txtQuyen.Bottom);
         }
 
-        private void txtView_Click(object sender, EventArgs e)
-        {
-            checkedListBox4.Visible = !checkedListBox4.Visible;
-            checkedListBox4.BringToFront();
-            checkedListBox4.Location = new Point(txtView.Left, txtView.Bottom);
-        }
-
-        private void txtf_Click(object sender, EventArgs e)
-        {
-            checkedListBox5.Visible = !checkedListBox5.Visible;
-            checkedListBox5.BringToFront();
-            checkedListBox5.Location = new Point(txtf.Left, txtf.Bottom);
-        }
-
-        private void txtproc_Click(object sender, EventArgs e)
-        {
-            checkedListBox6.Visible = !checkedListBox6.Visible;
-            checkedListBox6.BringToFront();
-            checkedListBox6.Location = new Point(txtproc.Left, txtproc.Bottom);
-        }
         private void btnCapQuyen_Click(object sender, EventArgs e)
         {
             try
@@ -404,52 +389,55 @@ namespace ATBM_PH1
 
                 string selectedTable = cbBang.SelectedItem?.ToString();
                 string selectedRole = cbCaprole.SelectedItem?.ToString();
+                string selectedObjectType = cbObjectType.SelectedItem?.ToString()?.ToUpper();
 
                 int insertChecked = checkedListBox2.CheckedItems.Contains("INSERT") ? 1 : 0;
                 int deleteChecked = checkedListBox2.CheckedItems.Contains("DELETE") ? 1 : 0;
                 int selectChecked = checkedListBox2.CheckedItems.Contains("SELECT") ? 1 : 0;
                 int updateChecked = checkedListBox2.CheckedItems.Contains("UPDATE") ? 1 : 0;
 
-                // Dữ liệu dạng chuỗi phân cách phẩy
                 string selectedSelectCols = string.Join(",", checkedListBox1.CheckedItems.Cast<string>());
                 string selectedUpdateCols = string.Join(",", checkedListBox3.CheckedItems.Cast<string>());
-                string selectedViews = string.Join(",", checkedListBox4.CheckedItems.Cast<string>());
-                string selectedFunctions = string.Join(",", checkedListBox5.CheckedItems.Cast<string>());
-                string selectedProcedures = string.Join(",", checkedListBox6.CheckedItems.Cast<string>());
 
                 bool withGrantOption = checkbwgo.Checked;
 
-                // KIỂM TRA: nếu không chọn quyền nào và chỉ chọn WITH GRANT OPTION
+                // Kiểm tra bắt buộc chọn ít nhất 1 quyền hoặc role
                 if (insertChecked == 0 && deleteChecked == 0 && selectChecked == 0 && updateChecked == 0
                     && string.IsNullOrWhiteSpace(selectedSelectCols)
                     && string.IsNullOrWhiteSpace(selectedUpdateCols)
-                    && string.IsNullOrWhiteSpace(selectedViews)
-                    && string.IsNullOrWhiteSpace(selectedFunctions)
-                    && string.IsNullOrWhiteSpace(selectedProcedures)
-                    && string.IsNullOrWhiteSpace(selectedRole)
-                    )
+                    && string.IsNullOrWhiteSpace(selectedRole))
                 {
-                    MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc đối tượng để cấp quyền.");
+                    MessageBox.Show("Vui lòng chọn ít nhất một quyền hoặc role để cấp.");
                     return;
                 }
-               
-                // KIỂM TRA: nếu chọn quyền (S, I, U, D) nhưng không chọn bảng
+
+                if (!string.IsNullOrEmpty(selectedObjectType)
+    && insertChecked == 0 && deleteChecked == 0 && selectChecked == 0 && updateChecked == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn quyền cần cấp cho đối tượng.");
+                    return;
+                }
+
+
+                // Nếu cấp quyền I/U/D/S nhưng chưa chọn object
                 if ((insertChecked == 1 || deleteChecked == 1 || selectChecked == 1 || updateChecked == 1)
                     && string.IsNullOrWhiteSpace(selectedTable))
                 {
-                    MessageBox.Show("Vui lòng chọn bảng khi cấp quyền SELECT, INSERT, UPDATE hoặc DELETE.");
+                    MessageBox.Show("Vui lòng chọn đối tượng (bảng, view, hàm, thủ tục).");
                     return;
                 }
+
                 if (MainClass.conn.State == ConnectionState.Closed)
                 {
                     MainClass.conn.Open();
                 }
+
                 using (OracleCommand cmd = new OracleCommand("GRANT_PRIVS_TO_USER", MainClass.conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("p_user", OracleDbType.Varchar2).Value = selectedUser;
-                    cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(selectedTable) ? (object)DBNull.Value : selectedTable;
+                    cmd.Parameters.Add("p_table", OracleDbType.Varchar2).Value = selectedTable;
                     cmd.Parameters.Add("p_insert", OracleDbType.Int32).Value = insertChecked;
                     cmd.Parameters.Add("p_delete", OracleDbType.Int32).Value = deleteChecked;
                     cmd.Parameters.Add("p_select", OracleDbType.Int32).Value = selectChecked;
@@ -459,17 +447,12 @@ namespace ATBM_PH1
                         string.IsNullOrWhiteSpace(selectedSelectCols) ? (object)DBNull.Value : selectedSelectCols;
                     cmd.Parameters.Add("p_update_cols", OracleDbType.Varchar2).Value =
                         string.IsNullOrWhiteSpace(selectedUpdateCols) ? (object)DBNull.Value : selectedUpdateCols;
-                    cmd.Parameters.Add("p_views", OracleDbType.Varchar2).Value =
-                        string.IsNullOrWhiteSpace(selectedViews) ? (object)DBNull.Value : selectedViews;
-                    cmd.Parameters.Add("p_functions", OracleDbType.Varchar2).Value =
-                        string.IsNullOrWhiteSpace(selectedFunctions) ? (object)DBNull.Value : selectedFunctions;
-                    cmd.Parameters.Add("p_procedures", OracleDbType.Varchar2).Value =
-                        string.IsNullOrWhiteSpace(selectedProcedures) ? (object)DBNull.Value : selectedProcedures;
 
                     cmd.Parameters.Add("p_role", OracleDbType.Varchar2).Value =
-                        string.IsNullOrEmpty(selectedRole) ? (object)DBNull.Value : selectedRole;
+                        string.IsNullOrWhiteSpace(selectedRole) ? (object)DBNull.Value : selectedRole;
 
                     cmd.Parameters.Add("p_with_grant", OracleDbType.Int32).Value = withGrantOption ? 1 : 0;
+                    cmd.Parameters.Add("p_object_type", OracleDbType.Varchar2).Value = selectedObjectType;
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
@@ -481,6 +464,7 @@ namespace ATBM_PH1
                 MessageBox.Show("Lỗi khi cấp quyền:\n" + ex.Message);
             }
         }
+
 
 
         private void btnHuy_Click(object sender, EventArgs e)
