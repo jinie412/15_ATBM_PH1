@@ -320,7 +320,8 @@ namespace ATBM_PH1
             CapQuyen_CSDL capQuyen = new CapQuyen_CSDL();
             capQuyen.StartPosition = FormStartPosition.CenterScreen;
             MainClass.BlurBackground(capQuyen, this);
-            
+            LoadPrivileges();   
+
         }
 
 
