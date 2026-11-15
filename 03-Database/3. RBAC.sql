@@ -1,0 +1,226 @@
+ALTER SESSION SET CONTAINER = QLDULIEUNOIBO;
+
+-- ============================================= RBAC ====================================
+
+-- ======== 1. Tạo các role và user
+CREATE ROLE NVCB;
+CREATE ROLE NV_TCHC;
+CREATE ROLE NV_CTSV;
+CREATE ROLE NV_PKT;
+CREATE ROLE TRGDV;
+CREATE ROLE NV_PDT;
+CREATE ROLE ROLE_SINHVIEN;
+CREATE ROLE ROLE_GV;
+
+
+-- ======== 2. Tạo các view 
+
+-- ------------- A. NVCB
+
+-- Người dùng có VAITRO là “NVCB” có quyền xem dòng dữ liệu của chính mình trong quan hệ NHANVIEN
+-- có thể chỉnh sửa số điện thoại (ĐT) của chính mình (nếu số điện thoại có thay đổi).
+CREATE OR REPLACE VIEW NVCB_EDIT 
+AS
+SELECT * 
+FROM NHANVIEN
+WHERE MANLD = SYS_CONTEXT ('USERENV', 'SESSION_USER');
+
+GRANT SELECT, UPDATE(DT) ON NVCB_EDIT TO NVCB;
+
+-- ------------- B. NV TCHC
+
+-- Người dùng có VAITRO là “NV TCHC” có quyền xem, thêm, cập nhật, xóa trên quan hệ NHANVIEN.
+GRANT SELECT, UPDATE (DT) ON NVCB_EDIT TO NV_TCHC;
+GRANT SELECT, INSERT, UPDATE, DELETE ON NHANVIEN TO NV_TCHC;
+
+
+-- ------------- C. TRGDV
+
+-- Người dùng có VAITRO là “TRGDV” có quyền xem danh sách nhân viên trong đơn vị của mình
+CREATE OR REPLACE VIEW V_TRGDVI_TTNVIEN
+AS
+SELECT NV.MANLD, NV.HOTEN, NV.PHAI, NV.NGSINH, NV.DT, NV.VAITRO, NV.MADV
+FROM NHANVIEN NV
+JOIN DONVI DV ON NV.MADV=DV.MADV
+WHERE DV.TRGDV=SYS_CONTEXT('USERENV','SESSION_USER');
+
+GRANT SELECT ON V_TRGDVI_TTNVIEN TO TRGDV;
+
+
+-- Người dùng có vai trò “TRGDV” có thể xem danh sách phân công môn học của nhân viên trong đơn vị của mình.
+CREATE OR REPLACE VIEW V_TRGDVI_DSPHANCONG
+AS
+SELECT M.MAMM, M.MAHP, HP.TENHP,M.HK, M.NAM, M.MAGV, NV.HOTEN
+FROM MOMON M
+JOIN NHANVIEN NV ON M.MAGV=NV.MANLD
+JOIN DONVI DV ON DV.MADV=NV.MADV
+JOIN HOCPHAN HP ON HP.MAHP=M.MAHP
+WHERE DV.TRGDV=SYS_CONTEXT('USERENV','SESSION_USER')
+ORDER BY M.NAM, M.MAGV, M.HK, M.MAMM;
+
+GRANT SELECT ON V_TRGDVI_DSPHANCONG TO TRGDV;
+
+-- ------------- D. NV PĐT
+-- Người dùng có vai trò “NV PĐT” có quyền xem, thêm, cập nhật, xóa dòng trong bảng
+-- MOMON liên quan đến học kỳ hiện tại của năm học đang diễn ra  
+CREATE OR REPLACE VIEW V_PDT_XEMMOMON AS
+SELECT  M.MAMM, M.MAHP,HP.TENHP, M.MAGV, NV.HOTEN, M.HK, M.NAM, NV.MADV  
+FROM MOMON M 
+JOIN NHANVIEN NV ON M.MAGV = NV.MANLD
+JOIN HOCPHAN HP ON HP.MAHP = M.MAHP
+ORDER BY M.MAMM DESC;
+
+CREATE OR REPLACE PROCEDURE SP_PDT_XEMDSMM (
+    p_hk     IN NUMBER,
+    p_nam    IN NUMBER,
+    p_madv   IN VARCHAR2 DEFAULT NULL,
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+    v_sql VARCHAR2(1000);
+BEGIN
+    v_sql := '
+        SELECT MAMM, MAHP, TENHP, MAGV, HOTEN, MADV
+        FROM PDB_ADMIN.V_PDT_XEMMOMON
+        WHERE HK = :p_hk AND NAM = :p_nam';
+
+    -- Nếu có mã đơn vị thì thêm điều kiện
+    IF p_madv IS NOT NULL THEN
+        v_sql := v_sql || ' AND MADV = :p_madv';
+        OPEN p_cursor FOR v_sql USING p_hk, p_nam, p_madv;
+    ELSE
+        OPEN p_cursor FOR v_sql USING p_hk, p_nam;
+    END IF;
+END;
+/
+
+GRANT EXECUTE ON PDB_ADMIN.SP_PDT_XEMDSMM TO NV_PDT;
+
+-- ========
+-- Tạo view xem danh sách giảng viên
+CREATE OR REPLACE VIEW V_PDT_XEMGV AS
+SELECT MANLD, HOTEN, MADV 
+FROM NHANVIEN
+WHERE VAITRO = 'GV';
+
+GRANT SELECT ON V_PDT_XEMGV TO NV_PDT;
+
+
+-- Procedure xem ds giảng viên
+CREATE OR REPLACE PROCEDURE SP_PDT_XEMGV (
+    p_donvi IN VARCHAR2,
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+        SELECT MANLD,HOTEN FROM PDB_ADMIN.V_PDT_XEMGV WHERE MADV=p_donvi;
+END;
+/
+
+GRANT EXECUTE ON PDB_ADMIN.SP_PDT_XEMGV TO NV_PDT;
+
+-- ========
+
+
+-- Tạo view xem danh sách học phần
+CREATE OR REPLACE VIEW V_PDT_XEMHOCPHAN AS
+SELECT MAHP, TENHP, SOTC, MADV 
+FROM HOCPHAN;
+
+GRANT SELECT ON V_PDT_XEMHOCPHAN TO NV_PDT;
+
+-- Procedure xem ds học phần của 1 đơn vị
+CREATE OR REPLACE PROCEDURE SP_PDT_XEMDSHP (
+    p_donvi IN VARCHAR2,
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+        SELECT MAHP,TENHP,SOTC FROM PDB_ADMIN.V_PDT_XEMHOCPHAN WHERE MADV=p_donvi;
+END;
+/
+
+GRANT EXECUTE ON PDB_ADMIN.SP_PDT_XEMDSHP TO NV_PDT;
+-- ========
+
+-- Tạo view xem danh sách khoa
+CREATE OR REPLACE VIEW V_PDT_XEMDV AS
+SELECT MADV
+FROM DONVI
+WHERE LOAIDV = 'Khoa';
+
+GRANT SELECT ON V_PDT_XEMDV TO NV_PDT;
+GRANT SELECT ON V_PDT_XEMDV TO NV_CTSV;
+
+-- Procedure xem ds học phần của 1 đơn vị
+CREATE OR REPLACE PROCEDURE SP_PDT_XEMDV (
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+        SELECT * FROM PDB_ADMIN.V_PDT_XEMDV;
+END;
+/
+
+GRANT EXECUTE ON PDB_ADMIN.SP_PDT_XEMDV TO NV_PDT;
+GRANT EXECUTE ON PDB_ADMIN.SP_PDT_XEMDV TO NV_CTSV;
+
+-- ========
+
+-- Tạo view xem danh sách sinh viên
+CREATE OR REPLACE VIEW V_PDT_XEMSV AS
+SELECT  MASV, HOTEN,TINHTRANG
+FROM SINHVIEN;
+
+GRANT SELECT ON V_PDT_XEMDV TO NV_PDT;
+
+
+-- ------------- D. SV
+-- Người dùng có vai trò “SV” có quyền xem các môn liên quan đến khoa đang theo học trên quan hệ MOMON
+
+CREATE OR REPLACE VIEW V_MOMON_SINHVIEN AS
+SELECT mm.*, hp.TENHP
+FROM MOMON mm
+JOIN HOCPHAN hp ON mm.MAHP = hp.MAHP
+JOIN SINHVIEN sv ON hp.MADV = sv.KHOA
+WHERE sv.MASV = SYS_CONTEXT('USERENV', 'SESSION_USER');
+
+GRANT SELECT ON V_MOMON_SINHVIEN TO ROLE_SINHVIEN;
+
+
+CREATE OR REPLACE VIEW V_MOMON_HIEN_TAI AS
+SELECT MAMM, MAHP, TENHP, HK, NAM
+FROM V_MOMON_SINHVIEN
+WHERE 
+    HK = CASE 
+            WHEN EXTRACT(MONTH FROM SYSDATE) BETWEEN 9 AND 12 THEN 1
+            WHEN EXTRACT(MONTH FROM SYSDATE) BETWEEN 1 AND 4 THEN 2
+            ELSE 3
+         END
+  AND NAM = EXTRACT(YEAR FROM SYSDATE);
+  
+GRANT SELECT ON V_MOMON_HIEN_TAI TO ROLE_SINHVIEN;
+
+
+-- ------------- D. GIAO VIEN
+-- Người dùng có vai trò “GV” có quyền xem phân công giảng dạy trên quan hệ MOMON
+
+CREATE OR REPLACE EDITIONABLE VIEW PDB_ADMIN.MOMON_GV_VIEW AS
+SELECT 
+    M.MAMM, 
+    M.MAHP, 
+    HP.TENHP, 
+    M.HK, 
+    M.NAM
+FROM 
+    MOMON M
+    JOIN HOCPHAN HP ON M.MAHP = HP.MAHP
+WHERE 
+    M.MaGV = SYS_CONTEXT('USERENV', 'SESSION_USER');
+
+GRANT SELECT ON PDB_ADMIN.MOMON_GV_VIEW TO ROLE_GV;
+
+
